@@ -85,7 +85,11 @@ Supported datasets include:
 The following metrics are used for evaluation:
 - **AUROC** (Area Under Receiver Operating Characteristic)
 
-
+## TO DO:
+- ✅ New_dataset_clean.ipynb is ready to use for RGB images and easy to change the models and the algorithm
+- ❌ New_dataset.ipynb need to be double checked for gray scale images. 
+- ✅ availability of the model for download nad work(/data/akheirandish3/ckpts/guided_diffusion/CT_scan/model050000.pt, /data/akheirandish3/ckpts/guided_diffusion/mvtec_cable_256/model010000.pt,
+/data/akheirandish3/ckpts/guided_diffusion/ffhq_10m.pt)
 
 
 ## Contributing
