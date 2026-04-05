@@ -43,4 +43,4 @@ use_new_attention_order: False
 
 # model_path: /data/akheirandish3/ckpts/guided_diffusion/mvtec_cable_256/model010000.pt
 # model_path: /data/akheirandish3/ckpts/guided_diffusion/CT_scan/model020000.pt
-model_path: /data/akheirandish3/ckpts/guided_diffusion/CT_scan/model050000.pt
+model_path: /data/akheirandish3/ckpts/guided_diffusion/mvtec_cable_256/model010000.pt

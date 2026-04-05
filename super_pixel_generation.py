@@ -357,15 +357,10 @@ if __name__ == "__main__":
     img = io.imread(args.input_image)
     print(f"Original shape: {img.shape}")
 
-    # Resize to 256x256
-    img_resized = resize(img, (256, 256), anti_aliasing=True)
-
-    # Convert back to uint8 if needed
-    img_resized = (img_resized * 255).astype(np.uint8)
-
-    # Save
-    io.imsave(args.input_image, img_resized)
-    img = io.imread(args.input_image)
+    # Resize to 256x256 if needed
+    if img.shape[0] != 256 or img.shape[1] != 256:
+        img = resize(img, (256, 256), anti_aliasing=True)
+        img = (img * 255).astype(np.uint8)
     if img.ndim == 3 and img.shape[-1] == 4:
         img = img[..., :3]  # drop alpha
 

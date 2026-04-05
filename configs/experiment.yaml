@@ -1,0 +1,113 @@
+# Unified experiment config for OOD detection evaluation.
+#
+# Usage:
+#   python evaluate.py --config configs/experiment.yaml --skip_sampling
+#   python evaluate.py --config configs/experiment.yaml --skip_sampling --baselines
+#
+# To iterate on algorithms: edit ood/scoring.py, then re-run eval.
+# To iterate on embeddings: edit ood/embeddings.py, then re-run eval.
+# To change sampling: edit this file's sampling section, run without --skip_sampling.
+
+# ── Sampling (Stage 0) ────────────────────────────────────────
+sampling:
+  enabled: true                             # true to run DPS, false to use existing results
+
+  model:
+    config: configs/model_config.yaml
+    checkpoint: null                        # null = use model_config.yaml default
+
+  diffusion:
+    sampler: ddpm                            # ddim (fast) | ddpm (full quality, original)
+    steps: 1000
+    noise_schedule: linear
+    model_mean_type: epsilon
+    model_var_type: learned_range
+    timestep_respacing: "1000"              # "1000" for DDPM, "100" for DDIM
+
+  conditioning:
+    method: ps                              # posterior sampling
+    scale: 0.5
+
+  measurement:
+    operator: inpainting
+    noise:
+      type: gaussian
+      sigma: 0.1                            # noise level added to observations
+    mask:
+      type: refined_box                     # refined_box | random | box
+      image_size: 256
+      mask_len_range: [128, 129]
+      mask_prob: 0.9
+
+  num_measurements: 4                       # reconstructions per image per patch
+  num_patches: 24                           # patches per image
+  patch_size: 64
+  gpu_ids: [0, 1, 2, 3, 4, 6, 7]            # GPUs for parallel sampling
+  seed: 0
+
+# ── Data ──────────────────────────────────────────────────────
+data:
+  image_dir: /data/akheirandish3/mvtec_ad/cable/test/combined
+  figures_dir: ./figures
+  results_dir: ./results_patches
+  sample_name: samples_010
+  test_origin: Combined_half_sigma_batched
+  bottom_suffix: "4"
+
+  gt_mask:
+    path: /data/akheirandish3/mvtec_ad/cable/ground_truth/combined/{sample}_mask.png
+    downsample_factor: 4
+
+# ── Embeddings ────────────────────────────────────────────────
+embeddings:
+  backbone: resnet18                        # resnet18 | resnet50 | resnet101 | resnet152
+  layers: [layer1, layer2, layer3]
+  use_patch_context: true
+  patchify_size: 3
+  proj_dim_per_layer: null                  # null = no 1x1 projection
+  device: cuda
+
+# ── PCA ───────────────────────────────────────────────────────
+pca:
+  n_components: 9
+
+# ── Superpixels ───────────────────────────────────────────────
+superpixels:
+  var_threshold: 0.0                        # max RGB variance to stop splitting (0 = always split)
+  min_pixels: 20                            # don't split regions smaller than this
+  max_sub: 6                                # max sub-regions per split
+  max_depth: 4                              # recursion depth limit
+  compactness: 12.0                         # higher = more square sub-regions
+  alpha_grad: 10.0                          # edge-awareness weight in SLIC
+  target_size: 10                           # desired region size in pixels
+
+# ── Scoring ───────────────────────────────────────────────────
+scoring:
+  bins_rgb: 32                              # quantization bins for RGB [0, 255]
+  bins_pca: 8                               # quantization bins for PCA [-1, 1]
+  smooth_sigma: 0.1                         # Gaussian smooth on PMF histograms
+  min_pixels: 2                             # min superpixel size to score
+  use_label_as_target: true                 # evaluate label image against recon PMF
+  eps: 1.0e-12                              # numerical stability
+
+# ── Evaluation ────────────────────────────────────────────────
+eval:
+  delta_smooth_sigmas: [null, 5.0]          # null = raw, 5.0 = Gaussian-smoothed delta map
+  sp_anomaly_threshold: 0.5                 # majority vote: SP is anomalous if >50% pixels are
+  save_plots: true
+  output_dir: ./results_eval
+
+# ── Baselines ─────────────────────────────────────────────────
+baselines:
+  enabled: false
+  simplenet:
+    enabled: false
+    repo_dir: /data/akheirandish3/SimpleNet
+    results_dir: /data/akheirandish3/SimpleNet/results/MVTecAD_Results
+    category: cable
+  ddad:
+    enabled: false
+    repo_dir: /data/akheirandish3/PaDIS_results/DDAD
+    config: /data/akheirandish3/PaDIS_results/DDAD/config.yaml
+    category: cable
+    checkpoint_epoch: 2000
