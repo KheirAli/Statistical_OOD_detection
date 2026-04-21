@@ -127,17 +127,19 @@ Why it's flat: DPS starts from **pure noise** regardless of σ. The σ only scal
 
 ## Reproduction
 
+All scripts auto-pick GPU via `CUDA_VISIBLE_DEVICES` (edit the value at the top of each).
+
 ```bash
-# Cable
-cd DDAD && python main.py --config config_cable.yaml --detection True   # R1
-cd .. && python tools/run_ddad_reconstruction.py --num_seeds 20         # R2
-bash run_three_way.sh                                                    # R3 + R4
-bash run_r6_corrected.sh                                                 # R6
+# ── Cable (R1 DDAD baseline + R3/R3np/R4 + R6a/R6a-np/R6b) ──
+cd DDAD && PYTHONPATH=/home/rohan/ood/dps python main.py --config config_cable.yaml --detection True
+cd ..
+bash scripts/run_cable.sh       # ~2 hours end-to-end
 
-# Faces
-cd DDAD && python main.py --config config_faces.yaml --detection True   # R1-faces
-cd .. && bash run_faces_experiments.sh                                   # R2-R6 faces
+# ── Faces (mirrors cable) ──
+cd DDAD && PYTHONPATH=/home/rohan/ood/dps python main.py --config config_faces.yaml --detection True
+cd ..
+bash scripts/run_faces.sh       # ~2 hours
 
-# Cable σ sweep (8 sigmas × 3 phases each, ~6 hours sequential on one GPU)
-bash run_sigma_sweep.sh                                                  # edit CUDA_VISIBLE_DEVICES first
+# ── Cable σ sweep ──
+bash scripts/run_sigma_sweep.sh # ~6 hours sequential
 ```

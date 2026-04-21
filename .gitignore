@@ -1,0 +1,30 @@
+# Generated artifacts
+results_*/
+figures*/
+logs/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+*.egg-info/
+.coverage
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# System
+.DS_Store
+
+# Virtualenvs
+.venv/
+venv/
+env/
+
+# Local / test overrides
+*.local.yaml
