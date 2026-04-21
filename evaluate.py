@@ -1,12 +1,16 @@
 #!/usr/bin/env python3
 """Evaluate OOD detection pipeline.
 
+Sampling is handled by tools/run_ddad_reconstruction.py or
+tools/run_ddad_dps_sampling.py. evaluate.py only scores existing recons.
+
 Usage:
-    python evaluate.py --config configs/experiment.yaml
-    python evaluate.py --config configs/experiment.yaml --skip_sampling
-    python evaluate.py --config configs/experiment.yaml --skip_sampling --baselines
-    python evaluate.py --config configs/experiment.yaml --skip_sampling --no_plots
-    python evaluate.py --config configs/experiment.yaml --sample_name samples_005
+    python evaluate.py --config configs/experiment_ddad_native.yaml \\
+        --skip_sampling --no_plots --scorer typical_set \\
+        --n_pca 5 --bins_pca 16 --sample_name samples_000
+    python evaluate.py --config configs/experiment_ddad_native.yaml \\
+        --skip_sampling --no_plots --scorer local_gaussian --sigma_rohan 0.1 \\
+        --sample_names samples_000 samples_001 samples_002 ... samples_010
 """
 
 import argparse
@@ -23,10 +27,12 @@ from ood.data import load_gt_mask, load_label_image, load_reconstructions, load_
 from ood.superpixels import recursive_subdivide
 from ood.embeddings import ResNetPixelEmbedder, embed_and_project
 from ood.scoring import compute_delta_map
+from ood.scoring_local_gaussian import compute_delta_map_local_gaussian
 from ood.metrics import evaluate_delta_map
 from ood.visualize import plot_delta_map, plot_evaluation, plot_comparison, show_boundaries
-from ood.sampler import run_sampling
-from ood.baselines import run_baselines
+# Note: ood.sampler and ood.baselines were removed in the push-ready cleanup.
+# Reconstructions are now generated via tools/run_ddad_reconstruction.py or
+# tools/run_ddad_dps_sampling.py. Always pass --skip_sampling to evaluate.py.
 
 
 def load_config(path: str) -> dict:
@@ -34,7 +40,7 @@ def load_config(path: str) -> dict:
         return yaml.safe_load(f)
 
 
-def _run_single_sample(cfg: dict, no_plots: bool = False, sampling_only: bool = False) -> dict:
+def _run_single_sample(cfg: dict, no_plots: bool = False) -> dict:
     """Run evaluation on a single sample. Returns metrics dict."""
     import torch
 
@@ -45,15 +51,11 @@ def _run_single_sample(cfg: dict, no_plots: bool = False, sampling_only: bool = 
 
     # Per-sample figures directory so each image gets its own superpixel mask
     figures_dir = os.path.join(data_cfg["figures_dir"], sample_name)
-    data_cfg_run = deepcopy(data_cfg)
-    data_cfg_run["figures_dir"] = figures_dir
 
     print(f"\n=== OOD Evaluation: {sample_name} ===")
+    print("Sampling disabled, using existing results.")
 
-    run_sampling(cfg["sampling"], data_cfg_run)
-
-    # Ensure per-sample superpixel mask exists (may have been generated
-    # during sampling, or needs generating now for eval-only runs)
+    # Ensure per-sample superpixel mask exists (generate if missing)
     mask_path = os.path.join(figures_dir, "mask.png")
     if not os.path.exists(mask_path):
         image_dir = data_cfg["image_dir"]
@@ -67,10 +69,6 @@ def _run_single_sample(cfg: dict, no_plots: bool = False, sampling_only: bool = 
                  f"--output_dir={figures_dir}"],
                 check=True,
             )
-
-    if sampling_only:
-        print(f"  Sampling complete for {sample_name}.")
-        return {}
 
     # Stage 1: Load data
     print("Loading data...")
@@ -125,15 +123,42 @@ def _run_single_sample(cfg: dict, no_plots: bool = False, sampling_only: bool = 
 
     # Stage 5: Scoring
     score_cfg = cfg["scoring"]
-    delta_map, _info, labels_used = compute_delta_map(
-        labels_fine=labels_fine, parent_map=parent_map,
-        images_recon_all=recon_all, pca_feats_recon=embed_result["pca_feats_recon"],
-        label_image=label_image, label_pca_map=embed_result["label_pca_map"],
-        bins_rgb=score_cfg["bins_rgb"], bins_pca=score_cfg["bins_pca"],
-        smooth_sigma=score_cfg["smooth_sigma"], min_pixels=score_cfg["min_pixels"],
-        use_label_as_target=score_cfg["use_label_as_target"], eps=score_cfg["eps"],
-    )
-    print(f"  Scored {len(labels_used)} superpixels")
+    algorithm = score_cfg.get("algorithm", "typical_set")
+    if algorithm == "local_gaussian":
+        sigma_rohan = score_cfg.get("sigma_rohan")
+        if sigma_rohan is None:
+            sigma_path = os.path.join(data_cfg["results_dir"], "sigma.txt")
+            if os.path.exists(sigma_path):
+                with open(sigma_path) as f:
+                    sigma_rohan = float(f.read().strip())
+                print(f"  sigma_rohan={sigma_rohan} (from {sigma_path})")
+            else:
+                raise ValueError("local_gaussian scorer needs --sigma_rohan or a sigma.txt under results_dir")
+        # Use base SP mask (not refined) for local_gaussian: the scorer needs
+        # D = n_sp * C to be tractable relative to n_realizations.  With 5636
+        # refined SPs (D=16908) and rank ≤ n_realizations-1, the precision matrix
+        # has near-zero coverage → metric collapses to 0.5.  Base mask (~44 SPs,
+        # D=132) gives full-rank covariance with n_realizations=1000.
+        lg_labels = sp_mask   # base mask, not labels_fine
+        lg_parent = {int(sid): [int(sid)] for sid in np.unique(sp_mask)}
+        delta_map, _info, labels_used = compute_delta_map_local_gaussian(
+            labels_fine=lg_labels, parent_map=lg_parent,
+            images_recon_all=recon_all, label_image=label_image,
+            sigma=sigma_rohan,
+            n_realizations=score_cfg.get("n_realizations", 1000),
+            min_pixels=score_cfg["min_pixels"],
+            metric=score_cfg.get("lg_metric", "typicality_unsigned"),
+        )
+    else:
+        delta_map, _info, labels_used = compute_delta_map(
+            labels_fine=labels_fine, parent_map=parent_map,
+            images_recon_all=recon_all, pca_feats_recon=embed_result["pca_feats_recon"],
+            label_image=label_image, label_pca_map=embed_result["label_pca_map"],
+            bins_rgb=score_cfg["bins_rgb"], bins_pca=score_cfg["bins_pca"],
+            smooth_sigma=score_cfg["smooth_sigma"], min_pixels=score_cfg["min_pixels"],
+            use_label_as_target=score_cfg["use_label_as_target"], eps=score_cfg["eps"],
+        )
+    print(f"  Scored {len(labels_used)} superpixels [{algorithm}]")
 
     # Stage 6: Evaluation
     eval_cfg = cfg["eval"]
@@ -157,15 +182,8 @@ def _run_sweep(cfg: dict, args) -> None:
     for sname in args.sample_names:
         cfg_copy = deepcopy(cfg)
         cfg_copy["data"]["sample_name"] = sname
-        metrics = _run_single_sample(
-            cfg_copy, no_plots=args.no_plots,
-            sampling_only=getattr(args, "sampling_only", False),
-        )
+        metrics = _run_single_sample(cfg_copy, no_plots=args.no_plots)
         all_runs[sname] = metrics
-
-    if getattr(args, "sampling_only", False):
-        print("Sampling complete for all samples.")
-        return
 
     # Average across samples
     first_keys = list(all_runs[args.sample_names[0]].keys())
@@ -221,9 +239,7 @@ def main():
     parser.add_argument("--config", type=str, required=True, help="Path to experiment YAML config")
     parser.add_argument("--sample_name", type=str, default=None, help="Override sample name")
     parser.add_argument("--skip_sampling", action="store_true", help="Skip DPS sampling, use existing results")
-    parser.add_argument("--sampling_only", action="store_true", help="Run DPS sampling only, skip evaluation")
     parser.add_argument("--no_plots", action="store_true", help="Skip plot generation")
-    parser.add_argument("--baselines", action="store_true", help="Run baseline comparisons")
     parser.add_argument("--device", type=str, default=None, help="Override device (cpu/cuda/cuda:N)")
     parser.add_argument("--output_dir", type=str, default=None, help="Override output directory")
     parser.add_argument("--backbone", type=str, default=None,
@@ -236,6 +252,12 @@ def main():
                         help="Override PCA histogram bins")
     parser.add_argument("--sample_names", type=str, nargs="+", default=None,
                         help="Run on multiple samples and average metrics")
+    parser.add_argument("--scorer", type=str, default="typical_set",
+                        choices=["typical_set", "local_gaussian"],
+                        help="Scoring algorithm: ood/scoring.py (typical_set) or ood/scoring_local_gaussian.py (rohan)")
+    parser.add_argument("--sigma_rohan", type=float, default=None,
+                        help="σ for local_gaussian scorer (in [0,1] image scale). "
+                             "If omitted, reads {results_dir}/sigma.txt when scorer=local_gaussian.")
     args = parser.parse_args()
 
     cfg = load_config(args.config)
@@ -244,12 +266,7 @@ def main():
     if args.sample_name:
         cfg["data"]["sample_name"] = args.sample_name
     if args.skip_sampling:
-        cfg["sampling"]["enabled"] = False
-    if args.baselines:
-        cfg["baselines"]["enabled"] = True
-        for key in ("simplenet", "ddad"):
-            if key in cfg["baselines"]:
-                cfg["baselines"][key]["enabled"] = True
+        cfg.setdefault("sampling", {})["enabled"] = False
     if args.device:
         cfg["embeddings"]["device"] = args.device
     if args.output_dir:
@@ -262,217 +279,14 @@ def main():
         cfg["scoring"]["bins_rgb"] = args.bins_rgb
     if args.bins_pca is not None:
         cfg["scoring"]["bins_pca"] = args.bins_pca
+    cfg.setdefault("scoring", {})["algorithm"] = args.scorer
+    if args.sigma_rohan is not None:
+        cfg["scoring"]["sigma_rohan"] = args.sigma_rohan
 
-    # Multi-sample sweep mode
-    if args.sample_names:
-        _run_sweep(cfg, args)
-        return
-
-    data_cfg = cfg["data"]
-    sample_name = data_cfg["sample_name"]
-    sample_id = parse_sample_id(sample_name)
-    device = cfg["embeddings"].get("device", "cuda")
-
-    print(f"=== OOD Evaluation: {sample_name} ===")
-
-    # ── Stage 0: Sampling ─────────────────────────────────────
-    run_sampling(cfg["sampling"], data_cfg)
-
-    if args.sampling_only:
-        print(f"Sampling complete for {sample_name}.")
-        return
-
-    # ── Stage 1: Load data ────────────────────────────────────
-    print("Loading data...")
-    recon_all = load_reconstructions(
-        results_dir=data_cfg["results_dir"],
-        sample_name=sample_name,
-        test_origin=data_cfg["test_origin"],
-        num_patches=cfg["sampling"].get("num_patches", 24),
-        bottom_suffix=data_cfg["bottom_suffix"],
-    )
-    print(f"  Reconstructions: {recon_all.shape}")
-
-    label_image = load_label_image(
-        results_dir=data_cfg["results_dir"],
-        sample_name=sample_name,
-        test_origin=data_cfg["test_origin"],
-        bottom_suffix=data_cfg["bottom_suffix"],
-    )
-    print(f"  Label image: {label_image.shape}")
-
-    sp_mask = load_superpixel_mask(data_cfg["figures_dir"])
-    print(f"  Superpixel mask: {sp_mask.shape}, {len(np.unique(sp_mask))} regions")
-
-    gt_mask = load_gt_mask(
-        path_template=data_cfg["gt_mask"]["path"],
-        sample=sample_id,
-        downsample_factor=data_cfg["gt_mask"]["downsample_factor"],
-    )
-    print(f"  GT mask: {gt_mask.shape}, {gt_mask.sum()} anomalous pixels ({100*gt_mask.mean():.1f}%)")
-
-    # ── Stage 2: Superpixel refinement ────────────────────────
-    print("Refining superpixels...")
-    sp_cfg = cfg["superpixels"]
-    labels_fine, final_ids, parent_map = recursive_subdivide(
-        img=label_image,
-        labels=sp_mask,
-        var_threshold=sp_cfg["var_threshold"],
-        min_pixels=sp_cfg["min_pixels"],
-        max_sub=sp_cfg["max_sub"],
-        max_depth=sp_cfg["max_depth"],
-        compactness=sp_cfg["compactness"],
-        alpha_grad=sp_cfg["alpha_grad"],
-        target_size=sp_cfg["target_size"],
-    )
-    print(f"  {len(np.unique(sp_mask))} -> {len(final_ids)} superpixels")
-
-    # ── Stage 3+4: Embed + PCA ────────────────────────────────
-    print("Computing embeddings + PCA...")
-    import torch
-
-    embed_cfg = cfg["embeddings"]
-    embedder = ResNetPixelEmbedder(
-        resnet_name=embed_cfg["backbone"],
-        layers=tuple(embed_cfg["layers"]),
-        use_patch_context=embed_cfg["use_patch_context"],
-        patchify_size=embed_cfg.get("patchify_size", 3),
-        proj_dim_per_layer=embed_cfg.get("proj_dim_per_layer"),
-    ).to(device).eval()
-
-    embed_result = embed_and_project(
-        embedder=embedder,
-        label_image=label_image,
-        images_recon_all=recon_all,
-        n_pca=cfg["pca"]["n_components"],
-        device=device,
-    )
-    print(f"  PCA feats: label={embed_result['label_pca_map'].shape}, recon={embed_result['pca_feats_recon'].shape}")
-
-    # Free GPU memory
-    del embedder
-    torch.cuda.empty_cache()
-
-    # ── Stage 5: Scoring ──────────────────────────────────────
-    print("Computing delta map...")
-    score_cfg = cfg["scoring"]
-    delta_map, info, labels_used = compute_delta_map(
-        labels_fine=labels_fine,
-        parent_map=parent_map,
-        images_recon_all=recon_all,
-        pca_feats_recon=embed_result["pca_feats_recon"],
-        label_image=label_image,
-        label_pca_map=embed_result["label_pca_map"],
-        bins_rgb=score_cfg["bins_rgb"],
-        bins_pca=score_cfg["bins_pca"],
-        smooth_sigma=score_cfg["smooth_sigma"],
-        min_pixels=score_cfg["min_pixels"],
-        use_label_as_target=score_cfg["use_label_as_target"],
-        eps=score_cfg["eps"],
-    )
-    print(f"  Scored {len(labels_used)} superpixels")
-
-    # ── Stage 6: Evaluation ───────────────────────────────────
-    print("Evaluating...")
-    eval_cfg = cfg["eval"]
-    all_metrics = {}
-
-    for sigma in eval_cfg["delta_smooth_sigmas"]:
-        key = f"sigma_{sigma}" if sigma else "raw"
-        result = evaluate_delta_map(
-            delta_map=delta_map,
-            labels_fine=labels_fine,
-            gt_mask_binary=gt_mask,
-            anomaly_threshold=eval_cfg["sp_anomaly_threshold"],
-            smooth_sigma=sigma,
-        )
-        all_metrics[key] = result
-        print(f"  [{key}] SP AUC: {result['sp_roc_auc']:.4f} | Pixel AUC: {result['px_roc_auc']:.4f}")
-
-    # ── Baselines ─────────────────────────────────────────────
-    baseline_results = {}
-    if cfg["baselines"].get("enabled", False):
-        print("Running baselines...")
-        baseline_results = run_baselines(cfg["baselines"])
-        for name, res in baseline_results.items():
-            if "error" not in res:
-                print(f"  [{name}] Pixel AUC: {res.get('px_roc_auc', 'N/A')}")
-
-    # ── Save results ──────────────────────────────────────────
-    output_dir = os.path.join(eval_cfg["output_dir"], sample_name)
-    plots_dir = os.path.join(output_dir, "plots")
-    os.makedirs(plots_dir, exist_ok=True)
-
-    # Save delta map
-    np.save(os.path.join(output_dir, "delta_map.npy"), delta_map)
-
-    # Save JSON results
-    # Strip non-serializable curve data for compact JSON
-    metrics_clean = {}
-    for key, val in all_metrics.items():
-        metrics_clean[key] = {k: v for k, v in val.items() if k != "curves"}
-
-    results_json = {
-        "config": cfg,
-        "metrics": metrics_clean,
-        "baselines": {k: {kk: vv for kk, vv in v.items() if kk != "raw_output"} for k, v in baseline_results.items()},
-        "scoring_info": {
-            "num_scored_superpixels": len(labels_used),
-            "total_superpixels": len(final_ids),
-        },
-    }
-
-    with open(os.path.join(output_dir, "results.json"), "w") as f:
-        json.dump(results_json, f, indent=2, default=str)
-
-    print(f"\nResults saved to {output_dir}/results.json")
-
-    # ── Plots ─────────────────────────────────────────────────
-    if not args.no_plots and eval_cfg.get("save_plots", True):
-        print("Generating plots...")
-
-        show_boundaries(
-            label_image, labels_fine,
-            title=f"Refined: {len(final_ids)} superpixels",
-            save_path=os.path.join(plots_dir, "superpixels.png"),
-        )
-
-        plot_delta_map(
-            delta_map, label_image,
-            save_path=os.path.join(plots_dir, "delta_map.png"),
-        )
-
-        for key, result in all_metrics.items():
-            sigma = None if key == "raw" else float(key.split("_")[1])
-            plot_evaluation(
-                eval_results=result,
-                gt_mask_binary=gt_mask,
-                delta_map=delta_map,
-                smooth_sigma=sigma,
-                save_path=os.path.join(plots_dir, f"evaluation_{key}.png"),
-            )
-
-        # Comparison plot if baselines ran
-        if baseline_results:
-            comparison = {}
-            for key, val in all_metrics.items():
-                comparison[f"ours_{key}"] = val
-            for name, res in baseline_results.items():
-                if "error" not in res:
-                    comparison[name] = res
-            plot_comparison(comparison, save_path=os.path.join(plots_dir, "comparison.png"))
-
-        print(f"Plots saved to {plots_dir}/")
-
-    # ── Summary ───────────────────────────────────────────────
-    print(f"\n{'='*50}")
-    for key, val in metrics_clean.items():
-        print(f"  [{key}] SP AUC: {val['sp_roc_auc']:.4f} | SP AP: {val['sp_ap']:.4f} | Px AUC: {val['px_roc_auc']:.4f} | Px AP: {val['px_ap']:.4f}")
-    if baseline_results:
-        for name, res in baseline_results.items():
-            if "error" not in res:
-                print(f"  [{name}] Px AUC: {res.get('px_roc_auc', 'N/A')}")
-    print(f"{'='*50}")
+    # Everything is routed through _run_sweep (works for 1 or many samples).
+    if not args.sample_names:
+        args.sample_names = [args.sample_name or cfg["data"]["sample_name"]]
+    _run_sweep(cfg, args)
 
 
 if __name__ == "__main__":

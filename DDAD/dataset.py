@@ -50,11 +50,18 @@ class Dataset_maker(torch.utils.data.Dataset):
         else:
             if category:
                 # self.image_files = glob(os.path.join(root, category, "test", "*", "*.png"))
-                # self.image_files = glob(os.path.join(root, category, "test", "combined", "*.png")) # cable
-                self.image_files = glob(os.path.join(root, category, "test", "random", "*.png")) # faces
-                # self.image_files = glob(os.path.join(root, "*.png")) #CT
-
-                search_path = os.path.join(root, category, "test", "combined", "*.png")
+                # Detect test subfolder: use config override if present, else try combined then random
+                test_subfolder = getattr(config.data, "test_subfolder", None)
+                if test_subfolder:
+                    self.image_files = glob(os.path.join(root, category, "test", test_subfolder, "*.png"))
+                    search_path = os.path.join(root, category, "test", test_subfolder, "*.png")
+                else:
+                    # Try combined (cable), then random (faces), then wildcard
+                    for sf in ["combined", "random"]:
+                        self.image_files = glob(os.path.join(root, category, "test", sf, "*.png"))
+                        if self.image_files:
+                            break
+                    search_path = os.path.join(root, category, "test", "*", "*.png")
                 # search_path = os.path.join(root, "*.png")
                 print(f"DEBUG: Searching for test images at: {search_path}")
             else:
