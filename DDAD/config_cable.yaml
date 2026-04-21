@@ -1,0 +1,51 @@
+# DDAD cable detection config (E1: reproduce DDAD baseline).
+# Usage: from repo root run:
+#   cd DDAD && python main.py --config config_cable.yaml --detection True
+# Reads checkpoints from absolute checkpoint_dir below.
+
+data:
+  name: MVTec
+  data_dir: /data/akheirandish3/mvtec_ad
+  category: cable
+  image_size: 256
+  batch_size: 32
+  DA_batch_size: 16
+  test_batch_size: 1
+  mask: True                       # load GT masks → pixel AUROC available
+  input_channel: 3
+
+model:
+  DDADS: False
+  checkpoint_dir: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec  # absolute; os.path.join will use as-is
+  checkpoint_name: weights         # unused on detection path
+  exp_name: default
+  feature_extractor: wide_resnet101_2
+  learning_rate: 3e-4
+  weight_decay: 0.05
+  epochs: 250
+  load_chp: 3000                   # /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/cable/3000
+  DA_epochs: 4
+  DA_chp: 0                        # feat0 = ImageNet V1 (verified)
+  v: 1
+  w: 2
+  w_DA: 3
+  DLlambda: 0.1
+  trajectory_steps: 1000
+  test_trajectoy_steps: 250
+  test_trajectoy_steps_DA: 250
+  skip: 25
+  skip_DA: 25
+  eta: 1
+  beta_start: 0.0001
+  beta_end: 0.02
+  device: cuda
+  save_model: True
+  num_workers: 2
+  seed: 42
+  use_frozen_fe: True              # skip feat0 file-load; use ImageNet-pretrained directly (equivalent per verification)
+
+metrics:
+  auroc: True                      # print image + pixel AUROC
+  pro: False
+  misclassifications: False
+  visualisation: False             # skip plot dump (we just want numbers)
