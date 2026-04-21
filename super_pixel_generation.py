@@ -348,8 +348,8 @@ if __name__ == "__main__":
                         help='Gaussian smoothing sigma')
     parser.add_argument('--topk', type=int, default=20,
                         help='Top-k superpixels to select')
-    parser.add_argument('--output_dir', type=str, default="/home/akheirandish3/diffusion-posterior-sampling/data",
-                        help='Output directory for masks')
+    parser.add_argument('--output_dir', type=str, required=True,
+                        help='Output directory for masks (must be set; no default to avoid writing to stale paths)')
     
     args = parser.parse_args()
 
@@ -392,7 +392,9 @@ if __name__ == "__main__":
     print(f"Original superpixels: {res.labels.max() + 1}")
     # print(f"Subdivided superpixels: {subdivided_labels.max() + 1}")
 
-    io.imsave(f"{args.output_dir}/mask.png", (res.labels).astype(np.uint8))
+    # Save as uint16 so superpixel IDs > 255 round-trip cleanly (matches the
+    # 16-bit reader in ood/data.py:load_superpixel_mask)
+    io.imsave(f"{args.output_dir}/mask.png", res.labels.astype(np.uint16), check_contrast=False)
     # io.imsave(f"{args.output_dir}/mask_subdivided.png", (subdivided_labels % 256).astype(np.uint8))
 
     vis = boundaries_overlay(img, res.labels, boundary_value=255 if img.dtype == np.uint8 else 1.0)

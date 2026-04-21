@@ -26,16 +26,20 @@ seed averaging across runs.
 
 | file | role |
 |---|---|
-| [ood/sampler.py](ood/sampler.py) | Orchestrates DPS+inpainting sampling via `sample_batch.py` |
 | [ood/data.py](ood/data.py) | Loads recons, labels, SP masks, GT masks |
 | [ood/superpixels.py](ood/superpixels.py) | Recursive SLIC subdivision |
 | [ood/embeddings.py](ood/embeddings.py) | ResNet pixel embeddings + PCA |
 | [ood/scoring.py](ood/scoring.py) | **Typical-set PMF scorer** (RGB × PCA factorized) |
-| [ood/scoring_local_gaussian.py](ood/scoring_local_gaussian.py) | **Rohan local-Gaussian scorer** (new — ported from notebook) |
+| [ood/scoring_local_gaussian.py](ood/scoring_local_gaussian.py) | **Local-Gaussian scorer** (theory-based, ported from the reference notebook) |
 | [ood/metrics.py](ood/metrics.py) | AUROC / AP |
 | [ood/visualize.py](ood/visualize.py) | Plots |
-| [evaluate.py](evaluate.py) | CLI entry, now with `--scorer {typical_set, local_gaussian}` dispatch |
-| [sample_batch.py](sample_batch.py) | DPS+inpainting via `guided_diffusion` (expects `../dps/` on PYTHONPATH) |
+| [evaluate.py](evaluate.py) | CLI entry, with `--scorer {typical_set, local_gaussian}` dispatch |
+
+> Historical note: the original pipeline included `ood/sampler.py` and
+> `sample_batch.py` (DPS + inpainting via `guided_diffusion`). These were
+> dropped in the push-ready cleanup — sampling is now handled by the scripts
+> in `tools/` directly, and evaluate.py is scoring-only. See earlier git
+> history for the removed code.
 
 ### DDAD ([DDAD/](DDAD/), pulled from origin/main)
 
@@ -56,20 +60,19 @@ seed averaging across runs.
 |---|---|
 | [DDAD_DPS/samplers.py](DDAD_DPS/samplers.py) | Two samplers for the DDAD UNet: Mode 1 = DPS (from noise, autograd), Mode 2 = DDAD-style |
 
-### Rohan ([rohan/](rohan/))
+### Reference material for the theory-based scorer
 
-| file | role |
-|---|---|
-| [rohan/theory_algorithm_rohan.ipynb](rohan/theory_algorithm_rohan.ipynb) | Reference implementation |
-| [rohan/algorithm.tex](rohan/algorithm.tex) | Derivation |
+The derivation of the local-Gaussian scorer, plus the reference notebook it was
+ported from, lives outside the tracked repo (`rohan/` is in `.gitignore`). The
+production port is [ood/scoring_local_gaussian.py](ood/scoring_local_gaussian.py).
 
 ### Tools
 
 | file | role |
 |---|---|
 | [tools/run_ddad_reconstruction.py](tools/run_ddad_reconstruction.py) | Generates N DDAD recons per image, saves in eval layout, records effective σ |
-| [tools/smoke_test_ddad_unet.py](tools/smoke_test_ddad_unet.py) | Verifies DDAD UNet + checkpoint load |
-| [tools/compare_recons.py](tools/compare_recons.py) | Side-by-side pixel diff (ours vs grad student's) |
+| [tools/run_ddad_dps_sampling.py](tools/run_ddad_dps_sampling.py) | Generates N additive-noise DPS recons per image |
+| [tools/prepare_xray_dataset.py](tools/prepare_xray_dataset.py) | Converts SIXray → MVTec layout for the X-ray pilot |
 
 ### Configs
 

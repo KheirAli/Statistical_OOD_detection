@@ -30,3 +30,6 @@ env/
 *.local.yaml
 
 rohan/data/
+
+# Reference-only material (kept on disk, not tracked)
+rohan/

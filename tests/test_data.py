@@ -11,6 +11,7 @@ from ood.data import (
     load_reconstructions,
     load_label_image,
     load_gt_mask,
+    load_superpixel_mask,
     parse_sample_id,
 )
 
@@ -93,6 +94,39 @@ def test_load_gt_mask_downsamples(tmp_path):
     assert mask.shape == (32, 32)
     assert mask.dtype == np.uint8
     assert set(np.unique(mask).tolist()).issubset({0, 1})
+
+
+def test_load_superpixel_mask_8bit(tmp_path):
+    """Plain uint8 mask with IDs 0..N (N<255) round-trips cleanly."""
+    mask = np.zeros((64, 64), dtype=np.uint8)
+    mask[:32, :32] = 1
+    mask[:32, 32:] = 2
+    mask[32:, :32] = 3
+    mask[32:, 32:] = 4
+    Image.fromarray(mask, mode="L").save(tmp_path / "mask.png")
+    loaded = load_superpixel_mask(str(tmp_path))
+    assert loaded.shape == (64, 64)
+    assert loaded.dtype == np.int32
+    assert sorted(np.unique(loaded).tolist()) == [1, 2, 3, 4]
+
+
+def test_load_superpixel_mask_16bit(tmp_path):
+    """IDs > 255 must survive via the 16-bit fallback path."""
+    mask = np.zeros((64, 64), dtype=np.uint16)
+    mask[:32, :32] = 10
+    mask[:32, 32:] = 500
+    mask[32:, :32] = 1000
+    mask[32:, 32:] = 2500
+    Image.fromarray(mask, mode="I;16").save(tmp_path / "mask.png")
+    loaded = load_superpixel_mask(str(tmp_path))
+    assert loaded.shape == (64, 64)
+    ids = set(np.unique(loaded).tolist())
+    assert {10, 500, 1000, 2500} <= ids
+
+
+def test_load_superpixel_mask_missing_file_raises(tmp_path):
+    with pytest.raises(FileNotFoundError):
+        load_superpixel_mask(str(tmp_path))
 
 
 def test_load_gt_mask_handles_rgba(tmp_path):

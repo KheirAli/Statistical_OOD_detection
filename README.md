@@ -47,7 +47,9 @@ bash scripts/run_cable.sh
 .
 ├── README.md          # this file
 ├── RESULTS.md         # detailed results tables
-├── EXPERIMENTS.md     # lab journal / detailed methodology
+├── docs/
+│   ├── EXPERIMENTS.md # lab journal / detailed methodology
+│   └── XRAY_PILOT.md  # X-ray pilot plan (SIXray OOD detection)
 ├── requirements.txt
 ├── evaluate.py        # main eval CLI — scorer × config dispatch
 ├── super_pixel_generation.py  # SLIC mask generator (called by evaluate.py)
@@ -69,7 +71,6 @@ bash scripts/run_cable.sh
 ├── configs/           # experiment YAMLs (data paths, scorer params)
 ├── DDAD/              # grad student's DDAD implementation (from upstream)
 ├── DDAD_DPS/          # alternative samplers for DDAD UNet
-├── rohan/             # theory derivation + reference notebook
 └── tests/             # pytest smoke tests
 ```
 
@@ -96,4 +97,4 @@ flags or by editing the YAML.
 
 - **DDAD** (Mousakhan et al., WACV 2024) — reconstruction and scoring baseline.
 - **DPS** (Chung et al., ICLR 2023) — posterior-sampling diffusion.
-- Local-Gaussian scorer: derivation and reference implementation in [rohan/](rohan/).
+- Local-Gaussian scorer: derivation + reference notebook live outside the tracked repo (see `.gitignore`); production port is in [ood/scoring_local_gaussian.py](ood/scoring_local_gaussian.py).
