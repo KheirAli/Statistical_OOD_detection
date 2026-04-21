@@ -1,0 +1,52 @@
+# DDAD training config for X-ray (SIXray) OOD detection.
+# Usage (from DDAD/ dir):
+#   CUDA_VISIBLE_DEVICES=0 PYTHONPATH=/path/to/dps \
+#       python main.py --config config_xray.yaml --train True
+
+data:
+  name: MVTec                          # reuse MVTec loader; X-ray data is organized in MVTec layout
+  data_dir: /data/akheirandish3/xray_mvtec   # EDIT: output of tools/prepare_xray_dataset.py
+  category: xray                       # matches subdir name under data_dir
+  test_subfolder: prohibited           # test/prohibited/*.png for positives
+  image_size: 256                      # must match tools/prepare_xray_dataset.py --image_size
+  batch_size: 32
+  DA_batch_size: 16
+  test_batch_size: 1
+  mask: True                           # GT masks exist (bbox-derived)
+  input_channel: 3                     # grayscale replicated to 3 channels during ingestion
+
+model:
+  DDADS: False
+  checkpoint_dir: /data/akheirandish3/ddad_xray_ckpts/MVTec   # EDIT: where to save epoch ckpts
+  checkpoint_name: weights
+  exp_name: xray_pilot
+  feature_extractor: wide_resnet101_2   # reused for heat_map scoring (ImageNet pretrained)
+  learning_rate: 3e-4
+  weight_decay: 0.05
+  epochs: 500                          # PILOT: 500 epochs. Full-scale: 3000.
+  load_chp: 500                        # which epoch to load for detection; edit after training
+  DA_epochs: 4
+  DA_chp: 0
+  v: 1                                 # feat-vs-pixel distance balance (from DDAD cable default)
+  w: 2                                 # conditioning strength for DDAD-native reconstruction
+  w_DA: 3
+  DLlambda: 0.1
+  trajectory_steps: 1000
+  test_trajectoy_steps: 250
+  test_trajectoy_steps_DA: 250
+  skip: 25
+  skip_DA: 25
+  eta: 1
+  beta_start: 0.0001
+  beta_end: 0.02
+  device: cuda
+  save_model: True
+  num_workers: 2
+  seed: 42
+  use_frozen_fe: True                  # skip feat0 load; feat0 == ImageNet V1 anyway (verified for cable)
+
+metrics:
+  auroc: True
+  pro: False
+  misclassifications: False
+  visualisation: False
