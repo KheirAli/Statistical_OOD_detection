@@ -9,13 +9,21 @@ Out-of-distribution detection for diffusion-based image inpainting using a local
 
 ## Data
 
-`data/terminator/` contains the images needed to run the notebook for `image_name="terminator"`, `N=20` seeds, and `sigma` in {0.125, 0.25, 0.375, 0.5, 0.75, 1.0}.
+Sample reconstructions for `image_name="terminator"` (N=20 seeds × 6 sigmas in
+{0.125, 0.25, 0.375, 0.5, 0.75, 1.0}) are **no longer tracked in the repo** to
+keep it lean. They live outside the repo tree, e.g. at:
 
 ```
-data/terminator/
-  label/00000.png              Ground-truth image (shared across all sigmas)
-  superpixels/labels_1000.png  Superpixel segmentation mask (1000 superpixels)
-  recon/sigma{s}/{seed}_00000.png   Denoised reconstructions (6 sigmas x 20 seeds)
+/home/rohan/ood/rohan_reference_data/terminator/
+  label/00000.png
+  superpixels/labels_1000.png
+  recon/sigma{s}/{seed}_00000.png
 ```
 
-To run with a different sigma, change the `sigma` parameter at the top of the notebook.
+The notebook's first cell builds `data_dir` from the current working directory
++ `"data"`. To run it, either:
+
+1. Symlink the reference data back in: `ln -s /home/rohan/ood/rohan_reference_data rohan/data`
+2. Or edit the notebook's `data_dir` to point at the external location.
+
+Ported production-ready implementation lives at `../ood/scoring_local_gaussian.py`.

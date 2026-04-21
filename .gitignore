@@ -28,3 +28,5 @@ env/
 
 # Local / test overrides
 *.local.yaml
+
+rohan/data/
