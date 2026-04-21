@@ -1,7 +1,7 @@
 # Refactored Repo — Run Commands Reference
 
 This file documents the main commands for the cleaned-up repo at
-`cleanup/push-ready`. Short-form companion to [README.md](README.md).
+`rohan/refactor-v2`. Short-form companion to [README.md](README.md).
 
 ---
 
@@ -155,7 +155,7 @@ on DDAD-native reconstructions across all 11 cable images):
 | run | Mean SP AUC | Mean Px AUC (raw) | Mean Px AUC (σ=5) |
 |---|---:|---:|---:|
 | Original (pre-cleanup) | **0.8990** | 0.8967 | **0.9621** |
-| Cleaned (`cleanup/push-ready` branch) | **0.8990** | 0.8967 | **0.9621** |
+| Cleaned (`rohan/refactor-v2` branch) | **0.8990** | 0.8967 | **0.9621** |
 
 Numbers match to 4 decimal places — no pipeline regression. Command used to
 reproduce:
