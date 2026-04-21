@@ -81,7 +81,7 @@ python evaluate.py --config configs/experiment_ddad_native.yaml \
     --output_dir ./results_eval_ddad_native_pmf_nopca \
     --sample_names $SAMPLES
 
-# (c) Local-Gaussian (rohan, theory-based)
+# (c) Local-Gaussian (theory-based)
 python evaluate.py --config configs/experiment_ddad_native.yaml \
     --skip_sampling --no_plots --scorer local_gaussian \
     --sigma_rohan 0.1 \
