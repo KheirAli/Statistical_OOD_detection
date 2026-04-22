@@ -92,6 +92,17 @@ and can be skipped with `pytest -m "not requires_ckpt"`.
 
 These paths are hardcoded in the configs; override per-invocation via CLI
 flags or by editing the YAML.
+## Training the Pixel Autoencoder
+To project the intermediate ResNet features into a stable, lower-dimensional space (as an alternative to PCA), you can train a custom Pixel Autoencoder. Use the train_embedder.py script and point it to a directory containing your normal (In-Distribution) training images. For example, to train the autoencoder for 20 epochs with a bottleneck latent dimension of 3 (enforced to a [-1, 1] range via Tanh), run:
+
+Arguments Breakdown:
+
+--data_dir: The path to the folder containing your healthy/ID training images.
+--save_model: The output path where the trained .pth weights will be saved for later use during evaluation.
+--num_epochs: How many full passes over the training dataset you want to perform.
+--latent_dim: The number of channels in the bottleneck latent space (analogous to the number of PCA components).
+CUDA_VISIBLE_DEVICES=1: (Optional) Restricts execution to a specific GPU to manage memory usage.
+Once trained, you can pass this saved model directly into the evaluation pipeline using the --autoencoder_path argument!
 
 ## Citation / acknowledgements
 
