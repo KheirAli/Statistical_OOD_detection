@@ -1,0 +1,18 @@
+# Cable, DDAD-native conditioned denoising (11 × 20 seeds).
+sampler:
+  name: ddad_native
+  params:
+    w: 2.0
+    test_trajectoy_steps: 250
+    skip: 25
+    eta: 1.0
+    trajectory_steps: 1000
+    beta_start: 0.0001
+    beta_end: 0.02
+
+ckpt: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/cable/3000
+image_dir: /data/akheirandish3/mvtec_ad/cable/test/combined
+samples: ["000", "001", "002", "003", "004", "005", "006", "007", "008", "009", "010"]
+num_seeds: 20
+out_root: ./results_patches_ddad_native
+bottom_suffix: "4"

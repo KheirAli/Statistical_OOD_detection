@@ -35,23 +35,34 @@ CUDA_VISIBLE_DEVICES=0 pytest tests/ -v
 Reconstructions are the expensive part of the pipeline; generate them once per
 (dataset × sampler × σ) combination and then run cheap scoring on top.
 
-```bash
-# ── DDAD-native conditioned denoising (starts from x_{t*}, w=2 conditioning) ──
-CUDA_VISIBLE_DEVICES=0 python tools/run_ddad_reconstruction.py \
-    --ckpt /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/cable/3000 \
-    --image_dir /data/akheirandish3/mvtec_ad/cable/test/combined \
-    --samples 000 001 002 003 004 005 006 007 008 009 010 \
-    --num_seeds 20 \
-    --out_root ./results_patches_ddad_native
+All recons go through one unified driver `tools/generate_recons.py` that
+dispatches to any sampler registered in [ood/samplers/](ood/samplers/).
+The sampler is picked by `--sampler` or by a YAML config. Per-sampler
+hyperparameters are in `configs/recon/*.yaml`.
 
-# ── Additive-noise DPS (y = x + σε, autograd guidance from pure noise) ──
-CUDA_VISIBLE_DEVICES=0 python tools/run_ddad_dps_sampling.py \
-    --ckpt /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/cable/3000 \
-    --image_dir /data/akheirandish3/mvtec_ad/cable/test/combined \
+```bash
+# ── DDAD-native conditioned denoising ──
+CUDA_VISIBLE_DEVICES=0 python tools/generate_recons.py \
+    --recon_config configs/recon/ddad_native_cable.yaml
+# (equivalent, flat CLI):
+CUDA_VISIBLE_DEVICES=0 python tools/generate_recons.py \
+    --sampler ddad_native \
+    --ckpt /data/.../cable/3000 \
+    --image_dir /data/.../cable/test/combined \
     --samples 000 001 002 003 004 005 006 007 008 009 010 \
-    --sigma 0.1 --scale 0.5 --num_seeds 20 --skip 25 \
-    --out_root ./results_patches_ddad
+    --num_seeds 20 --out_root ./results_patches_ddad_native
+
+# ── Additive-noise DPS ──
+CUDA_VISIBLE_DEVICES=0 python tools/generate_recons.py \
+    --recon_config configs/recon/additive_dps_cable.yaml
 ```
+
+**Adding a new sampler** is one file drop under `ood/samplers/` + one line in
+`SAMPLERS` (see [ood/samplers/base.py](ood/samplers/base.py) for the ABC).
+
+The old `tools/run_ddad_reconstruction.py` and `tools/run_ddad_dps_sampling.py`
+are now deprecated shims that forward to the new driver with the same CLI flags.
+
 
 Recons land at `{out_root}/samples_<id>/<test_origin>_0_4/inpainting/recon/<seed>_0_00000.png`.
 Labels and (noisy) inputs are stored alongside, and a `sigma.txt` file records
@@ -133,8 +144,13 @@ See [README.md § Run on a new MVTec category](README.md#run-on-a-new-mvtec-cate
 │   ├── metrics.py                         # AUROC / AP
 │   └── visualize.py
 ├── tools/
-│   ├── run_ddad_reconstruction.py         # DDAD native recons
-│   └── run_ddad_dps_sampling.py           # additive-noise DPS recons
+│   └── generate_recons.py                 # unified recon driver (--sampler / --recon_config)
+│   (run_ddad_*.py are deprecated shims)
+├── ood/samplers/                          # pluggable sampler implementations
+│   ├── base.py                            # Sampler ABC + SamplerMetadata
+│   ├── io.py                              # shared UNet + image I/O helpers
+│   ├── ddad_native.py                     # wraps DDAD/reconstruction.py
+│   └── additive_dps.py                    # wraps DDAD_DPS/samplers.py Mode 1
 ├── scripts/                               # top-level orchestrators
 │   ├── run_cable.sh
 │   ├── run_faces.sh

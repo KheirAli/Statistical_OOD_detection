@@ -1,0 +1,11 @@
+# X-ray pilot, additive-noise DPS.
+sampler:
+  name: additive_dps
+  params: {sigma: 0.1, scale: 0.5, skip: 25, eta: 1.0, trajectory_steps: 1000, beta_start: 0.0001, beta_end: 0.02}
+
+ckpt: /data/akheirandish3/ddad_xray_ckpts/MVTec/xray/500           # EDIT: post-training epoch
+image_dir: /data/akheirandish3/xray_mvtec/test/prohibited
+samples: []    # EDIT: populate after Phase A
+num_seeds: 20
+out_root: ./results_patches_xray_dps
+bottom_suffix: "4"

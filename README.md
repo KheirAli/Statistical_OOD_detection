@@ -32,7 +32,7 @@ cd DDAD && PYTHONPATH=/path/to/dps python main.py --config config_cable.yaml --d
 
 # 2. Generate recons (DDAD native) + score with our PMF + local-Gaussian
 cd ..
-python tools/run_ddad_reconstruction.py --num_seeds 20
+python tools/generate_recons.py --recon_config configs/recon/ddad_native_cable.yaml
 bash scripts/run_cable.sh
 ```
 
@@ -62,8 +62,8 @@ bash scripts/run_cable.sh
 │   ├── metrics.py           # AUROC / AP
 │   └── visualize.py
 ├── tools/
-│   ├── run_ddad_reconstruction.py  # DDAD native recons (w=2 conditioning)
-│   └── run_ddad_dps_sampling.py    # additive-noise DPS recons
+│   └── generate_recons.py  # unified recon driver — --sampler ddad_native | additive_dps
+│   (run_ddad_reconstruction.py / run_ddad_dps_sampling.py are deprecated shims)
 ├── scripts/           # orchestrators (call into evaluate.py + tools/)
 │   ├── run_cable.sh
 │   ├── run_faces.sh

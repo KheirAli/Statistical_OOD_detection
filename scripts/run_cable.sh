@@ -44,7 +44,8 @@ log "=========================================="
 log ""
 log "Phase 0: DDAD native recons (11 × 20 seeds)"
 if [ ! -f results_patches_ddad_native/sigma.txt ]; then
-    python -u tools/run_ddad_reconstruction.py --num_seeds 20 2>&1 | tee -a "$LOG"
+    python -u tools/generate_recons.py \
+        --recon_config configs/recon/ddad_native_cable.yaml 2>&1 | tee -a "$LOG"
     log "  Phase 0 exit=${PIPESTATUS[0]}"
 else
     log "  DDAD native recons already exist — skipping"
@@ -86,9 +87,8 @@ log "  Phase 3 exit=${PIPESTATUS[0]}"
 log ""
 log "Phase 4: additive-noise DPS recons (σ=0.1, scale=0.5, 11 × 20 seeds)"
 if [ ! -f results_patches_ddad/sigma.txt ]; then
-    python -u tools/run_ddad_dps_sampling.py \
-        --samples 000 001 002 003 004 005 006 007 008 009 010 \
-        --sigma 0.1 --scale 0.5 --num_seeds 20 --skip 25 2>&1 | tee -a "$LOG"
+    python -u tools/generate_recons.py \
+        --recon_config configs/recon/additive_dps_cable.yaml 2>&1 | tee -a "$LOG"
     log "  Phase 4 exit=${PIPESTATUS[0]}"
 else
     log "  DPS recons already exist — skipping"

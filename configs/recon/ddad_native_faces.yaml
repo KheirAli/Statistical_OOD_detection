@@ -1,0 +1,11 @@
+# Faces, DDAD-native conditioned denoising.
+sampler:
+  name: ddad_native
+  params: {w: 2.0, test_trajectoy_steps: 250, skip: 25, eta: 1.0, trajectory_steps: 1000, beta_start: 0.0001, beta_end: 0.02}
+
+ckpt: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/faces/2000
+image_dir: /data/akheirandish3/mvtec_ad/faces/test/random
+samples: ["40", "44", "49", "61", "65", "80", "92", "98", "107", "129"]
+num_seeds: 20
+out_root: ./results_patches_ddad_native_faces
+bottom_suffix: "4"
