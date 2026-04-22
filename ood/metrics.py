@@ -133,11 +133,19 @@ def evaluate_delta_map(
     px_roc_auc = manual_auc(fpr_px, tpr_px)
     px_ap = manual_average_precision(pixel_labels, pixel_scores)
 
+    snr = None
+    if pixel_scores.size > 0:
+        ood_scores = pixel_scores[pixel_labels == 1]
+        id_scores = pixel_scores[pixel_labels == 0]
+        if ood_scores.size > 0 and id_scores.size > 0:
+            snr = float((ood_scores.mean() - id_scores.mean()) / (id_scores.std() + 1e-8))
+
     return {
         "sp_roc_auc": sp_roc_auc,
         "sp_ap": sp_ap,
         "px_roc_auc": px_roc_auc,
         "px_ap": px_ap,
+        "snr": snr,
         "num_superpixels": len(sp_scores),
         "num_anomalous_sp": int(sp_labels.sum()),
         "curves": {

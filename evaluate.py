@@ -25,7 +25,7 @@ import yaml
 
 from ood.data import load_gt_mask, load_label_image, load_reconstructions, load_superpixel_mask, parse_sample_id
 from ood.superpixels import recursive_subdivide
-from ood.embeddings import ResNetPixelEmbedder, embed_and_project
+from ood.embeddings import ResNetPixelEmbedder, embed_and_project, PixelAutoEncoder
 from ood.scoring import compute_delta_map
 from ood.scoring_local_gaussian import compute_delta_map_local_gaussian
 from ood.metrics import evaluate_delta_map
@@ -112,10 +112,23 @@ def _run_single_sample(cfg: dict) -> dict:
         proj_dim_per_layer=embed_cfg.get("proj_dim_per_layer"),
     ).to(device).eval()
 
+    ae_model = None
+    ae_path = embed_cfg.get("autoencoder_path")
+    if ae_path and os.path.exists(ae_path):
+        import torch
+        with torch.no_grad():
+            dummy = torch.zeros(1, 3, 256, 256).to(device)
+            embed_dim = embedder(dummy).shape[1]
+        
+        ae_model = PixelAutoEncoder(input_dim=embed_dim, latent_dim=cfg["pca"]["n_components"]).to(device)
+        ae_model.load_state_dict(torch.load(ae_path, map_location=device))
+        ae_model.eval()
+        print(f"  Overriding PCA with PixelAutoEncoder from: {ae_path}")
+
     embed_result = embed_and_project(
         embedder=embedder, label_image=label_image,
         images_recon_all=recon_all, n_pca=cfg["pca"]["n_components"],
-        device=device,
+        device=device, ae_model=ae_model,
     )
     del embedder
     torch.cuda.empty_cache()
@@ -170,7 +183,8 @@ def _run_single_sample(cfg: dict) -> dict:
             smooth_sigma=sigma,
         )
         all_metrics[key] = result
-        print(f"  [{key}] SP AUC: {result['sp_roc_auc']:.4f} | Pixel AUC: {result['px_roc_auc']:.4f}")
+        snr_str = f" | SNR: {result['snr']:.4f}" if result.get('snr') is not None else ""
+        print(f"  [{key}] SP AUC: {result['sp_roc_auc']:.4f} | Pixel AUC: {result['px_roc_auc']:.4f}{snr_str}")
 
     return all_metrics
 
@@ -195,7 +209,9 @@ def _run_sweep(cfg: dict, args) -> None:
     for metric_key in first_keys:
         sp_aucs = [all_runs[s][metric_key]["sp_roc_auc"] for s in args.sample_names]
         px_aucs = [all_runs[s][metric_key]["px_roc_auc"] for s in args.sample_names]
-        print(f"  [{metric_key}] Mean SP AUC: {np.mean(sp_aucs):.6f} | Mean Px AUC: {np.mean(px_aucs):.6f}")
+        snrs = [all_runs[s][metric_key].get("snr") for s in args.sample_names if all_runs[s][metric_key].get("snr") is not None]
+        snr_str = f" | Mean SNR: {np.mean(snrs):.4f}" if snrs else ""
+        print(f"  [{metric_key}] Mean SP AUC: {np.mean(sp_aucs):.6f} | Mean Px AUC: {np.mean(px_aucs):.6f}{snr_str}")
     print(f"{'='*60}")
 
     # Save sweep results JSON
@@ -220,10 +236,16 @@ def _run_sweep(cfg: dict, args) -> None:
     for metric_key in first_keys:
         sp_aucs = [all_runs[s][metric_key]["sp_roc_auc"] for s in args.sample_names]
         px_aucs = [all_runs[s][metric_key]["px_roc_auc"] for s in args.sample_names]
-        sweep_results["averaged"][metric_key] = {
+        
+        avg_dict = {
             "sp_roc_auc": float(np.mean(sp_aucs)),
             "px_roc_auc": float(np.mean(px_aucs)),
         }
+        snrs = [all_runs[s][metric_key].get("snr") for s in args.sample_names if all_runs[s][metric_key].get("snr") is not None]
+        if snrs:
+            avg_dict["snr"] = float(np.mean(snrs))
+            
+        sweep_results["averaged"][metric_key] = avg_dict
 
     sweep_name = (f"sweep_{cfg['embeddings']['backbone']}_pca{cfg['pca']['n_components']}"
                   f"_rgb{cfg['scoring']['bins_rgb']}_pca{cfg['scoring']['bins_pca']}")
@@ -258,11 +280,16 @@ def main():
     parser.add_argument("--sigma_rohan", type=float, default=None,
                         help="σ for local_gaussian scorer (in [0,1] image scale). "
                              "If omitted, reads {results_dir}/sigma.txt when scorer=local_gaussian.")
+    parser.add_argument("--autoencoder_path", type=str, default=None,
+                        help="Path to PixelAutoEncoder weights. If provided, used instead of PCA.")
     args = parser.parse_args()
 
     cfg = load_config(args.config)
 
     # CLI overrides
+    if args.autoencoder_path:
+        # Override the config so that it's accessible inside _run_single_sample
+        cfg["embeddings"]["autoencoder_path"] = args.autoencoder_path
     if args.sample_name:
         cfg["data"]["sample_name"] = args.sample_name
     if args.skip_sampling:

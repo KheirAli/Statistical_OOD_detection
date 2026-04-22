@@ -190,6 +190,41 @@ def compute_pca_basis(
     return mu, components
 
 
+class PixelAutoEncoder(nn.Module):
+    def __init__(self, input_dim=1417, latent_dim=5):
+        super().__init__()
+        self.encoder = nn.Sequential(
+            nn.Conv2d(input_dim, 512, kernel_size=1, bias=False),
+            nn.BatchNorm2d(512),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(512, 256, kernel_size=1, bias=False),
+            nn.BatchNorm2d(256),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(256, 64, kernel_size=1, bias=False),
+            nn.BatchNorm2d(64),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(64, latent_dim, kernel_size=1),
+            nn.Tanh()
+        )
+        self.decoder = nn.Sequential(
+            nn.Conv2d(latent_dim, 64, kernel_size=1, bias=False),
+            nn.BatchNorm2d(64),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(64, 256, kernel_size=1, bias=False),
+            nn.BatchNorm2d(256),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(256, 512, kernel_size=1, bias=False),
+            nn.BatchNorm2d(512),
+            nn.ReLU(inplace=True),
+            nn.Conv2d(512, input_dim, kernel_size=1)
+        )
+        
+    def forward(self, x):
+        z = self.encoder(x)
+        out = self.decoder(z)
+        return out, z
+
+
 def project_to_pca(
     feat_hwc: np.ndarray, mu: np.ndarray, components: np.ndarray
 ) -> np.ndarray:
@@ -213,6 +248,7 @@ def embed_and_project(
     images_recon_all: np.ndarray,
     n_pca: int = 9,
     device: str = "cuda",
+    ae_model: Optional[nn.Module] = None,
 ) -> Dict[str, np.ndarray]:
     """Full embedding + PCA pipeline.
 
@@ -222,6 +258,7 @@ def embed_and_project(
         images_recon_all: (B, H, W, 3) uint8.
         n_pca: number of PCA components.
         device: torch device string.
+        ae_model: optional Autoencoder to override PCA.
 
     Returns:
         dict with keys: label_pca_map, pca_feats_recon, mu, components.
@@ -231,26 +268,46 @@ def embed_and_project(
     # Embed label image
     with torch.no_grad():
         label_x = to_tensor01(label_image, device=str(model_device))
-        label_feat = embedder(label_x).squeeze(0).cpu()
+        label_feat = embedder(label_x)  # keep batch dim for ae_model if needed
+        label_feat_cpu = label_feat.squeeze(0).cpu()
 
-    # PCA basis from label
-    mu, components = compute_pca_basis(label_feat, n_components=n_pca)
+    if ae_model is not None:
+        with torch.no_grad():
+            label_feat_device = label_feat.to(device)
+            _, label_z = ae_model(label_feat_device)
+            label_pca_map = label_z.squeeze(0).permute(1, 2, 0).cpu().numpy()
+        mu, components = None, None
+    else:
+        # PCA basis from label
+        mu, components = compute_pca_basis(label_feat_cpu, n_components=n_pca)
 
-    # Project label image
-    C, H, W = label_feat.shape
-    X_label = label_feat.permute(1, 2, 0).reshape(-1, C).numpy()
-    label_pca_map = project_to_pca(X_label, mu, components).reshape(H, W, n_pca)
+        # Project label image
+        C, H, W = label_feat_cpu.shape
+        X_label = label_feat_cpu.permute(1, 2, 0).reshape(-1, C).numpy()
+        label_pca_map = project_to_pca(X_label, mu, components).reshape(H, W, n_pca)
 
     # Embed all reconstructions
     feat_map = embed_images(embedder, images_recon_all, device=device)
 
-    # Project all reconstructions
-    B = feat_map.shape[0]
-    feat_np = feat_map.permute(0, 2, 3, 1).numpy()
-    feat_flat = feat_np.reshape(B, -1, C)
-    feat_centered = feat_flat - mu[None]
-    proj_flat = feat_centered @ components.T
-    pca_feats_recon = np.clip(proj_flat, -1.0, 1.0).reshape(B, H, W, n_pca)
+    if ae_model is not None:
+        with torch.no_grad():
+            pca_feats_recon_list = []
+            batch_size = 10 # To save memory
+            for i in range(0, feat_map.shape[0], batch_size):
+                batch_feats = feat_map[i : i + batch_size].to(device)
+                _, b_z = ae_model(batch_feats)
+                pca_feats_recon_list.append(b_z.cpu())
+            pca_feats_recon_tensor = torch.cat(pca_feats_recon_list, dim=0)
+            pca_feats_recon = pca_feats_recon_tensor.permute(0, 2, 3, 1).numpy()
+    else:
+        # Project all reconstructions
+        C = feat_map.shape[1]
+        B, _, H, W = feat_map.shape
+        feat_np = feat_map.permute(0, 2, 3, 1).numpy()
+        feat_flat = feat_np.reshape(B, -1, C)
+        feat_centered = feat_flat - mu[None]
+        proj_flat = feat_centered @ components.T
+        pca_feats_recon = np.clip(proj_flat, -1.0, 1.0).reshape(B, H, W, n_pca)
 
     return {
         "label_pca_map": label_pca_map,
