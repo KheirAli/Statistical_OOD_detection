@@ -92,6 +92,9 @@ class Dataset_maker(torch.utils.data.Dataset):
                     else:
                         target = Image.open(
                             image_file.replace("/test/", "/ground_truth/"))
+                    # GT masks may be L (cable) or RGBA (faces). Convert to L
+                    # so downstream metrics always see (1, H, W).
+                    target = target.convert("L")
                     target = self.mask_transform(target)
                     label = 'defective'
             else:
