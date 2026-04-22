@@ -54,11 +54,8 @@ class ResNetPixelEmbedder(nn.Module):
                 f"resnet_name must be one of {list(_resnet_registry)}, got {resnet_name}"
             )
         loader, weights_cls, weights_variant = _resnet_registry[resnet_name]
-        try:
-            weights = getattr(getattr(models, weights_cls), weights_variant)
-            net = loader(weights=weights)
-        except AttributeError:
-            net = loader(pretrained=True)
+        weights = getattr(getattr(models, weights_cls), weights_variant)
+        net = loader(weights=weights)
 
         net.eval()
 

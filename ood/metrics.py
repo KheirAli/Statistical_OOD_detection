@@ -34,7 +34,9 @@ def manual_auc(x: np.ndarray, y: np.ndarray) -> float:
     """Trapezoidal AUC."""
     order = np.argsort(x)
     x, y = x[order], y[order]
-    return float(np.trapz(y, x))
+    # np.trapezoid replaces np.trapz (deprecated in numpy 2.x).
+    trapezoid = getattr(np, "trapezoid", np.trapz)
+    return float(trapezoid(y, x))
 
 
 def manual_precision_recall_curve(
