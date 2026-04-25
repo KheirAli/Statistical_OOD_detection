@@ -29,6 +29,11 @@ from ood.embeddings import ResNetPixelEmbedder, embed_and_project
 from ood.scoring import compute_delta_map
 from ood.scoring_local_gaussian import compute_delta_map_local_gaussian
 from ood.metrics import evaluate_delta_map
+
+# Bootstrap CI helper lives under tools/ — make it importable when invoking
+# evaluate.py as a top-level script.
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "tools"))
+from ci_stats import bootstrap_mean_ci  # noqa: E402
 # Note: ood.sampler and ood.baselines were removed in the push-ready cleanup.
 # Reconstructions are now generated via tools/run_ddad_reconstruction.py or
 # tools/run_ddad_dps_sampling.py. Always pass --skip_sampling to evaluate.py.
@@ -192,10 +197,24 @@ def _run_sweep(cfg: dict, args) -> None:
           f"n_pca={cfg['pca']['n_components']}, "
           f"bins_rgb={cfg['scoring']['bins_rgb']}, "
           f"bins_pca={cfg['scoring']['bins_pca']}")
+    # Compute bootstrap 95% CIs over per-image AUCs (B=5000) so every sweep
+    # JSON carries a CI without needing a separate post-hoc pass.
+    averaged: dict = {}
     for metric_key in first_keys:
         sp_aucs = [all_runs[s][metric_key]["sp_roc_auc"] for s in args.sample_names]
         px_aucs = [all_runs[s][metric_key]["px_roc_auc"] for s in args.sample_names]
-        print(f"  [{metric_key}] Mean SP AUC: {np.mean(sp_aucs):.6f} | Mean Px AUC: {np.mean(px_aucs):.6f}")
+        sp_m, sp_lo, sp_hi, sp_n = bootstrap_mean_ci(sp_aucs)
+        px_m, px_lo, px_hi, px_n = bootstrap_mean_ci(px_aucs)
+        averaged[metric_key] = {
+            "sp_roc_auc": sp_m,
+            "sp_roc_auc_ci95": [sp_lo, sp_hi],
+            "sp_roc_auc_n": sp_n,
+            "px_roc_auc": px_m,
+            "px_roc_auc_ci95": [px_lo, px_hi],
+            "px_roc_auc_n": px_n,
+        }
+        print(f"  [{metric_key}] SP AUC: {sp_m:.4f} [{sp_lo:.4f}, {sp_hi:.4f}] | "
+              f"Px AUC: {px_m:.4f} [{px_lo:.4f}, {px_hi:.4f}]  (n={px_n}, B=5000)")
     print(f"{'='*60}")
 
     # Save sweep results JSON
@@ -210,19 +229,12 @@ def _run_sweep(cfg: dict, args) -> None:
         },
         "sample_names": args.sample_names,
         "per_sample": {},
-        "averaged": {},
+        "averaged": averaged,
     }
     for sname in args.sample_names:
         sweep_results["per_sample"][sname] = {
             k: {kk: vv for kk, vv in v.items() if kk != "curves"}
             for k, v in all_runs[sname].items()
-        }
-    for metric_key in first_keys:
-        sp_aucs = [all_runs[s][metric_key]["sp_roc_auc"] for s in args.sample_names]
-        px_aucs = [all_runs[s][metric_key]["px_roc_auc"] for s in args.sample_names]
-        sweep_results["averaged"][metric_key] = {
-            "sp_roc_auc": float(np.mean(sp_aucs)),
-            "px_roc_auc": float(np.mean(px_aucs)),
         }
 
     sweep_name = (f"sweep_{cfg['embeddings']['backbone']}_pca{cfg['pca']['n_components']}"
