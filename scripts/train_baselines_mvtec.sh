@@ -28,6 +28,15 @@
 
 set -euo pipefail
 
+# Activate the conda env that has torch/pandas/etc. — the script can be
+# launched from a fresh shell or via `nohup`, neither of which inherits
+# an active env.
+CONDA_BASE="${CONDA_BASE:-/home/rohan/miniconda3}"
+CONDA_ENV="${CONDA_ENV:-ood}"
+# shellcheck disable=SC1091
+source "${CONDA_BASE}/etc/profile.d/conda.sh"
+conda activate "$CONDA_ENV"
+
 # ── config ─────────────────────────────────────────────────────────────
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 SIMPLENET_REPO="${SIMPLENET_REPO:-/home/rohan/ood/baseline-algos-clone/SimpleNet}"
