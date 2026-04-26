@@ -30,6 +30,10 @@ baseline:
     dsc_hidden: 1024
     dsc_margin: 0.5
     pre_proj: 1
+    # Cluster's faces ckpt was trained with reversed discriminator polarity —
+    # default sign gives Px AUC 0.28 (sub-random); inverted gives 0.86.
+    # Verified empirically on samples_40. Cable ckpt uses default polarity.
+    invert_score: true
 
 eval:
   delta_smooth_sigmas: [null, 5.0]

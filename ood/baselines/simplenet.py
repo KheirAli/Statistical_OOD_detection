@@ -55,6 +55,11 @@ _DEFAULT_REPO = "/home/rohan/ood/baseline-algos-clone/SimpleNet"
 _DEFAULTS: Dict[str, Any] = dict(
     backbone="wideresnet50",
     layers_to_extract_from=("layer2", "layer3"),
+    # Inference preprocessing — must mirror what `bash run.sh` used during
+    # training: Resize(resize) → CenterCrop(imagesize). Default values match
+    # the upstream run.sh (`--resize 329 --imagesize 288`); change both
+    # together if your ckpt was trained with different shapes.
+    resize=329,
     imagesize=288,
     pretrain_embed_dim=1536,
     target_embed_dim=1536,
@@ -65,6 +70,11 @@ _DEFAULTS: Dict[str, Any] = dict(
     dsc_margin=0.5,
     pre_proj=1,
     proj_layer_type=0,
+    # When True, return -anomaly_map. Useful when a checkpoint was trained
+    # with the discriminator polarity flipped relative to the upstream
+    # convention (suspected for our cluster's faces ckpt: AUC 0.28 → 0.72
+    # if the sign is flipped).
+    invert_score=False,
 )
 
 
@@ -101,7 +111,14 @@ class SimpleNetBaseline(Baseline):
 
         merged = {**_DEFAULTS, **{k: v for k, v in config.items() if k in _DEFAULTS}}
         self._device = device
+        self._resize = int(merged["resize"])
         self._imagesize = int(merged["imagesize"])
+        if self._resize < self._imagesize:
+            raise ValueError(
+                f"resize ({self._resize}) must be >= imagesize ({self._imagesize}); "
+                "the upstream pipeline is Resize(resize) → CenterCrop(imagesize)"
+            )
+        self._invert_score = bool(merged["invert_score"])
         self._merged = merged
         self._ckpt_source = ckpt
 
@@ -150,19 +167,29 @@ class SimpleNetBaseline(Baseline):
         """Run SimpleNet inference on `image` (HxWx3 uint8) and return a
         dense `(H, W)` anomaly map at the input resolution.
 
-        Internally the image is resized to `imagesize` (the resolution the
-        ckpt was trained at — default 288), inferred, then the anomaly map
-        is bilinearly resized back to the input (H, W).
+        Preprocessing mirrors `SimpleNet/datasets/mvtec.py`:
+            Resize(resize) → CenterCrop(imagesize) → ToTensor → ImageNet norm.
+        After inference the anomaly map is bilinearly resized back to the
+        input resolution. If `invert_score: true` is set in the YAML, the
+        sign of the returned map is flipped — useful when a ckpt was
+        trained with the discriminator polarity reversed.
         """
         from PIL import Image as _Image
 
         out_h, out_w = image.shape[:2]
-        # Resize to the network's training resolution so feature stats line up
+        # Stage 1: Resize → CenterCrop. PIL.Image.resize uses BICUBIC by
+        # default, while torchvision Resize defaults to BILINEAR. We use
+        # BILINEAR to match upstream exactly.
         pil = _Image.fromarray(image).resize(
-            (self._imagesize, self._imagesize), _Image.BICUBIC,
+            (self._resize, self._resize), _Image.BILINEAR,
         )
+        # CenterCrop equivalent
+        left = (self._resize - self._imagesize) // 2
+        top = (self._resize - self._imagesize) // 2
+        pil = pil.crop((left, top, left + self._imagesize, top + self._imagesize))
+
         arr = np.asarray(pil).astype(np.float32) / 255.0
-        # Same ImageNet normalization SimpleNet's MVTecDataset applies
+        # ImageNet normalization (matches SimpleNet/datasets/mvtec.py constants)
         mean = np.array([0.485, 0.456, 0.406], dtype=np.float32)
         std = np.array([0.229, 0.224, 0.225], dtype=np.float32)
         arr = (arr - mean) / std
@@ -174,6 +201,8 @@ class SimpleNetBaseline(Baseline):
         if amap.shape != (out_h, out_w):
             amap_pil = _Image.fromarray(amap).resize((out_w, out_h), _Image.BILINEAR)
             amap = np.asarray(amap_pil, dtype=np.float32)
+        if self._invert_score:
+            amap = -amap
         return amap
 
     @property
@@ -185,7 +214,9 @@ class SimpleNetBaseline(Baseline):
             hyperparams={
                 "backbone": m["backbone"],
                 "layers_to_extract_from": list(m["layers_to_extract_from"]),
+                "resize": m["resize"],
                 "imagesize": m["imagesize"],
+                "invert_score": m["invert_score"],
                 "pretrain_embed_dim": m["pretrain_embed_dim"],
                 "target_embed_dim": m["target_embed_dim"],
                 "patchsize": m["patchsize"],
