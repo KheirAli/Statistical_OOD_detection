@@ -22,9 +22,9 @@ What it does, per (baseline × category):
 CKPT path resolution per baseline (override via `--ckpt_template`):
   simplenet:       <ckpt_root>/simplenet_mvtec_full/simplenet_mvtec/run/models/0/mvtec_<class>/ckpt.pth
   supersimplenet:  <ckpt_root>/supersimplenet_hf/mvtec/<class>/1/weights.pt
-  cutpaste:        <ckpt_root>/cutpaste_mvtec_full/model-<class>-*.tch  (latest by name)
+  patchcore:       <ckpt_root>/patchcore_mvtec_full/MVTecAD_Results/<run>/models/mvtec_<class>/
 
-Single-pass methods only (SimpleNet, SuperSimpleNet, CutPaste). Multi-seed
+Single-pass methods only (SimpleNet, SuperSimpleNet, PatchCore). Multi-seed
 diffusion baselines (MDPS, DOOD) need a different runner that handles the
 20-seed reconstruction loop — out of scope here.
 """
@@ -87,13 +87,21 @@ def _resolve_ckpt(baseline: str, category: str, ckpt_root: Path) -> str:
         return str(
             ckpt_root / "supersimplenet_hf" / "mvtec" / category / "1" / "weights.pt"
         )
-    if baseline == "cutpaste":
-        # Filename has a date stamp; pick the most recent.
-        pattern = str(ckpt_root / "cutpaste_mvtec_full" / f"model-{category}-*.tch")
-        matches = sorted(glob.glob(pattern))
-        if not matches:
-            raise FileNotFoundError(f"No CutPaste ckpt for {category} matching {pattern}")
-        return matches[-1]
+    if baseline == "patchcore":
+        # PatchCore saves a directory containing the memory bank + params.
+        # Default layout from sample_training.sh's --log_project structure:
+        #   <ckpt_root>/patchcore_mvtec_full/MVTecAD_Results/<log_group>/models/mvtec_<class>/
+        # Pick the (only) log_group dir under MVTecAD_Results/.
+        base = ckpt_root / "patchcore_mvtec_full" / "MVTecAD_Results"
+        if not base.exists():
+            raise FileNotFoundError(f"PatchCore output root not found: {base}")
+        run_dirs = sorted(d for d in base.iterdir() if d.is_dir())
+        if not run_dirs:
+            raise FileNotFoundError(f"No PatchCore run dirs under {base}")
+        cand = run_dirs[-1] / "models" / f"mvtec_{category}"
+        if not cand.exists():
+            raise FileNotFoundError(f"No PatchCore ckpt for {category}: {cand}")
+        return str(cand)
     raise ValueError(f"unknown baseline {baseline!r}")
 
 
@@ -104,15 +112,8 @@ def _baseline_params(baseline: str, ckpt: str, category: str,
         return {"ckpt": ckpt, "device": device}
     if baseline == "supersimplenet":
         return {"ckpt": ckpt, "device": device}
-    if baseline == "cutpaste":
-        return {
-            "ckpt": ckpt,
-            "device": device,
-            "train_dir": str(mvtec_root / category / "train" / "good"),
-            "embed_cache": str(
-                Path(ckpt).parent / f"_embed_cache_{category}.pt"
-            ),
-        }
+    if baseline == "patchcore":
+        return {"ckpt": ckpt, "device": device}
     raise ValueError(baseline)
 
 
@@ -256,7 +257,7 @@ def run_category(
 def main():
     p = argparse.ArgumentParser()
     p.add_argument("--baseline", required=True,
-                   choices=("simplenet", "supersimplenet", "cutpaste"))
+                   choices=("simplenet", "supersimplenet", "patchcore"))
     p.add_argument("--mvtec_root", default="/data/akheirandish3/mvtec_ad")
     p.add_argument("--ckpt_root", default="/data2/rohan/baseline_ckpts")
     p.add_argument("--output_root", default="./results_eval/mvtec_full")

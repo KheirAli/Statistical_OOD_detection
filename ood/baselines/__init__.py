@@ -21,8 +21,8 @@ BASELINES = (
     "mdps",
     "simplenet",
     "supersimplenet",
+    "patchcore",
     "draem",
-    "cutpaste",
 )
 
 
@@ -50,12 +50,12 @@ def build_baseline(name: str, config: dict) -> Baseline:
     if name == "supersimplenet":
         from .supersimplenet import SuperSimpleNetBaseline
         return SuperSimpleNetBaseline(config)
+    if name == "patchcore":
+        from .patchcore import PatchCoreBaseline
+        return PatchCoreBaseline(config)
     if name == "draem":
         from .draem import DRAEMBaseline
         return DRAEMBaseline(config)
-    if name == "cutpaste":
-        from .cutpaste import CutPasteBaseline
-        return CutPasteBaseline(config)
     raise AssertionError("unreachable")  # pragma: no cover
 
 

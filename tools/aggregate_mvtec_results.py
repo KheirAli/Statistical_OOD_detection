@@ -46,7 +46,7 @@ def main():
     p = argparse.ArgumentParser()
     p.add_argument("--root", default="./results_eval/mvtec_full")
     p.add_argument("--baselines", nargs="+",
-                   default=["simplenet", "supersimplenet", "cutpaste"])
+                   default=["simplenet", "supersimplenet", "patchcore"])
     p.add_argument("--metric", default="px_auc_smooth5",
                    choices=("px_auc_raw", "px_auc_smooth5",
                             "px_ap_smooth5", "px_snr_smooth5"))
