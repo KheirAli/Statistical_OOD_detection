@@ -28,7 +28,7 @@ from ood.superpixels import recursive_subdivide
 from ood.embeddings import ResNetPixelEmbedder, embed_and_project
 from ood.scoring import compute_delta_map
 from ood.scoring_local_gaussian import compute_delta_map_local_gaussian
-from ood.metrics import evaluate_delta_map
+from ood.metrics import compute_snr, evaluate_delta_map, manual_auc, manual_average_precision, manual_roc_curve
 
 # Bootstrap CI helper lives under tools/ — make it importable when invoking
 # evaluate.py as a top-level script.
@@ -44,8 +44,114 @@ def load_config(path: str) -> dict:
         return yaml.safe_load(f)
 
 
+def _load_test_image(data_cfg: dict, sample_id: str, image_size: int = 256) -> np.ndarray:
+    """Load the original test image directly from `data.image_dir`.
+
+    Returns `(H, W, 3)` uint8 at `image_size × image_size`. Used by the
+    baseline scorer path, which doesn't go through the reconstruction
+    pipeline (so there's no `inpainting/label/...` to read from).
+    """
+    from PIL import Image as _Image
+    img_path = os.path.join(data_cfg["image_dir"], f"{sample_id}.png")
+    if not os.path.exists(img_path):
+        raise FileNotFoundError(f"Test image not found: {img_path}")
+    img = _Image.open(img_path).convert("RGB")
+    if img.size != (image_size, image_size):
+        img = img.resize((image_size, image_size), _Image.BICUBIC)
+    return np.array(img, dtype=np.uint8)
+
+
+def _baseline_metrics(
+    anomaly_map: np.ndarray,
+    gt_mask_binary: np.ndarray,
+    smooth_sigmas: list,
+) -> dict:
+    """Pixel-level AUROC + AP + SNR over each smoothing σ.
+
+    Skips superpixel-level metrics (set to NaN) — baselines produce dense
+    anomaly maps directly, so per-superpixel aggregation is meaningless
+    here. Output dict has the same shape as `evaluate_delta_map` returns
+    so the sweep aggregator doesn't need to special-case the path.
+    """
+    from scipy.ndimage import gaussian_filter as _gf
+
+    out: dict = {}
+    for sigma in smooth_sigmas:
+        key = f"sigma_{sigma}" if sigma else "raw"
+        amap = anomaly_map if not sigma else _gf(anomaly_map, sigma=sigma, mode="nearest")
+        scores = amap.ravel()
+        labels = gt_mask_binary.ravel()
+        fpr, tpr, _ = manual_roc_curve(labels, scores)
+        out[key] = {
+            "sp_roc_auc": float("nan"),
+            "sp_ap": float("nan"),
+            "px_roc_auc": float(manual_auc(fpr, tpr)),
+            "px_ap": float(manual_average_precision(labels, scores)),
+            "px_snr": float(compute_snr(amap, gt_mask_binary)),
+            "num_superpixels": 0,
+            "num_anomalous_sp": 0,
+        }
+    return out
+
+
+def _run_baseline_sample(cfg: dict) -> dict:
+    """Score a single sample with a baseline anomaly detector.
+
+    Bypasses the recon-loading + superpixel + PMF pipeline. Reads the test
+    image directly, calls `baseline.score(image, gt_mask) -> anomaly_map`,
+    and computes pixel AUROC + AP + SNR for each `eval.delta_smooth_sigmas`.
+
+    The cfg must have a `baseline:` block:
+
+        baseline:
+          name: mdps                 # registry key in ood/baselines/__init__.py
+          params: {...}              # passed to the baseline's __init__
+    """
+    from ood.baselines import build_baseline
+
+    data_cfg = cfg["data"]
+    sample_name = data_cfg["sample_name"]
+    sample_id = parse_sample_id(sample_name)
+
+    print(f"\n=== OOD Evaluation [baseline]: {sample_name} ===")
+    img = _load_test_image(data_cfg, sample_id)
+    gt = load_gt_mask(
+        path_template=data_cfg["gt_mask"]["path"],
+        sample=sample_id,
+        downsample_factor=data_cfg["gt_mask"]["downsample_factor"],
+    )
+
+    baseline_cfg = cfg.get("baseline") or {}
+    name = baseline_cfg.get("name")
+    if not name:
+        raise ValueError(
+            "scorer=baseline requires a top-level `baseline.name` key in the config"
+        )
+    baseline = build_baseline(name, baseline_cfg.get("params", {}))
+    anomaly_map = baseline.score(img, gt)
+    if anomaly_map.shape != gt.shape:
+        raise ValueError(
+            f"Baseline {name!r} returned anomaly_map shape {anomaly_map.shape}, "
+            f"expected {gt.shape}"
+        )
+
+    metrics = _baseline_metrics(
+        anomaly_map=anomaly_map,
+        gt_mask_binary=gt,
+        smooth_sigmas=cfg["eval"]["delta_smooth_sigmas"],
+    )
+    for key, m in metrics.items():
+        print(f"  [{key}] Px AUC: {m['px_roc_auc']:.4f}  Px AP: {m['px_ap']:.4f}  "
+              f"SNR: {m['px_snr']:.4f}")
+    return metrics
+
+
 def _run_single_sample(cfg: dict) -> dict:
     """Run evaluation on a single sample. Returns metrics dict."""
+    score_cfg = cfg.get("scoring", {})
+    if score_cfg.get("algorithm") == "baseline":
+        return _run_baseline_sample(cfg)
+
     import torch
 
     data_cfg = cfg["data"]
@@ -193,52 +299,72 @@ def _run_sweep(cfg: dict, args) -> None:
     first_keys = list(all_runs[args.sample_names[0]].keys())
     print(f"\n{'='*60}")
     print(f"SWEEP RESULTS ({len(args.sample_names)} images)")
-    print(f"Config: backbone={cfg['embeddings']['backbone']}, "
-          f"n_pca={cfg['pca']['n_components']}, "
-          f"bins_rgb={cfg['scoring']['bins_rgb']}, "
-          f"bins_pca={cfg['scoring']['bins_pca']}")
-    # Compute bootstrap 95% CIs over per-image AUCs (B=5000) so every sweep
-    # JSON carries a CI without needing a separate post-hoc pass.
+    if cfg.get("scoring", {}).get("algorithm") == "baseline":
+        bcfg = cfg.get("baseline") or {}
+        print(f"Config: baseline={bcfg.get('name', '?')} "
+              f"params={bcfg.get('params', {})}")
+    else:
+        print(f"Config: backbone={cfg['embeddings']['backbone']}, "
+              f"n_pca={cfg['pca']['n_components']}, "
+              f"bins_rgb={cfg['scoring']['bins_rgb']}, "
+              f"bins_pca={cfg['scoring']['bins_pca']}")
+    # Compute bootstrap 95% CIs over per-image scores (B=5000) so every sweep
+    # JSON carries a CI without needing a separate post-hoc pass. We collect
+    # any per-sample metric whose key is in METRIC_KEYS — sp_*/px_*/px_snr —
+    # which lets the same aggregator handle both scorer-based runs (sp+px)
+    # and baseline runs (px only; sp values are NaN and bootstrap_mean_ci
+    # drops them gracefully).
+    METRIC_KEYS = ("sp_roc_auc", "sp_ap", "px_roc_auc", "px_ap", "px_snr")
     averaged: dict = {}
     for metric_key in first_keys:
-        sp_aucs = [all_runs[s][metric_key]["sp_roc_auc"] for s in args.sample_names]
-        px_aucs = [all_runs[s][metric_key]["px_roc_auc"] for s in args.sample_names]
-        sp_m, sp_lo, sp_hi, sp_n = bootstrap_mean_ci(sp_aucs)
-        px_m, px_lo, px_hi, px_n = bootstrap_mean_ci(px_aucs)
-        averaged[metric_key] = {
-            "sp_roc_auc": sp_m,
-            "sp_roc_auc_ci95": [sp_lo, sp_hi],
-            "sp_roc_auc_n": sp_n,
-            "px_roc_auc": px_m,
-            "px_roc_auc_ci95": [px_lo, px_hi],
-            "px_roc_auc_n": px_n,
-        }
-        print(f"  [{metric_key}] SP AUC: {sp_m:.4f} [{sp_lo:.4f}, {sp_hi:.4f}] | "
-              f"Px AUC: {px_m:.4f} [{px_lo:.4f}, {px_hi:.4f}]  (n={px_n}, B=5000)")
+        per_metric: dict = {}
+        for stat in METRIC_KEYS:
+            vals = [all_runs[s][metric_key].get(stat, float("nan"))
+                    for s in args.sample_names]
+            m, lo, hi, n = bootstrap_mean_ci(vals)
+            per_metric[stat] = m
+            per_metric[f"{stat}_ci95"] = [lo, hi]
+            per_metric[f"{stat}_n"] = n
+        averaged[metric_key] = per_metric
+        print(f"  [{metric_key}] SP AUC: {per_metric['sp_roc_auc']:.4f} "
+              f"[{per_metric['sp_roc_auc_ci95'][0]:.4f}, {per_metric['sp_roc_auc_ci95'][1]:.4f}] | "
+              f"Px AUC: {per_metric['px_roc_auc']:.4f} "
+              f"[{per_metric['px_roc_auc_ci95'][0]:.4f}, {per_metric['px_roc_auc_ci95'][1]:.4f}] | "
+              f"SNR: {per_metric['px_snr']:.4f} "
+              f"[{per_metric['px_snr_ci95'][0]:.4f}, {per_metric['px_snr_ci95'][1]:.4f}]  "
+              f"(n={per_metric['px_roc_auc_n']}, B=5000)")
     print(f"{'='*60}")
 
     # Save sweep results JSON
     output_dir = cfg["eval"]["output_dir"]
     os.makedirs(output_dir, exist_ok=True)
-    sweep_results = {
-        "config": {
-            "backbone": cfg["embeddings"]["backbone"],
-            "n_pca": cfg["pca"]["n_components"],
-            "bins_rgb": cfg["scoring"]["bins_rgb"],
-            "bins_pca": cfg["scoring"]["bins_pca"],
-        },
+    if cfg.get("scoring", {}).get("algorithm") == "baseline":
+        bcfg = cfg.get("baseline") or {}
+        sweep_results = {
+            "config": {"baseline": bcfg.get("name"), "params": bcfg.get("params", {})},
+        }
+        sweep_name = f"sweep_baseline_{bcfg.get('name', 'unknown')}"
+    else:
+        sweep_results = {
+            "config": {
+                "backbone": cfg["embeddings"]["backbone"],
+                "n_pca": cfg["pca"]["n_components"],
+                "bins_rgb": cfg["scoring"]["bins_rgb"],
+                "bins_pca": cfg["scoring"]["bins_pca"],
+            },
+        }
+        sweep_name = (f"sweep_{cfg['embeddings']['backbone']}_pca{cfg['pca']['n_components']}"
+                      f"_rgb{cfg['scoring']['bins_rgb']}_pca{cfg['scoring']['bins_pca']}")
+    sweep_results.update({
         "sample_names": args.sample_names,
         "per_sample": {},
         "averaged": averaged,
-    }
+    })
     for sname in args.sample_names:
         sweep_results["per_sample"][sname] = {
             k: {kk: vv for kk, vv in v.items() if kk != "curves"}
             for k, v in all_runs[sname].items()
         }
-
-    sweep_name = (f"sweep_{cfg['embeddings']['backbone']}_pca{cfg['pca']['n_components']}"
-                  f"_rgb{cfg['scoring']['bins_rgb']}_pca{cfg['scoring']['bins_pca']}")
     sweep_path = os.path.join(output_dir, f"{sweep_name}.json")
     with open(sweep_path, "w") as f:
         json.dump(sweep_results, f, indent=2, default=str)
@@ -265,8 +391,11 @@ def main():
     parser.add_argument("--sample_names", type=str, nargs="+", default=None,
                         help="Run on multiple samples and average metrics")
     parser.add_argument("--scorer", type=str, default="typical_set",
-                        choices=["typical_set", "local_gaussian"],
-                        help="Scoring algorithm: ood/scoring.py (typical_set) or ood/scoring_local_gaussian.py (rohan)")
+                        choices=["typical_set", "local_gaussian", "baseline"],
+                        help=("Scoring algorithm: ood/scoring.py (typical_set), "
+                              "ood/scoring_local_gaussian.py (local_gaussian), "
+                              "or an external baseline from ood/baselines/ (baseline; "
+                              "requires a top-level `baseline:` block in the YAML)"))
     parser.add_argument("--sigma_rohan", type=float, default=None,
                         help="σ for local_gaussian scorer (in [0,1] image scale). "
                              "If omitted, reads {results_dir}/sigma.txt when scorer=local_gaussian.")
