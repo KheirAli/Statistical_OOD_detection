@@ -1,0 +1,39 @@
+# SimpleNet (Liu et al., CVPR'23) on MVTec cable.
+#
+# Reuses the per-class checkpoint already trained on the cluster
+# (~/data/akheirandish3/SimpleNet/results/MVTecAD_Results/...). No
+# training step is needed; only the discriminator + pre-projection
+# weights are loaded — the WideResNet-50 backbone uses its ImageNet
+# weights, matching how SimpleNet was trained.
+
+data:
+  image_dir: /data/akheirandish3/mvtec_ad/cable/test/combined
+  sample_name: samples_000        # placeholder; --sample_names overrides
+  gt_mask:
+    path: /data/akheirandish3/mvtec_ad/cable/ground_truth/combined/{sample}_mask.png
+    downsample_factor: 4
+
+scoring:
+  algorithm: baseline
+
+baseline:
+  name: simplenet
+  params:
+    ckpt: /data/akheirandish3/SimpleNet/results/MVTecAD_Results/simplenet_mvtec/run/models/0/mvtec_cable/ckpt.pth
+    device: cuda:0
+    simplenet_repo: /home/rohan/ood/baseline-algos-clone/SimpleNet
+    backbone: wideresnet50
+    layers_to_extract_from: [layer2, layer3]
+    imagesize: 288
+    pretrain_embed_dim: 1536
+    target_embed_dim: 1536
+    patchsize: 3
+    embedding_size: 256
+    dsc_layers: 2
+    dsc_hidden: 1024
+    dsc_margin: 0.5
+    pre_proj: 1
+
+eval:
+  delta_smooth_sigmas: [null, 5.0]
+  output_dir: ./results_eval/baseline_simplenet_cable
