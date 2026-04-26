@@ -72,13 +72,36 @@ def _baseline_metrics(
     anomaly maps directly, so per-superpixel aggregation is meaningless
     here. Output dict has the same shape as `evaluate_delta_map` returns
     so the sweep aggregator doesn't need to special-case the path.
+
+    For images that are all-clean (no positive pixels) or all-anomalous
+    (no negative pixels), pixel AUROC / AP / SNR are mathematically
+    undefined; we return NaN so `bootstrap_mean_ci` drops them rather
+    than silently averaging in 0s. This matters once we start including
+    `test/good/` images in MVTec evals.
     """
     from scipy.ndimage import gaussian_filter as _gf
+
+    n_pos = int(gt_mask_binary.sum())
+    n_neg = int(gt_mask_binary.size - n_pos)
+    degenerate = n_pos == 0 or n_neg == 0
 
     out: dict = {}
     for sigma in smooth_sigmas:
         key = f"sigma_{sigma}" if sigma else "raw"
         amap = anomaly_map if not sigma else _gf(anomaly_map, sigma=sigma, mode="nearest")
+
+        if degenerate:
+            out[key] = {
+                "sp_roc_auc": float("nan"),
+                "sp_ap": float("nan"),
+                "px_roc_auc": float("nan"),
+                "px_ap": float("nan"),
+                "px_snr": float("nan"),
+                "num_superpixels": 0,
+                "num_anomalous_sp": 0,
+            }
+            continue
+
         scores = amap.ravel()
         labels = gt_mask_binary.ravel()
         fpr, tpr, _ = manual_roc_curve(labels, scores)
