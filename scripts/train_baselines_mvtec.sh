@@ -56,13 +56,14 @@ SKIP_EXISTING="${SKIP_EXISTING:-0}"
 
 # ── per-baseline launchers ─────────────────────────────────────────────
 launch_simplenet() {
+  # stdout = bare PID (consumed by caller); diagnostics go to stderr.
   local cls="$1" gpu="$2" log="$3"
   local ckpt="${SIMPLENET_OUT}/simplenet_mvtec/run/models/0/mvtec_${cls}/ckpt.pth"
   if [ "$SKIP_EXISTING" = "1" ] && [ -f "$ckpt" ]; then
-    echo "[skip] simplenet/$cls — ckpt exists at $ckpt"
+    echo "[skip] simplenet/$cls — ckpt exists at $ckpt" >&2
     return 0
   fi
-  echo "[start] simplenet/$cls on GPU $gpu → $log"
+  echo "[start] simplenet/$cls on GPU $gpu → $log" >&2
   CUDA_VISIBLE_DEVICES="$gpu" \
     nohup python "${REPO_ROOT}/tools/run_simplenet_train.py" \
       --gpu 0 --seed 0 \
@@ -80,14 +81,15 @@ launch_simplenet() {
 }
 
 launch_cutpaste() {
+  # stdout = bare PID (consumed by caller); diagnostics go to stderr.
   local cls="$1" gpu="$2" log="$3"
   # CutPaste model filename includes a date stamp; the existence test
   # globs for any pre-existing model for this class.
   if [ "$SKIP_EXISTING" = "1" ] && compgen -G "${CUTPASTE_OUT}/model-${cls}-*.tch" >/dev/null; then
-    echo "[skip] cutpaste/$cls — model exists"
+    echo "[skip] cutpaste/$cls — model exists" >&2
     return 0
   fi
-  echo "[start] cutpaste/$cls on GPU $gpu → $log"
+  echo "[start] cutpaste/$cls on GPU $gpu → $log" >&2
   mkdir -p "$CUTPASTE_OUT"
   # CutPaste hard-codes Data/ as the dataset root; symlink it into the repo
   # if not already present.
