@@ -33,3 +33,6 @@ rohan/data/
 
 # Reference-only material (kept on disk, not tracked)
 rohan/
+
+# Git worktrees
+.worktrees/
