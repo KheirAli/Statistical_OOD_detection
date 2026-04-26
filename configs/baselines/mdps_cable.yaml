@@ -1,0 +1,42 @@
+# MDPS (Wu et al., IJCAI'24) on MVTec cable.
+#
+# Reuses our DDAD UNet checkpoint (architecture is identical to MDPS's), so
+# no extra training/download is needed. Produced anomaly map is dense
+# (256×256) per image; evaluate.py computes pixel AUROC + SNR + bootstrap CIs.
+
+data:
+  image_dir: /data/akheirandish3/mvtec_ad/cable/test/combined
+  sample_name: samples_000        # placeholder; --sample_names overrides
+  gt_mask:
+    path: /data/akheirandish3/mvtec_ad/cable/ground_truth/combined/{sample}_mask.png
+    downsample_factor: 4
+
+scoring:
+  algorithm: baseline
+
+baseline:
+  name: mdps
+  params:
+    ckpt: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/cable/3000
+    device: cuda:0
+    mdps_repo: /home/rohan/ood/baseline-algos-clone/MDPS
+    image_size: 256
+    diffusion_steps: 1000
+    beta_start: 0.0001
+    beta_end: 0.02
+    eta: 1.0
+    # MDPS hyperparams from config_cable.yaml in the upstream repo
+    test_steps: 250
+    skip: 20
+    mask_steps: 250
+    skip_mask: 20
+    w: 50
+    w_mask: 50
+    mask0_thresholds: 0.19
+    mask_repeat: 1
+    test_repeat: 1
+    resnet: wide_resnet101_2
+
+eval:
+  delta_smooth_sigmas: [null, 5.0]
+  output_dir: ./results_eval/baseline_mdps_cable
