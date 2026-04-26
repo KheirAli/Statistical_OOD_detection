@@ -1,0 +1,41 @@
+# MDPS (Wu et al., IJCAI'24) on the small faces test set.
+#
+# Reuses our DDAD UNet checkpoint trained on faces. Same MDPS hyperparams
+# as cable (paper's MVTec defaults). Faces GT masks are already 256×256
+# (downsample_factor=1).
+
+data:
+  image_dir: /data/akheirandish3/mvtec_ad/faces/test/random
+  sample_name: samples_40         # placeholder; --sample_names overrides
+  gt_mask:
+    path: /data/akheirandish3/mvtec_ad/faces/ground_truth/random/{sample}_mask.png
+    downsample_factor: 1
+
+scoring:
+  algorithm: baseline
+
+baseline:
+  name: mdps
+  params:
+    ckpt: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/faces/2000
+    device: cuda:0
+    mdps_repo: /home/rohan/ood/baseline-algos-clone/MDPS
+    image_size: 256
+    diffusion_steps: 1000
+    beta_start: 0.0001
+    beta_end: 0.02
+    eta: 1.0
+    test_steps: 250
+    skip: 20
+    mask_steps: 250
+    skip_mask: 20
+    w: 50
+    w_mask: 50
+    mask0_thresholds: 0.19
+    mask_repeat: 1
+    test_repeat: 1
+    resnet: wide_resnet101_2
+
+eval:
+  delta_smooth_sigmas: [null, 5.0]
+  output_dir: ./results_eval/baseline_mdps_faces

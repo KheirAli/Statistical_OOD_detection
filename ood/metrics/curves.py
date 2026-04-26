@@ -1,4 +1,8 @@
-"""Evaluation metrics: ROC, PR, AUC — pure numpy, no sklearn."""
+"""ROC + PR curves, AUC, average precision, and the delta-map evaluator.
+
+Pure numpy, no sklearn. SNR lives in `ood.metrics.snr`. All functions are
+re-exported from `ood.metrics` for back-compat with `from ood.metrics import ...`.
+"""
 
 from typing import Dict, Optional, Tuple
 
