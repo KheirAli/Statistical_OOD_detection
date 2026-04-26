@@ -56,12 +56,14 @@ SKIP_EXISTING="${SKIP_EXISTING:-0}"
 
 # ── per-baseline launchers ─────────────────────────────────────────────
 launch_simplenet() {
-  # stdout = bare PID (consumed by caller); diagnostics go to stderr.
+  # Returns 0 when the job started (caller reads PID from $!), 1 when
+  # skipped. Functions run in the parent shell — backgrounded `&` PIDs
+  # are children of the dispatch loop's shell, so `wait` works.
   local cls="$1" gpu="$2" log="$3"
   local ckpt="${SIMPLENET_OUT}/simplenet_mvtec/run/models/0/mvtec_${cls}/ckpt.pth"
   if [ "$SKIP_EXISTING" = "1" ] && [ -f "$ckpt" ]; then
     echo "[skip] simplenet/$cls — ckpt exists at $ckpt" >&2
-    return 0
+    return 1
   fi
   echo "[start] simplenet/$cls on GPU $gpu → $log" >&2
   CUDA_VISIBLE_DEVICES="$gpu" \
@@ -77,17 +79,16 @@ launch_simplenet() {
       dataset --batch_size 8 --resize 329 --imagesize 288 \
       -d "$cls" mvtec "$MVTEC_DATA" \
       >"$log" 2>&1 &
-  echo $!
+  return 0
 }
 
 launch_cutpaste() {
-  # stdout = bare PID (consumed by caller); diagnostics go to stderr.
+  # Returns 0 when the job started (caller reads PID from $!), 1 when skipped.
   local cls="$1" gpu="$2" log="$3"
-  # CutPaste model filename includes a date stamp; the existence test
-  # globs for any pre-existing model for this class.
+  # CutPaste's model filename includes a date stamp; existence test globs.
   if [ "$SKIP_EXISTING" = "1" ] && compgen -G "${CUTPASTE_OUT}/model-${cls}-*.tch" >/dev/null; then
     echo "[skip] cutpaste/$cls — model exists" >&2
-    return 0
+    return 1
   fi
   echo "[start] cutpaste/$cls on GPU $gpu → $log" >&2
   mkdir -p "$CUTPASTE_OUT"
@@ -96,15 +97,19 @@ launch_cutpaste() {
   if [ ! -e "${CUTPASTE_REPO}/Data" ]; then
     ln -s "$MVTEC_DATA" "${CUTPASTE_REPO}/Data"
   fi
-  ( cd "$CUTPASTE_REPO" && CUDA_VISIBLE_DEVICES="$gpu" \
-      nohup python run_training.py \
-        --model_dir "$CUTPASTE_OUT" \
-        --type "$cls" \
-        --epochs 256 \
-        --variant 3way --head_layer 2 \
-        --cuda 1 \
-        >"$log" 2>&1 &
-    echo $! )
+  # pushd/popd keep the function inside the parent shell — important so
+  # the backgrounded process's PID survives in $! for the caller.
+  pushd "$CUTPASTE_REPO" > /dev/null
+  CUDA_VISIBLE_DEVICES="$gpu" \
+    nohup python run_training.py \
+      --model_dir "$CUTPASTE_OUT" \
+      --type "$cls" \
+      --epochs 256 \
+      --variant 3way --head_layer 2 \
+      --cuda 1 \
+      >"$log" 2>&1 &
+  popd > /dev/null
+  return 0
 }
 
 # ── build job queue: one entry per (baseline, class) ─────────────────
@@ -132,12 +137,15 @@ while [ $i -lt ${#JOBS[@]} ]; do
     gpu="${GPUS_ARR[$j]}"
     log="${LOG_DIR}/train_${baseline}_${cls}.log"
     case "$baseline" in
-      simplenet) pid=$(launch_simplenet "$cls" "$gpu" "$log") ;;
-      cutpaste)  pid=$(launch_cutpaste  "$cls" "$gpu" "$log") ;;
+      simplenet)
+        if launch_simplenet "$cls" "$gpu" "$log"; then PIDS+=("$!"); fi
+        ;;
+      cutpaste)
+        if launch_cutpaste "$cls" "$gpu" "$log"; then PIDS+=("$!"); fi
+        ;;
     esac
-    [ -n "${pid:-}" ] && PIDS+=("$pid")
   done
-  echo "wave: waiting on PIDs ${PIDS[*]}"
+  echo "wave: waiting on PIDs ${PIDS[*]:-(none — all skipped)}"
   for pid in "${PIDS[@]}"; do wait "$pid" || echo "[warn] pid $pid exited non-zero"; done
   i=$((i+N_GPUS))
 done
