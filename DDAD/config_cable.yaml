@@ -48,4 +48,4 @@ metrics:
   auroc: True                      # print image + pixel AUROC
   pro: False
   misclassifications: False
-  visualisation: False             # skip plot dump (we just want numbers)
+  visualisation: True             # skip plot dump (we just want numbers)

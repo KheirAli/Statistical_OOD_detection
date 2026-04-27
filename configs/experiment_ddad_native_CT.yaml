@@ -1,6 +1,3 @@
-# Eval DDAD-native recons (from tools/run_ddad_reconstruction.py).
-# Scorer is controlled by --scorer CLI flag: {typical_set, local_gaussian}.
-
 sampling:
   enabled: false
   num_patches: 1
@@ -16,15 +13,15 @@ sampling:
   seed: 0
 
 data:
-  image_dir: /data/akheirandish3/mvtec_ad/cable/test/combined
-  figures_dir: ./figures
-  results_dir: ./results_patches_ddad_native
-  sample_name: samples_000
+  image_dir: /data2/akheirandish3/id_new_warped_images/OOD_moderate_medium/4
+  figures_dir: ./figures_CT
+  results_dir: ./results_patches_ddad_native_CT_scan
+  sample_name: samples_image_0000
   test_origin: ddad_native
   bottom_suffix: "4"
   gt_mask:
-    path: /data/akheirandish3/mvtec_ad/cable/ground_truth/combined/{sample}_mask.png
-    downsample_factor: 4
+    path: /data2/akheirandish3/id_new_warped_images/masks_ood_med_med/image_{sample}_mask.png
+    downsample_factor: 1
 
 embeddings:
   backbone: resnet18
@@ -42,9 +39,9 @@ superpixels:
   min_pixels: 20
   max_sub: 6
   max_depth: 4
-  compactness: 1.0 #12
-  alpha_grad: 1.0 #10 
-  target_size: 50
+  compactness: 12.0
+  alpha_grad: 10.0
+  target_size: 10
 
 scoring:
   bins_rgb: 32
@@ -53,16 +50,16 @@ scoring:
   min_pixels: 2
   use_label_as_target: true
   eps: 1.0e-12
-  n_realizations: 1000           # for local_gaussian
-  lg_metric: typicality_unsigned # for local_gaussian
+  n_realizations: 1000
+  lg_metric: typicality_unsigned
 
 eval:
   delta_smooth_sigmas: [null, 5.0]
   sp_anomaly_threshold: 0.5
   save_plots: false
-  output_dir: ./results_eval_ddad_native
+  output_dir: ./results_eval_ddad_native_CT_scan
 
 baselines:
   enabled: false
-  simplenet: {enabled: false, repo_dir: /data/akheirandish3/SimpleNet, results_dir: /data/akheirandish3/SimpleNet/results/MVTecAD_Results, category: cable}
-  ddad: {enabled: false, repo_dir: /data/akheirandish3/PaDIS_results/DDAD, config: /data/akheirandish3/PaDIS_results/DDAD/config.yaml, category: cable, checkpoint_epoch: 2000}
+  simplenet: {enabled: false, repo_dir: ".", results_dir: ".", category: CT}
+  ddad: {enabled: false, repo_dir: ".", config: ".", category: CT, checkpoint_epoch: 2000}

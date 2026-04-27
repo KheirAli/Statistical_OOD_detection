@@ -1,12 +1,32 @@
-# X-ray pilot, DDAD-native conditioned denoising.
-# EDIT samples + num_seeds to match tools/prepare_xray_dataset.py output.
+# # X-ray pilot, DDAD-native conditioned denoising.
+# # EDIT samples + num_seeds to match tools/prepare_xray_dataset.py output.
+# sampler:
+#   name: ddad_native
+#   params: {w: 2.0, test_trajectoy_steps: 250, skip: 25, eta: 1.0, trajectory_steps: 1000, beta_start: 0.0001, beta_end: 0.02}
+
+# ckpt: /data/akheirandish3/ddad_xray_ckpts/MVTec/xray/500           # EDIT: post-training epoch
+# image_dir: /data/akheirandish3/xray_mvtec/test/prohibited
+# samples: []    # EDIT: populate after Phase A (e.g. ["P00001", "P00002", ...])
+# num_seeds: 20
+# out_root: ./results_patches_xray_native
+# bottom_suffix: "4"
+# Cable, DDAD-native conditioned denoising (11 × 20 seeds).
 sampler:
   name: ddad_native
-  params: {w: 2.0, test_trajectoy_steps: 250, skip: 25, eta: 1.0, trajectory_steps: 1000, beta_start: 0.0001, beta_end: 0.02}
+  params:
+    w: 2.0
+    test_trajectoy_steps: 250
+    skip: 25
+    eta: 1.0
+    trajectory_steps: 1000
+    beta_start: 0.0001
+    beta_end: 0.02
 
-ckpt: /data/akheirandish3/ddad_xray_ckpts/MVTec/xray/500           # EDIT: post-training epoch
-image_dir: /data/akheirandish3/xray_mvtec/test/prohibited
-samples: []    # EDIT: populate after Phase A (e.g. ["P00001", "P00002", ...])
-num_seeds: 20
-out_root: ./results_patches_xray_native
+ckpt: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/combined/2000
+# ckpt: /data/akherandish3/MVTec/bottle/1000
+image_dir: /data2/akheirandish3/id_new_warped_images/OOD_moderate_medium/1
+# samples: ["000", "001", "002", "003", "004", "005", "006", "007", "008", "009", "010"]
+samples: ["image_0011", "image_0012", "image_0013", "image_0014", "image_0015", "image_0016", "image_0017", "image_0018", "image_0019", "image_0020", "image_0021", "image_0022", "image_0023", "image_0024", "image_0025", "image_0026", "image_0027", "image_0028", "image_0029", "image_0030", "image_0031", "image_0032", "image_0033", "image_0034", "image_0035", "image_0036", "image_0037", "image_0038", "image_0039", "image_0040", "image_0041", "image_0042", "image_0043", "image_0044", "image_0045", "image_0046", "image_0047", "image_0048", "image_0049", "image_0050", "image_0051", "image_0052", "image_0053", "image_0054", "image_0055", "image_0056", "image_0057", "image_0058", "image_0059", "image_0060", "image_0061", "image_0062", "image_0063", "image_0064", "image_0065", "image_0066", "image_0067", "image_0068", "image_0069", "image_0070", "image_0071", "image_0072", "image_0073", "image_0074", "image_0075", "image_0076", "image_0077", "image_0078", "image_0079", "image_0080", "image_0081", "image_0082", "image_0083", "image_0084", "image_0085", "image_0086", "image_0087", "image_0088", "image_0089", "image_0090", "image_0091", "image_0092", "image_0093", "image_0094", "image_0095", "image_0096", "image_0097", "image_0098", "image_0099", "image_0100"]
+num_seeds: 40
+out_root: ./results_patches_ddad_native_xray
 bottom_suffix: "4"

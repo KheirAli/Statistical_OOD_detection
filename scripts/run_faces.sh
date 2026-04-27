@@ -65,7 +65,7 @@ python -u tools/run_ddad_reconstruction.py \
     --ckpt /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/faces/2000 \
     --image_dir /data/akheirandish3/mvtec_ad/faces/test/random \
     --samples $FACE_IDS \
-    --num_seeds 20 \
+    --num_seeds 40 \
     --out_root ./results_patches_ddad_native_faces \
     2>&1 | tee -a "$LOG"
 log "  R2-faces exit=${PIPESTATUS[0]}"

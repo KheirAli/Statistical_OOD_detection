@@ -17,14 +17,14 @@ sampling:
   seed: 0
 
 data:
-  image_dir: /data/akheirandish3/xray_mvtec/test/prohibited
-  figures_dir: ./figures_xray
-  results_dir: ./results_patches_xray_native
-  sample_name: samples_P00001          # placeholder; overridden via --sample_names
+  image_dir: /data/akheirandish3/mvtec_ad/CT/test/random
+  figures_dir: ./figures_CT
+  results_dir: ./results_patches_CT_native
+  sample_name: image_0000          # placeholder; overridden via --sample_names
   test_origin: ddad_native
   bottom_suffix: "4"
   gt_mask:
-    path: /data/akheirandish3/xray_mvtec/ground_truth/prohibited/{sample}_mask.png
+    path: /data2/akheirandish3/id_new_warped_images/masks_ood_default_large/{sample}_mask.png
     downsample_factor: 1               # masks already at 256x256 from prepare_xray_dataset.py
 
 embeddings:
@@ -44,7 +44,7 @@ superpixels:
   max_depth: 4
   compactness: 12.0
   alpha_grad: 10.0
-  target_size: 10
+  target_size: 100
 
 scoring:
   bins_rgb: 32
@@ -60,9 +60,9 @@ eval:
   delta_smooth_sigmas: [null, 5.0]
   sp_anomaly_threshold: 0.5
   save_plots: false
-  output_dir: ./results_eval_xray_native
+  output_dir: ./results_eval_CT_native
 
 baselines:
   enabled: false
-  simplenet: {enabled: false, repo_dir: ".", results_dir: ".", category: xray}
-  ddad: {enabled: false, repo_dir: ".", config: ".", category: xray, checkpoint_epoch: 500}
+  simplenet: {enabled: false, repo_dir: ".", results_dir: ".", category: CT}
+  ddad: {enabled: false, repo_dir: ".", config: ".", category: CT, checkpoint_epoch: 500}
