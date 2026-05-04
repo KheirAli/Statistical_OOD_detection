@@ -61,7 +61,7 @@ from feature_extractor import *
 from ddad import *
 
 from unet import UNetModel as DDADUNetModel
-from guided_diffusion.unet import UNetModel as GuidedUNetModel
+# from guided_diffusion.unet import UNetModel as GuidedUNetModel
 
 # os.environ["CUDA_VISIBLE_DEVICES"] = "5"
 
@@ -163,26 +163,45 @@ def train(config):
     trainer(unet, config.data.category, config)
 
 
+# def detection(config):
+#     unet = build_model(config)
+
+#     # only load DDAD-style checkpoint if NOT using external model
+#     if not getattr(config.model, "use_external_unet", False):
+#         checkpoint = torch.load(
+#             os.path.join(
+#                 os.getcwd(),
+#                 config.model.checkpoint_dir,
+#                 config.data.category,
+#                 str(config.model.load_chp),
+#             ),
+#             map_location="cpu",
+#         )
+#         checkpoint = _unwrap_state_dict(checkpoint)
+#         unet.load_state_dict(checkpoint, strict=True)
+
+#     unet = _maybe_parallel(unet).to(config.model.device)
+#     unet.eval()
+
+#     ddad = DDAD(unet, config)
+#     ddad()
 def detection(config):
     unet = build_model(config)
 
-    # only load DDAD-style checkpoint if NOT using external model
     if not getattr(config.model, "use_external_unet", False):
-        checkpoint = torch.load(
-            os.path.join(
-                os.getcwd(),
-                config.model.checkpoint_dir,
-                config.data.category,
-                str(config.model.load_chp),
-            ),
-            map_location="cpu",
+        # Use checkpoint_name if set, otherwise build from parts
+        ckpt_path = getattr(config.model, "checkpoint_name", None) or os.path.join(
+            config.model.checkpoint_dir,
+            config.data.category,
+            str(config.model.load_chp),
         )
+        print(f"Loading checkpoint: {ckpt_path}")
+        checkpoint = torch.load(ckpt_path, map_location="cpu")
         checkpoint = _unwrap_state_dict(checkpoint)
         unet.load_state_dict(checkpoint, strict=True)
 
     unet = _maybe_parallel(unet).to(config.model.device)
     unet.eval()
-
     ddad = DDAD(unet, config)
     ddad()
 
@@ -223,6 +242,9 @@ def parse_args():
     cmdline_parser.add_argument('--domain_adaptation', 
                                 default= False, 
                                 help='Domain adaptation')
+    cmdline_parser.add_argument('--category',  default=None, help='Override config.data.category')
+    cmdline_parser.add_argument('--load_chp',  default=None, type=int, help='Override config.model.load_chp')
+    cmdline_parser.add_argument('--device',    default=None, help='Override config.model.device')
     args, unknowns = cmdline_parser.parse_known_args()
     return args
 
@@ -234,6 +256,20 @@ if __name__ == "__main__":
     config = OmegaConf.load(args.config)
     print("Class: ",config.data.category, "   w:", config.model.w, "   v:", config.model.v, "   load_chp:", config.model.load_chp,   "   feature extractor:", config.model.feature_extractor,"         w_DA: ",config.model.w_DA,"         DLlambda: ",config.model.DLlambda)
     print(f'{config.model.test_trajectoy_steps=} , {config.data.test_batch_size=}')
+    if args.category is not None:
+        config.data.category = args.category
+    if args.load_chp is not None:
+        config.model.load_chp = args.load_chp
+        # keep checkpoint_name in sync
+        config.model.checkpoint_name = os.path.join(
+            config.model.checkpoint_dir,
+            config.data.category,
+            str(args.load_chp)
+        )
+    if args.device is not None:
+        config.model.device = args.device
+
+    print("Class:", config.data.category, "  load_chp:", config.model.load_chp)
     torch.manual_seed(42)
     np.random.seed(42)
     if torch.cuda.is_available():

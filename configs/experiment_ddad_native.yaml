@@ -27,7 +27,7 @@ data:
     downsample_factor: 4
 
 embeddings:
-  backbone: resnet18
+  backbone: resnet101
   layers: [layer1, layer2, layer3]
   use_patch_context: true
   patchify_size: 3
@@ -44,7 +44,7 @@ superpixels:
   max_depth: 4
   compactness: 1.0 #12
   alpha_grad: 1.0 #10 
-  target_size: 50
+  target_size: 100
 
 scoring:
   bins_rgb: 32
@@ -57,7 +57,7 @@ scoring:
   lg_metric: typicality_unsigned # for local_gaussian
 
 eval:
-  delta_smooth_sigmas: [null, 5.0]
+  delta_smooth_sigmas: [null, 1.0, 5.0, 10.0, 20.0]
   sp_anomaly_threshold: 0.5
   save_plots: false
   output_dir: ./results_eval_ddad_native

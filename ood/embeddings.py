@@ -473,31 +473,52 @@ def embed_images_batched(
     return torch.cat(feat_list, dim=0)
 
 
-def compute_pca_basis(
-    label_feat_cpu: torch.Tensor, n_components: int = 9
-) -> Tuple[np.ndarray, np.ndarray]:
-    """PCA via SVD on label image features.
+# def compute_pca_basis(
+#     label_feat_cpu: torch.Tensor, n_components: int = 9
+# ) -> Tuple[np.ndarray, np.ndarray]:
+#     """PCA via SVD on label image features.
 
-    Args:
-        label_feat_cpu: (C, H, W) tensor on CPU.
-        n_components: number of PCA components.
+#     Args:
+#         label_feat_cpu: (C, H, W) tensor on CPU.
+#         n_components: number of PCA components.
 
-    Returns:
-        mu: (1, C) mean vector.
-        components: (n_components, C) PCA basis.
-    """
+#     Returns:
+#         mu: (1, C) mean vector.
+#         components: (n_components, C) PCA basis.
+#     """
+#     C, H, W = label_feat_cpu.shape
+#     X = label_feat_cpu.permute(1, 2, 0).reshape(-1, C).numpy()
+#     mu = X.mean(axis=0, keepdims=True)
+#     X_centered = X - mu
+#     _, S, Vt = np.linalg.svd(X_centered, full_matrices=False)
+#     components = Vt[:n_components]
+
+#     explained = (S[:n_components] ** 2) / (S**2).sum()
+#     print(f"PCA explained variance ({n_components} components): {explained.sum() * 100:.1f}%")
+
+#     return mu, components
+def compute_pca_basis(label_feat_cpu: torch.Tensor, n_components: int,
+                      device: torch.device = None) -> Tuple[np.ndarray, np.ndarray]:
     C, H, W = label_feat_cpu.shape
-    X = label_feat_cpu.permute(1, 2, 0).reshape(-1, C).numpy()
-    mu = X.mean(axis=0, keepdims=True)
-    X_centered = X - mu
-    _, S, Vt = np.linalg.svd(X_centered, full_matrices=False)
-    components = Vt[:n_components]
+    X  = label_feat_cpu.permute(1, 2, 0).reshape(-1, C)   # (H*W, C)
+    mu = X.mean(dim=0, keepdim=True)                        # (1, C)
+    Xc = X - mu                                             # centered
 
-    explained = (S[:n_components] ** 2) / (S**2).sum()
-    print(f"PCA explained variance ({n_components} components): {explained.sum() * 100:.1f}%")
+    if device is not None and device.type == "cuda":
+        # GPU SVD — torch.linalg.svd is ~10x faster than numpy for large C
+        Xc_gpu = Xc.to(device)
+        _, _, Vt_gpu = torch.linalg.svd(Xc_gpu, full_matrices=False)
+        components = Vt_gpu[:n_components].cpu().numpy()
+        mu_np = mu.numpy()
+    else:
+        _, S, Vt = np.linalg.svd(Xc.numpy(), full_matrices=False)
+        components = Vt[:n_components]
+        mu_np = mu.numpy()
+        S_for_print = S
 
-    return mu, components
-
+    # explained variance (approximate when using GPU path)
+    print(f"PCA basis computed ({n_components} components, C={C})")
+    return mu_np, components
 
 def project_to_pca(
     feat_hwc: np.ndarray, mu: np.ndarray, components: np.ndarray
@@ -513,7 +534,7 @@ def project_to_pca(
         (M, k) projections clipped to [-1, 1].
     """
     proj = (feat_hwc - mu) @ components.T
-    return np.clip(proj, -1.0, 1.0)
+    return proj
 
 
 def project_to_pca_gpu(
@@ -538,8 +559,60 @@ def project_to_pca_gpu(
     B, C, H, W = feat_tensor.shape
     x    = feat_tensor.permute(0, 2, 3, 1).reshape(-1, C)
     proj = (x - mu_t) @ comp_t.t()
-    return proj.clamp(-1.0, 1.0).reshape(B, H, W, -1)
+    return proj.reshape(B, H, W, -1)
 
+
+# def embed_and_project(
+#     embedder: ResNetPixelEmbedder,
+#     label_image: np.ndarray,
+#     images_recon_all: np.ndarray,
+#     n_pca: int = 9,
+#     device: str = "cuda",
+# ) -> Dict[str, np.ndarray]:
+#     """Full embedding + PCA pipeline.
+
+#     Args:
+#         embedder: ResNetPixelEmbedder on device.
+#         label_image: (H, W, 3) uint8.
+#         images_recon_all: (B, H, W, 3) uint8.
+#         n_pca: number of PCA components.
+#         device: torch device string.
+
+#     Returns:
+#         dict with keys: label_pca_map, pca_feats_recon, mu, components.
+#     """
+#     model_device = next(embedder.parameters()).device
+
+#     # Embed label image
+#     with torch.no_grad():
+#         label_x = to_tensor01(label_image, device=str(model_device))
+#         label_feat = embedder(label_x).squeeze(0).cpu()
+
+#     # PCA basis from label
+#     mu, components = compute_pca_basis(label_feat, n_components=n_pca)
+
+#     # Project label image
+#     C, H, W = label_feat.shape
+#     X_label = label_feat.permute(1, 2, 0).reshape(-1, C).numpy()
+#     label_pca_map = project_to_pca(X_label, mu, components).reshape(H, W, n_pca)
+
+#     # Embed all reconstructions
+#     # feat_map = embed_images(embedder, images_recon_all, device=device)
+#     feat_map = embed_images_batched(embedder, images_recon_all,
+#                                     batch_size=8,   # lower if OOM with resnet101
+#                                     device=device)
+#     # Project all reconstructions (GPU-accelerated)
+#     feat_map_dev = feat_map.to(model_device)
+#     pca_feats_recon = project_to_pca_gpu(feat_map_dev, mu, components, model_device)\
+#                         .cpu().numpy()                          # (B, H, W, n_pca)
+#     del feat_map_dev
+
+#     return {
+#         "label_pca_map": label_pca_map,
+#         "pca_feats_recon": pca_feats_recon,
+#         "mu": mu,
+#         "components": components,
+#     }
 
 def embed_and_project(
     embedder: ResNetPixelEmbedder,
@@ -547,47 +620,47 @@ def embed_and_project(
     images_recon_all: np.ndarray,
     n_pca: int = 9,
     device: str = "cuda",
+    batch_size: int = 8,          # ← new param; lower for resnet101/152
 ) -> Dict[str, np.ndarray]:
-    """Full embedding + PCA pipeline.
 
-    Args:
-        embedder: ResNetPixelEmbedder on device.
-        label_image: (H, W, 3) uint8.
-        images_recon_all: (B, H, W, 3) uint8.
-        n_pca: number of PCA components.
-        device: torch device string.
-
-    Returns:
-        dict with keys: label_pca_map, pca_feats_recon, mu, components.
-    """
     model_device = next(embedder.parameters()).device
 
     # Embed label image
     with torch.no_grad():
-        label_x = to_tensor01(label_image, device=str(model_device))
+        label_x    = to_tensor01(label_image, device=str(model_device))
         label_feat = embedder(label_x).squeeze(0).cpu()
 
     # PCA basis from label
-    mu, components = compute_pca_basis(label_feat, n_components=n_pca)
+    mu, components = compute_pca_basis(label_feat, n_components=n_pca, device=model_device)
 
     # Project label image
     C, H, W = label_feat.shape
     X_label = label_feat.permute(1, 2, 0).reshape(-1, C).numpy()
     label_pca_map = project_to_pca(X_label, mu, components).reshape(H, W, n_pca)
 
-    # Embed all reconstructions
-    feat_map = embed_images(embedder, images_recon_all, device=device)
+    # ── Embed + project recon images in one fused batched loop ───────────
+    # Never materialises the full (N, C, H, W) tensor — keeps peak GPU RAM
+    # at batch_size × C × H × W instead of N × C × H × W.
+    x_all = torch.from_numpy(images_recon_all).float().permute(0, 3, 1, 2)
+    if x_all.max() > 1.0:
+        x_all = x_all / 255.0
 
-    # Project all reconstructions (GPU-accelerated)
-    feat_map_dev = feat_map.to(model_device)
-    pca_feats_recon = project_to_pca_gpu(feat_map_dev, mu, components, model_device)\
-                        .cpu().numpy()                          # (B, H, W, n_pca)
-    del feat_map_dev
+    pca_list = []
+    with torch.no_grad():
+        for i in range(0, x_all.shape[0], batch_size):
+            xb   = x_all[i:i+batch_size].to(model_device)
+            fb   = embedder(xb)
+            proj = project_to_pca_gpu(fb, mu, components, model_device)
+            pca_list.append(proj.cpu())
+            del xb, fb, proj
+            torch.cuda.empty_cache()
+
+    pca_feats_recon = torch.cat(pca_list, 0).numpy()   # (N, H, W, n_pca)
+    gc.collect()
 
     return {
-        "label_pca_map": label_pca_map,
+        "label_pca_map":   label_pca_map,
         "pca_feats_recon": pca_feats_recon,
-        "mu": mu,
-        "components": components,
+        "mu":              mu,
+        "components":      components,
     }
-

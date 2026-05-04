@@ -1,0 +1,260 @@
+DDAD Detection Results
+======================
+Class:  bottle    w: 2    v: 1    load_chp: 1000    feature extractor: wide_resnet101_2          w_DA:  3          DLlambda:  0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: cable   load_chp: 3000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/cable/3000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/cable/test/*/*.png
+DEBUG: Found 11 test images
+/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/sklearn/metrics/_ranking.py:424: UndefinedMetricWarning: Only one class is present in y_true. ROC AUC score is not defined in that case.
+  warnings.warn(
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:119: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/sklearn/metrics/_ranking.py:424: UndefinedMetricWarning: Only one class is present in y_true. ROC AUC score is not defined in that case.
+  warnings.warn(
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:119: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+[WARN] Skipping optimal_threshold — no image-level labels collected.
+AUROC: (nan,96.9)
+PRO: 81.6
+AUROC: (nan,96.9)
+PRO: 81.6
+SNR: 5.6331
+Done: cable
+Class:  bottle    w: 2    v: 1    load_chp: 1000    feature extractor: wide_resnet101_2          w_DA:  3          DLlambda:  0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: capsule   load_chp: 1500
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/capsule/1500
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/capsule/test/*/*.png
+DEBUG: Found 132 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:119: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:119: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+AUROC: (71.7,88.0)
+PRO: 71.6
+AUROC: (71.7,88.0)
+PRO: 71.6
+SNR: 5.9075
+Done: capsule
+Class:  bottle    w: 2    v: 1    load_chp: 1000    feature extractor: wide_resnet101_2          w_DA:  3          DLlambda:  0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: carpet   load_chp: 2500
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/carpet/2500
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/carpet/test/*/*.png
+DEBUG: Found 117 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:119: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:119: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+AUROC: (97.6,98.1)
+PRO: 92.3
+AUROC: (97.6,98.1)
+PRO: 92.3
+SNR: 7.7471
+Done: carpet
+Class:  bottle    w: 2    v: 1    load_chp: 1000    feature extractor: wide_resnet101_2          w_DA:  3          DLlambda:  0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: grid   load_chp: 2000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/grid/2000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/grid/test/*/*.png
+DEBUG: Found 78 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:119: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:119: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+AUROC: (100.0,98.1)
+PRO: 92.6
+AUROC: (100.0,98.1)
+PRO: 92.6
+SNR: 6.2516
+Done: grid
+Class:  bottle    w: 2    v: 1    load_chp: 1000    feature extractor: wide_resnet101_2          w_DA:  3          DLlambda:  0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: hazelnut   load_chp: 2000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/hazelnut/2000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/hazelnut/test/*/*.png
+DEBUG: Found 110 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:119: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:119: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+AUROC: (99.4,97.9)
+PRO: 84.1
+AUROC: (99.4,97.9)
+PRO: 84.1
+SNR: 5.8465
+Done: hazelnut
+Class:  bottle    w: 2    v: 1    load_chp: 1000    feature extractor: wide_resnet101_2          w_DA:  3          DLlambda:  0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: leather   load_chp: 2000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/leather/2000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/leather/test/*/*.png
+DEBUG: Found 124 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:119: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:119: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+AUROC: (100.0,98.7)
+PRO: 97.7
+AUROC: (100.0,98.7)
+PRO: 97.7
+SNR: 8.2893
+Done: leather
+Class:  bottle    w: 2    v: 1    load_chp: 1000    feature extractor: wide_resnet101_2          w_DA:  3          DLlambda:  0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: metal_nut   load_chp: 3000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/metal_nut/3000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/metal_nut/test/*/*.png
+DEBUG: Found 115 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:119: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:119: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+AUROC: (99.8,98.2)
+PRO: 88.1
+AUROC: (99.8,98.2)
+PRO: 88.1
+SNR: 6.0816
+Done: metal_nut
+Class:  bottle    w: 2    v: 1    load_chp: 1000    feature extractor: wide_resnet101_2          w_DA:  3          DLlambda:  0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: pill   load_chp: 1000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/pill/1000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/pill/test/*/*.png
+DEBUG: Found 17 test images
+/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/sklearn/metrics/_ranking.py:424: UndefinedMetricWarning: Only one class is present in y_true. ROC AUC score is not defined in that case.
+  warnings.warn(
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:119: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/sklearn/metrics/_ranking.py:424: UndefinedMetricWarning: Only one class is present in y_true. ROC AUC score is not defined in that case.
+  warnings.warn(
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:119: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+[WARN] Skipping optimal_threshold — no image-level labels collected.
+AUROC: (nan,88.0)
+PRO: 63.2
+AUROC: (nan,88.0)
+PRO: 63.2
+SNR: 4.8188
+Done: pill
+Class:  bottle    w: 2    v: 1    load_chp: 1000    feature extractor: wide_resnet101_2          w_DA:  3          DLlambda:  0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: screw   load_chp: 2000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/screw/2000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/screw/test/*/*.png
+DEBUG: Found 160 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:119: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:119: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+AUROC: (77.0,88.7)
+PRO: 62.9
+AUROC: (77.0,88.7)
+PRO: 62.9
+SNR: 4.8050
+Done: screw
+Class:  bottle    w: 2    v: 1    load_chp: 1000    feature extractor: wide_resnet101_2          w_DA:  3          DLlambda:  0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: tile   load_chp: 1000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/tile/1000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/tile/test/*/*.png
+DEBUG: Found 117 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:119: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:119: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+AUROC: (100.0,97.5)
+PRO: 93.3
+AUROC: (100.0,97.5)
+PRO: 93.3
+SNR: 5.9752
+Done: tile
+Class:  bottle    w: 2    v: 1    load_chp: 1000    feature extractor: wide_resnet101_2          w_DA:  3          DLlambda:  0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: toothbrush   load_chp: 2000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/toothbrush/2000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/toothbrush/test/*/*.png
+DEBUG: Found 42 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:119: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:119: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+AUROC: (82.5,97.2)
+PRO: 85.5
+AUROC: (82.5,97.2)
+PRO: 85.5
+SNR: 6.9293
+Done: toothbrush
+Class:  bottle    w: 2    v: 1    load_chp: 1000    feature extractor: wide_resnet101_2          w_DA:  3          DLlambda:  0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: transistor   load_chp: 2000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/transistor/2000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/transistor/test/*/*.png
+DEBUG: Found 100 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:119: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:119: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+AUROC: (100.0,94.0)
+PRO: 89.3
+AUROC: (100.0,94.0)
+PRO: 89.3
+SNR: 6.4437
+Done: transistor
+Class:  bottle    w: 2    v: 1    load_chp: 1000    feature extractor: wide_resnet101_2          w_DA:  3          DLlambda:  0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: wood   load_chp: 2000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/wood/2000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/wood/test/*/*.png
+DEBUG: Found 11 test images
+/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/sklearn/metrics/_ranking.py:424: UndefinedMetricWarning: Only one class is present in y_true. ROC AUC score is not defined in that case.
+  warnings.warn(
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:119: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/sklearn/metrics/_ranking.py:424: UndefinedMetricWarning: Only one class is present in y_true. ROC AUC score is not defined in that case.
+  warnings.warn(
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:119: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+[WARN] Skipping optimal_threshold — no image-level labels collected.
+AUROC: (nan,96.0)
+PRO: 89.7
+AUROC: (nan,96.0)
+PRO: 89.7
+SNR: 6.7851
+Done: wood
+Class:  bottle    w: 2    v: 1    load_chp: 1000    feature extractor: wide_resnet101_2          w_DA:  3          DLlambda:  0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: zipper   load_chp: 1000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/zipper/1000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/zipper/test/*/*.png
+DEBUG: Found 16 test images
+/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/sklearn/metrics/_ranking.py:424: UndefinedMetricWarning: Only one class is present in y_true. ROC AUC score is not defined in that case.
+  warnings.warn(
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:119: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/sklearn/metrics/_ranking.py:424: UndefinedMetricWarning: Only one class is present in y_true. ROC AUC score is not defined in that case.
+  warnings.warn(
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:119: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+[WARN] Skipping optimal_threshold — no image-level labels collected.
+AUROC: (nan,96.5)
+PRO: 85.4
+AUROC: (nan,96.5)
+PRO: 85.4
+SNR: 5.5958
+Done: zipper

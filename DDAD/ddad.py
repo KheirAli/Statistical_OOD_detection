@@ -66,11 +66,26 @@ class DDAD:
 
         
         metric = Metric(labels_list, predictions, anomaly_map_list, gt_list, self.config)
-        metric.optimal_threshold()
+        try:
+            metric.optimal_threshold()
+            
+        except (ValueError, Exception) as e:
+            print(f"[WARN] Image-level metrics skipped: {e}")
+            pass
         if self.config.metrics.auroc:
             print('AUROC: ({:.1f},{:.1f})'.format(metric.image_auroc() * 100, metric.pixel_auroc() * 100))
         if self.config.metrics.pro:
             print('PRO: {:.1f}'.format(metric.pixel_pro() * 100))
+        # metric.optimal_threshold()
+        if self.config.metrics.auroc:
+            print('AUROC: ({:.1f},{:.1f})'.format(metric.image_auroc() * 100, metric.pixel_auroc() * 100))
+        if self.config.metrics.pro:
+            print('PRO: {:.1f}'.format(metric.pixel_pro() * 100))
+        if self.config.data.mask:   # only meaningful when GT masks are loaded
+            snr_val = metric.snr()
+            print(f'SNR: {snr_val:.4f}')
+        else:
+            print('[WARN] SNR skipped — set mask: True in config to enable')
         if self.config.metrics.misclassifications:
             metric.miscalssified()
         reconstructed_list = torch.cat(reconstructed_list, dim=0)

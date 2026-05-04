@@ -23,7 +23,26 @@ class Metric:
     def image_auroc(self):
         auroc_image = roc_auc_score(self.labels_list, self.predictions)
         return auroc_image
-    
+    def snr(self):
+        """
+        SNR = (mean anomaly score in GT-positive pixels) /
+            (std  anomaly score in GT-negative pixels)
+        Higher = better separation between anomalous and normal regions.
+        """
+        import torch
+        maps  = torch.cat(self.anomaly_map_list, dim=0)  # (N,1,H,W)
+        masks = torch.cat(self.gt_list,          dim=0)  # (N,1,H,W)
+
+        maps  = maps.squeeze(1).cpu().numpy()   # (N,H,W)
+        masks = masks.squeeze(1).cpu().numpy()  # (N,H,W)
+
+        anomalous = maps[masks > 0]
+        normal    = maps[masks == 0]
+
+        if len(anomalous) == 0 or len(normal) == 0:
+            return float("nan")
+
+        return float(anomalous.mean() / (normal.std() + 1e-8))
     def pixel_auroc(self):
         resutls_embeddings = self.anomaly_map_list[0]
         for feature in self.anomaly_map_list[1:]:
@@ -45,6 +64,10 @@ class Metric:
         return auroc_pixel
     
     def optimal_threshold(self):
+        if len(self.labels_list) == 0 or len(set(self.labels_list)) < 2:
+            print("[WARN] Skipping optimal_threshold — no image-level labels collected.")
+            self.threshold = 0.5  # dummy fallback
+            return
         fpr, tpr, thresholds = roc_curve(self.labels_list, self.predictions)
 
         # Calculate Youden's J statistic for each threshold

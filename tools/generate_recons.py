@@ -138,23 +138,37 @@ def run(cfg: Dict[str, Any]) -> None:
             print(f"MISSING: {img_path}")
             continue
 
-        x = image_to_tensor(img_path, device=device)
         sample_name = f"samples_{sid}"
         dirs = prepare_sample_dirs(
             out_root, sample_name, test_origin, bottom_suffix=cfg["bottom_suffix"],
         )
 
+        # Check if all seeds already exist
+        num_seeds = int(cfg["num_seeds"])
+        existing_recons = [(dirs["recon"] / f"{seed}_0_00000.png").exists() for seed in range(num_seeds)]
+        
+        if all(existing_recons):
+            print(f"[{sample_name}] Already fully sampled ({num_seeds} seeds). Skipping.")
+            continue
+
+        x = image_to_tensor(img_path, device=device)
+
         # label + input are the original image; some scorers read these.
         save_image_tensor(x[0], dirs["label"] / "0_00000.png")
         save_image_tensor(x[0], dirs["input"] / "0_00000.png")
 
-        print(f"[{sample_name}]  N={cfg['num_seeds']}")
-        for seed in range(int(cfg["num_seeds"])):
+        print(f"[{sample_name}]  N={num_seeds}")
+        for seed in range(num_seeds):
+            recon_path = dirs["recon"] / f"{seed}_0_00000.png"
+            if recon_path.exists():
+                continue  # skip individually generated seeds
+
             recon = sampler.sample(x, seed=seed)
-            save_image_tensor(recon, dirs["recon"] / f"{seed}_0_00000.png")
-            milestone = (seed + 1) % 5 == 0 or seed == int(cfg["num_seeds"]) - 1
+            save_image_tensor(recon, recon_path)
+            
+            milestone = (seed + 1) % 5 == 0 or seed == num_seeds - 1
             if milestone:
-                print(f"  seed {seed + 1}/{cfg['num_seeds']}")
+                print(f"  seed {seed + 1}/{num_seeds}")
 
     # Write σ + full metadata for downstream scorers and reproducibility.
     out_root.mkdir(parents=True, exist_ok=True)

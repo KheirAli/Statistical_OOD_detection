@@ -26,7 +26,7 @@ data:
     downsample_factor: 1    # faces GT is already 256x256 (cable was 1024x1024)
 
 embeddings:
-  backbone: resnet18
+  backbone: resnet101
   layers: [layer1, layer2, layer3]
   use_patch_context: true
   patchify_size: 3
@@ -56,7 +56,7 @@ scoring:
   lg_metric: typicality_unsigned
 
 eval:
-  delta_smooth_sigmas: [null, 5.0]
+  delta_smooth_sigmas: [null, 5.0,10.0, 20.0]
   sp_anomaly_threshold: 0.5
   save_plots: false
   output_dir: ./results_eval_faces

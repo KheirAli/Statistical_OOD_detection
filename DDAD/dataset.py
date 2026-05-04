@@ -47,25 +47,43 @@ class Dataset_maker(torch.utils.data.Dataset):
                 search_path = os.path.join(root, "*.png")
                 print(f"DEBUG: Searching for training images at: {search_path}")
 
+        # else:
+        #     if category:
+        #         # self.image_files = glob(os.path.join(root, category, "test", "*", "*.png"))
+        #         # Detect test subfolder: use config override if present, else try combined then random
+        #         test_subfolder = getattr(config.data, "test_subfolder", None)
+        #         if test_subfolder:
+        #             self.image_files = glob(os.path.join(root, category, "test", test_subfolder, "*.png"))
+        #             search_path = os.path.join(root, category, "test", test_subfolder, "*.png")
+        #         else:
+        #             # Try combined (cable), then random (faces), then wildcard
+        #             for sf in ["combined", "random"]:
+        #                 self.image_files = glob(os.path.join(root, category, "test", sf, "*.png"))
+        #                 if self.image_files:
+        #                     break
+        #             search_path = os.path.join(root, category, "test", "*", "*.png")
+        #         # search_path = os.path.join(root, "*.png")
+        #         print(f"DEBUG: Searching for test images at: {search_path}")
+        #     else:
+        #         self.image_files = glob(os.path.join(root, "test", "*", "*.png"))
         else:
-            if category:
-                # self.image_files = glob(os.path.join(root, category, "test", "*", "*.png"))
-                # Detect test subfolder: use config override if present, else try combined then random
-                test_subfolder = getattr(config.data, "test_subfolder", None)
-                if test_subfolder:
-                    self.image_files = glob(os.path.join(root, category, "test", test_subfolder, "*.png"))
-                    search_path = os.path.join(root, category, "test", test_subfolder, "*.png")
-                else:
-                    # Try combined (cable), then random (faces), then wildcard
-                    for sf in ["combined", "random"]:
-                        self.image_files = glob(os.path.join(root, category, "test", sf, "*.png"))
-                        if self.image_files:
-                            break
-                    search_path = os.path.join(root, category, "test", "*", "*.png")
-                # search_path = os.path.join(root, "*.png")
-                print(f"DEBUG: Searching for test images at: {search_path}")
+            test_subfolder = getattr(config.data, "test_subfolder", None)
+            if test_subfolder:
+                self.image_files = glob(os.path.join(root, category, "test", test_subfolder, "*.png"))
+                search_path = os.path.join(root, category, "test", test_subfolder, "*.png")
             else:
-                self.image_files = glob(os.path.join(root, "test", "*", "*.png"))
+                # Try specific subfolders first, then fall back to wildcard
+                self.image_files = []
+                for sf in ["combined", "random"]:
+                    self.image_files = glob(os.path.join(root, category, "test", sf, "*.png"))
+                    if self.image_files:
+                        break
+                # ↓ This was missing — the wildcard was only used for the debug print
+                if not self.image_files:
+                    self.image_files = glob(os.path.join(root, category, "test", "*", "*.png"))
+                search_path = os.path.join(root, category, "test", "*", "*.png")
+            print(f"DEBUG: Searching for test images at: {search_path}")
+            print(f"DEBUG: Found {len(self.image_files)} test images")
         self.is_train = is_train
 
     def __getitem__(self, index):

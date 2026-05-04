@@ -66,3 +66,36 @@ wandb/
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
+
+# Images / generated outputs
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tif
+*.tiff
+*.webp
+*.svg
+
+# Results / generated folders
+results*/
+figures*/
+outputs*/
+logs*/
+wandb/
+
+# Large ML/data files
+*.pt
+*.pth
+*.ckpt
+*.pkl
+*.npy
+*.npz
+*.h5
+*.hdf5
+
+# Python cache
+__pycache__/
+*.pyc
+.ipynb_checkpoints/

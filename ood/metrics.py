@@ -258,7 +258,7 @@ def evaluate_delta_map(
 
     # Pixel-level: optionally smooth delta_map
     if smooth_sigma is not None:
-        score_map_px = gaussian_filter(delta_map, sigma=smooth_sigma, mode="nearest")
+        score_map_px = gaussian_filter(np.nan_to_num(delta_map, nan=0.0), sigma=smooth_sigma, mode="nearest")
     else:
         score_map_px = delta_map.copy()
 
