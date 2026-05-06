@@ -175,7 +175,16 @@ def _run_single_sample(cfg):
                       sample_name=sample_name, test_origin=data_cfg["test_origin"],
                       bottom_suffix=data_cfg["bottom_suffix"])
     mask_path = os.path.join(figures_dir, "mask.png")
-
+    max_recon = cfg.get("sampling", {}).get("max_reconstructions", None)
+    if max_recon is not None:
+        n_total = len(recon_all)
+        if n_total > max_recon:
+            # idx = np.linspace(0, n_total - 1, max_recon, dtype=int) #fixed spacing
+            idx = np.sort(np.random.choice(n_total, max_recon, replace=False))
+            recon_all = recon_all[idx]
+            print(f"  Reconstructions: using {max_recon}/{n_total} (subsampled)")
+        else:
+            print(f"  Reconstructions: using all {n_total} (max_reconstructions={max_recon} not reached)")
     if not os.path.exists(mask_path):
         inp = os.path.join(data_cfg.get("image_dir", ""), f"{sample_id}.png")
 
@@ -410,8 +419,12 @@ def _run_single_sample(cfg):
             gt_mask_binary=gt_mask, anomaly_threshold=eval_cfg["sp_anomaly_threshold"],
             smooth_sigma=sigma, valid_mask=valid_mask)
         all_metrics[key] = result
+        psnr_str = f"{result['psnr']:.2f}" if np.isfinite(result.get('psnr', float('nan'))) else str(result.get('psnr', 'nan'))
+
         print(f"  [{key}] SP={result['sp_roc_auc']:.4f} Px={result['px_roc_auc']:.4f} "
-              f"SP_AP={result['sp_ap']:.4f} Px_AP={result['px_ap']:.4f} SNR={result['snr']:.2f}")
+            #   f"SP_AP={result['sp_ap']:.4f} Px_AP={result['px_ap']:.4f} SNR={result['snr']:.2f } PSNR={psnr_str}")
+            f"SP_AP={result['sp_ap']:.4f} Px_AP={result['px_ap']:.4f} SNR={result['snr']:.2f} PSNR={psnr_str}")
+
     return all_metrics
 
 
@@ -481,10 +494,12 @@ def _run_subcategory(base_cfg, category, subcategory, sample_names, output_dir):
                 "sp_ap":      float(np.mean([v["sp_ap"]       for v in vals])),
                 "px_ap":      float(np.mean([v["px_ap"]       for v in vals])),
                 "snr":        float(np.nanmean([v.get("snr", np.nan) for v in vals])),
+                "psnr":       float(np.nanmean([v.get("psnr", np.nan) for v in vals])),
+
             }
             a = averaged[key]
             print(f"    [{key}] SP={a['sp_roc_auc']:.4f} Px={a['px_roc_auc']:.4f} "
-                  f"SP_AP={a['sp_ap']:.4f} Px_AP={a['px_ap']:.4f} SNR={a['snr']:.2f}")
+                  f"SP_AP={a['sp_ap']:.4f} Px_AP={a['px_ap']:.4f} SNR={a['snr']:.2f} PSNR={_fmt_psnr(a['psnr'])}")
 
     os.makedirs(output_dir, exist_ok=True)
     ae_path = base_cfg["scoring"].get("autoencoder_path","")
@@ -518,20 +533,31 @@ def _summarize_category(all_subcat_results, category, output_dir, base_cfg):
                 "px_roc_auc":float(np.mean([v["px_roc_auc"] for v in vals])),
                 "sp_ap":float(np.mean([v["sp_ap"] for v in vals])),
                 "px_ap":float(np.mean([v["px_ap"] for v in vals])),
+                "psnr": float(np.nanmean([v.get("psnr", np.nan) for v in vals])),
                 "snr":float(np.nanmean([v.get("snr", np.nan) for v in vals]))})
             r = rows[-1]
             print(f"  {subcat:<22} [{key}]  SP={r['sp_roc_auc']:.4f}  "
                   f"Px={r['px_roc_auc']:.4f}  SP_AP={r['sp_ap']:.4f}  "
-                  f"Px_AP={r['px_ap']:.4f}  SNR={r['snr']:.2f} (n={r['n']})")
+                  f"Px_AP={r['px_ap']:.4f}  PSNR={_fmt_psnr(r['psnr'])} SNR={r['snr']:.2f} (n={r['n']})")
     if rows:
+        overall_psnr = np.nanmean([float(r.get('psnr', np.nan)) for r in rows 
+                           if np.isfinite(r.get('psnr', float('nan')))])
         print(f"\n  OVERALL  SP={np.mean([r['sp_roc_auc'] for r in rows]):.4f}  "
-              f"Px={np.mean([r['px_roc_auc'] for r in rows]):.4f} SNR={np.nanmean([float(r.get('snr', np.nan)) for r in rows]):.2f}")
+              f"Px={np.mean([r['px_roc_auc'] for r in rows]):.4f} SNR={np.nanmean([float(r.get('snr', np.nan)) for r in rows]):.2f}"
+              f"PSNR={_fmt_psnr(overall_psnr)}")
     ae_path = base_cfg["scoring"].get("autoencoder_path","")
     ae_tag  = f"ae_{os.path.splitext(os.path.basename(ae_path))[0]}_" if ae_path else ""
     jpath   = os.path.join(output_dir, f"{ae_tag}{category}_summary.json")
     with open(jpath,"w") as f:
         json.dump({"category":category,"rows":rows}, f, indent=2, default=str)
     print(f"Summary saved: {jpath}")
+
+def _fmt_psnr(v):
+    """Format PSNR safely — handles nan and inf."""
+    if v is None or (isinstance(v, float) and not np.isfinite(v)):
+        return str(v)
+    return f"{v:.2f}"
+
 def _save_heatmap(
     label_image,
     delta_map,
@@ -709,6 +735,9 @@ def main():
                    choices=["typical_set","local_gaussian"])
     p.add_argument("--sigma_rohan",       type=float, default=None)
     p.add_argument("--autoencoder_path",  default=None)
+    p.add_argument("--max_reconstructions", type=int, default=None,
+               help="Cap number of reconstructions used per sample (e.g. 8, 16). "
+                    "If None, uses all available.")
     
     args = p.parse_args()
 
@@ -730,6 +759,8 @@ def main():
     if args.gt_root:                  cfg["data"]["gt_root"]                   = args.gt_root
     if args.superpixel_target_size is not None:
         cfg.setdefault("superpixels", {})["target_size"] = args.superpixel_target_size
+    if args.max_reconstructions is not None:
+        cfg.setdefault("sampling", {})["max_reconstructions"] = args.max_reconstructions
     output_dir = cfg["eval"]["output_dir"]
     category   = args.category or cfg["data"].get("category","cable")
     sample_names = args.sample_names or ([args.sample_name] if args.sample_name else None)

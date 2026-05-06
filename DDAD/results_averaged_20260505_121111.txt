@@ -1,0 +1,8 @@
+DDAD Detection — Averaged Results
+Timestamp: 20260505_121111
+Seeds used: 42 123 456 789 1337 2024 99 7 314 2718 555 888 1000 2000 3000 4000 5000 6000 7000 8000
+
+Category: faces | Checkpoint: 2000 | N_seeds: 1
+  Pixel AUROC  [no data collected]
+  SNR          [no data collected]
+  ---

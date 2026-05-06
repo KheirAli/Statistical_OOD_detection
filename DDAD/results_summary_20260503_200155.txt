@@ -1,0 +1,23 @@
+DDAD Detection Results
+======================
+Class:  bottle    w: 2    v: 1    load_chp: 1000    feature extractor: wide_resnet101_2          w_DA:  3          DLlambda:  0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: CT   load_chp: 2000
+Detecting Anomalies...
+Loading checkpoint: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/combined/CT/2000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/CT/test/*/*.png
+DEBUG: Found 100 test images
+/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/sklearn/metrics/_ranking.py:424: UndefinedMetricWarning: Only one class is present in y_true. ROC AUC score is not defined in that case.
+  warnings.warn(
+[WARN] Skipping optimal_threshold — no image-level labels collected.
+AUROC: (nan,95.5)
+  Per-image pixel AUROC: n=100 defective images, skipped=0 good images
+Traceback (most recent call last):
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 285, in <module>
+    detection(config)
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 206, in detection
+    ddad()
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/ddad.py", line 78, in __call__
+    print('Per-image Pixel AUROC (mean): {:.1f}'.format(per_img_px_auroc * 100))
+TypeError: unsupported operand type(s) for *: 'NoneType' and 'int'
+Done: CT

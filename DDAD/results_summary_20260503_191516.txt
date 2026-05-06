@@ -1,0 +1,19 @@
+DDAD Detection Results
+======================
+Class:  bottle    w: 2    v: 1    load_chp: 1000    feature extractor: wide_resnet101_2          w_DA:  3          DLlambda:  0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: bottle   load_chp: 1000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/bottle/1000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/bottle/test/*/*.png
+DEBUG: Found 83 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:119: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:119: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+AUROC: (99.8,98.5)
+PRO: 90.7
+AUROC: (99.8,98.5)
+PRO: 90.7
+SNR: 5.8417
+Done: bottle

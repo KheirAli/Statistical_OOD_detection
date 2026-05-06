@@ -1,0 +1,31 @@
+DDAD Detection Results
+======================
+Class:  bottle    w: 2    v: 1    load_chp: 1000    feature extractor: resnet101          w_DA:  3          DLlambda:  0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: CT   load_chp: 2000
+Detecting Anomalies...
+Loading checkpoint: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/combined/CT/2000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/CT/test/*/*.png
+DEBUG: Found 100 test images
+/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/sklearn/metrics/_ranking.py:424: UndefinedMetricWarning: Only one class is present in y_true. ROC AUC score is not defined in that case.
+  warnings.warn(
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=2360
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=2544
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=1955
+[WARN] Skipping optimal_threshold — no image-level labels collected.
+AUROC: (nan,95.4)
+  Per-image pixel AUROC: n=100 defective, skipped=0 good/invalid images
+[(0, 0.9886025040415914), (1, 0.9587419280099869), (2, 0.9781023780476498), (3, 0.9901860509619554), (4, 0.9472759399885283), (5, 0.97872961391085), (6, 0.9778610585278265), (7, 0.9733050142060417), (8, 0.9725386001738154), (9, 0.9730549961996012), (10, 0.9571648277617555), (11, 0.9869245686233657), (12, 0.9846034857903339), (13, 0.9234365722624291), (14, 0.9724855117796984), (15, 0.8685907506483873), (16, 0.9738380416291164), (17, 0.9906447155600179), (18, 0.9915936350101283), (19, 0.9702355791966487), (20, 0.9603224305415162), (21, 0.9675625164243142), (22, 0.7852180241825782), (23, 0.9268402409741321), (24, 0.9722515089330364), (25, 0.9771560183506602), (26, 0.9712165424511584), (27, 0.989923212467932), (28, 0.9737600217478352), (29, 0.9868818626373003), (30, 0.9728825032781664), (31, 0.9848205301711639), (32, 0.9812853249939997), (33, 0.9706247864044492), (34, 0.952748385863261), (35, 0.978749378764175), (36, 0.9901834550260395), (37, 0.9830886251400165), (38, 0.9714356077370433), (39, 0.9957468490079152), (40, 0.9778533408007732), (41, 0.9838283225395239), (42, 0.9450486748564242), (43, 0.9869002567876165), (44, 0.9526073875177187), (45, 0.9844855815474627), (46, 0.967768588269147), (47, 0.9406958235476676), (48, 0.9761322076922188), (49, 0.987475068535641), (50, 0.9776477723327557), (51, 0.9871990305159835), (52, 0.9634921266505846), (53, 0.9507369096721555), (54, 0.9795465283842031), (55, 0.9907349366340099), (56, 0.9816045261496456), (57, 0.748145260739427), (58, 0.9929686251240645), (59, 0.9910492276795131), (60, 0.9758984601634155), (61, 0.987137836194951), (62, 0.944879120569247), (63, 0.9952650715552191), (64, 0.8307347365173005), (65, 0.9089034509751821), (66, 0.95388075229262), (67, 0.9860309344506444), (68, 0.9547197873839925), (69, 0.949288471150043), (70, 0.9920407450187246), (71, 0.9562595688708017), (72, 0.8880697474732933), (73, 0.9679758867274662), (74, 0.9850554721687548), (75, 0.9634075264692729), (76, 0.9796529345071573), (77, 0.9667954465582614), (78, 0.9805941526563235), (79, 0.981668069631633), (80, 0.9868637844693952), (81, 0.9468438566648647), (82, 0.9682243546328279), (83, 0.966809971871171), (84, 0.962376176636717), (85, 0.9708207544520272), (86, 0.9609579854232461), (87, 0.9758736955496797), (88, 0.95337322319881), (89, 0.995378729202208), (90, 0.9809282937854354), (91, 0.9655574310093208), (92, 0.9421147966191366), (93, 0.9395461505066862), (94, 0.9862768816191705), (95, 0.959555838084604), (96, 0.9013024744992918), (97, 0.9830669651357996), (98, 0.9667693423183018), (99, 0.9576298829108265)]
+  Individual scores: min=0.748, max=0.996, mean=0.963
+Per-image Pixel AUROC (mean): 96.3
+PRO: 82.5
+PRO: 82.5
+SNR: 4.4133
+Done: CT

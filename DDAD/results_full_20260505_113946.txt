@@ -1,0 +1,40 @@
+DDAD Detection — Full Log
+[SKIP] Not found: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/faces/faces/faces/2000
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: bottle   load_chp: 1000
+Detecting Anomalies...
+Loading checkpoint: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/combined/bottle/1000
+Traceback (most recent call last):
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 481, in <module>
+    detection(config)
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 402, in detection
+    checkpoint = torch.load(ckpt_path, map_location="cpu")
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 1530, in load
+    with _open_file_like(f, "rb") as opened_file:
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 795, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 776, in __init__
+    super().__init__(open(name, mode))  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: '/data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/combined/bottle/1000'
+    Done seed 42
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: bottle   load_chp: 1000
+Detecting Anomalies...
+Loading checkpoint: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/combined/bottle/1000
+Traceback (most recent call last):
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 481, in <module>
+    detection(config)
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 402, in detection
+    checkpoint = torch.load(ckpt_path, map_location="cpu")
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 1530, in load
+    with _open_file_like(f, "rb") as opened_file:
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 795, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 776, in __init__
+    super().__init__(open(name, mode))  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: '/data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/combined/bottle/1000'
+    Done seed 42

@@ -1,0 +1,53 @@
+==========================================
+  DDAD Detection — xray
+  Checkpoint : /data2/rohan/ckpts/DDAD/DvXray/MVTec/xray/500
+  Data       : /data/akheirandish3/mvtec_ad/xray
+  Seeds      : 42 123 456 789 1337 2024 99 7 314 2718
+==========================================
+
+-------- Seed 42 --------
+./run_one_category.sh: line 33: CUDA-VISIBLE-DEVICES=6: command not found
+  [WARN] Could not parse metrics for seed 42
+
+-------- Seed 123 --------
+./run_one_category.sh: line 33: CUDA-VISIBLE-DEVICES=6: command not found
+  [WARN] Could not parse metrics for seed 123
+
+-------- Seed 456 --------
+./run_one_category.sh: line 33: CUDA-VISIBLE-DEVICES=6: command not found
+  [WARN] Could not parse metrics for seed 456
+
+-------- Seed 789 --------
+./run_one_category.sh: line 33: CUDA-VISIBLE-DEVICES=6: command not found
+  [WARN] Could not parse metrics for seed 789
+
+-------- Seed 1337 --------
+./run_one_category.sh: line 33: CUDA-VISIBLE-DEVICES=6: command not found
+  [WARN] Could not parse metrics for seed 1337
+
+-------- Seed 2024 --------
+./run_one_category.sh: line 33: CUDA-VISIBLE-DEVICES=6: command not found
+  [WARN] Could not parse metrics for seed 2024
+
+-------- Seed 99 --------
+./run_one_category.sh: line 33: CUDA-VISIBLE-DEVICES=6: command not found
+  [WARN] Could not parse metrics for seed 99
+
+-------- Seed 7 --------
+./run_one_category.sh: line 33: CUDA-VISIBLE-DEVICES=6: command not found
+  [WARN] Could not parse metrics for seed 7
+
+-------- Seed 314 --------
+./run_one_category.sh: line 33: CUDA-VISIBLE-DEVICES=6: command not found
+  [WARN] Could not parse metrics for seed 314
+
+-------- Seed 2718 --------
+./run_one_category.sh: line 33: CUDA-VISIBLE-DEVICES=6: command not found
+  [WARN] Could not parse metrics for seed 2718
+Traceback (most recent call last):
+  File "<string>", line 13, in <module>
+  File "<string>", line 9, in stats
+ZeroDivisionError: division by zero
+
+Full log : results_xray_20260505_174148.txt
+Averages : results_xray_avg_20260505_174148.txt

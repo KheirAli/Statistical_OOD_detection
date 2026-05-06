@@ -1,0 +1,26 @@
+DDAD Detection Results
+======================
+WARNING:root:Feature extractor is not correctly selected, Default: wide_resnet101_2
+Class:  bottle    w: 2    v: 1    load_chp: 1000    feature extractor: resnet101          w_DA:  3          DLlambda:  0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: CT   load_chp: 2000
+Detecting Anomalies...
+Loading checkpoint: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/combined/CT/2000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/CT/test/*/*.png
+DEBUG: Found 100 test images
+/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/sklearn/metrics/_ranking.py:424: UndefinedMetricWarning: Only one class is present in y_true. ROC AUC score is not defined in that case.
+  warnings.warn(
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+[WARN] Skipping optimal_threshold — no image-level labels collected.
+AUROC: (nan,95.5)
+  Per-image pixel AUROC: n=100 defective, skipped=0 good/invalid images
+[(0, 0.9878094497617587), (1, 0.9797935247131485), (2, 0.981869301056014), (3, 0.9967978141067702), (4, 0.8753048780764568), (5, 0.9550112842906184), (6, 0.9763509179401293), (7, 0.9821695185068737), (8, 0.9677404133678388), (9, 0.977099714706083), (10, 0.9497401796704039), (11, 0.9928531879192137), (12, 0.9828850999652953), (13, 0.9144601008768681), (14, 0.9863222881232054), (15, 0.9236637048328027), (16, 0.9870924093954861), (17, 0.9537514348354698), (18, 0.9884451119641332), (19, 0.9747176855118319), (20, 0.9786656566483655), (21, 0.9790976547984407), (22, 0.7473660370219017), (23, 0.9544609213811288), (24, 0.9814116738063269), (25, 0.9779054906894415), (26, 0.981030645434927), (27, 0.9689062294975933), (28, 0.9849440284294702), (29, 0.9896429076777294), (30, 0.9879384552265548), (31, 0.9853188394045367), (32, 0.9861345040924739), (33, 0.9856574576641035), (34, 0.9582983845285253), (35, 0.9770491461320637), (36, 0.9787916488144298), (37, 0.992342645708273), (38, 0.9775039585853005), (39, 0.974724512198472), (40, 0.9827061209117969), (41, 0.9797816375494446), (42, 0.9553759405428176), (43, 0.9630458901876281), (44, 0.8766616546690986), (45, 0.9762873781386237), (46, 0.9771683865403864), (47, 0.9427621155113867), (48, 0.982527298936651), (49, 0.9936651206519421), (50, 0.9737207029449187), (51, 0.9846738556459242), (52, 0.9527638116282995), (53, 0.9667249474840257), (54, 0.9840298983289687), (55, 0.9921894390756598), (56, 0.9793900626730945), (57, 0.7515946407361715), (58, 0.9909044279967769), (59, 0.9889871140790035), (60, 0.987823234032548), (61, 0.9872124717276062), (62, 0.9569104469168023), (63, 0.9952592679366528), (64, 0.856811940723591), (65, 0.9641814954459645), (66, 0.9912863016578974), (67, 0.989470661708463), (68, 0.99350943888096), (69, 0.9603714963220428), (70, 0.9896980346687203), (71, 0.9534966582288118), (72, 0.8824199138628626), (73, 0.9798754345536685), (74, 0.9973961407845553), (75, 0.9761255103179188), (76, 0.9829084720184601), (77, 0.9601668856331815), (78, 0.9859807965732805), (79, 0.9870220159272003), (80, 0.9859392851738514), (81, 0.9696630075808653), (82, 0.9714805397827887), (83, 0.9721422954407314), (84, 0.9730758420861082), (85, 0.9771387456288444), (86, 0.9735752813905554), (87, 0.9804559382921879), (88, 0.956714334568651), (89, 0.999889480377814), (90, 0.966888082991152), (91, 0.9881219371851898), (92, 0.8344011262334396), (93, 0.9522721106954061), (94, 0.977941539557291), (95, 0.9499711332646494), (96, 0.8474800596493739), (97, 0.984543238503209), (98, 0.9856951282342319), (99, 0.9786583228969885)]
+  Individual scores: min=0.747, max=1.000, mean=0.965
+Per-image Pixel AUROC (mean): 96.5
+PRO: 81.9
+PRO: 81.9
+SNR: 5.4046
+Done: CT

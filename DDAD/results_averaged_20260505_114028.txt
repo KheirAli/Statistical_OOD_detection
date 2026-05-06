@@ -1,0 +1,50 @@
+DDAD Detection — Averaged Results
+Timestamp: 20260505_114028
+
+
+Category: faces | Checkpoint: 2000 | N_seeds: 20
+  ---
+
+Category: bottle | Checkpoint: 1000 | N_seeds: 20
+  ---
+
+Category: cable | Checkpoint: 3000 | N_seeds: 20
+  ---
+
+Category: capsule | Checkpoint: 1500 | N_seeds: 20
+  ---
+
+Category: carpet | Checkpoint: 2500 | N_seeds: 20
+  ---
+
+Category: grid | Checkpoint: 2000 | N_seeds: 20
+  ---
+
+Category: hazelnut | Checkpoint: 2000 | N_seeds: 20
+  ---
+
+Category: leather | Checkpoint: 2000 | N_seeds: 20
+  ---
+
+Category: metal_nut | Checkpoint: 3000 | N_seeds: 20
+  ---
+
+Category: pill | Checkpoint: 1000 | N_seeds: 20
+  ---
+
+Category: screw | Checkpoint: 2000 | N_seeds: 20
+  ---
+
+Category: tile | Checkpoint: 1000 | N_seeds: 20
+  ---
+
+Category: toothbrush | Checkpoint: 2000 | N_seeds: 20
+  ---
+
+Category: transistor | Checkpoint: 2000 | N_seeds: 20
+  ---
+
+Category: wood | Checkpoint: 2000 | N_seeds: 20
+  ---
+
+Category: zipper | Checkpoint: 1000 | N_seeds: 20

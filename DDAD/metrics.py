@@ -79,6 +79,78 @@ class Metric:
         self.threshold = optimal_threshold
         return optimal_threshold
     
+    def pixel_auroc_per_image_mean(self):
+        from sklearn.metrics import roc_auc_score
+        per_image_aurocs = []
+        skipped = 0
+
+        for amap, gt in zip(self.anomaly_map_list, self.gt_list):
+            gt_flat = gt.flatten().cpu().numpy().astype(int)
+
+            # Skip images with no defect pixels — AUROC undefined
+            if gt_flat.sum() == 0:
+                skipped += 1
+                continue
+
+            # Normalize per image independently
+            amap_np = amap.flatten().cpu().numpy().astype(np.float32)
+            mn, mx = amap_np.min(), amap_np.max()
+            amap_norm = (amap_np - mn) / (mx - mn + 1e-8)
+
+            try:
+                auroc_val = roc_auc_score(gt_flat, amap_np)
+                per_image_aurocs.append(auroc_val)
+            except Exception as e:
+                print(f"  [WARN] Skipping image: {e}")
+                skipped += 1
+
+        print(f"  Per-image pixel AUROC: n={len(per_image_aurocs)} defective, "
+            f"skipped={skipped} good/invalid images")
+        if not per_image_aurocs:
+            return float("nan")
+        print(list(enumerate(per_image_aurocs)))
+        print(f"  Individual scores: min={min(per_image_aurocs):.3f}, "
+            f"max={max(per_image_aurocs):.3f}, "
+            f"mean={np.mean(per_image_aurocs):.3f}")
+        return float(np.mean(per_image_aurocs))
+    # def pixel_auroc_per_image_mean(self):
+    #     """
+    #     Compute pixel AUROC independently for each image, then average.
+    #     Skips 'good' images (no positive GT pixels) since AUROC is undefined there.
+    #     """
+    #     from torchmetrics import AUROC as TM_AUROC
+    #     auroc_fn = TM_AUROC(task="binary")
+        
+    #     per_image_aurocs = []
+    #     skipped = 0
+
+    #     for amap, gt in zip(self.anomaly_map_list, self.gt_list):
+    #         gt_flat = gt.flatten().bool().cpu()
+            
+    #         # Skip images with no defect pixels (good images — AUROC undefined)
+    #         if gt_flat.sum() == 0:
+    #             skipped += 1
+    #             continue
+
+    #         # Normalize per image independently
+    #         mn, mx = amap.min(), amap.max()
+    #         amap_norm = (amap - mn) / (mx - mn + 1e-8)
+    #         scores_flat = amap_norm.flatten().cpu()
+
+    #         try:
+    #             auroc_val = auroc_fn(scores_flat, gt_flat).item()
+    #             per_image_aurocs.append(auroc_val)
+    #         except Exception as e:
+    #             skipped += 1
+
+    #     if not per_image_aurocs:
+    #         return float("nan")
+
+    #     mean_auroc = float(np.mean(per_image_aurocs))
+    #     print(list(enumerate(per_image_aurocs)))
+    #     print(f"  Per-image pixel AUROC: n={len(per_image_aurocs)} defective images, "
+    #         f"skipped={skipped} good images")
+    #     return mean_auroc
 
     def pixel_pro(self):
         #https://github.com/hq-deng/RD4AD/blob/main/test.py#L337

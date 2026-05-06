@@ -1,0 +1,5 @@
+DDAD Detection — Averaged Results
+Timestamp: 20260505_112936
+
+
+Category: faces | Checkpoint: 2000 | N_seeds: 20

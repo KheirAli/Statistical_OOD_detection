@@ -18,12 +18,14 @@ data :
 
 model:
   DDADS: False
-  # checkpoint_dir: checkpoints/MVTec   #MTD  #MVTec  #VisA
-  checkpoint_dir: /data/akherandish3/MVTec #MVTec #VisA #MTD
+  checkpoint_dir: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/combined   #CT
+  # checkpoint_dir: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/faces #faces
+  # checkpoint_dir: /data/akherandish3/MVTec #MVTec #VisA #MTD
   # checkpoint_name: /data/akheirandish3/PaDIS_results/DDAD/300 #faces
-  checkpoint_name: /data/akherandish3/MVTec/bottle/1000 #faces
+  checkpoint_name: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/combined #CT
+  # checkpoint_name: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/faces #faces
   exp_name: default
-  feature_extractor: wide_resnet101_2 #wide_resnet101_2  # wide_resnet50_2 #resnet50
+  feature_extractor: resnet101 #wide_resnet101_2 #wide_resnet101_2  # wide_resnet50_2 #resnet50
   learning_rate: 3e-4 
   weight_decay: 0.05
   epochs: 250

@@ -1,0 +1,58 @@
+DDAD Detection — Full Log
+Timestamp: 20260505_121111
+Seeds: 42 123 456 789 1337 2024 99 7 314 2718 555 888 1000 2000 3000 4000 5000 6000 7000 8000
+
+########################################
+# Category : faces
+# Checkpoint: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/faces/faces/2000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: faces   load_chp: 2000
+Detecting Anomalies...
+Loading checkpoint: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/combined/faces/2000
+Traceback (most recent call last):
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 481, in <module>
+    detection(config)
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 402, in detection
+    checkpoint = torch.load(ckpt_path, map_location="cpu")
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 1530, in load
+    with _open_file_like(f, "rb") as opened_file:
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 795, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 776, in __init__
+    super().__init__(open(name, mode))  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: '/data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/combined/faces/2000'
+  [WARN] Could not parse metrics for seed 42
+  ---- Done seed 42 ----
+
+  === N=10 seeds: 42 123 456 789 1337 2024 99 7 314 2718 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: faces   load_chp: 2000
+Detecting Anomalies...
+Loading checkpoint: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/combined/faces/2000
+Traceback (most recent call last):
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 481, in <module>
+    detection(config)
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 402, in detection
+    checkpoint = torch.load(ckpt_path, map_location="cpu")
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 1530, in load
+    with _open_file_like(f, "rb") as opened_file:
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 795, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 776, in __init__
+    super().__init__(open(name, mode))  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: '/data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/combined/faces/2000'
+  [WARN] Could not parse metrics for seed 42
+  ---- Done seed 42 ----
+
+  ---- Seed 123 ----

@@ -1,0 +1,9 @@
+DDAD Detection — Averaged Results
+Timestamp: 20260505_113946
+
+[SKIP] faces — checkpoint not found: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/faces/faces/faces/2000
+
+Category: bottle | Checkpoint: 1000 | N_seeds: 1
+  ---
+
+Category: bottle | Checkpoint: 1000 | N_seeds: 10

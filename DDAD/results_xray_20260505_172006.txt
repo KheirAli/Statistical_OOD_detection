@@ -1,0 +1,47 @@
+==========================================
+  DDAD Detection — xray
+  Checkpoint : /data2/rohan/ckpts/DDAD/DvXray/MVTec/xray/500
+  Data       : /data/akheirandish3/mvtec_ad/xray
+  Seeds      : 42 123 456 789 1337 2024 99 7 314 2718
+==========================================
+
+-------- Seed 42 --------
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: xray   load_chp: 500
+Checkpoint: /data2/rohan/ckpts/DDAD/DvXray/MVTec/xray/500
+Detecting Anomalies...
+Loading checkpoint: /data2/rohan/ckpts/DDAD/DvXray/MVTec/xray/500
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/xray/test/*/*.png
+DEBUG: Found 1032 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=0
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=0
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=0
+AUROC: (59.4,82.2)
+  Per-image pixel AUROC: n=32 defective, skipped=1000 good/invalid images
+[(0, 0.6427129568346086), (1, 0.8582583245306836), (2, 0.9107113777914592), (3, 0.8714483406007284), (4, 0.34314389703878295), (5, 0.9016994908093571), (6, 0.8658669507962782), (7, 0.7928079730879092), (8, 0.5048437959457922), (9, 0.5858144038629354), (10, 0.823440705979417), (11, 0.5970887844267861), (12, 0.7785680191146691), (13, 0.6760840443361299), (14, 0.5910023163806668), (15, 0.6114449601263808), (16, 0.6574331014114214), (17, 0.7771823096886561), (18, 0.8352764462602089), (19, 0.43754889571165756), (20, 0.8208574785702469), (21, 0.7278375735581737), (22, 0.6458155541559685), (23, 0.841422080008393), (24, 0.622869127969926), (25, 0.6385913021928594), (26, 0.6751051423679928), (27, 0.8683230774434001), (28, 0.9232495740379749), (29, 0.8413625973479533), (30, 0.7410051249332918), (31, 0.8020425203350979)]
+  Individual scores: min=0.343, max=0.923, mean=0.725
+Per-image Pixel AUROC (mean): 72.5
+PRO: 51.4
+PRO: 51.4
+SNR: 2.1141
+  → Pixel AUROC=72.5  SNR=2.1141
+
+-------- Seed 123 --------
+[Seed] 123
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: xray   load_chp: 500
+Checkpoint: /data2/rohan/ckpts/DDAD/DvXray/MVTec/xray/500
+Detecting Anomalies...
+Loading checkpoint: /data2/rohan/ckpts/DDAD/DvXray/MVTec/xray/500
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/xray/test/*/*.png
+DEBUG: Found 1032 test images

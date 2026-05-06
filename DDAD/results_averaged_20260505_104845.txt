@@ -1,0 +1,15 @@
+DDAD Detection — Averaged Results
+Timestamp: 20260505_104845
+
+
+Category: CT | Checkpoint: 2000 | N_seeds: 1
+  /home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/sklearn/metrics/_ranking.py  mean=424.0000  std=0.0000  (n=1)
+  pro                     mean=80.4000  std=0.0000  (n=2)
+  ---
+
+Category: CT | Checkpoint: 2000 | N_seeds: 10
+  /home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/sklearn/metrics/_ranking.py  mean=424.0000  std=0.0000  (n=10)
+  pro                     mean=81.6900  std=0.6750  (n=20)
+  ---
+
+Category: CT | Checkpoint: 2000 | N_seeds: 20

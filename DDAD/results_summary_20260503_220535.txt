@@ -1,0 +1,38 @@
+DDAD Detection Results
+======================
+Class:  bottle    w: 2    v: 1    load_chp: 1000    feature extractor: resnet101          w_DA:  3          DLlambda:  0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: faces   load_chp: 2000
+Detecting Anomalies...
+Loading checkpoint: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/faces/faces/2000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/faces/test/*/*.png
+DEBUG: Skipped 7 images — GT mask not found:
+        - /data/akheirandish3/mvtec_ad/faces/test/random/11.png
+        - /data/akheirandish3/mvtec_ad/faces/test/random/12.png
+        - /data/akheirandish3/mvtec_ad/faces/test/random/17.png
+        - /data/akheirandish3/mvtec_ad/faces/test/random/16.png
+        - /data/akheirandish3/mvtec_ad/faces/test/random/15.png
+        ... and 2 more
+DEBUG: Found 24 test images
+/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/sklearn/metrics/_ranking.py:424: UndefinedMetricWarning: Only one class is present in y_true. ROC AUC score is not defined in that case.
+  warnings.warn(
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=321
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=1170
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=1526
+[WARN] Skipping optimal_threshold — no image-level labels collected.
+AUROC: (nan,62.1)
+  Per-image pixel AUROC: n=24 defective, skipped=0 good/invalid images
+[(0, 0.4680898470943412), (1, 0.7218439655308156), (2, 0.7434276607657295), (3, 0.3523582200859715), (4, 0.8552170880760395), (5, 0.14783547534468985), (6, 0.836334639782958), (7, 0.636259692989397), (8, 0.9968803495961304), (9, 0.8002961565687225), (10, 0.8192331515154804), (11, 0.609622277526242), (12, 0.5032707964308983), (13, 0.9359429353136604), (14, 0.5607004575995036), (15, 0.5700522451455354), (16, 0.6477530428693757), (17, 0.3430059447513429), (18, 0.802372845965363), (19, 0.7136732209170502), (20, 0.8566170106095662), (21, 0.6197188636671797), (22, 0.8937238720374499), (23, 0.9052511303802122)]
+  Individual scores: min=0.148, max=0.997, mean=0.681
+Per-image Pixel AUROC (mean): 68.1
+PRO: 22.1
+PRO: 22.1
+SNR: 3.1135
+Done: faces

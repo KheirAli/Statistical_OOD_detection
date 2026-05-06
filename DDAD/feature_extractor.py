@@ -32,6 +32,9 @@ def domain_adaptation(unet, config, fine_tune):
     elif config.model.feature_extractor == 'resnet50': 
         feature_extractor = resnet50(pretrained=True)
         frozen_feature_extractor = resnet50(pretrained=True)
+    elif config.model.feature_extractor == "resnet101":
+        feature_extractor = resnet101(pretrained=True)
+        frozen_feature_extractor = resnet101(pretrained=True)
     else:
         logging.warning("Feature extractor is not correctly selected, Default: wide_resnet101_2")
         feature_extractor = wide_resnet101_2(pretrained=True)
@@ -127,6 +130,9 @@ def domain_adaptation(unet, config, fine_tune):
     elif config.model.feature_extractor == 'resnet50': 
         feature_extractor = resnet50(pretrained=True)
         frozen_feature_extractor = resnet50(pretrained=True)
+    elif config.model.feature_extractor == "resnet101":
+        feature_extractor = resnet101(pretrained=True)
+        frozen_feature_extractor = resnet101(pretrained=True)
     else:
         logging.warning("Feature extractor is not correctly selected, Default: wide_resnet101_2")
         feature_extractor = wide_resnet101_2(pretrained=True)

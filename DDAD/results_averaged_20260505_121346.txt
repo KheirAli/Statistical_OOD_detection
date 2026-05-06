@@ -1,0 +1,164 @@
+DDAD Detection — Averaged Results
+Timestamp: 20260505_121346
+Seeds used: 42 123 456 789 1337 2024 99 7 314 2718 555 888 1000 2000 3000 4000 5000 6000 7000 8000
+
+Category: faces | Checkpoint: 2000 | N_seeds: 1
+  Pixel AUROC  mean=68.0000  std=0.0000  (n=1)
+  Raw values : 68.0
+  SNR          mean=3.4055  std=0.0000  (n=1)
+  Raw values : 3.4055
+  ---
+
+Category: faces | Checkpoint: 2000 | N_seeds: 10
+  Pixel AUROC  mean=67.9000  std=1.9805  (n=10)
+  Raw values : 68.0 70.5 68.8 69.4 66.8 68.2 68.9 67.6 63.1 67.7
+  SNR          mean=3.2588  std=0.1214  (n=10)
+  Raw values : 3.4055 3.4867 3.1745 3.2124 3.2092 3.1985 3.1232 3.2099 3.1794 3.3885
+  ---
+
+Category: faces | Checkpoint: 2000 | N_seeds: 20
+  Pixel AUROC  mean=67.7050  std=2.0987  (n=20)
+  Raw values : 68.0 70.5 68.8 69.4 66.8 68.2 68.9 67.6 63.1 67.7 66.8 69.8 65.1 65.3 67.6 70.4 67.0 64.4 71.1 67.6
+  SNR          mean=3.2431  std=0.1202  (n=20)
+  Raw values : 3.4055 3.4867 3.1745 3.2124 3.2092 3.1985 3.1232 3.2099 3.1794 3.3885 3.2071 3.0878 3.0713 3.2571 3.2865 3.2457 3.3255 3.2160 3.4768 3.1003
+  ---
+
+Category: bottle | Checkpoint: 1000 | N_seeds: 1
+  Pixel AUROC  mean=99.2000  std=0.0000  (n=1)
+  Raw values : 99.2
+  SNR          mean=5.8185  std=0.0000  (n=1)
+  Raw values : 5.8185
+  ---
+
+Category: bottle | Checkpoint: 1000 | N_seeds: 10
+  Pixel AUROC  mean=99.1300  std=0.0483  (n=10)
+  Raw values : 99.2 99.1 99.1 99.1 99.1 99.2 99.1 99.1 99.1 99.2
+  SNR          mean=5.7809  std=0.0368  (n=10)
+  Raw values : 5.8185 5.7240 5.7488 5.7863 5.7498 5.8059 5.7826 5.7573 5.8461 5.7902
+  ---
+
+Category: bottle | Checkpoint: 1000 | N_seeds: 20
+  Pixel AUROC  mean=99.1250  std=0.0444  (n=20)
+  Raw values : 99.2 99.1 99.1 99.1 99.1 99.2 99.1 99.1 99.1 99.2 99.1 99.2 99.1 99.1 99.1 99.1 99.1 99.1 99.1 99.2
+  SNR          mean=5.7719  std=0.0346  (n=20)
+  Raw values : 5.8185 5.7240 5.7488 5.7863 5.7498 5.8059 5.7826 5.7573 5.8461 5.7902 5.7303 5.7955 5.7394 5.7582 5.7975 5.7721 5.7108 5.7427 5.8024 5.7800
+  ---
+
+Category: cable | Checkpoint: 3000 | N_seeds: 1
+  Pixel AUROC  mean=97.6000  std=0.0000  (n=1)
+  Raw values : 97.6
+  SNR          mean=6.1534  std=0.0000  (n=1)
+  Raw values : 6.1534
+  ---
+
+Category: cable | Checkpoint: 3000 | N_seeds: 10
+  Pixel AUROC  mean=97.5200  std=0.0789  (n=10)
+  Raw values : 97.6 97.5 97.4 97.5 97.5 97.7 97.5 97.5 97.5 97.5
+  SNR          mean=6.2108  std=0.0722  (n=10)
+  Raw values : 6.1534 6.1730 6.2520 6.3020 6.1967 6.3518 6.1506 6.1284 6.2277 6.1726
+  ---
+
+Category: cable | Checkpoint: 3000 | N_seeds: 20
+  Pixel AUROC  mean=97.5000  std=0.0858  (n=20)
+  Raw values : 97.6 97.5 97.4 97.5 97.5 97.7 97.5 97.5 97.5 97.5 97.5 97.6 97.4 97.3 97.6 97.5 97.4 97.5 97.5 97.5
+  SNR          mean=6.1849  std=0.0729  (n=20)
+  Raw values : 6.1534 6.1730 6.2520 6.3020 6.1967 6.3518 6.1506 6.1284 6.2277 6.1726 6.2094 6.1527 6.1621 6.1588 6.2462 6.1799 6.0140 6.2309 6.1066 6.1295
+  ---
+
+Category: capsule | Checkpoint: 1500 | N_seeds: 1
+  Pixel AUROC  mean=80.2000  std=0.0000  (n=1)
+  Raw values : 80.2
+  SNR          mean=4.4152  std=0.0000  (n=1)
+  Raw values : 4.4152
+  ---
+
+Category: capsule | Checkpoint: 1500 | N_seeds: 10
+  Pixel AUROC  mean=80.7600  std=0.3893  (n=10)
+  Raw values : 80.2 80.6 81.5 80.9 80.6 80.7 80.9 81.2 80.3 80.7
+  SNR          mean=4.4394  std=0.0375  (n=10)
+  Raw values : 4.4152 4.3596 4.4490 4.4405 4.5099 4.4566 4.4405 4.4270 4.4513 4.4449
+  ---
+
+Category: capsule | Checkpoint: 1500 | N_seeds: 20
+  Pixel AUROC  mean=80.9100  std=0.4025  (n=20)
+  Raw values : 80.2 80.6 81.5 80.9 80.6 80.7 80.9 81.2 80.3 80.7 80.7 80.8 81.1 80.8 81.5 81.0 81.3 81.7 81.2 80.5
+  SNR          mean=4.4355  std=0.0471  (n=20)
+  Raw values : 4.4152 4.3596 4.4490 4.4405 4.5099 4.4566 4.4405 4.4270 4.4513 4.4449 4.3673 4.3684 4.5307 4.3909 4.4161 4.3916 4.4818 4.4630 4.4941 4.4123
+  ---
+
+Category: carpet | Checkpoint: 2500 | N_seeds: 1
+  Pixel AUROC  mean=99.2000  std=0.0000  (n=1)
+  Raw values : 99.2
+  SNR          mean=7.7827  std=0.0000  (n=1)
+  Raw values : 7.7827
+  ---
+
+Category: carpet | Checkpoint: 2500 | N_seeds: 10
+  Pixel AUROC  mean=99.2000  std=0.0000  (n=10)
+  Raw values : 99.2 99.2 99.2 99.2 99.2 99.2 99.2 99.2 99.2 99.2
+  SNR          mean=7.7515  std=0.0540  (n=10)
+  Raw values : 7.7827 7.7170 7.7912 7.7464 7.7947 7.7336 7.8500 7.6656 7.7379 7.6962
+  ---
+
+Category: carpet | Checkpoint: 2500 | N_seeds: 20
+  Pixel AUROC  mean=99.2000  std=0.0000  (n=20)
+  Raw values : 99.2 99.2 99.2 99.2 99.2 99.2 99.2 99.2 99.2 99.2 99.2 99.2 99.2 99.2 99.2 99.2 99.2 99.2 99.2 99.2
+  SNR          mean=7.7508  std=0.0478  (n=20)
+  Raw values : 7.7827 7.7170 7.7912 7.7464 7.7947 7.7336 7.8500 7.6656 7.7379 7.6962 7.7089 7.6958 7.7195 7.6908 7.7764 7.8041 7.7736 7.7970 7.7438 7.7910
+  ---
+
+Category: grid | Checkpoint: 2000 | N_seeds: 1
+  Pixel AUROC  mean=99.2000  std=0.0000  (n=1)
+  Raw values : 99.2
+  SNR          mean=6.4776  std=0.0000  (n=1)
+  Raw values : 6.4776
+  ---
+
+Category: grid | Checkpoint: 2000 | N_seeds: 10
+  Pixel AUROC  mean=99.2000  std=0.0000  (n=10)
+  Raw values : 99.2 99.2 99.2 99.2 99.2 99.2 99.2 99.2 99.2 99.2
+  SNR          mean=6.4918  std=0.0222  (n=10)
+  Raw values : 6.4776 6.4943 6.4909 6.4721 6.4830 6.4713 6.5140 6.5278 6.4657 6.5210
+  ---
+
+Category: grid | Checkpoint: 2000 | N_seeds: 20
+  Pixel AUROC  mean=99.2000  std=0.0000  (n=20)
+  Raw values : 99.2 99.2 99.2 99.2 99.2 99.2 99.2 99.2 99.2 99.2 99.2 99.2 99.2 99.2 99.2 99.2 99.2 99.2 99.2 99.2
+  SNR          mean=6.4935  std=0.0186  (n=20)
+  Raw values : 6.4776 6.4943 6.4909 6.4721 6.4830 6.4713 6.5140 6.5278 6.4657 6.5210 6.5137 6.4758 6.4752 6.5187 6.4960 6.4929 6.5102 6.4975 6.4870 6.4859
+  ---
+
+Category: hazelnut | Checkpoint: 2000 | N_seeds: 1
+  Pixel AUROC  mean=98.8000  std=0.0000  (n=1)
+  Raw values : 98.8
+  SNR          mean=6.3065  std=0.0000  (n=1)
+  Raw values : 6.3065
+  ---
+
+Category: hazelnut | Checkpoint: 2000 | N_seeds: 10
+  Pixel AUROC  mean=98.8300  std=0.0483  (n=10)
+  Raw values : 98.8 98.8 98.8 98.9 98.8 98.9 98.8 98.9 98.8 98.8
+  SNR          mean=6.3064  std=0.0255  (n=10)
+  Raw values : 6.3065 6.2977 6.2945 6.3244 6.2738 6.3010 6.3583 6.2713 6.3187 6.3175
+  ---
+
+Category: hazelnut | Checkpoint: 2000 | N_seeds: 20
+  Pixel AUROC  mean=98.8200  std=0.0410  (n=20)
+  Raw values : 98.8 98.8 98.8 98.9 98.8 98.9 98.8 98.9 98.8 98.8 98.8 98.8 98.8 98.9 98.8 98.8 98.8 98.8 98.8 98.8
+  SNR          mean=6.2992  std=0.0304  (n=20)
+  Raw values : 6.3065 6.2977 6.2945 6.3244 6.2738 6.3010 6.3583 6.2713 6.3187 6.3175 6.3168 6.2839 6.2384 6.2328 6.2811 6.3184 6.3198 6.3242 6.3225 6.2834
+  ---
+
+Category: leather | Checkpoint: 2000 | N_seeds: 1
+  Pixel AUROC  mean=99.5000  std=0.0000  (n=1)
+  Raw values : 99.5
+  SNR          mean=8.9081  std=0.0000  (n=1)
+  Raw values : 8.9081
+  ---
+
+Category: leather | Checkpoint: 2000 | N_seeds: 10
+  Pixel AUROC  mean=99.5700  std=0.0483  (n=10)
+  Raw values : 99.5 99.6 99.6 99.6 99.6 99.6 99.5 99.6 99.5 99.6
+  SNR          mean=8.8304  std=0.0759  (n=10)
+  Raw values : 8.9081 8.8170 8.7984 8.8516 8.8964 8.9580 8.7160 8.8136 8.7312 8.8139
+  ---
