@@ -1,0 +1,27 @@
+DDAD Detection — Full Log
+Timestamp: 20260506_120951
+Seeds: 42
+
+########################################
+# Category : cable
+# Checkpoint: /data/akherandish3/MVTec/cable/3000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: cable   load_chp: 3000
+Checkpoint: /data/akherandish3/MVTec/cable/3000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/cable/3000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/cable/test/*/*.png
+DEBUG: Found 11 test images
+/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/sklearn/metrics/_ranking.py:424: UndefinedMetricWarning: Only one class is present in y_true. ROC AUC score is not defined in that case.
+  warnings.warn(
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)

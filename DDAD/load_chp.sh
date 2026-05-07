@@ -380,13 +380,13 @@ CONFIG="config.yaml"
 DDAD_CKPT_BASE="/data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec"
 MVTEC_CKPT_BASE="/data/akherandish3/MVTec"
 
-ALL_SEEDS=(42 123 456 789 1337 2024 99 7 314 2718 555 888 1000 2000 3000 4000 5000 6000 7000 8000)
-SEED_COUNTS=(1 10 20)
+ALL_SEEDS=(42)
+SEED_COUNTS=(1)
 
 CATEGORIES=(
     # "CT:2000:${DDAD_CKPT_BASE}/combined"
-    "faces:2000:${DDAD_CKPT_BASE}/faces"
-    "bottle:1000:${MVTEC_CKPT_BASE}"
+    # "faces:2000:${DDAD_CKPT_BASE}/faces"
+    # "bottle:1000:${MVTEC_CKPT_BASE}"
     "cable:3000:${MVTEC_CKPT_BASE}"
     "capsule:1500:${MVTEC_CKPT_BASE}"
     "carpet:2500:${MVTEC_CKPT_BASE}"

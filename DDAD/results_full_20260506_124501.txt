@@ -1,0 +1,12 @@
+DDAD Detection — Full Log
+Timestamp: 20260506_124501
+Seeds: 42
+
+########################################
+# Category : CT
+# Checkpoint: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/combined/CT/2000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----

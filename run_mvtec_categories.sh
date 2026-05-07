@@ -267,30 +267,30 @@ declare -A CATEGORY_SIGMA_ROHAN=(
 
 # ── Which categories to run ────────────────────────────────────────────────
 CATEGORIES=(
-  bottle
+#   bottle
   cable
-  capsule
-  carpet
-  grid
-  hazelnut
-  leather
-  metal_nut
-  pill
-  screw
-  tile
-  toothbrush
-  transistor
-  wood
-  zipper
-  faces
-  xray
-  CT
+#   capsule
+#   carpet
+#   grid
+#   hazelnut
+#   leather
+#   metal_nut
+#   pill
+#   screw
+#   tile
+#   toothbrush
+#   transistor
+#   wood
+#   zipper
+#   faces
+#   xray
+#   CT
 )
 
 # ── Ablation values ────────────────────────────────────────────────────────
 # MAX_RECON_VALUES=(1 10 20 40)
 # MAX_RECON_VALUES=(1)
-SUPERPIXEL_TARGET_SIZES=(20 30 70 100 200)
+SUPERPIXEL_TARGET_SIZES=(30)
 # ── Shared eval hyperparameters ────────────────────────────────────────────
 N_PCA=3
 BINS_PCA=32
@@ -360,6 +360,7 @@ for CATEGORY in "${CATEGORIES[@]}"; do
             --autoencoder_path        "${AE_PATH}" \
             --max_reconstructions     "${MAX_RECON}" \
             --output_dir              "${OUTPUT_DIR}" \
+            --max_samples 10 \
             ${SUFFIX_FLAG} \
             ${SIGMA_FLAG}
 

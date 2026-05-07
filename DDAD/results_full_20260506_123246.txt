@@ -1,0 +1,250 @@
+DDAD Detection — Full Log
+Timestamp: 20260506_123246
+Seeds: 42
+
+########################################
+# Category : CT
+# Checkpoint: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/combined/CT/2000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: CT   load_chp: 2000
+Checkpoint: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/combined/CT/2000
+Detecting Anomalies...
+Loading checkpoint: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/combined/CT/2000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/CT/test/*/*.png
+DEBUG: Found 100 test images
+/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/sklearn/metrics/_ranking.py:424: UndefinedMetricWarning: Only one class is present in y_true. ROC AUC score is not defined in that case.
+  warnings.warn(
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=335
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=705
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=489
+[WARN] Skipping optimal_threshold — no image-level labels collected.
+AUROC: (nan,96.3)
+  Per-image pixel AUROC: n=100 defective, skipped=0 good/invalid images
+[(0, 0.9952429994320662), (1, 0.9708749896484815), (2, 0.983621061417192), (3, 0.9769381127624561), (4, 0.9572599374305464), (5, 0.9951829454039227), (6, 0.9953341642891708), (7, 0.962294233384299), (8, 0.9911576657714366), (9, 0.8682586471163625), (10, 0.9866140194148665), (11, 0.9867037160457484), (12, 0.9982259258056289), (13, 0.9423369808253076), (14, 0.9750741402212727), (15, 0.8445646206994275), (16, 0.9487020964885062), (17, 0.9871992179359884), (18, 0.9874181970327099), (19, 0.9832428477027212), (20, 0.8042030376533784), (21, 0.9447331589943194), (22, 0.9183799884711681), (23, 0.9570559312926978), (24, 0.9513689110940011), (25, 0.9892457582940792), (26, 0.9937122496504026), (27, 0.9863893978195528), (28, 0.986511737408944), (29, 0.9938262446131497), (30, 0.9586922411712531), (31, 0.9892033577492582), (32, 0.9608161415164348), (33, 0.9881701430360202), (34, 0.9951654391501177), (35, 0.8633093748636252), (36, 0.9967091349562963), (37, 0.9958803750655671), (38, 0.9410899604694647), (39, 0.9975521745225195), (40, 0.983302833958071), (41, 0.9925742655485956), (42, 0.9792787073460921), (43, 0.9609831046455198), (44, 0.9307676367165821), (45, 0.9816835844962034), (46, 0.9395635270994762), (47, 0.992000032566159), (48, 0.9757930745069116), (49, 0.9322733364006093), (50, 0.9396158075993292), (51, 0.989210352937587), (52, 0.9861289063871086), (53, 0.9515811906491153), (54, 0.9480660910657319), (55, 0.9943359734458395), (56, 0.9950363354162005), (57, 0.899247511397623), (58, 0.9961295207435221), (59, 0.9958618044644708), (60, 0.9826545623770945), (61, 0.994656490189459), (62, 0.9900392440717142), (63, 0.9962945264264653), (64, 0.9662884699146695), (65, 0.9201446046223553), (66, 0.9577990204351275), (67, 0.9934577851172516), (68, 0.9578447164367709), (69, 0.9787035950933393), (70, 0.993876752641561), (71, 0.9879778554392887), (72, 0.9208986018020809), (73, 0.9618486331556165), (74, 0.9730914441980426), (75, 0.9371774345985471), (76, 0.9835435283979851), (77, 0.9911730928033762), (78, 0.9729041803488356), (79, 0.9930459951542683), (80, 0.996554452821076), (81, 0.9367492565266158), (82, 0.9922954526059586), (83, 0.9582920879128813), (84, 0.944734948357056), (85, 0.9721024380315895), (86, 0.7599044662525045), (87, 0.9191734907118706), (88, 0.9581580137628178), (89, 0.9989833308904849), (90, 0.9529804799748562), (91, 0.9488834360944574), (92, 0.922318667082189), (93, 0.9883734009962086), (94, 0.9750078943460881), (95, 0.998796912093501), (96, 0.936020230138323), (97, 0.9941734301520664), (98, 0.9367295394689032), (99, 0.9790097008265963)]
+  Individual scores: min=0.760, max=0.999, mean=0.964
+Per-image Pixel AUROC (mean): 96.4
+PRO: 84.2
+PRO: 84.2
+SNR: 4.6176
+  [overlay] results/CTsample0_overlay.png
+  [overlay] results/CTsample0_composite.png
+  [overlay] results/CTsample1_overlay.png
+  [overlay] results/CTsample1_composite.png
+  [overlay] results/CTsample2_overlay.png
+  [overlay] results/CTsample2_composite.png
+  [overlay] results/CTsample3_overlay.png
+  [overlay] results/CTsample3_composite.png
+  [overlay] results/CTsample4_overlay.png
+  [overlay] results/CTsample4_composite.png
+  [overlay] results/CTsample5_overlay.png
+  [overlay] results/CTsample5_composite.png
+  [overlay] results/CTsample6_overlay.png
+  [overlay] results/CTsample6_composite.png
+  [overlay] results/CTsample7_overlay.png
+  [overlay] results/CTsample7_composite.png
+  [overlay] results/CTsample8_overlay.png
+  [overlay] results/CTsample8_composite.png
+  [overlay] results/CTsample9_overlay.png
+  [overlay] results/CTsample9_composite.png
+  [overlay] results/CTsample10_overlay.png
+  [overlay] results/CTsample10_composite.png
+  [overlay] results/CTsample11_overlay.png
+  [overlay] results/CTsample11_composite.png
+  [overlay] results/CTsample12_overlay.png
+  [overlay] results/CTsample12_composite.png
+  [overlay] results/CTsample13_overlay.png
+  [overlay] results/CTsample13_composite.png
+  [overlay] results/CTsample14_overlay.png
+  [overlay] results/CTsample14_composite.png
+  [overlay] results/CTsample15_overlay.png
+  [overlay] results/CTsample15_composite.png
+  [overlay] results/CTsample16_overlay.png
+  [overlay] results/CTsample16_composite.png
+  [overlay] results/CTsample17_overlay.png
+  [overlay] results/CTsample17_composite.png
+  [overlay] results/CTsample18_overlay.png
+  [overlay] results/CTsample18_composite.png
+  [overlay] results/CTsample19_overlay.png
+  [overlay] results/CTsample19_composite.png
+  [overlay] results/CTsample20_overlay.png
+  [overlay] results/CTsample20_composite.png
+  [overlay] results/CTsample21_overlay.png
+  [overlay] results/CTsample21_composite.png
+  [overlay] results/CTsample22_overlay.png
+  [overlay] results/CTsample22_composite.png
+  [overlay] results/CTsample23_overlay.png
+  [overlay] results/CTsample23_composite.png
+  [overlay] results/CTsample24_overlay.png
+  [overlay] results/CTsample24_composite.png
+  [overlay] results/CTsample25_overlay.png
+  [overlay] results/CTsample25_composite.png
+  [overlay] results/CTsample26_overlay.png
+  [overlay] results/CTsample26_composite.png
+  [overlay] results/CTsample27_overlay.png
+  [overlay] results/CTsample27_composite.png
+  [overlay] results/CTsample28_overlay.png
+  [overlay] results/CTsample28_composite.png
+  [overlay] results/CTsample29_overlay.png
+  [overlay] results/CTsample29_composite.png
+  [overlay] results/CTsample30_overlay.png
+  [overlay] results/CTsample30_composite.png
+  [overlay] results/CTsample31_overlay.png
+  [overlay] results/CTsample31_composite.png
+  [overlay] results/CTsample32_overlay.png
+  [overlay] results/CTsample32_composite.png
+  [overlay] results/CTsample33_overlay.png
+  [overlay] results/CTsample33_composite.png
+  [overlay] results/CTsample34_overlay.png
+  [overlay] results/CTsample34_composite.png
+  [overlay] results/CTsample35_overlay.png
+  [overlay] results/CTsample35_composite.png
+  [overlay] results/CTsample36_overlay.png
+  [overlay] results/CTsample36_composite.png
+  [overlay] results/CTsample37_overlay.png
+  [overlay] results/CTsample37_composite.png
+  [overlay] results/CTsample38_overlay.png
+  [overlay] results/CTsample38_composite.png
+  [overlay] results/CTsample39_overlay.png
+  [overlay] results/CTsample39_composite.png
+  [overlay] results/CTsample40_overlay.png
+  [overlay] results/CTsample40_composite.png
+  [overlay] results/CTsample41_overlay.png
+  [overlay] results/CTsample41_composite.png
+  [overlay] results/CTsample42_overlay.png
+  [overlay] results/CTsample42_composite.png
+  [overlay] results/CTsample43_overlay.png
+  [overlay] results/CTsample43_composite.png
+  [overlay] results/CTsample44_overlay.png
+  [overlay] results/CTsample44_composite.png
+  [overlay] results/CTsample45_overlay.png
+  [overlay] results/CTsample45_composite.png
+  [overlay] results/CTsample46_overlay.png
+  [overlay] results/CTsample46_composite.png
+  [overlay] results/CTsample47_overlay.png
+  [overlay] results/CTsample47_composite.png
+  [overlay] results/CTsample48_overlay.png
+  [overlay] results/CTsample48_composite.png
+  [overlay] results/CTsample49_overlay.png
+  [overlay] results/CTsample49_composite.png
+  [overlay] results/CTsample50_overlay.png
+  [overlay] results/CTsample50_composite.png
+  [overlay] results/CTsample51_overlay.png
+  [overlay] results/CTsample51_composite.png
+  [overlay] results/CTsample52_overlay.png
+  [overlay] results/CTsample52_composite.png
+  [overlay] results/CTsample53_overlay.png
+  [overlay] results/CTsample53_composite.png
+  [overlay] results/CTsample54_overlay.png
+  [overlay] results/CTsample54_composite.png
+  [overlay] results/CTsample55_overlay.png
+  [overlay] results/CTsample55_composite.png
+  [overlay] results/CTsample56_overlay.png
+  [overlay] results/CTsample56_composite.png
+  [overlay] results/CTsample57_overlay.png
+  [overlay] results/CTsample57_composite.png
+  [overlay] results/CTsample58_overlay.png
+  [overlay] results/CTsample58_composite.png
+  [overlay] results/CTsample59_overlay.png
+  [overlay] results/CTsample59_composite.png
+  [overlay] results/CTsample60_overlay.png
+  [overlay] results/CTsample60_composite.png
+  [overlay] results/CTsample61_overlay.png
+  [overlay] results/CTsample61_composite.png
+  [overlay] results/CTsample62_overlay.png
+  [overlay] results/CTsample62_composite.png
+  [overlay] results/CTsample63_overlay.png
+  [overlay] results/CTsample63_composite.png
+  [overlay] results/CTsample64_overlay.png
+  [overlay] results/CTsample64_composite.png
+  [overlay] results/CTsample65_overlay.png
+  [overlay] results/CTsample65_composite.png
+  [overlay] results/CTsample66_overlay.png
+  [overlay] results/CTsample66_composite.png
+  [overlay] results/CTsample67_overlay.png
+  [overlay] results/CTsample67_composite.png
+  [overlay] results/CTsample68_overlay.png
+  [overlay] results/CTsample68_composite.png
+  [overlay] results/CTsample69_overlay.png
+  [overlay] results/CTsample69_composite.png
+  [overlay] results/CTsample70_overlay.png
+  [overlay] results/CTsample70_composite.png
+  [overlay] results/CTsample71_overlay.png
+  [overlay] results/CTsample71_composite.png
+  [overlay] results/CTsample72_overlay.png
+  [overlay] results/CTsample72_composite.png
+  [overlay] results/CTsample73_overlay.png
+  [overlay] results/CTsample73_composite.png
+  [overlay] results/CTsample74_overlay.png
+  [overlay] results/CTsample74_composite.png
+  [overlay] results/CTsample75_overlay.png
+  [overlay] results/CTsample75_composite.png
+  [overlay] results/CTsample76_overlay.png
+  [overlay] results/CTsample76_composite.png
+  [overlay] results/CTsample77_overlay.png
+  [overlay] results/CTsample77_composite.png
+  [overlay] results/CTsample78_overlay.png
+  [overlay] results/CTsample78_composite.png
+  [overlay] results/CTsample79_overlay.png
+  [overlay] results/CTsample79_composite.png
+  [overlay] results/CTsample80_overlay.png
+  [overlay] results/CTsample80_composite.png
+  [overlay] results/CTsample81_overlay.png
+  [overlay] results/CTsample81_composite.png
+  [overlay] results/CTsample82_overlay.png
+  [overlay] results/CTsample82_composite.png
+  [overlay] results/CTsample83_overlay.png
+  [overlay] results/CTsample83_composite.png
+  [overlay] results/CTsample84_overlay.png
+  [overlay] results/CTsample84_composite.png
+  [overlay] results/CTsample85_overlay.png
+  [overlay] results/CTsample85_composite.png
+  [overlay] results/CTsample86_overlay.png
+  [overlay] results/CTsample86_composite.png
+  [overlay] results/CTsample87_overlay.png
+  [overlay] results/CTsample87_composite.png
+  [overlay] results/CTsample88_overlay.png
+  [overlay] results/CTsample88_composite.png
+  [overlay] results/CTsample89_overlay.png
+  [overlay] results/CTsample89_composite.png
+  [overlay] results/CTsample90_overlay.png
+  [overlay] results/CTsample90_composite.png
+  [overlay] results/CTsample91_overlay.png
+  [overlay] results/CTsample91_composite.png
+  [overlay] results/CTsample92_overlay.png
+  [overlay] results/CTsample92_composite.png
+  [overlay] results/CTsample93_overlay.png
+  [overlay] results/CTsample93_composite.png
+  [overlay] results/CTsample94_overlay.png
+  [overlay] results/CTsample94_composite.png
+  [overlay] results/CTsample95_overlay.png
+  [overlay] results/CTsample95_composite.png
+  [overlay] results/CTsample96_overlay.png
+  [overlay] results/CTsample96_composite.png
+  [overlay] results/CTsample97_overlay.png
+  [overlay] results/CTsample97_composite.png
+  [overlay] results/CTsample98_overlay.png
+  [overlay] results/CTsample98_composite.png
+  [overlay] results/CTsample99_overlay.png
+  [overlay] results/CTsample99_composite.png
+  [parsed] Pixel AUROC=96.4  SNR=4.6176
+  ---- Done seed 42 ----
+
+========================================
+All done.
+  Full output : results_full_20260506_123246.txt
+  Averages    : results_averaged_20260506_123246.txt
+========================================

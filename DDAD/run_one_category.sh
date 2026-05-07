@@ -4,9 +4,9 @@ CONFIG="config.yaml"
 CATEGORY="xray"
 LOAD_CHP="500"
 CHECKPOINT_DIR="/data2/rohan/ckpts/DDAD/DvXray/MVTec"
-DATA_PATH="/data/akheirandish3/mvtec_ad"
+DATA_PATH="/data/akheirandish3/mvtec_ad/xray/test"
 
-SEEDS=(42 123 456 789 1337 2024 99 7 314 2718)
+SEEDS=(421 1231 4561 7891 13371 20241 991 71 3141 27181)
 
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 FULL_LOG="results_xray_${TIMESTAMP}.txt"
@@ -17,7 +17,7 @@ exec > >(tee -a "$FULL_LOG") 2>&1
 echo "=========================================="
 echo "  DDAD Detection — xray"
 echo "  Checkpoint : ${CHECKPOINT_DIR}/${CATEGORY}/${LOAD_CHP}"
-echo "  Data       : ${DATA_PATH}/${CATEGORY}"
+echo "  Data       : ${DATA_PATH}/scissors"
 echo "  Seeds      : ${SEEDS[*]}"
 echo "=========================================="
 

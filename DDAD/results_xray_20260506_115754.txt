@@ -1,0 +1,181 @@
+==========================================
+  DDAD Detection — xray
+  Checkpoint : /data2/rohan/ckpts/DDAD/DvXray/MVTec/xray/500
+  Data       : /data/akheirandish3/mvtec_ad/xray
+  Seeds      : 421 1231 4561 7891 13371 20241 991 71 3141 27181
+==========================================
+
+-------- Seed 421 --------
+[Seed] 421
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: xray   load_chp: 500
+Checkpoint: /data2/rohan/ckpts/DDAD/DvXray/MVTec/xray/500
+Detecting Anomalies...
+Loading checkpoint: /data2/rohan/ckpts/DDAD/DvXray/MVTec/xray/500
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/xray/test/*/*.png
+DEBUG: Found 1032 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=0
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=0
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=0
+AUROC: (60.7,80.5)
+  Per-image pixel AUROC: n=32 defective, skipped=1000 good/invalid images
+[(0, 0.6745571540656776), (1, 0.8132072180266576), (2, 0.8633483057090456), (3, 0.7920726787858665), (4, 0.42977626750608333), (5, 0.8705503459178288), (6, 0.7436093188041524), (7, 0.7010229919887223), (8, 0.7303240500869395), (9, 0.5622186903410179), (10, 0.9032742051305557), (11, 0.5761375517057706), (12, 0.8430594145218268), (13, 0.6053065018403674), (14, 0.5514837420227259), (15, 0.6854220766461512), (16, 0.694112219363314), (17, 0.7043278962203066), (18, 0.6835864945957913), (19, 0.4776251165685679), (20, 0.7710065263749114), (21, 0.7491017316582579), (22, 0.7435107221214229), (23, 0.8136418615731967), (24, 0.6526019810530436), (25, 0.6782890319452216), (26, 0.6802430162082459), (27, 0.9151952956874101), (28, 0.8195507567703113), (29, 0.7692057234255729), (30, 0.7008073825579968), (31, 0.9409186989726547)]
+  Individual scores: min=0.430, max=0.941, mean=0.723
+Per-image Pixel AUROC (mean): 72.3
+PRO: 44.9
+PRO: 44.9
+SNR: 2.0550
+  [overlay] results/xraysample0_overlay.png
+  [overlay] results/xraysample0_composite.png
+  [overlay] results/xraysample1_overlay.png
+  [overlay] results/xraysample1_composite.png
+  [overlay] results/xraysample2_overlay.png
+  [overlay] results/xraysample2_composite.png
+  [overlay] results/xraysample3_overlay.png
+  [overlay] results/xraysample3_composite.png
+  [overlay] results/xraysample4_overlay.png
+  [overlay] results/xraysample4_composite.png
+  [overlay] results/xraysample5_overlay.png
+  [overlay] results/xraysample5_composite.png
+  [overlay] results/xraysample6_overlay.png
+  [overlay] results/xraysample6_composite.png
+  [overlay] results/xraysample7_overlay.png
+  [overlay] results/xraysample7_composite.png
+  [overlay] results/xraysample8_overlay.png
+  [overlay] results/xraysample8_composite.png
+  [overlay] results/xraysample9_overlay.png
+  [overlay] results/xraysample9_composite.png
+  [overlay] results/xraysample10_overlay.png
+  [overlay] results/xraysample10_composite.png
+  [overlay] results/xraysample11_overlay.png
+  [overlay] results/xraysample11_composite.png
+  [overlay] results/xraysample12_overlay.png
+  [overlay] results/xraysample12_composite.png
+  [overlay] results/xraysample13_overlay.png
+  [overlay] results/xraysample13_composite.png
+  [overlay] results/xraysample14_overlay.png
+  [overlay] results/xraysample14_composite.png
+  [overlay] results/xraysample15_overlay.png
+  [overlay] results/xraysample15_composite.png
+  [overlay] results/xraysample16_overlay.png
+  [overlay] results/xraysample16_composite.png
+  [overlay] results/xraysample17_overlay.png
+  [overlay] results/xraysample17_composite.png
+  [overlay] results/xraysample18_overlay.png
+  [overlay] results/xraysample18_composite.png
+  [overlay] results/xraysample19_overlay.png
+  [overlay] results/xraysample19_composite.png
+  [overlay] results/xraysample20_overlay.png
+  [overlay] results/xraysample20_composite.png
+  [overlay] results/xraysample21_overlay.png
+  [overlay] results/xraysample21_composite.png
+  [overlay] results/xraysample22_overlay.png
+  [overlay] results/xraysample22_composite.png
+  [overlay] results/xraysample23_overlay.png
+  [overlay] results/xraysample23_composite.png
+  [overlay] results/xraysample24_overlay.png
+  [overlay] results/xraysample24_composite.png
+  [overlay] results/xraysample25_overlay.png
+  [overlay] results/xraysample25_composite.png
+  [overlay] results/xraysample26_overlay.png
+  [overlay] results/xraysample26_composite.png
+  [overlay] results/xraysample27_overlay.png
+  [overlay] results/xraysample27_composite.png
+  [overlay] results/xraysample28_overlay.png
+  [overlay] results/xraysample28_composite.png
+  [overlay] results/xraysample29_overlay.png
+  [overlay] results/xraysample29_composite.png
+  [overlay] results/xraysample30_overlay.png
+  [overlay] results/xraysample30_composite.png
+  [overlay] results/xraysample31_overlay.png
+  [overlay] results/xraysample31_composite.png
+  [overlay] results/xraysample32_overlay.png
+  [overlay] results/xraysample32_composite.png
+  [overlay] results/xraysample33_overlay.png
+  [overlay] results/xraysample33_composite.png
+  [overlay] results/xraysample34_overlay.png
+  [overlay] results/xraysample34_composite.png
+  [overlay] results/xraysample35_overlay.png
+  [overlay] results/xraysample35_composite.png
+  [overlay] results/xraysample36_overlay.png
+  [overlay] results/xraysample36_composite.png
+  [overlay] results/xraysample37_overlay.png
+  [overlay] results/xraysample37_composite.png
+  [overlay] results/xraysample38_overlay.png
+  [overlay] results/xraysample38_composite.png
+  [overlay] results/xraysample39_overlay.png
+  [overlay] results/xraysample39_composite.png
+  [overlay] results/xraysample40_overlay.png
+  [overlay] results/xraysample40_composite.png
+  [overlay] results/xraysample41_overlay.png
+  [overlay] results/xraysample41_composite.png
+  [overlay] results/xraysample42_overlay.png
+  [overlay] results/xraysample42_composite.png
+  [overlay] results/xraysample43_overlay.png
+  [overlay] results/xraysample43_composite.png
+  [overlay] results/xraysample44_overlay.png
+  [overlay] results/xraysample44_composite.png
+  [overlay] results/xraysample45_overlay.png
+  [overlay] results/xraysample45_composite.png
+  [overlay] results/xraysample46_overlay.png
+  [overlay] results/xraysample46_composite.png
+  [overlay] results/xraysample47_overlay.png
+  [overlay] results/xraysample47_composite.png
+  [overlay] results/xraysample48_overlay.png
+  [overlay] results/xraysample48_composite.png
+  [overlay] results/xraysample49_overlay.png
+  [overlay] results/xraysample49_composite.png
+  [overlay] results/xraysample50_overlay.png
+  [overlay] results/xraysample50_composite.png
+  [overlay] results/xraysample51_overlay.png
+  [overlay] results/xraysample51_composite.png
+  [overlay] results/xraysample52_overlay.png
+  [overlay] results/xraysample52_composite.png
+  [overlay] results/xraysample53_overlay.png
+  [overlay] results/xraysample53_composite.png
+  [overlay] results/xraysample54_overlay.png
+  [overlay] results/xraysample54_composite.png
+  [overlay] results/xraysample55_overlay.png
+  [overlay] results/xraysample55_composite.png
+  [overlay] results/xraysample56_overlay.png
+  [overlay] results/xraysample56_composite.png
+  [overlay] results/xraysample57_overlay.png
+  [overlay] results/xraysample57_composite.png
+  [overlay] results/xraysample58_overlay.png
+  [overlay] results/xraysample58_composite.png
+  [overlay] results/xraysample59_overlay.png
+  [overlay] results/xraysample59_composite.png
+  [overlay] results/xraysample60_overlay.png
+  [overlay] results/xraysample60_composite.png
+  [overlay] results/xraysample61_overlay.png
+  [overlay] results/xraysample61_composite.png
+  [overlay] results/xraysample62_overlay.png
+  [overlay] results/xraysample62_composite.png
+  [overlay] results/xraysample63_overlay.png
+  [overlay] results/xraysample63_composite.png
+  [overlay] results/xraysample64_overlay.png
+  [overlay] results/xraysample64_composite.png
+  [overlay] results/xraysample65_overlay.png
+  [overlay] results/xraysample65_composite.png
+  [overlay] results/xraysample66_overlay.png
+  [overlay] results/xraysample66_composite.png
+  [overlay] results/xraysample67_overlay.png
+  [overlay] results/xraysample67_composite.png
+  [overlay] results/xraysample68_overlay.png
+  [overlay] results/xraysample68_composite.png
+  [overlay] results/xraysample69_overlay.png
+  [overlay] results/xraysample69_composite.png
+  [overlay] results/xraysample70_overlay.png
+  [overlay] results/xraysample70_composite.png
+  [overlay] results/xraysample71_overlay.png
+  [overlay] results/xraysample71_composite.png
+  [overlay] results/xraysample72_overlay.png
+  [overlay] results/xraysample72_composite.png

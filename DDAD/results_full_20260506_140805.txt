@@ -1,0 +1,45 @@
+DDAD Detection — Full Log
+Timestamp: 20260506_140805
+Seeds: 42
+
+########################################
+# Category : bottle
+# Checkpoint: /data/akherandish3/MVTec/bottle/1000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: bottle   load_chp: 1000
+Checkpoint: /data/akherandish3/MVTec/bottle/1000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/bottle/1000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/bottle/test/*/*.png
+DEBUG: Found 83 test images
+Traceback (most recent call last):
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 562, in <module>
+    detection(config)
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 409, in detection
+    ddad()
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/ddad.py", line 39, in __call__
+    feature_extractor = domain_adaptation(self.unet, self.config, fine_tune=False)
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/feature_extractor.py", line 112, in domain_adaptation
+    checkpoint = torch.load(
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 1530, in load
+    with _open_file_like(f, "rb") as opened_file:
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 795, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 776, in __init__
+    super().__init__(open(name, mode))  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: '/data/akherandish3/MVTec/bottle/feat0'
+  [WARN] Could not parse metrics for seed 42
+  ---- Done seed 42 ----
+
+========================================
+All done.
+  Full output : results_full_20260506_140805.txt
+  Averages    : results_averaged_20260506_140805.txt
+========================================

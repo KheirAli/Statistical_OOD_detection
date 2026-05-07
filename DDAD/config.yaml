@@ -25,7 +25,7 @@ model:
   checkpoint_name: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/combined #CT
   # checkpoint_name: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/faces #faces
   exp_name: default
-  feature_extractor: resnet101 #wide_resnet101_2 #wide_resnet101_2  # wide_resnet50_2 #resnet50
+  feature_extractor: wide_resnet101_2 #wide_resnet101_2 #wide_resnet101_2  # wide_resnet50_2 #resnet50
   learning_rate: 3e-4 
   weight_decay: 0.05
   epochs: 250
@@ -48,7 +48,7 @@ model:
   save_model: True
   num_workers : 2
   seed : 42
-  use_frozen_fe: True
+  use_frozen_fe: False
   # ... existing settings ...
   # results_dir: "my_custom_results_folder"  # <--- Add this line
 
@@ -106,4 +106,4 @@ metrics:
   auroc: True
   pro: True
   misclassifications: False
-  visualisation: True
+  visualisation: False

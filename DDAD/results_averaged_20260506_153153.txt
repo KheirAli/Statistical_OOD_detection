@@ -1,0 +1,101 @@
+DDAD Detection — Averaged Results
+Timestamp: 20260506_153153
+Seeds used: 42
+
+Category: cable | Checkpoint: 3000 | N_seeds: 1
+  Pixel AUROC  mean=97.5000  std=0.0000  (n=1)
+  Raw values : 97.5
+  SNR          mean=6.9942  std=0.0000  (n=1)
+  Raw values : 6.9942
+  ---
+
+Category: capsule | Checkpoint: 1500 | N_seeds: 1
+  Pixel AUROC  mean=99.0000  std=0.0000  (n=1)
+  Raw values : 99.0
+  SNR          mean=7.6569  std=0.0000  (n=1)
+  Raw values : 7.6569
+  ---
+
+Category: carpet | Checkpoint: 2500 | N_seeds: 1
+  Pixel AUROC  mean=99.0000  std=0.0000  (n=1)
+  Raw values : 99.0
+  SNR          mean=7.9201  std=0.0000  (n=1)
+  Raw values : 7.9201
+  ---
+
+Category: grid | Checkpoint: 2000 | N_seeds: 1
+  Pixel AUROC  mean=99.4000  std=0.0000  (n=1)
+  Raw values : 99.4
+  SNR          mean=7.8847  std=0.0000  (n=1)
+  Raw values : 7.8847
+  ---
+
+Category: hazelnut | Checkpoint: 2000 | N_seeds: 1
+  Pixel AUROC  mean=98.8000  std=0.0000  (n=1)
+  Raw values : 98.8
+  SNR          mean=5.7916  std=0.0000  (n=1)
+  Raw values : 5.7916
+  ---
+
+Category: leather | Checkpoint: 2000 | N_seeds: 1
+  Pixel AUROC  mean=99.1000  std=0.0000  (n=1)
+  Raw values : 99.1
+  SNR          mean=9.5424  std=0.0000  (n=1)
+  Raw values : 9.5424
+  ---
+
+Category: metal_nut | Checkpoint: 3000 | N_seeds: 1
+  Pixel AUROC  mean=98.1000  std=0.0000  (n=1)
+  Raw values : 98.1
+  SNR          mean=6.3857  std=0.0000  (n=1)
+  Raw values : 6.3857
+  ---
+
+Category: pill | Checkpoint: 1000 | N_seeds: 1
+  Pixel AUROC  mean=99.1000  std=0.0000  (n=1)
+  Raw values : 99.1
+  SNR          mean=11.9380  std=0.0000  (n=1)
+  Raw values : 11.9380
+  ---
+
+Category: screw | Checkpoint: 2000 | N_seeds: 1
+  Pixel AUROC  mean=99.6000  std=0.0000  (n=1)
+  Raw values : 99.6
+  SNR          mean=9.6915  std=0.0000  (n=1)
+  Raw values : 9.6915
+  ---
+
+Category: tile | Checkpoint: 1000 | N_seeds: 1
+  Pixel AUROC  mean=98.3000  std=0.0000  (n=1)
+  Raw values : 98.3
+  SNR          mean=6.2776  std=0.0000  (n=1)
+  Raw values : 6.2776
+  ---
+
+Category: toothbrush | Checkpoint: 2000 | N_seeds: 1
+  Pixel AUROC  mean=98.3000  std=0.0000  (n=1)
+  Raw values : 98.3
+  SNR          mean=6.4983  std=0.0000  (n=1)
+  Raw values : 6.4983
+  ---
+
+Category: transistor | Checkpoint: 2000 | N_seeds: 1
+  Pixel AUROC  mean=94.1000  std=0.0000  (n=1)
+  Raw values : 94.1
+  SNR          mean=6.3677  std=0.0000  (n=1)
+  Raw values : 6.3677
+  ---
+
+Category: wood | Checkpoint: 2000 | N_seeds: 1
+  Pixel AUROC  mean=90.6000  std=0.0000  (n=1)
+  Raw values : 90.6
+  SNR          mean=5.0309  std=0.0000  (n=1)
+  Raw values : 5.0309
+  ---
+
+Category: zipper | Checkpoint: 1000 | N_seeds: 1
+  Pixel AUROC  mean=98.6000  std=0.0000  (n=1)
+  Raw values : 98.6
+  SNR          mean=6.1334  std=0.0000  (n=1)
+  Raw values : 6.1334
+  ---

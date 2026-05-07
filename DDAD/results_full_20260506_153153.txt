@@ -1,0 +1,541 @@
+DDAD Detection — Full Log
+Timestamp: 20260506_153153
+Seeds: 42
+
+########################################
+# Category : cable
+# Checkpoint: /data/akherandish3/MVTec/cable/3000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: wide_resnet101_2   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: cable   load_chp: 3000
+Checkpoint: /data/akherandish3/MVTec/cable/3000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/cable/3000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/cable/test/*/*.png
+DEBUG: Found 150 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=2312
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=541
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=840
+AUROC: (89.8,97.9)
+  Per-image pixel AUROC: n=92 defective, skipped=58 good/invalid images
+[(0, 0.985122137546208), (1, 0.9796351176736331), (2, 0.971406177315739), (3, 0.9967292391312561), (4, 0.9938763544874217), (5, 0.9792983699570905), (6, 0.997161182326024), (7, 0.9917676759473635), (8, 0.9825683570392559), (9, 0.9746713084095329), (10, 0.9872266450914976), (11, 0.9802970608264625), (12, 0.9883668950151574), (13, 0.9957190027618509), (14, 0.9959098968204434), (15, 0.9836904372631877), (16, 0.9951022438159263), (17, 0.9978205197254285), (18, 0.9804795626803403), (19, 0.9983523565853907), (20, 0.9897249363250126), (21, 0.9717316766584516), (22, 0.9838384450883519), (23, 0.9676494966287774), (24, 0.9854883685353316), (25, 0.9782717368428456), (26, 0.9862034983986203), (27, 0.9774027547792894), (28, 0.9964846843526756), (29, 0.9642394481667879), (30, 0.9754354367295507), (31, 0.9735670578352427), (32, 0.9561637483630953), (33, 0.983432023351775), (34, 0.9420830327398158), (35, 0.9346843938611165), (36, 0.9833163906264168), (37, 0.9584219088052), (38, 0.9818946558728072), (39, 0.9630940670116542), (40, 0.9904245018642281), (41, 0.992784697250899), (42, 0.6107719561183521), (43, 0.8303540295337237), (44, 0.9636047586060144), (45, 0.9733285837640141), (46, 0.9450695777558885), (47, 0.9556217353235201), (48, 0.9924360709932452), (49, 0.9876308874114226), (50, 0.9508646071755741), (51, 0.977647869309335), (52, 0.9793508329731795), (53, 0.9812287286075217), (54, 0.9449731411238717), (55, 0.9593870905158345), (56, 0.9663466206331558), (57, 0.9795278261529505), (58, 0.9886099662509746), (59, 0.9792969568959611), (60, 0.9659764418561733), (61, 0.9678782065619662), (62, 0.9872016017407379), (63, 0.9954356223607987), (64, 0.9635444918690403), (65, 0.936538381812197), (66, 0.9787195743629871), (67, 0.9770582596928745), (68, 0.9898856897437492), (69, 0.981440213490151), (70, 0.9889100295137017), (71, 0.997693178086373), (72, 0.9988902030886184), (73, 0.9978030028450031), (74, 0.9888049747191199), (75, 0.9965350544905567), (76, 0.9858235965268518), (77, 0.9877644555280397), (78, 0.998486474756279), (79, 0.9921981148574742), (80, 0.9985177584212219), (81, 0.99518256226362), (82, 0.9991427585914758), (83, 0.9726215987157426), (84, 0.9864140007651949), (85, 0.9938998541769596), (86, 0.9980547487094191), (87, 0.9970031805305646), (88, 0.9900647541228936), (89, 0.9975976805869232), (90, 0.995990866328224), (91, 0.9811734948300714)]
+  Individual scores: min=0.611, max=0.999, mean=0.975
+Per-image Pixel AUROC (mean): 97.5
+PRO: 89.1
+PRO: 89.1
+SNR: 6.9942
+  [parsed] Pixel AUROC=97.5  SNR=6.9942
+  ---- Done seed 42 ----
+
+########################################
+# Category : capsule
+# Checkpoint: /data/akherandish3/MVTec/capsule/1500
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: wide_resnet101_2   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: capsule   load_chp: 1500
+Checkpoint: /data/akherandish3/MVTec/capsule/1500
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/capsule/1500
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/capsule/test/*/*.png
+DEBUG: Found 132 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=146
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=175
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=159
+AUROC: (96.6,96.5)
+  Per-image pixel AUROC: n=109 defective, skipped=23 good/invalid images
+[(0, 0.9987664110175616), (1, 0.9994305909815158), (2, 0.9991845073128347), (3, 0.9971801887409864), (4, 0.9994999006283347), (5, 0.9997093282985507), (6, 0.999717617555113), (7, 0.9989166056031332), (8, 0.989958302554791), (9, 0.9997428140723992), (10, 0.9988335058998237), (11, 0.9995194905571467), (12, 0.9971185121190923), (13, 0.9975376685006889), (14, 0.9987727574515317), (15, 0.9994904076601793), (16, 0.999290766075228), (17, 0.9985660354692529), (18, 0.9965061610498649), (19, 0.9991892535872435), (20, 0.999913478079417), (21, 0.9995421256958555), (22, 0.9988553428388405), (23, 0.9949857662106101), (24, 0.9994558519599227), (25, 0.9981914378445682), (26, 0.9989153787840879), (27, 0.9963148720144347), (28, 0.9995028038601982), (29, 0.9997840136575097), (30, 0.9952894793509145), (31, 0.999407073617938), (32, 0.9996974689053457), (33, 0.9997325275344897), (34, 0.99862268403208), (35, 0.9998072613553711), (36, 0.99513327688488), (37, 0.999638964308005), (38, 0.9180738590750961), (39, 0.9995822988127885), (40, 0.9750208426572609), (41, 0.9995389592527284), (42, 0.9989977966827835), (43, 0.994123540997822), (44, 0.9977757235110402), (45, 0.9998329797496569), (46, 0.9847966721039664), (47, 0.99922056243076), (48, 0.999033462802674), (49, 0.9990902816029812), (50, 0.9960937499999999), (51, 0.9968175566384925), (52, 0.9929795924598086), (53, 0.9967582725995061), (54, 0.9815489046230446), (55, 0.9928077163438924), (56, 0.9974954958796811), (57, 0.9998237622529293), (58, 0.9969564879518535), (59, 0.9962878153485377), (60, 0.9937433601960319), (61, 0.9988729974888919), (62, 0.9986918431582859), (63, 0.9985383709482585), (64, 0.9998421042403514), (65, 0.9952811250015823), (66, 0.9988786749505014), (67, 0.9984253552612927), (68, 0.9665472286535487), (69, 0.9874639125634656), (70, 0.9669164261368298), (71, 0.9937581111343351), (72, 0.9977203132753232), (73, 0.9727099574581186), (74, 0.9895907130548158), (75, 0.9936003131766213), (76, 0.95178074489119), (77, 0.9852266476691259), (78, 0.9983166768923081), (79, 0.9984421624021469), (80, 0.9967222067492183), (81, 0.9970504951681503), (82, 0.9982653619201519), (83, 0.9967609849244723), (84, 0.9938728268422375), (85, 0.997902779267172), (86, 0.9648252523744094), (87, 0.9925243912300319), (88, 0.9982668629648523), (89, 0.9721503468665202), (90, 0.9727901464412387), (91, 0.9904863754055403), (92, 0.9910400826568413), (93, 0.9992745672420733), (94, 0.9880488654628846), (95, 0.9943761528360624), (96, 0.9847829639850644), (97, 0.9684125378539888), (98, 0.9893598880354408), (99, 0.9960394863710826), (100, 0.9833716793720203), (101, 0.9010185767912154), (102, 0.9722197566360478), (103, 0.8970043122524072), (104, 0.9557855719661298), (105, 0.9575657879605095), (106, 0.9954031088068617), (107, 0.9907463748368266), (108, 0.971697591488171)]
+  Individual scores: min=0.897, max=1.000, mean=0.990
+Per-image Pixel AUROC (mean): 99.0
+PRO: 86.4
+PRO: 86.4
+SNR: 7.6569
+  [parsed] Pixel AUROC=99.0  SNR=7.6569
+  ---- Done seed 42 ----
+
+########################################
+# Category : carpet
+# Checkpoint: /data/akherandish3/MVTec/carpet/2500
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: wide_resnet101_2   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: carpet   load_chp: 2500
+Checkpoint: /data/akherandish3/MVTec/carpet/2500
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/carpet/2500
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/carpet/test/*/*.png
+DEBUG: Found 117 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=2035
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=230
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=276
+AUROC: (94.9,98.4)
+  Per-image pixel AUROC: n=89 defective, skipped=28 good/invalid images
+[(0, 0.9970282810458556), (1, 0.9976870758263107), (2, 0.9970709691890187), (3, 0.9993993007517921), (4, 0.9996255713829991), (5, 0.9939465869790135), (6, 0.9998839896327176), (7, 0.9960742134048303), (8, 0.9997558294984888), (9, 0.9978894156664945), (10, 0.9985656908608208), (11, 0.9966234884122934), (12, 0.9968902495166191), (13, 0.9988424173607853), (14, 0.9968327800299748), (15, 0.9993362268440288), (16, 0.9987881027483587), (17, 0.9992751371129018), (18, 0.9995057694877645), (19, 0.9992075457794158), (20, 0.9996259182456234), (21, 0.9985173982226337), (22, 0.9108224316908787), (23, 0.9867363369137917), (24, 0.9955823604487531), (25, 0.9996676980692965), (26, 0.9882051843729802), (27, 0.9996445575988513), (28, 0.999021752613382), (29, 0.9994230400766723), (30, 0.9974425163619012), (31, 0.9978809853663244), (32, 0.9993028924272394), (33, 0.9995705231964467), (34, 0.996274555957745), (35, 0.9990366276621698), (36, 0.9786900107118671), (37, 0.983828252187944), (38, 0.9875277078771282), (39, 0.9968378825634496), (40, 0.9976299519291189), (41, 0.9989055431399058), (42, 0.9954519000457427), (43, 0.9959144708885094), (44, 0.9695489261443674), (45, 0.9969842526505572), (46, 0.9956041754643574), (47, 0.9979893729134374), (48, 0.9990617398994893), (49, 0.996278369379847), (50, 0.9959598597543694), (51, 0.9982513016937798), (52, 0.992400914012407), (53, 0.9980110585791663), (54, 0.9968007085758783), (55, 0.9993721225864083), (56, 0.9988538432973537), (57, 0.9988244562100891), (58, 0.9972163308318371), (59, 0.9968544295667143), (60, 0.9982723261589034), (61, 0.9973494927785687), (62, 0.9977194669871495), (63, 0.9973577336863368), (64, 0.994894284121697), (65, 0.997074383992375), (66, 0.9982422225235195), (67, 0.9891461939971912), (68, 0.9976210940301415), (69, 0.987551410325687), (70, 0.943429607234589), (71, 0.9924268730376142), (72, 0.9002223327017199), (73, 0.9872142616897279), (74, 0.9952709589596188), (75, 0.996176367205919), (76, 0.9498443959316321), (77, 0.9900377952480478), (78, 0.9418748990828264), (79, 0.9790971085442829), (80, 0.9786113705526619), (81, 0.9713663940574588), (82, 0.9869606000049873), (83, 0.9703298109046102), (84, 0.971449443428159), (85, 0.9939429858261029), (86, 0.9769100506104371), (87, 0.9686862479712369), (88, 0.9322688919047855)]
+  Individual scores: min=0.900, max=1.000, mean=0.990
+Per-image Pixel AUROC (mean): 99.0
+PRO: 91.3
+PRO: 91.3
+SNR: 7.9201
+  [parsed] Pixel AUROC=99.0  SNR=7.9201
+  ---- Done seed 42 ----
+
+########################################
+# Category : grid
+# Checkpoint: /data/akherandish3/MVTec/grid/2000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: wide_resnet101_2   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: grid   load_chp: 2000
+Checkpoint: /data/akherandish3/MVTec/grid/2000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/grid/2000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/grid/test/*/*.png
+DEBUG: Found 78 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=413
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=366
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=298
+AUROC: (100.0,99.2)
+  Per-image pixel AUROC: n=57 defective, skipped=21 good/invalid images
+[(0, 0.9996210932421081), (1, 0.9993019517680115), (2, 0.9985287221944801), (3, 0.999574477797254), (4, 0.9997485295740037), (5, 0.999322562184479), (6, 0.9998127376476291), (7, 0.9996936648923649), (8, 0.9970062714307104), (9, 0.9995432446709243), (10, 0.999669204794736), (11, 0.9973441478268263), (12, 0.990720798244981), (13, 0.9972126771834333), (14, 0.9937546737654089), (15, 0.9990260724401676), (16, 0.986334564281913), (17, 0.9976283559980316), (18, 0.9904619121494898), (19, 0.9953251037597657), (20, 0.9964897545699064), (21, 0.9950850808956311), (22, 0.9929375593049832), (23, 0.9970469742204122), (24, 0.9998194199649884), (25, 0.9953681749775636), (26, 0.9993508208851016), (27, 0.9962331106558697), (28, 0.9982642597902338), (29, 0.996877985231842), (30, 0.9980253112644815), (31, 0.9992051400738473), (32, 0.998688272404541), (33, 0.9976741526654538), (34, 0.9920385962494898), (35, 0.9961940367910771), (36, 0.9762929744954324), (37, 0.9812213354167334), (38, 0.985785531679101), (39, 0.978072618961256), (40, 0.9736654973143981), (41, 0.9982710893015891), (42, 0.9952822907779267), (43, 0.9816414472483171), (44, 0.9878343649935478), (45, 0.9885804828553879), (46, 0.9953472725879977), (47, 0.9984132291164275), (48, 0.9920060340343129), (49, 0.9917595222539983), (50, 0.986456492284862), (51, 0.9920631016279873), (52, 0.9968476275307459), (53, 0.9963452633905561), (54, 0.9958012880222048), (55, 0.9952329903380881), (56, 0.9953719895893166)]
+  Individual scores: min=0.974, max=1.000, mean=0.994
+Per-image Pixel AUROC (mean): 99.4
+PRO: 96.5
+PRO: 96.5
+SNR: 7.8847
+  [parsed] Pixel AUROC=99.4  SNR=7.8847
+  ---- Done seed 42 ----
+
+########################################
+# Category : hazelnut
+# Checkpoint: /data/akherandish3/MVTec/hazelnut/2000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: wide_resnet101_2   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: hazelnut   load_chp: 2000
+Checkpoint: /data/akherandish3/MVTec/hazelnut/2000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/hazelnut/2000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/hazelnut/test/*/*.png
+DEBUG: Found 110 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=563
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=846
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=1519
+AUROC: (99.4,98.8)
+  Per-image pixel AUROC: n=70 defective, skipped=40 good/invalid images
+[(0, 0.9991638007633665), (1, 0.9840654118003046), (2, 0.9965881655674019), (3, 0.9991589260883087), (4, 0.9994239687221079), (5, 0.9992089316930669), (6, 0.9989653180987532), (7, 0.9998772216428856), (8, 0.9868362382617544), (9, 0.9915787391814401), (10, 0.9803063996081605), (11, 0.9729280283788448), (12, 0.9997488316938921), (13, 0.9961888909661849), (14, 0.9995152569016553), (15, 0.9994596903314665), (16, 0.9994524186511347), (17, 0.9999505955102488), (18, 0.9976084661098373), (19, 0.9362043370193392), (20, 0.9992419943410064), (21, 0.9933798368556347), (22, 0.9989219684065744), (23, 0.9941510513272185), (24, 0.9918015264467123), (25, 0.9975302576625211), (26, 0.9598996487630224), (27, 0.988755088606174), (28, 0.9856789946377776), (29, 0.9916088666198143), (30, 0.983606663516606), (31, 0.9978713808938457), (32, 0.9817134508819823), (33, 0.9947579221412323), (34, 0.984468000978385), (35, 0.9986713989897185), (36, 0.9976958071920154), (37, 0.9907192921524595), (38, 0.9979947192246296), (39, 0.9856122843006329), (40, 0.9976822784896292), (41, 0.998465993341693), (42, 0.9979672339822694), (43, 0.9979911318725467), (44, 0.9931866620744376), (45, 0.9946365329918903), (46, 0.9680250422707324), (47, 0.9959481009183502), (48, 0.9815545634472955), (49, 0.9978743807050231), (50, 0.9889222102677506), (51, 0.9985576338413721), (52, 0.9687201172606428), (53, 0.9643942221355236), (54, 0.9783308666255478), (55, 0.9924066065296233), (56, 0.9792538522214551), (57, 0.9677114903995325), (58, 0.9716200468536454), (59, 0.9832545674096735), (60, 0.9781324138229008), (61, 0.9877914206111066), (62, 0.9901120636315689), (63, 0.9992912171433881), (64, 0.9799986978872446), (65, 0.9770381372127845), (66, 0.9691858793399165), (67, 0.9651683329492035), (68, 0.9988839026414711), (69, 0.9372241022352026)]
+  Individual scores: min=0.936, max=1.000, mean=0.988
+Per-image Pixel AUROC (mean): 98.8
+PRO: 93.9
+PRO: 93.9
+SNR: 5.7916
+  [parsed] Pixel AUROC=98.8  SNR=5.7916
+  ---- Done seed 42 ----
+
+########################################
+# Category : leather
+# Checkpoint: /data/akherandish3/MVTec/leather/2000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: wide_resnet101_2   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: leather   load_chp: 2000
+Checkpoint: /data/akherandish3/MVTec/leather/2000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/leather/2000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/leather/test/*/*.png
+DEBUG: Found 124 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=295
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=161
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=247
+AUROC: (86.9,98.7)
+  Per-image pixel AUROC: n=92 defective, skipped=32 good/invalid images
+[(0, 0.9812388435160484), (1, 0.9927818248755982), (2, 0.9937068963325502), (3, 0.999544803956389), (4, 0.9632140990616005), (5, 0.9945959659761265), (6, 0.9991609987874227), (7, 0.997243000681791), (8, 0.9868993274804335), (9, 0.9997722596695248), (10, 0.9944843386453632), (11, 0.9912242440934752), (12, 0.9992052595954206), (13, 0.9970996152956435), (14, 0.9373104911745915), (15, 0.9971239989718363), (16, 0.9532891636989688), (17, 0.9248808585283661), (18, 0.9606299521231032), (19, 0.9995648199579252), (20, 0.9983639637659822), (21, 0.9986192686742834), (22, 0.9966645271715875), (23, 0.9977456410798413), (24, 0.9980775667881165), (25, 0.9989622463142974), (26, 0.9989046611994674), (27, 0.9993989180011152), (28, 0.9987611039746622), (29, 0.9995115630476096), (30, 0.9986209168094282), (31, 0.998349701296277), (32, 0.9995120060734053), (33, 0.9995497780703949), (34, 0.9998295187506057), (35, 0.9979283513002659), (36, 0.9997199777240219), (37, 0.9768021337485346), (38, 0.9995747924357149), (39, 0.9965005174838388), (40, 0.9990585584568762), (41, 0.9968253253847518), (42, 0.9995918314676338), (43, 0.9991088139161346), (44, 0.9955901788924381), (45, 0.9998224650027372), (46, 0.9984383000949877), (47, 0.9583307191955306), (48, 0.9990486555640723), (49, 0.9999510109394115), (50, 0.9953406920286785), (51, 0.9941371862845191), (52, 0.9983286766679611), (53, 0.9982596046276515), (54, 0.9212159617508557), (55, 0.9911319292247721), (56, 0.9726182073148484), (57, 0.9986128435201207), (58, 0.9992336878419701), (59, 0.9971020966978177), (60, 0.9988559919062083), (61, 0.9959177180033494), (62, 0.9633058103221142), (63, 0.9879058130558891), (64, 0.9952832758384988), (65, 0.9948161371117205), (66, 0.9972394450188886), (67, 0.9967919906467998), (68, 0.9994874049121311), (69, 0.9949231008077806), (70, 0.9825856740854255), (71, 0.9825085707812165), (72, 0.9845538202938007), (73, 0.9974260603259073), (74, 0.9976028606999904), (75, 0.9279460575108816), (76, 0.9969947078629777), (77, 0.9969252915328166), (78, 0.9970123201521262), (79, 0.9916983513806379), (80, 0.9933656125665548), (81, 0.9963767655749769), (82, 0.9949551762781064), (83, 0.9947321646927296), (84, 0.9973755396048809), (85, 0.9894041878857097), (86, 0.9912915028846383), (87, 0.9885294808313836), (88, 0.9959850850121859), (89, 0.9950542406723007), (90, 0.9866753225251446), (91, 0.9988672270533849)]
+  Individual scores: min=0.921, max=1.000, mean=0.991
+Per-image Pixel AUROC (mean): 99.1
+PRO: 92.0
+PRO: 92.0
+SNR: 9.5424
+  [parsed] Pixel AUROC=99.1  SNR=9.5424
+  ---- Done seed 42 ----
+
+########################################
+# Category : metal_nut
+# Checkpoint: /data/akherandish3/MVTec/metal_nut/3000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: wide_resnet101_2   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: metal_nut   load_chp: 3000
+Checkpoint: /data/akherandish3/MVTec/metal_nut/3000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/metal_nut/3000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/metal_nut/test/*/*.png
+DEBUG: Found 115 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=1167
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=2931
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=1509
+AUROC: (99.2,98.8)
+  Per-image pixel AUROC: n=93 defective, skipped=22 good/invalid images
+[(0, 0.9974285071759104), (1, 0.9954131974693297), (2, 0.9953075731397818), (3, 0.9998177164501136), (4, 0.992668124458358), (5, 0.9993827242230725), (6, 0.998592172309497), (7, 0.9923164630794619), (8, 0.9874302968273437), (9, 0.9803398685533913), (10, 0.9979628877006916), (11, 0.9954906497830284), (12, 0.9988649856934446), (13, 0.9957648298932518), (14, 0.9765647533271851), (15, 0.9987637999325565), (16, 0.994999548109578), (17, 0.9924625188563447), (18, 0.9973385367473141), (19, 0.9988807599671518), (20, 0.9961422161627196), (21, 0.9974847496077166), (22, 0.9653365250326928), (23, 0.9289051223841878), (24, 0.9480318807750063), (25, 0.9622705131512281), (26, 0.9446931071799339), (27, 0.9448694328614552), (28, 0.9490099259968878), (29, 0.9590142373052895), (30, 0.9443237950717718), (31, 0.9429131348574554), (32, 0.9543474387006375), (33, 0.9458827042310732), (34, 0.9620133733677391), (35, 0.9519431091659812), (36, 0.9467361164356529), (37, 0.960358349677445), (38, 0.9553216053009934), (39, 0.9625146848590445), (40, 0.9395494943398757), (41, 0.9558359896059567), (42, 0.9596919699544442), (43, 0.9432996994929608), (44, 0.9650801977873809), (45, 0.9934746746257487), (46, 0.9807350171438759), (47, 0.9904201962540862), (48, 0.9992255505837307), (49, 0.9906645684195773), (50, 0.9900502429149287), (51, 0.985880131407839), (52, 0.9804071202436679), (53, 0.9779319427382636), (54, 0.9934521749831403), (55, 0.9906467938522963), (56, 0.9861677199306148), (57, 0.97277803872632), (58, 0.9755154230700841), (59, 0.9832308342577221), (60, 0.966728404815211), (61, 0.9745111068530756), (62, 0.9929621326596064), (63, 0.9973880133687937), (64, 0.9925152099978412), (65, 0.9801036161715052), (66, 0.9968560848108008), (67, 0.9553278492179652), (68, 0.996136616297182), (69, 0.9973640555314668), (70, 0.9963867006249973), (71, 0.9761558373400613), (72, 0.9978645462909536), (73, 0.99278082244258), (74, 0.9975493853579265), (75, 0.9956271769390815), (76, 0.9966740976412001), (77, 0.9962929401707162), (78, 0.9982792843656823), (79, 0.9921428992549702), (80, 0.9983479109665526), (81, 0.991955228232237), (82, 0.9927819282582936), (83, 0.991345945374263), (84, 0.9979653196316991), (85, 0.9946766802518408), (86, 0.9863994289956798), (87, 0.9881717106792459), (88, 0.9993569544365629), (89, 0.9923767184080693), (90, 0.9911187919927439), (91, 0.9950035866161315), (92, 0.9968782772980618)]
+  Individual scores: min=0.929, max=1.000, mean=0.981
+Per-image Pixel AUROC (mean): 98.1
+PRO: 91.9
+PRO: 91.9
+SNR: 6.3857
+  [parsed] Pixel AUROC=98.1  SNR=6.3857
+  ---- Done seed 42 ----
+
+########################################
+# Category : pill
+# Checkpoint: /data/akherandish3/MVTec/pill/1000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: wide_resnet101_2   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: pill   load_chp: 1000
+Checkpoint: /data/akherandish3/MVTec/pill/1000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/pill/1000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/pill/test/*/*.png
+DEBUG: Found 167 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=33
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=63
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=60
+AUROC: (94.9,98.3)
+  Per-image pixel AUROC: n=141 defective, skipped=26 good/invalid images
+[(0, 0.9998732419842903), (1, 0.9986971486368184), (2, 0.998957633331297), (3, 0.9998127781970577), (4, 0.9967211857125321), (5, 0.9872723694795581), (6, 0.9998676951028436), (7, 0.9998015163946956), (8, 0.9997376358233923), (9, 0.998561332224298), (10, 0.9972418110658524), (11, 0.9997092154792965), (12, 0.9985231584039926), (13, 0.9976596403825375), (14, 0.9984224998152575), (15, 0.9967605577809565), (16, 0.9999017460674655), (17, 0.9969788848095968), (18, 0.9971586497780704), (19, 0.9949667089625586), (20, 0.9970365510903441), (21, 0.9990991332525119), (22, 0.9991483251340201), (23, 0.9992002460254056), (24, 0.998964526530529), (25, 0.9979240211680243), (26, 0.9963698602688611), (27, 0.9760080005479063), (28, 0.9979398622344727), (29, 0.9990344898889167), (30, 0.9996031579484619), (31, 0.9974741894091953), (32, 0.9978240425592261), (33, 0.9965999723385973), (34, 0.9979976183411059), (35, 0.9896311693675826), (36, 0.9979023915161196), (37, 0.992578292677668), (38, 0.992890438473308), (39, 0.9985491068222145), (40, 0.9950533129999523), (41, 0.9934806493811918), (42, 0.9989285343752642), (43, 0.9976672681848564), (44, 0.9943015843357222), (45, 0.9963439086058681), (46, 0.999849415603533), (47, 0.9905294554788686), (48, 0.9897869059077863), (49, 0.9995457783351477), (50, 0.9566036632682625), (51, 0.9997171461103569), (52, 0.9997009377868351), (53, 0.9921908807590594), (54, 0.9767726246088417), (55, 0.9918845831170406), (56, 0.9920670755116392), (57, 0.9932910764148363), (58, 0.999723789149664), (59, 0.9948085568000266), (60, 0.9966225944106395), (61, 0.9968400231090373), (62, 0.9923205839949213), (63, 0.998972951681586), (64, 0.9891584443280331), (65, 0.9984082454118255), (66, 0.969602097705749), (67, 0.9989994073530405), (68, 0.9869462372772062), (69, 0.9990836331267944), (70, 0.9968241145514717), (71, 0.9889411632440056), (72, 0.9917470619338333), (73, 0.9943811791006023), (74, 0.9850088903941481), (75, 0.991528176200149), (76, 0.9911520853060551), (77, 0.9936510267711821), (78, 0.9898736081657409), (79, 0.9919124186739999), (80, 0.9723429952971709), (81, 0.9864239177680783), (82, 0.9865718488440013), (83, 0.9601661472542774), (84, 0.9900044489139399), (85, 0.9975998958110804), (86, 0.9878105136714201), (87, 0.9898455502227073), (88, 0.9836203165074845), (89, 0.9927674681746025), (90, 0.9955564334335218), (91, 0.990337220823752), (92, 0.9967816525764895), (93, 0.9900789369263165), (94, 0.9946005616880448), (95, 0.9858447104199828), (96, 0.9892520898667763), (97, 0.9898846907973163), (98, 0.9977436561349697), (99, 0.9982745398202757), (100, 0.9987747053038933), (101, 0.9828474848971226), (102, 0.9836996492097754), (103, 0.966140710258803), (104, 0.998074411056952), (105, 0.9669769951617472), (106, 0.996818740657984), (107, 0.9990845922622555), (108, 0.9549354304637608), (109, 0.9955271970334908), (110, 0.8988271195251839), (111, 0.9937325085033818), (112, 0.995031418330283), (113, 0.9914409391115947), (114, 0.9930089259731122), (115, 0.9649952424951437), (116, 0.9915255912435513), (117, 0.9797291512828998), (118, 0.9880263894171218), (119, 0.9985481738821366), (120, 0.9957543796383913), (121, 0.9971948590030864), (122, 0.9950588363964311), (123, 0.99657761270554), (124, 0.9973186832719374), (125, 0.9948500721130675), (126, 0.9956948331508071), (127, 0.9941223131480428), (128, 0.9828871698565783), (129, 0.9967387312828313), (130, 0.9978893147384689), (131, 0.9939382220407162), (132, 0.9815938725116583), (133, 0.9862823782750987), (134, 0.9989729901140758), (135, 0.9832543407124473), (136, 0.973477821868737), (137, 0.9999681164639558), (138, 0.9174272324769761), (139, 0.9994533470439533), (140, 0.9937467283217307)]
+  Individual scores: min=0.899, max=1.000, mean=0.991
+Per-image Pixel AUROC (mean): 99.1
+PRO: 93.7
+PRO: 93.7
+SNR: 11.9380
+  [parsed] Pixel AUROC=99.1  SNR=11.9380
+  ---- Done seed 42 ----
+
+########################################
+# Category : screw
+# Checkpoint: /data/akherandish3/MVTec/screw/2000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: wide_resnet101_2   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: screw   load_chp: 2000
+Checkpoint: /data/akherandish3/MVTec/screw/2000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/screw/2000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/screw/test/*/*.png
+DEBUG: Found 160 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=254
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=319
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=183
+AUROC: (93.5,99.4)
+  Per-image pixel AUROC: n=119 defective, skipped=41 good/invalid images
+[(0, 0.9991863886947652), (1, 0.9984027281384169), (2, 0.9977543561452185), (3, 0.9990464923391478), (4, 0.997966126485391), (5, 0.9979015688911568), (6, 0.9991500365985685), (7, 0.9967660447875502), (8, 0.9998780028203739), (9, 0.9971533117707374), (10, 0.9879213278999143), (11, 0.9957886434241594), (12, 0.9899955722319602), (13, 0.9987554716222963), (14, 0.992028533434229), (15, 0.9928194726077675), (16, 0.9989831021026596), (17, 0.998829279157686), (18, 0.9973625122716752), (19, 0.9972730674283001), (20, 0.9986671124338212), (21, 0.9990109567375345), (22, 0.9988044428965643), (23, 0.9995355711576115), (24, 0.9966009755676578), (25, 0.9986735793748789), (26, 0.997623309662599), (27, 0.999393154076557), (28, 0.9993003109886878), (29, 0.9991155579686908), (30, 0.9998951679832269), (31, 0.9997325885917782), (32, 0.999483830523595), (33, 0.9986638133514275), (34, 0.9994998470982172), (35, 0.999715371590734), (36, 0.9981373412242474), (37, 0.9959547034653121), (38, 0.9992724379172527), (39, 0.9995342541980259), (40, 0.9998853770020748), (41, 0.9997024773539762), (42, 0.9930588867837808), (43, 0.9993429078792695), (44, 0.9990960679222849), (45, 0.9991226282866561), (46, 0.9983700847527507), (47, 0.9998313394362477), (48, 0.9825075641816128), (49, 0.9986496874974247), (50, 0.9968977658234058), (51, 0.997369204044753), (52, 0.998267469904143), (53, 0.9985268995451433), (54, 0.9991716331548932), (55, 0.9998813709509005), (56, 0.9993202445244525), (57, 0.9992723214489674), (58, 0.9956515318740164), (59, 0.9896743894361533), (60, 0.997591090564361), (61, 0.996437100664372), (62, 0.9985167303688841), (63, 0.9983346277793615), (64, 0.9993337255139441), (65, 0.998120044108048), (66, 0.9989422545994067), (67, 0.9995244790664302), (68, 0.9987367420917288), (69, 0.9989355549827765), (70, 0.999762372749439), (71, 0.9975591837775599), (72, 0.9807814241982856), (73, 0.9660986589872763), (74, 0.9809331899767884), (75, 0.9718347340946176), (76, 0.9973177600097842), (77, 0.9869464579425278), (78, 0.9973547409206904), (79, 0.997494734875761), (80, 0.994377165106848), (81, 0.9974942752699749), (82, 0.9972868832692062), (83, 0.9981524880141375), (84, 0.9929492538208048), (85, 0.9968104773228164), (86, 0.9775184680976947), (87, 0.9979630872462448), (88, 0.9940663883485819), (89, 0.9926550748658451), (90, 0.9972126427183142), (91, 0.9606989048165967), (92, 0.9886822629361939), (93, 0.9982941773961459), (94, 0.9922198185603539), (95, 0.9981997870142667), (96, 0.9995160861985608), (97, 0.9993886043631806), (98, 0.9999459624609089), (99, 0.999733355935783), (100, 0.999484790139132), (101, 0.9986958334965346), (102, 0.9994226394356664), (103, 0.9994274105623142), (104, 0.9962679060096926), (105, 0.9997574975116374), (106, 0.9993133039478622), (107, 0.9998063845359328), (108, 0.9986741491651636), (109, 0.9991503635204493), (110, 0.9995781179387868), (111, 0.999682568603319), (112, 0.9993923186010447), (113, 0.999066214223533), (114, 0.9991507056610325), (115, 0.9878689578442624), (116, 0.9994063139230309), (117, 0.9990970249807094), (118, 0.9957658325699096)]
+  Individual scores: min=0.961, max=1.000, mean=0.996
+Per-image Pixel AUROC (mean): 99.6
+PRO: 96.0
+PRO: 96.0
+SNR: 9.6915
+  [parsed] Pixel AUROC=99.6  SNR=9.6915
+  ---- Done seed 42 ----
+
+########################################
+# Category : tile
+# Checkpoint: /data/akherandish3/MVTec/tile/1000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: wide_resnet101_2   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: tile   load_chp: 1000
+Checkpoint: /data/akherandish3/MVTec/tile/1000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/tile/1000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/tile/test/*/*.png
+DEBUG: Found 117 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=2767
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=4548
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=2055
+AUROC: (99.8,97.9)
+  Per-image pixel AUROC: n=84 defective, skipped=33 good/invalid images
+[(0, 0.9963295640903078), (1, 0.9970169816990108), (2, 0.9954725077998126), (3, 0.9983741092081901), (4, 0.991838047552749), (5, 0.9934021463455425), (6, 0.9961482439140271), (7, 0.9969606143573713), (8, 0.989812567567348), (9, 0.9987389410757566), (10, 0.9962180598426007), (11, 0.998201055557898), (12, 0.9867769395294734), (13, 0.9939060849090976), (14, 0.9963313490408949), (15, 0.9974572601830016), (16, 0.9966025881880743), (17, 0.9980025433580343), (18, 0.9962396933994576), (19, 0.9946802928215309), (20, 0.9148516838298805), (21, 0.9959871948589141), (22, 0.9910525804365085), (23, 0.9969649781701846), (24, 0.997427959403082), (25, 0.9873060387923427), (26, 0.9772684884877868), (27, 0.9961372337624215), (28, 0.9811670734770832), (29, 0.991812280285091), (30, 0.9906859118229313), (31, 0.9977683609080177), (32, 0.9948286750344373), (33, 0.978663257296006), (34, 0.9724219197050069), (35, 0.9961401959721866), (36, 0.9703642121942186), (37, 0.9925491827759698), (38, 0.9471313188140693), (39, 0.9815585157863549), (40, 0.9853660324761256), (41, 0.9963268487191653), (42, 0.9915274219740846), (43, 0.9903062302107728), (44, 0.9850792232108166), (45, 0.9852122825771302), (46, 0.9993788258956603), (47, 0.9991741434789406), (48, 0.9802204339199309), (49, 0.9474766267471311), (50, 0.947701544069839), (51, 0.9537203134653232), (52, 0.965889834734308), (53, 0.9696831125066352), (54, 0.9585682623890848), (55, 0.9629097081408615), (56, 0.9544879319387295), (57, 0.9587663369145835), (58, 0.9549890339290998), (59, 0.9815613816858207), (60, 0.933469793540427), (61, 0.9576952500641607), (62, 0.9558487998724248), (63, 0.9940088490710784), (64, 0.9659290433247693), (65, 0.9719555144055575), (66, 0.9935221459343253), (67, 0.9915244019392145), (68, 0.9957971105444123), (69, 0.9806867871004541), (70, 0.9881692062654956), (71, 0.9835199869454219), (72, 0.9684478589430804), (73, 0.9800709062577763), (74, 0.9724900336345511), (75, 0.9908340424797165), (76, 0.9947141402198217), (77, 0.9877109225251877), (78, 0.9861312269533747), (79, 0.9927555372524122), (80, 0.9956114256725445), (81, 0.9956926698971147), (82, 0.9949489325111704), (83, 0.9899643335189572)]
+  Individual scores: min=0.915, max=0.999, mean=0.983
+Per-image Pixel AUROC (mean): 98.3
+PRO: 90.8
+PRO: 90.8
+SNR: 6.2776
+  [parsed] Pixel AUROC=98.3  SNR=6.2776
+  ---- Done seed 42 ----
+
+########################################
+# Category : toothbrush
+# Checkpoint: /data/akherandish3/MVTec/toothbrush/2000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: wide_resnet101_2   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: toothbrush   load_chp: 2000
+Checkpoint: /data/akherandish3/MVTec/toothbrush/2000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/toothbrush/2000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/toothbrush/test/*/*.png
+DEBUG: Found 42 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=259
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=255
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=345
+AUROC: (92.2,98.6)
+  Per-image pixel AUROC: n=30 defective, skipped=12 good/invalid images
+[(0, 0.9942670211524479), (1, 0.9952604892694659), (2, 0.9989946153765779), (3, 0.9899046430899968), (4, 0.9950818063220471), (5, 0.977291141545318), (6, 0.9956705917114345), (7, 0.9958799802638065), (8, 0.9964204278751861), (9, 0.9582541453896612), (10, 0.9797158702299318), (11, 0.9985994160138658), (12, 0.9605924409738291), (13, 0.9684206286531782), (14, 0.9766093251741281), (15, 0.990700476939437), (16, 0.9829521634294416), (17, 0.9888776684161003), (18, 0.9771533541461788), (19, 0.9578024484417551), (20, 0.9718411023265141), (21, 0.9858776874881522), (22, 0.9969921530579112), (23, 0.9831127297210448), (24, 0.9777628667865171), (25, 0.9893857080411776), (26, 0.9676672350980544), (27, 0.9900523346312213), (28, 0.9952115362044811), (29, 0.9638509262941098)]
+  Individual scores: min=0.958, max=0.999, mean=0.983
+Per-image Pixel AUROC (mean): 98.3
+PRO: 84.1
+PRO: 84.1
+SNR: 6.4983
+  [parsed] Pixel AUROC=98.3  SNR=6.4983
+  ---- Done seed 42 ----
+
+########################################
+# Category : transistor
+# Checkpoint: /data/akherandish3/MVTec/transistor/2000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: wide_resnet101_2   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: transistor   load_chp: 2000
+Checkpoint: /data/akherandish3/MVTec/transistor/2000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/transistor/2000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/transistor/test/*/*.png
+DEBUG: Found 100 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=3337
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=970
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=976
+AUROC: (98.0,94.0)
+  Per-image pixel AUROC: n=40 defective, skipped=60 good/invalid images
+[(0, 0.9944365929065353), (1, 0.9513074130810285), (2, 0.9965904921333821), (3, 0.9982569241354786), (4, 0.9898866749729938), (5, 0.9926508553559961), (6, 0.9877018032170305), (7, 0.9870007336136657), (8, 0.990508492194726), (9, 0.9954086459160822), (10, 0.9974960479741006), (11, 0.9994650031811593), (12, 0.9971411741746458), (13, 0.9748295759527644), (14, 0.9811995347379588), (15, 0.9889109038825157), (16, 0.999113419080473), (17, 0.9834837705698278), (18, 0.9991325395161457), (19, 0.9808675648673859), (20, 0.9343197811841356), (21, 0.8727368325427095), (22, 0.5946804846202298), (23, 0.6501894273669704), (24, 0.8768378074806511), (25, 0.9048321377388087), (26, 0.893319753461233), (27, 0.6530374040230342), (28, 0.8969848362125182), (29, 0.7995739778847195), (30, 0.980922106122754), (31, 0.9503780813603686), (32, 0.9792190173572765), (33, 0.9839040688416982), (34, 0.9812251637676791), (35, 0.9842636188584334), (36, 0.9949948673338146), (37, 0.9901789293108474), (38, 0.9671335467246255), (39, 0.9717832696102614)]
+  Individual scores: min=0.595, max=0.999, mean=0.941
+Per-image Pixel AUROC (mean): 94.1
+PRO: 92.0
+PRO: 92.0
+SNR: 6.3677
+  [parsed] Pixel AUROC=94.1  SNR=6.3677
+  ---- Done seed 42 ----
+
+########################################
+# Category : wood
+# Checkpoint: /data/akherandish3/MVTec/wood/2000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: wide_resnet101_2   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: wood   load_chp: 2000
+Checkpoint: /data/akherandish3/MVTec/wood/2000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/wood/2000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/wood/test/*/*.png
+DEBUG: Found 79 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=1393
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=643
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=2495
+AUROC: (90.5,87.5)
+  Per-image pixel AUROC: n=60 defective, skipped=19 good/invalid images
+[(0, 0.8926621510697355), (1, 0.9898062605702475), (2, 0.9896797195221649), (3, 0.9006794817366943), (4, 0.9333762634337358), (5, 0.9781312450785493), (6, 0.9904845933619735), (7, 0.9899471182284519), (8, 0.9967904754564728), (9, 0.9944185389676544), (10, 0.9756554172679486), (11, 0.9952987946705484), (12, 0.7276722747194698), (13, 0.9987051726920948), (14, 0.9954230819737824), (15, 0.9867278501668041), (16, 0.9778473867594112), (17, 0.9670204602781282), (18, 0.9903399971889136), (19, 0.9464670424285739), (20, 0.975817856278677), (21, 0.9610412007250992), (22, 0.9612719042523842), (23, 0.8536401097332877), (24, 0.8719420964545701), (25, 0.994786518408713), (26, 0.9183265765842064), (27, 0.9351102689675279), (28, 0.914713275821124), (29, 0.9061710413342553), (30, 0.76984759250854), (31, 0.9089009976673079), (32, 0.8841473504302377), (33, 0.7222685153806139), (34, 0.8920434949305136), (35, 0.9466597894639357), (36, 0.8425794400789741), (37, 0.8818418238767883), (38, 0.8939298203634407), (39, 0.9559827859543593), (40, 0.8700581230901784), (41, 0.9927941957931845), (42, 0.9823208925788007), (43, 0.9728049454876498), (44, 0.8645580657098701), (45, 0.9552100361584404), (46, 0.6276347415022328), (47, 0.8589636252279715), (48, 0.6852269799095971), (49, 0.9870759583333972), (50, 0.9186973635018634), (51, 0.92515556716352), (52, 0.7174946507313896), (53, 0.9215853488023048), (54, 0.5723840424775009), (55, 0.9783636984373203), (56, 0.9542098762461958), (57, 0.6580371705477075), (58, 0.9040153079117543), (59, 0.8052630515406002)]
+  Individual scores: min=0.572, max=0.999, mean=0.906
+Per-image Pixel AUROC (mean): 90.6
+PRO: 64.9
+PRO: 64.9
+SNR: 5.0309
+  [parsed] Pixel AUROC=90.6  SNR=5.0309
+  ---- Done seed 42 ----
+
+########################################
+# Category : zipper
+# Checkpoint: /data/akherandish3/MVTec/zipper/1000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: wide_resnet101_2   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: zipper   load_chp: 1000
+Checkpoint: /data/akherandish3/MVTec/zipper/1000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/zipper/1000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/zipper/test/*/*.png
+DEBUG: Found 151 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=1592
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=1374
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=705
+AUROC: (97.1,97.5)
+  Per-image pixel AUROC: n=119 defective, skipped=32 good/invalid images
+[(0, 0.9829573906376622), (1, 0.9924062871787375), (2, 0.99563581077304), (3, 0.9909431311262317), (4, 0.9945982911565775), (5, 0.9376857950037987), (6, 0.9866724091082464), (7, 0.9224940691024974), (8, 0.9824041209323283), (9, 0.9848325335382204), (10, 0.9956054131359734), (11, 0.9961966914919208), (12, 0.9876757806286972), (13, 0.9910587838302256), (14, 0.977516158252216), (15, 0.9848588701882132), (16, 0.9889065054442504), (17, 0.9935485952239824), (18, 0.9824118085122157), (19, 0.9820151748401074), (20, 0.9764311787348829), (21, 0.9981680969292243), (22, 0.9754971566174218), (23, 0.9605395086744682), (24, 0.9910144289917243), (25, 0.9974550789449873), (26, 0.9985115034860816), (27, 0.9981496596624387), (28, 0.9991441931104371), (29, 0.9905853020944173), (30, 0.9912587727220994), (31, 0.9993139764114334), (32, 0.9963199905415264), (33, 0.9832886998640972), (34, 0.9990831697711413), (35, 0.9874473237850997), (36, 0.9746914846807541), (37, 0.9924816895023447), (38, 0.9947987046526771), (39, 0.9955104063425447), (40, 0.996713489898862), (41, 0.994273999076646), (42, 0.9923563911093685), (43, 0.9965574583667804), (44, 0.9978426181550001), (45, 0.9982099852636165), (46, 0.9966963318131965), (47, 0.9982618238925146), (48, 0.9876542339130874), (49, 0.9965887038583956), (50, 0.9986905491489629), (51, 0.9793304240316277), (52, 0.988885044339086), (53, 0.9953807035983677), (54, 0.9952710671134323), (55, 0.9899950348510449), (56, 0.9949751147003055), (57, 0.9938250771427204), (58, 0.993364832076965), (59, 0.9803980240711552), (60, 0.9982020708933759), (61, 0.9935404390716461), (62, 0.9928947101102322), (63, 0.9961948935897323), (64, 0.9890651013056317), (65, 0.9938332046240739), (66, 0.9894289476783031), (67, 0.9808819861070593), (68, 0.9700352809264341), (69, 0.9225940232641794), (70, 0.9577638315243021), (71, 0.9654660351146405), (72, 0.986854935269181), (73, 0.9854511229294056), (74, 0.9617538680948349), (75, 0.989500868896939), (76, 0.9806145681838833), (77, 0.9598139566529562), (78, 0.9782067000819704), (79, 0.9429811143641386), (80, 0.987905173052557), (81, 0.9919253310601851), (82, 0.9739534177175571), (83, 0.9658860992331318), (84, 0.9914487042655364), (85, 0.9942912350771643), (86, 0.9887475436362511), (87, 0.9865046240705017), (88, 0.9719423973984262), (89, 0.9823277547279979), (90, 0.9668181687993984), (91, 0.9892996702014158), (92, 0.9957534820455255), (93, 0.991195314565072), (94, 0.9970189129418933), (95, 0.9839323873296275), (96, 0.8877365250646119), (97, 0.9872576678808925), (98, 0.9733057250510496), (99, 0.9811192512809382), (100, 0.9976054801417523), (101, 0.9888270987637849), (102, 0.9902813031954592), (103, 0.9930806535733085), (104, 0.9890702709139175), (105, 0.9891448896765964), (106, 0.9952371934870854), (107, 0.9893789494971884), (108, 0.988460020228183), (109, 0.9969017885897788), (110, 0.9934764998641152), (111, 0.9972250914195869), (112, 0.992260387132721), (113, 0.9865963750628739), (114, 0.9881460235289127), (115, 0.990517399379763), (116, 0.9952614297825397), (117, 0.9891826199541554), (118, 0.997386871165192)]
+  Individual scores: min=0.888, max=0.999, mean=0.986
+Per-image Pixel AUROC (mean): 98.6
+PRO: 85.8
+PRO: 85.8
+SNR: 6.1334
+  [parsed] Pixel AUROC=98.6  SNR=6.1334
+  ---- Done seed 42 ----
+
+========================================
+All done.
+  Full output : results_full_20260506_153153.txt
+  Averages    : results_averaged_20260506_153153.txt
+========================================

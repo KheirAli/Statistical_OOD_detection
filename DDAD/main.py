@@ -484,6 +484,8 @@ def parse_args():
     cmdline_parser.add_argument('-cfg', '--config',
                                 default=os.path.join(os.path.dirname(os.path.abspath(__file__)), 'config.yaml'),
                                 help='config file')
+    cmdline_parser.add_argument('--checkpoint_name', default=None,
+                            help='Override config.model.checkpoint_name directly')
     cmdline_parser.add_argument('--train',             default=False, help='Train the diffusion model')
     cmdline_parser.add_argument('--detection',         default=False, help='Detection anomalies')
     cmdline_parser.add_argument('--domain_adaptation', default=False, help='Domain adaptation')
@@ -514,6 +516,15 @@ if __name__ == "__main__":
           "  load_chp:", config.model.load_chp, "  feature_extractor:", config.model.feature_extractor,
           "  w_DA:", config.model.w_DA, "  DLlambda:", config.model.DLlambda)
     print(f'{config.model.test_trajectoy_steps=} , {config.data.test_batch_size=}')
+    if getattr(args, 'checkpoint_name', None) is not None:
+        config.model.checkpoint_name = args.checkpoint_name
+    else:
+        # Always rebuild from the (possibly overridden) parts
+        config.model.checkpoint_name = os.path.join(
+            config.model.checkpoint_dir,
+            config.data.category,
+            str(config.model.load_chp)
+        )
     if args.subcategory is not None:
         config.data.subcategory = args.subcategory
     # ── Apply ALL overrides first, then build checkpoint_name ONCE ───────────

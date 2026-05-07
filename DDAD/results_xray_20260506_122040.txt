@@ -1,0 +1,988 @@
+==========================================
+  DDAD Detection — xray
+  Checkpoint : /data2/rohan/ckpts/DDAD/DvXray/MVTec/xray/500
+  Data       : /data/akheirandish3/mvtec_ad/xray/test/scissors
+  Seeds      : 421 1231 4561 7891 13371 20241 991 71 3141 27181
+==========================================
+
+-------- Seed 421 --------
+[Seed] 421
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: xray   load_chp: 500
+Checkpoint: /data2/rohan/ckpts/DDAD/DvXray/MVTec/xray/500
+Detecting Anomalies...
+Loading checkpoint: /data2/rohan/ckpts/DDAD/DvXray/MVTec/xray/500
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/xray/test/*/*.png
+DEBUG: Found 32 test images
+/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/sklearn/metrics/_ranking.py:424: UndefinedMetricWarning: Only one class is present in y_true. ROC AUC score is not defined in that case.
+  warnings.warn(
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=355
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=350
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=65
+[WARN] Skipping optimal_threshold — no image-level labels collected.
+AUROC: (nan,73.0)
+  Per-image pixel AUROC: n=32 defective, skipped=0 good/invalid images
+[(0, 0.6805606100974297), (1, 0.7336758111952172), (2, 0.8906227419538656), (3, 0.8865385680590615), (4, 0.5131833863404601), (5, 0.8549363023005553), (6, 0.8407598061754128), (7, 0.8055180107951663), (8, 0.7202715800862095), (9, 0.5265214291269478), (10, 0.8526191573939013), (11, 0.6978253132047975), (12, 0.8774440236386172), (13, 0.6323025796189811), (14, 0.5623390944724276), (15, 0.6565971864300277), (16, 0.6264270977043125), (17, 0.7250229235239896), (18, 0.6546664781498054), (19, 0.3754925582128036), (20, 0.8349627971391473), (21, 0.6967724959518037), (22, 0.7185856435885305), (23, 0.8450478769558957), (24, 0.6460690278996812), (25, 0.6611062575738665), (26, 0.7671610104484496), (27, 0.8852139212739771), (28, 0.8365388920739762), (29, 0.694374352798305), (30, 0.8036894641445519), (31, 0.763024737258941)]
+  Individual scores: min=0.375, max=0.891, mean=0.727
+Per-image Pixel AUROC (mean): 72.7
+PRO: 37.2
+PRO: 37.2
+SNR: 1.9474
+  [overlay] results/xraysample0_overlay.png
+  [overlay] results/xraysample0_composite.png
+  [overlay] results/xraysample1_overlay.png
+  [overlay] results/xraysample1_composite.png
+  [overlay] results/xraysample2_overlay.png
+  [overlay] results/xraysample2_composite.png
+  [overlay] results/xraysample3_overlay.png
+  [overlay] results/xraysample3_composite.png
+  [overlay] results/xraysample4_overlay.png
+  [overlay] results/xraysample4_composite.png
+  [overlay] results/xraysample5_overlay.png
+  [overlay] results/xraysample5_composite.png
+  [overlay] results/xraysample6_overlay.png
+  [overlay] results/xraysample6_composite.png
+  [overlay] results/xraysample7_overlay.png
+  [overlay] results/xraysample7_composite.png
+  [overlay] results/xraysample8_overlay.png
+  [overlay] results/xraysample8_composite.png
+  [overlay] results/xraysample9_overlay.png
+  [overlay] results/xraysample9_composite.png
+  [overlay] results/xraysample10_overlay.png
+  [overlay] results/xraysample10_composite.png
+  [overlay] results/xraysample11_overlay.png
+  [overlay] results/xraysample11_composite.png
+  [overlay] results/xraysample12_overlay.png
+  [overlay] results/xraysample12_composite.png
+  [overlay] results/xraysample13_overlay.png
+  [overlay] results/xraysample13_composite.png
+  [overlay] results/xraysample14_overlay.png
+  [overlay] results/xraysample14_composite.png
+  [overlay] results/xraysample15_overlay.png
+  [overlay] results/xraysample15_composite.png
+  [overlay] results/xraysample16_overlay.png
+  [overlay] results/xraysample16_composite.png
+  [overlay] results/xraysample17_overlay.png
+  [overlay] results/xraysample17_composite.png
+  [overlay] results/xraysample18_overlay.png
+  [overlay] results/xraysample18_composite.png
+  [overlay] results/xraysample19_overlay.png
+  [overlay] results/xraysample19_composite.png
+  [overlay] results/xraysample20_overlay.png
+  [overlay] results/xraysample20_composite.png
+  [overlay] results/xraysample21_overlay.png
+  [overlay] results/xraysample21_composite.png
+  [overlay] results/xraysample22_overlay.png
+  [overlay] results/xraysample22_composite.png
+  [overlay] results/xraysample23_overlay.png
+  [overlay] results/xraysample23_composite.png
+  [overlay] results/xraysample24_overlay.png
+  [overlay] results/xraysample24_composite.png
+  [overlay] results/xraysample25_overlay.png
+  [overlay] results/xraysample25_composite.png
+  [overlay] results/xraysample26_overlay.png
+  [overlay] results/xraysample26_composite.png
+  [overlay] results/xraysample27_overlay.png
+  [overlay] results/xraysample27_composite.png
+  [overlay] results/xraysample28_overlay.png
+  [overlay] results/xraysample28_composite.png
+  [overlay] results/xraysample29_overlay.png
+  [overlay] results/xraysample29_composite.png
+  [overlay] results/xraysample30_overlay.png
+  [overlay] results/xraysample30_composite.png
+  [overlay] results/xraysample31_overlay.png
+  [overlay] results/xraysample31_composite.png
+  → Pixel AUROC=72.7  SNR=1.9474
+
+-------- Seed 1231 --------
+[Seed] 1231
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: xray   load_chp: 500
+Checkpoint: /data2/rohan/ckpts/DDAD/DvXray/MVTec/xray/500
+Detecting Anomalies...
+Loading checkpoint: /data2/rohan/ckpts/DDAD/DvXray/MVTec/xray/500
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/xray/test/*/*.png
+DEBUG: Found 32 test images
+/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/sklearn/metrics/_ranking.py:424: UndefinedMetricWarning: Only one class is present in y_true. ROC AUC score is not defined in that case.
+  warnings.warn(
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=355
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=350
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=65
+[WARN] Skipping optimal_threshold — no image-level labels collected.
+AUROC: (nan,72.3)
+  Per-image pixel AUROC: n=32 defective, skipped=0 good/invalid images
+[(0, 0.6387627000091404), (1, 0.7126300344946986), (2, 0.9154443012349567), (3, 0.8937775285281453), (4, 0.3309512284308194), (5, 0.8880677771389992), (6, 0.7788034052129311), (7, 0.7916591565940626), (8, 0.5408495280283037), (9, 0.6137369051520041), (10, 0.814562308399548), (11, 0.5576788720997079), (12, 0.8234536904339358), (13, 0.6089909736370348), (14, 0.5993671738982648), (15, 0.658907827632061), (16, 0.6044770349858081), (17, 0.777288947145043), (18, 0.6947526454789189), (19, 0.44260521387831087), (20, 0.7575272847019383), (21, 0.760385044139492), (22, 0.7159529506528136), (23, 0.7649786788539257), (24, 0.6422326116452566), (25, 0.6460010655415407), (26, 0.7713069853779256), (27, 0.8828791561848742), (28, 0.8604198249521932), (29, 0.8472886395683894), (30, 0.7384640842648691), (31, 0.7640998018163841)]
+  Individual scores: min=0.331, max=0.915, mean=0.714
+Per-image Pixel AUROC (mean): 71.4
+PRO: 32.0
+PRO: 32.0
+SNR: 1.9367
+  [overlay] results/xraysample0_overlay.png
+  [overlay] results/xraysample0_composite.png
+  [overlay] results/xraysample1_overlay.png
+  [overlay] results/xraysample1_composite.png
+  [overlay] results/xraysample2_overlay.png
+  [overlay] results/xraysample2_composite.png
+  [overlay] results/xraysample3_overlay.png
+  [overlay] results/xraysample3_composite.png
+  [overlay] results/xraysample4_overlay.png
+  [overlay] results/xraysample4_composite.png
+  [overlay] results/xraysample5_overlay.png
+  [overlay] results/xraysample5_composite.png
+  [overlay] results/xraysample6_overlay.png
+  [overlay] results/xraysample6_composite.png
+  [overlay] results/xraysample7_overlay.png
+  [overlay] results/xraysample7_composite.png
+  [overlay] results/xraysample8_overlay.png
+  [overlay] results/xraysample8_composite.png
+  [overlay] results/xraysample9_overlay.png
+  [overlay] results/xraysample9_composite.png
+  [overlay] results/xraysample10_overlay.png
+  [overlay] results/xraysample10_composite.png
+  [overlay] results/xraysample11_overlay.png
+  [overlay] results/xraysample11_composite.png
+  [overlay] results/xraysample12_overlay.png
+  [overlay] results/xraysample12_composite.png
+  [overlay] results/xraysample13_overlay.png
+  [overlay] results/xraysample13_composite.png
+  [overlay] results/xraysample14_overlay.png
+  [overlay] results/xraysample14_composite.png
+  [overlay] results/xraysample15_overlay.png
+  [overlay] results/xraysample15_composite.png
+  [overlay] results/xraysample16_overlay.png
+  [overlay] results/xraysample16_composite.png
+  [overlay] results/xraysample17_overlay.png
+  [overlay] results/xraysample17_composite.png
+  [overlay] results/xraysample18_overlay.png
+  [overlay] results/xraysample18_composite.png
+  [overlay] results/xraysample19_overlay.png
+  [overlay] results/xraysample19_composite.png
+  [overlay] results/xraysample20_overlay.png
+  [overlay] results/xraysample20_composite.png
+  [overlay] results/xraysample21_overlay.png
+  [overlay] results/xraysample21_composite.png
+  [overlay] results/xraysample22_overlay.png
+  [overlay] results/xraysample22_composite.png
+  [overlay] results/xraysample23_overlay.png
+  [overlay] results/xraysample23_composite.png
+  [overlay] results/xraysample24_overlay.png
+  [overlay] results/xraysample24_composite.png
+  [overlay] results/xraysample25_overlay.png
+  [overlay] results/xraysample25_composite.png
+  [overlay] results/xraysample26_overlay.png
+  [overlay] results/xraysample26_composite.png
+  [overlay] results/xraysample27_overlay.png
+  [overlay] results/xraysample27_composite.png
+  [overlay] results/xraysample28_overlay.png
+  [overlay] results/xraysample28_composite.png
+  [overlay] results/xraysample29_overlay.png
+  [overlay] results/xraysample29_composite.png
+  [overlay] results/xraysample30_overlay.png
+  [overlay] results/xraysample30_composite.png
+  [overlay] results/xraysample31_overlay.png
+  [overlay] results/xraysample31_composite.png
+  → Pixel AUROC=71.4  SNR=1.9367
+
+-------- Seed 4561 --------
+[Seed] 4561
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: xray   load_chp: 500
+Checkpoint: /data2/rohan/ckpts/DDAD/DvXray/MVTec/xray/500
+Detecting Anomalies...
+Loading checkpoint: /data2/rohan/ckpts/DDAD/DvXray/MVTec/xray/500
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/xray/test/*/*.png
+DEBUG: Found 32 test images
+/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/sklearn/metrics/_ranking.py:424: UndefinedMetricWarning: Only one class is present in y_true. ROC AUC score is not defined in that case.
+  warnings.warn(
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=355
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=350
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=65
+[WARN] Skipping optimal_threshold — no image-level labels collected.
+AUROC: (nan,71.2)
+  Per-image pixel AUROC: n=32 defective, skipped=0 good/invalid images
+[(0, 0.6633109838670259), (1, 0.7846813952163261), (2, 0.8780629826711298), (3, 0.8196273207975461), (4, 0.34689604021451), (5, 0.8499906271630828), (6, 0.7657345446518582), (7, 0.7969218732051844), (8, 0.6207263861718766), (9, 0.556200893214172), (10, 0.8517560060647077), (11, 0.6225596518098588), (12, 0.7681308305714518), (13, 0.7241429174016386), (14, 0.5912684598889107), (15, 0.6934851964855168), (16, 0.6672181950146858), (17, 0.6789534680984175), (18, 0.6494360584922801), (19, 0.4343327377174324), (20, 0.8143312639037505), (21, 0.6885968826452893), (22, 0.6743819287035628), (23, 0.8056263783339562), (24, 0.6953342666422176), (25, 0.6327416043870608), (26, 0.6709732306256952), (27, 0.9208258917113307), (28, 0.7949176569246112), (29, 0.7733164514996602), (30, 0.7499620307599448), (31, 0.9215707872318374)]
+  Individual scores: min=0.347, max=0.922, mean=0.716
+Per-image Pixel AUROC (mean): 71.6
+PRO: 28.0
+PRO: 28.0
+SNR: 1.8731
+  [overlay] results/xraysample0_overlay.png
+  [overlay] results/xraysample0_composite.png
+  [overlay] results/xraysample1_overlay.png
+  [overlay] results/xraysample1_composite.png
+  [overlay] results/xraysample2_overlay.png
+  [overlay] results/xraysample2_composite.png
+  [overlay] results/xraysample3_overlay.png
+  [overlay] results/xraysample3_composite.png
+  [overlay] results/xraysample4_overlay.png
+  [overlay] results/xraysample4_composite.png
+  [overlay] results/xraysample5_overlay.png
+  [overlay] results/xraysample5_composite.png
+  [overlay] results/xraysample6_overlay.png
+  [overlay] results/xraysample6_composite.png
+  [overlay] results/xraysample7_overlay.png
+  [overlay] results/xraysample7_composite.png
+  [overlay] results/xraysample8_overlay.png
+  [overlay] results/xraysample8_composite.png
+  [overlay] results/xraysample9_overlay.png
+  [overlay] results/xraysample9_composite.png
+  [overlay] results/xraysample10_overlay.png
+  [overlay] results/xraysample10_composite.png
+  [overlay] results/xraysample11_overlay.png
+  [overlay] results/xraysample11_composite.png
+  [overlay] results/xraysample12_overlay.png
+  [overlay] results/xraysample12_composite.png
+  [overlay] results/xraysample13_overlay.png
+  [overlay] results/xraysample13_composite.png
+  [overlay] results/xraysample14_overlay.png
+  [overlay] results/xraysample14_composite.png
+  [overlay] results/xraysample15_overlay.png
+  [overlay] results/xraysample15_composite.png
+  [overlay] results/xraysample16_overlay.png
+  [overlay] results/xraysample16_composite.png
+  [overlay] results/xraysample17_overlay.png
+  [overlay] results/xraysample17_composite.png
+  [overlay] results/xraysample18_overlay.png
+  [overlay] results/xraysample18_composite.png
+  [overlay] results/xraysample19_overlay.png
+  [overlay] results/xraysample19_composite.png
+  [overlay] results/xraysample20_overlay.png
+  [overlay] results/xraysample20_composite.png
+  [overlay] results/xraysample21_overlay.png
+  [overlay] results/xraysample21_composite.png
+  [overlay] results/xraysample22_overlay.png
+  [overlay] results/xraysample22_composite.png
+  [overlay] results/xraysample23_overlay.png
+  [overlay] results/xraysample23_composite.png
+  [overlay] results/xraysample24_overlay.png
+  [overlay] results/xraysample24_composite.png
+  [overlay] results/xraysample25_overlay.png
+  [overlay] results/xraysample25_composite.png
+  [overlay] results/xraysample26_overlay.png
+  [overlay] results/xraysample26_composite.png
+  [overlay] results/xraysample27_overlay.png
+  [overlay] results/xraysample27_composite.png
+  [overlay] results/xraysample28_overlay.png
+  [overlay] results/xraysample28_composite.png
+  [overlay] results/xraysample29_overlay.png
+  [overlay] results/xraysample29_composite.png
+  [overlay] results/xraysample30_overlay.png
+  [overlay] results/xraysample30_composite.png
+  [overlay] results/xraysample31_overlay.png
+  [overlay] results/xraysample31_composite.png
+  → Pixel AUROC=71.6  SNR=1.8731
+
+-------- Seed 7891 --------
+[Seed] 7891
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: xray   load_chp: 500
+Checkpoint: /data2/rohan/ckpts/DDAD/DvXray/MVTec/xray/500
+Detecting Anomalies...
+Loading checkpoint: /data2/rohan/ckpts/DDAD/DvXray/MVTec/xray/500
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/xray/test/*/*.png
+DEBUG: Found 32 test images
+/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/sklearn/metrics/_ranking.py:424: UndefinedMetricWarning: Only one class is present in y_true. ROC AUC score is not defined in that case.
+  warnings.warn(
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=355
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=350
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=65
+[WARN] Skipping optimal_threshold — no image-level labels collected.
+AUROC: (nan,71.0)
+  Per-image pixel AUROC: n=32 defective, skipped=0 good/invalid images
+[(0, 0.5627901589744355), (1, 0.7406687237838099), (2, 0.918839227702694), (3, 0.8960588081183961), (4, 0.5070369966183406), (5, 0.8165773406905926), (6, 0.8118191575050407), (7, 0.7768979262958327), (8, 0.46241878623663435), (9, 0.5517582563883104), (10, 0.8724290376186228), (11, 0.601592990687516), (12, 0.774964665944639), (13, 0.6400047535543671), (14, 0.5865619506069149), (15, 0.6191735794039418), (16, 0.6071968483779122), (17, 0.7613443210678508), (18, 0.7461146534226538), (19, 0.4348627757607126), (20, 0.7792175160515332), (21, 0.7750656230594526), (22, 0.7255493523455764), (23, 0.7929794744353885), (24, 0.6731586067392392), (25, 0.5795174912983011), (26, 0.7153940067333412), (27, 0.9276120672649951), (28, 0.8804955785260374), (29, 0.7832884753796706), (30, 0.7647996205127181), (31, 0.8111048191855897)]
+  Individual scores: min=0.435, max=0.928, mean=0.716
+Per-image Pixel AUROC (mean): 71.6
+PRO: 29.2
+PRO: 29.2
+SNR: 1.8652
+  [overlay] results/xraysample0_overlay.png
+  [overlay] results/xraysample0_composite.png
+  [overlay] results/xraysample1_overlay.png
+  [overlay] results/xraysample1_composite.png
+  [overlay] results/xraysample2_overlay.png
+  [overlay] results/xraysample2_composite.png
+  [overlay] results/xraysample3_overlay.png
+  [overlay] results/xraysample3_composite.png
+  [overlay] results/xraysample4_overlay.png
+  [overlay] results/xraysample4_composite.png
+  [overlay] results/xraysample5_overlay.png
+  [overlay] results/xraysample5_composite.png
+  [overlay] results/xraysample6_overlay.png
+  [overlay] results/xraysample6_composite.png
+  [overlay] results/xraysample7_overlay.png
+  [overlay] results/xraysample7_composite.png
+  [overlay] results/xraysample8_overlay.png
+  [overlay] results/xraysample8_composite.png
+  [overlay] results/xraysample9_overlay.png
+  [overlay] results/xraysample9_composite.png
+  [overlay] results/xraysample10_overlay.png
+  [overlay] results/xraysample10_composite.png
+  [overlay] results/xraysample11_overlay.png
+  [overlay] results/xraysample11_composite.png
+  [overlay] results/xraysample12_overlay.png
+  [overlay] results/xraysample12_composite.png
+  [overlay] results/xraysample13_overlay.png
+  [overlay] results/xraysample13_composite.png
+  [overlay] results/xraysample14_overlay.png
+  [overlay] results/xraysample14_composite.png
+  [overlay] results/xraysample15_overlay.png
+  [overlay] results/xraysample15_composite.png
+  [overlay] results/xraysample16_overlay.png
+  [overlay] results/xraysample16_composite.png
+  [overlay] results/xraysample17_overlay.png
+  [overlay] results/xraysample17_composite.png
+  [overlay] results/xraysample18_overlay.png
+  [overlay] results/xraysample18_composite.png
+  [overlay] results/xraysample19_overlay.png
+  [overlay] results/xraysample19_composite.png
+  [overlay] results/xraysample20_overlay.png
+  [overlay] results/xraysample20_composite.png
+  [overlay] results/xraysample21_overlay.png
+  [overlay] results/xraysample21_composite.png
+  [overlay] results/xraysample22_overlay.png
+  [overlay] results/xraysample22_composite.png
+  [overlay] results/xraysample23_overlay.png
+  [overlay] results/xraysample23_composite.png
+  [overlay] results/xraysample24_overlay.png
+  [overlay] results/xraysample24_composite.png
+  [overlay] results/xraysample25_overlay.png
+  [overlay] results/xraysample25_composite.png
+  [overlay] results/xraysample26_overlay.png
+  [overlay] results/xraysample26_composite.png
+  [overlay] results/xraysample27_overlay.png
+  [overlay] results/xraysample27_composite.png
+  [overlay] results/xraysample28_overlay.png
+  [overlay] results/xraysample28_composite.png
+  [overlay] results/xraysample29_overlay.png
+  [overlay] results/xraysample29_composite.png
+  [overlay] results/xraysample30_overlay.png
+  [overlay] results/xraysample30_composite.png
+  [overlay] results/xraysample31_overlay.png
+  [overlay] results/xraysample31_composite.png
+  → Pixel AUROC=71.6  SNR=1.8652
+
+-------- Seed 13371 --------
+[Seed] 13371
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: xray   load_chp: 500
+Checkpoint: /data2/rohan/ckpts/DDAD/DvXray/MVTec/xray/500
+Detecting Anomalies...
+Loading checkpoint: /data2/rohan/ckpts/DDAD/DvXray/MVTec/xray/500
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/xray/test/*/*.png
+DEBUG: Found 32 test images
+/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/sklearn/metrics/_ranking.py:424: UndefinedMetricWarning: Only one class is present in y_true. ROC AUC score is not defined in that case.
+  warnings.warn(
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=355
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=350
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=65
+[WARN] Skipping optimal_threshold — no image-level labels collected.
+AUROC: (nan,72.2)
+  Per-image pixel AUROC: n=32 defective, skipped=0 good/invalid images
+[(0, 0.7155475403162288), (1, 0.7655277425915293), (2, 0.8953897380284637), (3, 0.95840134381879), (4, 0.5420313693704828), (5, 0.8526675244232572), (6, 0.7681299458731813), (7, 0.7876135943175091), (8, 0.7483931156139176), (9, 0.5312149673964166), (10, 0.8606387176037396), (11, 0.5597762477533937), (12, 0.8139100223360727), (13, 0.6841562466153205), (14, 0.5621656431552342), (15, 0.6563200391092523), (16, 0.6217779695977327), (17, 0.7638461167486981), (18, 0.6595647951092536), (19, 0.5045248721759756), (20, 0.8069845952553883), (21, 0.7055172071108222), (22, 0.6559355960945081), (23, 0.8187845963189058), (24, 0.6510801908993771), (25, 0.6031934038415858), (26, 0.6475946879376598), (27, 0.922102677473135), (28, 0.785653149078839), (29, 0.9162505259497961), (30, 0.7639063512215795), (31, 0.7894580473225831)]
+  Individual scores: min=0.505, max=0.958, mean=0.729
+Per-image Pixel AUROC (mean): 72.9
+PRO: 30.3
+PRO: 30.3
+SNR: 1.9370
+  [overlay] results/xraysample0_overlay.png
+  [overlay] results/xraysample0_composite.png
+  [overlay] results/xraysample1_overlay.png
+  [overlay] results/xraysample1_composite.png
+  [overlay] results/xraysample2_overlay.png
+  [overlay] results/xraysample2_composite.png
+  [overlay] results/xraysample3_overlay.png
+  [overlay] results/xraysample3_composite.png
+  [overlay] results/xraysample4_overlay.png
+  [overlay] results/xraysample4_composite.png
+  [overlay] results/xraysample5_overlay.png
+  [overlay] results/xraysample5_composite.png
+  [overlay] results/xraysample6_overlay.png
+  [overlay] results/xraysample6_composite.png
+  [overlay] results/xraysample7_overlay.png
+  [overlay] results/xraysample7_composite.png
+  [overlay] results/xraysample8_overlay.png
+  [overlay] results/xraysample8_composite.png
+  [overlay] results/xraysample9_overlay.png
+  [overlay] results/xraysample9_composite.png
+  [overlay] results/xraysample10_overlay.png
+  [overlay] results/xraysample10_composite.png
+  [overlay] results/xraysample11_overlay.png
+  [overlay] results/xraysample11_composite.png
+  [overlay] results/xraysample12_overlay.png
+  [overlay] results/xraysample12_composite.png
+  [overlay] results/xraysample13_overlay.png
+  [overlay] results/xraysample13_composite.png
+  [overlay] results/xraysample14_overlay.png
+  [overlay] results/xraysample14_composite.png
+  [overlay] results/xraysample15_overlay.png
+  [overlay] results/xraysample15_composite.png
+  [overlay] results/xraysample16_overlay.png
+  [overlay] results/xraysample16_composite.png
+  [overlay] results/xraysample17_overlay.png
+  [overlay] results/xraysample17_composite.png
+  [overlay] results/xraysample18_overlay.png
+  [overlay] results/xraysample18_composite.png
+  [overlay] results/xraysample19_overlay.png
+  [overlay] results/xraysample19_composite.png
+  [overlay] results/xraysample20_overlay.png
+  [overlay] results/xraysample20_composite.png
+  [overlay] results/xraysample21_overlay.png
+  [overlay] results/xraysample21_composite.png
+  [overlay] results/xraysample22_overlay.png
+  [overlay] results/xraysample22_composite.png
+  [overlay] results/xraysample23_overlay.png
+  [overlay] results/xraysample23_composite.png
+  [overlay] results/xraysample24_overlay.png
+  [overlay] results/xraysample24_composite.png
+  [overlay] results/xraysample25_overlay.png
+  [overlay] results/xraysample25_composite.png
+  [overlay] results/xraysample26_overlay.png
+  [overlay] results/xraysample26_composite.png
+  [overlay] results/xraysample27_overlay.png
+  [overlay] results/xraysample27_composite.png
+  [overlay] results/xraysample28_overlay.png
+  [overlay] results/xraysample28_composite.png
+  [overlay] results/xraysample29_overlay.png
+  [overlay] results/xraysample29_composite.png
+  [overlay] results/xraysample30_overlay.png
+  [overlay] results/xraysample30_composite.png
+  [overlay] results/xraysample31_overlay.png
+  [overlay] results/xraysample31_composite.png
+  → Pixel AUROC=72.9  SNR=1.9370
+
+-------- Seed 20241 --------
+[Seed] 20241
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: xray   load_chp: 500
+Checkpoint: /data2/rohan/ckpts/DDAD/DvXray/MVTec/xray/500
+Detecting Anomalies...
+Loading checkpoint: /data2/rohan/ckpts/DDAD/DvXray/MVTec/xray/500
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/xray/test/*/*.png
+DEBUG: Found 32 test images
+/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/sklearn/metrics/_ranking.py:424: UndefinedMetricWarning: Only one class is present in y_true. ROC AUC score is not defined in that case.
+  warnings.warn(
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=355
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=350
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=65
+[WARN] Skipping optimal_threshold — no image-level labels collected.
+AUROC: (nan,72.0)
+  Per-image pixel AUROC: n=32 defective, skipped=0 good/invalid images
+[(0, 0.6590152751244585), (1, 0.7668754246091405), (2, 0.8815519026039714), (3, 0.8766467550685972), (4, 0.3616887475737518), (5, 0.8800407818650142), (6, 0.8133239662944117), (7, 0.7873997184512744), (8, 0.5239216226923668), (9, 0.6321459040728588), (10, 0.7796306531963292), (11, 0.6092036478021046), (12, 0.8431047108649127), (13, 0.7178834119998428), (14, 0.5734371863552595), (15, 0.6854346532088702), (16, 0.6825476071656063), (17, 0.6828456848403512), (18, 0.6204289057545826), (19, 0.4414062383658193), (20, 0.8235300833794371), (21, 0.7589179108638755), (22, 0.7374788531164629), (23, 0.8168739768363398), (24, 0.6722553991985851), (25, 0.6197759499848579), (26, 0.7159507269259286), (27, 0.8662660909427871), (28, 0.89716679822671), (29, 0.7471927823311102), (30, 0.6931725554141327), (31, 0.9085736473694354)]
+  Individual scores: min=0.362, max=0.909, mean=0.721
+Per-image Pixel AUROC (mean): 72.1
+PRO: 29.8
+PRO: 29.8
+SNR: 1.9479
+  [overlay] results/xraysample0_overlay.png
+  [overlay] results/xraysample0_composite.png
+  [overlay] results/xraysample1_overlay.png
+  [overlay] results/xraysample1_composite.png
+  [overlay] results/xraysample2_overlay.png
+  [overlay] results/xraysample2_composite.png
+  [overlay] results/xraysample3_overlay.png
+  [overlay] results/xraysample3_composite.png
+  [overlay] results/xraysample4_overlay.png
+  [overlay] results/xraysample4_composite.png
+  [overlay] results/xraysample5_overlay.png
+  [overlay] results/xraysample5_composite.png
+  [overlay] results/xraysample6_overlay.png
+  [overlay] results/xraysample6_composite.png
+  [overlay] results/xraysample7_overlay.png
+  [overlay] results/xraysample7_composite.png
+  [overlay] results/xraysample8_overlay.png
+  [overlay] results/xraysample8_composite.png
+  [overlay] results/xraysample9_overlay.png
+  [overlay] results/xraysample9_composite.png
+  [overlay] results/xraysample10_overlay.png
+  [overlay] results/xraysample10_composite.png
+  [overlay] results/xraysample11_overlay.png
+  [overlay] results/xraysample11_composite.png
+  [overlay] results/xraysample12_overlay.png
+  [overlay] results/xraysample12_composite.png
+  [overlay] results/xraysample13_overlay.png
+  [overlay] results/xraysample13_composite.png
+  [overlay] results/xraysample14_overlay.png
+  [overlay] results/xraysample14_composite.png
+  [overlay] results/xraysample15_overlay.png
+  [overlay] results/xraysample15_composite.png
+  [overlay] results/xraysample16_overlay.png
+  [overlay] results/xraysample16_composite.png
+  [overlay] results/xraysample17_overlay.png
+  [overlay] results/xraysample17_composite.png
+  [overlay] results/xraysample18_overlay.png
+  [overlay] results/xraysample18_composite.png
+  [overlay] results/xraysample19_overlay.png
+  [overlay] results/xraysample19_composite.png
+  [overlay] results/xraysample20_overlay.png
+  [overlay] results/xraysample20_composite.png
+  [overlay] results/xraysample21_overlay.png
+  [overlay] results/xraysample21_composite.png
+  [overlay] results/xraysample22_overlay.png
+  [overlay] results/xraysample22_composite.png
+  [overlay] results/xraysample23_overlay.png
+  [overlay] results/xraysample23_composite.png
+  [overlay] results/xraysample24_overlay.png
+  [overlay] results/xraysample24_composite.png
+  [overlay] results/xraysample25_overlay.png
+  [overlay] results/xraysample25_composite.png
+  [overlay] results/xraysample26_overlay.png
+  [overlay] results/xraysample26_composite.png
+  [overlay] results/xraysample27_overlay.png
+  [overlay] results/xraysample27_composite.png
+  [overlay] results/xraysample28_overlay.png
+  [overlay] results/xraysample28_composite.png
+  [overlay] results/xraysample29_overlay.png
+  [overlay] results/xraysample29_composite.png
+  [overlay] results/xraysample30_overlay.png
+  [overlay] results/xraysample30_composite.png
+  [overlay] results/xraysample31_overlay.png
+  [overlay] results/xraysample31_composite.png
+  → Pixel AUROC=72.1  SNR=1.9479
+
+-------- Seed 991 --------
+[Seed] 991
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: xray   load_chp: 500
+Checkpoint: /data2/rohan/ckpts/DDAD/DvXray/MVTec/xray/500
+Detecting Anomalies...
+Loading checkpoint: /data2/rohan/ckpts/DDAD/DvXray/MVTec/xray/500
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/xray/test/*/*.png
+DEBUG: Found 32 test images
+/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/sklearn/metrics/_ranking.py:424: UndefinedMetricWarning: Only one class is present in y_true. ROC AUC score is not defined in that case.
+  warnings.warn(
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=355
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=350
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=65
+[WARN] Skipping optimal_threshold — no image-level labels collected.
+AUROC: (nan,71.8)
+  Per-image pixel AUROC: n=32 defective, skipped=0 good/invalid images
+[(0, 0.6600723964535591), (1, 0.7591045404140242), (2, 0.9330270712928683), (3, 0.8390512157335542), (4, 0.6546172396315149), (5, 0.8647967648174778), (6, 0.7829853128746389), (7, 0.8343096274919645), (8, 0.6172781859178316), (9, 0.5937914199507146), (10, 0.7977914326568506), (11, 0.5818776389166654), (12, 0.7710080529919399), (13, 0.7324794615762381), (14, 0.5488191328253785), (15, 0.582103453518979), (16, 0.6141809200571487), (17, 0.7180588479732172), (18, 0.6527097364386563), (19, 0.4054656193054282), (20, 0.7096307195918242), (21, 0.807953606561473), (22, 0.6748396168957922), (23, 0.8276452318660975), (24, 0.6932000813739658), (25, 0.6323192795471941), (26, 0.6905085144472488), (27, 0.9097829052172416), (28, 0.7803918613457044), (29, 0.7592607581403591), (30, 0.726979760321569), (31, 0.777094293291768)]
+  Individual scores: min=0.405, max=0.933, mean=0.717
+Per-image Pixel AUROC (mean): 71.7
+PRO: 26.6
+PRO: 26.6
+SNR: 1.8711
+  [overlay] results/xraysample0_overlay.png
+  [overlay] results/xraysample0_composite.png
+  [overlay] results/xraysample1_overlay.png
+  [overlay] results/xraysample1_composite.png
+  [overlay] results/xraysample2_overlay.png
+  [overlay] results/xraysample2_composite.png
+  [overlay] results/xraysample3_overlay.png
+  [overlay] results/xraysample3_composite.png
+  [overlay] results/xraysample4_overlay.png
+  [overlay] results/xraysample4_composite.png
+  [overlay] results/xraysample5_overlay.png
+  [overlay] results/xraysample5_composite.png
+  [overlay] results/xraysample6_overlay.png
+  [overlay] results/xraysample6_composite.png
+  [overlay] results/xraysample7_overlay.png
+  [overlay] results/xraysample7_composite.png
+  [overlay] results/xraysample8_overlay.png
+  [overlay] results/xraysample8_composite.png
+  [overlay] results/xraysample9_overlay.png
+  [overlay] results/xraysample9_composite.png
+  [overlay] results/xraysample10_overlay.png
+  [overlay] results/xraysample10_composite.png
+  [overlay] results/xraysample11_overlay.png
+  [overlay] results/xraysample11_composite.png
+  [overlay] results/xraysample12_overlay.png
+  [overlay] results/xraysample12_composite.png
+  [overlay] results/xraysample13_overlay.png
+  [overlay] results/xraysample13_composite.png
+  [overlay] results/xraysample14_overlay.png
+  [overlay] results/xraysample14_composite.png
+  [overlay] results/xraysample15_overlay.png
+  [overlay] results/xraysample15_composite.png
+  [overlay] results/xraysample16_overlay.png
+  [overlay] results/xraysample16_composite.png
+  [overlay] results/xraysample17_overlay.png
+  [overlay] results/xraysample17_composite.png
+  [overlay] results/xraysample18_overlay.png
+  [overlay] results/xraysample18_composite.png
+  [overlay] results/xraysample19_overlay.png
+  [overlay] results/xraysample19_composite.png
+  [overlay] results/xraysample20_overlay.png
+  [overlay] results/xraysample20_composite.png
+  [overlay] results/xraysample21_overlay.png
+  [overlay] results/xraysample21_composite.png
+  [overlay] results/xraysample22_overlay.png
+  [overlay] results/xraysample22_composite.png
+  [overlay] results/xraysample23_overlay.png
+  [overlay] results/xraysample23_composite.png
+  [overlay] results/xraysample24_overlay.png
+  [overlay] results/xraysample24_composite.png
+  [overlay] results/xraysample25_overlay.png
+  [overlay] results/xraysample25_composite.png
+  [overlay] results/xraysample26_overlay.png
+  [overlay] results/xraysample26_composite.png
+  [overlay] results/xraysample27_overlay.png
+  [overlay] results/xraysample27_composite.png
+  [overlay] results/xraysample28_overlay.png
+  [overlay] results/xraysample28_composite.png
+  [overlay] results/xraysample29_overlay.png
+  [overlay] results/xraysample29_composite.png
+  [overlay] results/xraysample30_overlay.png
+  [overlay] results/xraysample30_composite.png
+  [overlay] results/xraysample31_overlay.png
+  [overlay] results/xraysample31_composite.png
+  → Pixel AUROC=71.7  SNR=1.8711
+
+-------- Seed 71 --------
+[Seed] 71
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: xray   load_chp: 500
+Checkpoint: /data2/rohan/ckpts/DDAD/DvXray/MVTec/xray/500
+Detecting Anomalies...
+Loading checkpoint: /data2/rohan/ckpts/DDAD/DvXray/MVTec/xray/500
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/xray/test/*/*.png
+DEBUG: Found 32 test images
+/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/sklearn/metrics/_ranking.py:424: UndefinedMetricWarning: Only one class is present in y_true. ROC AUC score is not defined in that case.
+  warnings.warn(
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=355
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=350
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=65
+[WARN] Skipping optimal_threshold — no image-level labels collected.
+AUROC: (nan,73.9)
+  Per-image pixel AUROC: n=32 defective, skipped=0 good/invalid images
+[(0, 0.6644237465726532), (1, 0.8105929844708111), (2, 0.9268679145082439), (3, 0.82767775905534), (4, 0.43080163510421327), (5, 0.8967519360922888), (6, 0.7995855449805187), (7, 0.8298525590764161), (8, 0.5617065710798956), (9, 0.6361373570985897), (10, 0.8750295461265589), (11, 0.5290925195849941), (12, 0.8822695057458185), (13, 0.6467141720244772), (14, 0.5920817967001099), (15, 0.6657912453132372), (16, 0.6075374759271014), (17, 0.7771445119464491), (18, 0.6659171714592506), (19, 0.3753165647881345), (20, 0.90693251565693), (21, 0.7810891811554994), (22, 0.6605448789758458), (23, 0.8556213294515952), (24, 0.6781621189807451), (25, 0.6525426496197914), (26, 0.6982346431296151), (27, 0.9134863908234865), (28, 0.8238717549391076), (29, 0.8750162718998775), (30, 0.69498868012768), (31, 0.8181650578317439)]
+  Individual scores: min=0.375, max=0.927, mean=0.730
+Per-image Pixel AUROC (mean): 73.0
+PRO: 30.7
+PRO: 30.7
+SNR: 1.9843
+  [overlay] results/xraysample0_overlay.png
+  [overlay] results/xraysample0_composite.png
+  [overlay] results/xraysample1_overlay.png
+  [overlay] results/xraysample1_composite.png
+  [overlay] results/xraysample2_overlay.png
+  [overlay] results/xraysample2_composite.png
+  [overlay] results/xraysample3_overlay.png
+  [overlay] results/xraysample3_composite.png
+  [overlay] results/xraysample4_overlay.png
+  [overlay] results/xraysample4_composite.png
+  [overlay] results/xraysample5_overlay.png
+  [overlay] results/xraysample5_composite.png
+  [overlay] results/xraysample6_overlay.png
+  [overlay] results/xraysample6_composite.png
+  [overlay] results/xraysample7_overlay.png
+  [overlay] results/xraysample7_composite.png
+  [overlay] results/xraysample8_overlay.png
+  [overlay] results/xraysample8_composite.png
+  [overlay] results/xraysample9_overlay.png
+  [overlay] results/xraysample9_composite.png
+  [overlay] results/xraysample10_overlay.png
+  [overlay] results/xraysample10_composite.png
+  [overlay] results/xraysample11_overlay.png
+  [overlay] results/xraysample11_composite.png
+  [overlay] results/xraysample12_overlay.png
+  [overlay] results/xraysample12_composite.png
+  [overlay] results/xraysample13_overlay.png
+  [overlay] results/xraysample13_composite.png
+  [overlay] results/xraysample14_overlay.png
+  [overlay] results/xraysample14_composite.png
+  [overlay] results/xraysample15_overlay.png
+  [overlay] results/xraysample15_composite.png
+  [overlay] results/xraysample16_overlay.png
+  [overlay] results/xraysample16_composite.png
+  [overlay] results/xraysample17_overlay.png
+  [overlay] results/xraysample17_composite.png
+  [overlay] results/xraysample18_overlay.png
+  [overlay] results/xraysample18_composite.png
+  [overlay] results/xraysample19_overlay.png
+  [overlay] results/xraysample19_composite.png
+  [overlay] results/xraysample20_overlay.png
+  [overlay] results/xraysample20_composite.png
+  [overlay] results/xraysample21_overlay.png
+  [overlay] results/xraysample21_composite.png
+  [overlay] results/xraysample22_overlay.png
+  [overlay] results/xraysample22_composite.png
+  [overlay] results/xraysample23_overlay.png
+  [overlay] results/xraysample23_composite.png
+  [overlay] results/xraysample24_overlay.png
+  [overlay] results/xraysample24_composite.png
+  [overlay] results/xraysample25_overlay.png
+  [overlay] results/xraysample25_composite.png
+  [overlay] results/xraysample26_overlay.png
+  [overlay] results/xraysample26_composite.png
+  [overlay] results/xraysample27_overlay.png
+  [overlay] results/xraysample27_composite.png
+  [overlay] results/xraysample28_overlay.png
+  [overlay] results/xraysample28_composite.png
+  [overlay] results/xraysample29_overlay.png
+  [overlay] results/xraysample29_composite.png
+  [overlay] results/xraysample30_overlay.png
+  [overlay] results/xraysample30_composite.png
+  [overlay] results/xraysample31_overlay.png
+  [overlay] results/xraysample31_composite.png
+  → Pixel AUROC=73.0  SNR=1.9843
+
+-------- Seed 3141 --------
+[Seed] 3141
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: xray   load_chp: 500
+Checkpoint: /data2/rohan/ckpts/DDAD/DvXray/MVTec/xray/500
+Detecting Anomalies...
+Loading checkpoint: /data2/rohan/ckpts/DDAD/DvXray/MVTec/xray/500
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/xray/test/*/*.png
+DEBUG: Found 32 test images
+/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/sklearn/metrics/_ranking.py:424: UndefinedMetricWarning: Only one class is present in y_true. ROC AUC score is not defined in that case.
+  warnings.warn(
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=355
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=350
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=65
+[WARN] Skipping optimal_threshold — no image-level labels collected.
+AUROC: (nan,71.9)
+  Per-image pixel AUROC: n=32 defective, skipped=0 good/invalid images
+[(0, 0.5799176118677978), (1, 0.7560821122852847), (2, 0.8891022801639715), (3, 0.9248421518998474), (4, 0.527758438858602), (5, 0.8604320677330314), (6, 0.7567772139035339), (7, 0.7997515279873009), (8, 0.554405284425009), (9, 0.5845427064438169), (10, 0.8258315380972024), (11, 0.5417937034631564), (12, 0.7976589415401261), (13, 0.6399454239636494), (14, 0.5727447270719217), (15, 0.6181209802579342), (16, 0.6526896955442137), (17, 0.6233687335693617), (18, 0.5758156080002897), (19, 0.4354638339198246), (20, 0.8896503816433037), (21, 0.7103512427055885), (22, 0.7584530848900527), (23, 0.8253864362103221), (24, 0.6554751543091035), (25, 0.6137237456066542), (26, 0.7471515220225611), (27, 0.8781850757358686), (28, 0.7634599292400299), (29, 0.7884344637159728), (30, 0.7313983275162882), (31, 0.8926018873609702)]
+  Individual scores: min=0.435, max=0.925, mean=0.712
+Per-image Pixel AUROC (mean): 71.2
+PRO: 28.5
+PRO: 28.5
+SNR: 1.8874
+  [overlay] results/xraysample0_overlay.png
+  [overlay] results/xraysample0_composite.png
+  [overlay] results/xraysample1_overlay.png
+  [overlay] results/xraysample1_composite.png
+  [overlay] results/xraysample2_overlay.png
+  [overlay] results/xraysample2_composite.png
+  [overlay] results/xraysample3_overlay.png
+  [overlay] results/xraysample3_composite.png
+  [overlay] results/xraysample4_overlay.png
+  [overlay] results/xraysample4_composite.png
+  [overlay] results/xraysample5_overlay.png
+  [overlay] results/xraysample5_composite.png
+  [overlay] results/xraysample6_overlay.png
+  [overlay] results/xraysample6_composite.png
+  [overlay] results/xraysample7_overlay.png
+  [overlay] results/xraysample7_composite.png
+  [overlay] results/xraysample8_overlay.png
+  [overlay] results/xraysample8_composite.png
+  [overlay] results/xraysample9_overlay.png
+  [overlay] results/xraysample9_composite.png
+  [overlay] results/xraysample10_overlay.png
+  [overlay] results/xraysample10_composite.png
+  [overlay] results/xraysample11_overlay.png
+  [overlay] results/xraysample11_composite.png
+  [overlay] results/xraysample12_overlay.png
+  [overlay] results/xraysample12_composite.png
+  [overlay] results/xraysample13_overlay.png
+  [overlay] results/xraysample13_composite.png
+  [overlay] results/xraysample14_overlay.png
+  [overlay] results/xraysample14_composite.png
+  [overlay] results/xraysample15_overlay.png
+  [overlay] results/xraysample15_composite.png
+  [overlay] results/xraysample16_overlay.png
+  [overlay] results/xraysample16_composite.png
+  [overlay] results/xraysample17_overlay.png
+  [overlay] results/xraysample17_composite.png
+  [overlay] results/xraysample18_overlay.png
+  [overlay] results/xraysample18_composite.png
+  [overlay] results/xraysample19_overlay.png
+  [overlay] results/xraysample19_composite.png
+  [overlay] results/xraysample20_overlay.png
+  [overlay] results/xraysample20_composite.png
+  [overlay] results/xraysample21_overlay.png
+  [overlay] results/xraysample21_composite.png
+  [overlay] results/xraysample22_overlay.png
+  [overlay] results/xraysample22_composite.png
+  [overlay] results/xraysample23_overlay.png
+  [overlay] results/xraysample23_composite.png
+  [overlay] results/xraysample24_overlay.png
+  [overlay] results/xraysample24_composite.png
+  [overlay] results/xraysample25_overlay.png
+  [overlay] results/xraysample25_composite.png
+  [overlay] results/xraysample26_overlay.png
+  [overlay] results/xraysample26_composite.png
+  [overlay] results/xraysample27_overlay.png
+  [overlay] results/xraysample27_composite.png
+  [overlay] results/xraysample28_overlay.png
+  [overlay] results/xraysample28_composite.png
+  [overlay] results/xraysample29_overlay.png
+  [overlay] results/xraysample29_composite.png
+  [overlay] results/xraysample30_overlay.png
+  [overlay] results/xraysample30_composite.png
+  [overlay] results/xraysample31_overlay.png
+  [overlay] results/xraysample31_composite.png
+  → Pixel AUROC=71.2  SNR=1.8874
+
+-------- Seed 27181 --------
+[Seed] 27181
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: xray   load_chp: 500
+Checkpoint: /data2/rohan/ckpts/DDAD/DvXray/MVTec/xray/500
+Detecting Anomalies...
+Loading checkpoint: /data2/rohan/ckpts/DDAD/DvXray/MVTec/xray/500
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/xray/test/*/*.png
+DEBUG: Found 32 test images
+/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/sklearn/metrics/_ranking.py:424: UndefinedMetricWarning: Only one class is present in y_true. ROC AUC score is not defined in that case.
+  warnings.warn(
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=355
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=350
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=65
+[WARN] Skipping optimal_threshold — no image-level labels collected.
+AUROC: (nan,73.0)
+  Per-image pixel AUROC: n=32 defective, skipped=0 good/invalid images
+[(0, 0.6354666345135139), (1, 0.8371132057277855), (2, 0.8929900848643498), (3, 0.8396868781563256), (4, 0.41555813313739687), (5, 0.8777216939072049), (6, 0.804454414950139), (7, 0.7882877864466986), (8, 0.8684454324307196), (9, 0.6054202292493395), (10, 0.796549731411105), (11, 0.7017499643579178), (12, 0.8903669863192767), (13, 0.7897114943230098), (14, 0.5809562426965222), (15, 0.6087676439658938), (16, 0.5765640935665738), (17, 0.7799347170764093), (18, 0.7234154296126928), (19, 0.40562693758607093), (20, 0.7864594646457647), (21, 0.7581825796909918), (22, 0.6498513466344639), (23, 0.781275815416358), (24, 0.6858640912625917), (25, 0.6586861541778667), (26, 0.7297244378062158), (27, 0.9048366265318382), (28, 0.8909943646591415), (29, 0.7293172079855345), (30, 0.7284917520911398), (31, 0.8954778550906153)]
+  Individual scores: min=0.406, max=0.905, mean=0.738
+Per-image Pixel AUROC (mean): 73.8
+PRO: 33.9
+PRO: 33.9
+SNR: 1.9778
+  [overlay] results/xraysample0_overlay.png
+  [overlay] results/xraysample0_composite.png
+  [overlay] results/xraysample1_overlay.png
+  [overlay] results/xraysample1_composite.png
+  [overlay] results/xraysample2_overlay.png
+  [overlay] results/xraysample2_composite.png
+  [overlay] results/xraysample3_overlay.png
+  [overlay] results/xraysample3_composite.png
+  [overlay] results/xraysample4_overlay.png
+  [overlay] results/xraysample4_composite.png
+  [overlay] results/xraysample5_overlay.png
+  [overlay] results/xraysample5_composite.png
+  [overlay] results/xraysample6_overlay.png
+  [overlay] results/xraysample6_composite.png
+  [overlay] results/xraysample7_overlay.png
+  [overlay] results/xraysample7_composite.png
+  [overlay] results/xraysample8_overlay.png
+  [overlay] results/xraysample8_composite.png
+  [overlay] results/xraysample9_overlay.png
+  [overlay] results/xraysample9_composite.png
+  [overlay] results/xraysample10_overlay.png
+  [overlay] results/xraysample10_composite.png
+  [overlay] results/xraysample11_overlay.png
+  [overlay] results/xraysample11_composite.png
+  [overlay] results/xraysample12_overlay.png
+  [overlay] results/xraysample12_composite.png
+  [overlay] results/xraysample13_overlay.png
+  [overlay] results/xraysample13_composite.png
+  [overlay] results/xraysample14_overlay.png
+  [overlay] results/xraysample14_composite.png
+  [overlay] results/xraysample15_overlay.png
+  [overlay] results/xraysample15_composite.png
+  [overlay] results/xraysample16_overlay.png
+  [overlay] results/xraysample16_composite.png
+  [overlay] results/xraysample17_overlay.png
+  [overlay] results/xraysample17_composite.png
+  [overlay] results/xraysample18_overlay.png
+  [overlay] results/xraysample18_composite.png
+  [overlay] results/xraysample19_overlay.png
+  [overlay] results/xraysample19_composite.png
+  [overlay] results/xraysample20_overlay.png
+  [overlay] results/xraysample20_composite.png
+  [overlay] results/xraysample21_overlay.png
+  [overlay] results/xraysample21_composite.png
+  [overlay] results/xraysample22_overlay.png
+  [overlay] results/xraysample22_composite.png
+  [overlay] results/xraysample23_overlay.png
+  [overlay] results/xraysample23_composite.png
+  [overlay] results/xraysample24_overlay.png
+  [overlay] results/xraysample24_composite.png
+  [overlay] results/xraysample25_overlay.png
+  [overlay] results/xraysample25_composite.png
+  [overlay] results/xraysample26_overlay.png
+  [overlay] results/xraysample26_composite.png
+  [overlay] results/xraysample27_overlay.png
+  [overlay] results/xraysample27_composite.png
+  [overlay] results/xraysample28_overlay.png
+  [overlay] results/xraysample28_composite.png
+  [overlay] results/xraysample29_overlay.png
+  [overlay] results/xraysample29_composite.png
+  [overlay] results/xraysample30_overlay.png
+  [overlay] results/xraysample30_composite.png
+  [overlay] results/xraysample31_overlay.png
+  [overlay] results/xraysample31_composite.png
+  → Pixel AUROC=73.8  SNR=1.9778
+
+==========================================
+  Results over 10 seeds
+==========================================
+  Pixel AUROC : 72.20 ± 0.85
+  SNR         : 1.9228 ± 0.0449
+  Raw AUROC   : [72.7, 71.4, 71.6, 71.6, 72.9, 72.1, 71.7, 73.0, 71.2, 73.8]
+  Raw SNR     : [1.9474, 1.9367, 1.8731, 1.8652, 1.937, 1.9479, 1.8711, 1.9843, 1.8874, 1.9778]
+==========================================
+
+Full log : results_xray_20260506_122040.txt
+Averages : results_xray_avg_20260506_122040.txt

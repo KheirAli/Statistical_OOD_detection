@@ -1,0 +1,27 @@
+DDAD Detection — Full Log
+Timestamp: 20260506_121059
+Seeds: 42
+
+########################################
+# Category : cable
+# Checkpoint: /data/akherandish3/MVTec/cable/3000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Traceback (most recent call last):
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 517, in <module>
+    if args.checkpoint_name:
+AttributeError: 'Namespace' object has no attribute 'checkpoint_name'. Did you mean: 'checkpoint_dir'?
+  [WARN] Could not parse metrics for seed 42
+  ---- Done seed 42 ----
+
+========================================
+All done.
+  Full output : results_full_20260506_121059.txt
+  Averages    : results_averaged_20260506_121059.txt
+========================================

@@ -1,0 +1,8 @@
+DDAD Detection — Averaged Results
+Timestamp: 20260506_140838
+Seeds used: 42
+
+Category: bottle | Checkpoint: 1000 | N_seeds: 1
+  Pixel AUROC  [no data collected]
+  SNR          [no data collected]
+  ---

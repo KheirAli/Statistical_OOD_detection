@@ -1,0 +1,17 @@
+DDAD Detection — Averaged Results
+Timestamp: 20260506_115724
+Seeds used: 42
+
+Category: CT | Checkpoint: 2000 | N_seeds: 1
+  Pixel AUROC  mean=97.5000  std=0.0000  (n=1)
+  Raw values : 97.5
+  SNR          mean=4.7987  std=0.0000  (n=1)
+  Raw values : 4.7987
+  ---
+
+Category: cable | Checkpoint: 3000 | N_seeds: 1
+  Pixel AUROC  mean=97.6000  std=0.0000  (n=1)
+  Raw values : 97.6
+  SNR          mean=6.1534  std=0.0000  (n=1)
+  Raw values : 6.1534
+  ---

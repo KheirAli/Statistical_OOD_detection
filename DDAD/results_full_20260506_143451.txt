@@ -1,0 +1,525 @@
+DDAD Detection — Full Log
+Timestamp: 20260506_143451
+Seeds: 42
+
+########################################
+# Category : cable
+# Checkpoint: /data/akherandish3/MVTec/cable/3000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: wide_resnet101_2   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: cable   load_chp: 3000
+Checkpoint: /data/akherandish3/MVTec/cable/3000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/cable/3000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/cable/test/*/*.png
+DEBUG: Found 150 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=2312
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=541
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=840
+AUROC: (89.8,97.9)
+  Per-image pixel AUROC: n=92 defective, skipped=58 good/invalid images
+[(0, 0.985122137546208), (1, 0.9796351176736331), (2, 0.971406177315739), (3, 0.9967292391312561), (4, 0.9938763544874217), (5, 0.9792983699570905), (6, 0.997161182326024), (7, 0.9917676759473635), (8, 0.9825683570392559), (9, 0.9746713084095329), (10, 0.9872266450914976), (11, 0.9802970608264625), (12, 0.9883668950151574), (13, 0.9957190027618509), (14, 0.9959098968204434), (15, 0.9836904372631877), (16, 0.9951022438159263), (17, 0.9978205197254285), (18, 0.9804795626803403), (19, 0.9983523565853907), (20, 0.9897249363250126), (21, 0.9717316766584516), (22, 0.9838384450883519), (23, 0.9676494966287774), (24, 0.9854883685353316), (25, 0.9782717368428456), (26, 0.9862034983986203), (27, 0.9774027547792894), (28, 0.9964846843526756), (29, 0.9642394481667879), (30, 0.9754354367295507), (31, 0.9735670578352427), (32, 0.9561637483630953), (33, 0.983432023351775), (34, 0.9420830327398158), (35, 0.9346843938611165), (36, 0.9833163906264168), (37, 0.9584219088052), (38, 0.9818946558728072), (39, 0.9630940670116542), (40, 0.9904245018642281), (41, 0.992784697250899), (42, 0.6107719561183521), (43, 0.8303540295337237), (44, 0.9636047586060144), (45, 0.9733285837640141), (46, 0.9450695777558885), (47, 0.9556217353235201), (48, 0.9924360709932452), (49, 0.9876308874114226), (50, 0.9508646071755741), (51, 0.977647869309335), (52, 0.9793508329731795), (53, 0.9812287286075217), (54, 0.9449731411238717), (55, 0.9593870905158345), (56, 0.9663466206331558), (57, 0.9795278261529505), (58, 0.9886099662509746), (59, 0.9792969568959611), (60, 0.9659764418561733), (61, 0.9678782065619662), (62, 0.9872016017407379), (63, 0.9954356223607987), (64, 0.9635444918690403), (65, 0.936538381812197), (66, 0.9787195743629871), (67, 0.9770582596928745), (68, 0.9898856897437492), (69, 0.981440213490151), (70, 0.9889100295137017), (71, 0.997693178086373), (72, 0.9988902030886184), (73, 0.9978030028450031), (74, 0.9888049747191199), (75, 0.9965350544905567), (76, 0.9858235965268518), (77, 0.9877644555280397), (78, 0.998486474756279), (79, 0.9921981148574742), (80, 0.9985177584212219), (81, 0.99518256226362), (82, 0.9991427585914758), (83, 0.9726215987157426), (84, 0.9864140007651949), (85, 0.9938998541769596), (86, 0.9980547487094191), (87, 0.9970031805305646), (88, 0.9900647541228936), (89, 0.9975976805869232), (90, 0.995990866328224), (91, 0.9811734948300714)]
+  Individual scores: min=0.611, max=0.999, mean=0.975
+Per-image Pixel AUROC (mean): 97.5
+PRO: 89.1
+PRO: 89.1
+SNR: 6.9942
+  [parsed] Pixel AUROC=97.5  SNR=6.9942
+  ---- Done seed 42 ----
+
+########################################
+# Category : capsule
+# Checkpoint: /data/akherandish3/MVTec/capsule/1500
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: wide_resnet101_2   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: capsule   load_chp: 1500
+Checkpoint: /data/akherandish3/MVTec/capsule/1500
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/capsule/1500
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/capsule/test/*/*.png
+DEBUG: Found 132 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=146
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=175
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=159
+AUROC: (96.6,96.5)
+  Per-image pixel AUROC: n=109 defective, skipped=23 good/invalid images
+[(0, 0.9987664110175616), (1, 0.9994305909815158), (2, 0.9991845073128347), (3, 0.9971801887409864), (4, 0.9994999006283347), (5, 0.9997093282985507), (6, 0.999717617555113), (7, 0.9989166056031332), (8, 0.989958302554791), (9, 0.9997428140723992), (10, 0.9988335058998237), (11, 0.9995194905571467), (12, 0.9971185121190923), (13, 0.9975376685006889), (14, 0.9987727574515317), (15, 0.9994904076601793), (16, 0.999290766075228), (17, 0.9985660354692529), (18, 0.9965061610498649), (19, 0.9991892535872435), (20, 0.999913478079417), (21, 0.9995421256958555), (22, 0.9988553428388405), (23, 0.9949857662106101), (24, 0.9994558519599227), (25, 0.9981914378445682), (26, 0.9989153787840879), (27, 0.9963148720144347), (28, 0.9995028038601982), (29, 0.9997840136575097), (30, 0.9952894793509145), (31, 0.999407073617938), (32, 0.9996974689053457), (33, 0.9997325275344897), (34, 0.99862268403208), (35, 0.9998072613553711), (36, 0.99513327688488), (37, 0.999638964308005), (38, 0.9180738590750961), (39, 0.9995822988127885), (40, 0.9750208426572609), (41, 0.9995389592527284), (42, 0.9989977966827835), (43, 0.994123540997822), (44, 0.9977757235110402), (45, 0.9998329797496569), (46, 0.9847966721039664), (47, 0.99922056243076), (48, 0.999033462802674), (49, 0.9990902816029812), (50, 0.9960937499999999), (51, 0.9968175566384925), (52, 0.9929795924598086), (53, 0.9967582725995061), (54, 0.9815489046230446), (55, 0.9928077163438924), (56, 0.9974954958796811), (57, 0.9998237622529293), (58, 0.9969564879518535), (59, 0.9962878153485377), (60, 0.9937433601960319), (61, 0.9988729974888919), (62, 0.9986918431582859), (63, 0.9985383709482585), (64, 0.9998421042403514), (65, 0.9952811250015823), (66, 0.9988786749505014), (67, 0.9984253552612927), (68, 0.9665472286535487), (69, 0.9874639125634656), (70, 0.9669164261368298), (71, 0.9937581111343351), (72, 0.9977203132753232), (73, 0.9727099574581186), (74, 0.9895907130548158), (75, 0.9936003131766213), (76, 0.95178074489119), (77, 0.9852266476691259), (78, 0.9983166768923081), (79, 0.9984421624021469), (80, 0.9967222067492183), (81, 0.9970504951681503), (82, 0.9982653619201519), (83, 0.9967609849244723), (84, 0.9938728268422375), (85, 0.997902779267172), (86, 0.9648252523744094), (87, 0.9925243912300319), (88, 0.9982668629648523), (89, 0.9721503468665202), (90, 0.9727901464412387), (91, 0.9904863754055403), (92, 0.9910400826568413), (93, 0.9992745672420733), (94, 0.9880488654628846), (95, 0.9943761528360624), (96, 0.9847829639850644), (97, 0.9684125378539888), (98, 0.9893598880354408), (99, 0.9960394863710826), (100, 0.9833716793720203), (101, 0.9010185767912154), (102, 0.9722197566360478), (103, 0.8970043122524072), (104, 0.9557855719661298), (105, 0.9575657879605095), (106, 0.9954031088068617), (107, 0.9907463748368266), (108, 0.971697591488171)]
+  Individual scores: min=0.897, max=1.000, mean=0.990
+Per-image Pixel AUROC (mean): 99.0
+PRO: 86.4
+PRO: 86.4
+SNR: 7.6569
+  [parsed] Pixel AUROC=99.0  SNR=7.6569
+  ---- Done seed 42 ----
+
+########################################
+# Category : carpet
+# Checkpoint: /data/akherandish3/MVTec/carpet/2500
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: wide_resnet101_2   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: carpet   load_chp: 2500
+Checkpoint: /data/akherandish3/MVTec/carpet/2500
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/carpet/2500
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/carpet/test/*/*.png
+DEBUG: Found 117 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=2035
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=230
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=276
+AUROC: (94.9,98.4)
+  Per-image pixel AUROC: n=89 defective, skipped=28 good/invalid images
+[(0, 0.9970282810458556), (1, 0.9976870758263107), (2, 0.9970709691890187), (3, 0.9993993007517921), (4, 0.9996255713829991), (5, 0.9939465869790135), (6, 0.9998839896327176), (7, 0.9960742134048303), (8, 0.9997558294984888), (9, 0.9978894156664945), (10, 0.9985656908608208), (11, 0.9966234884122934), (12, 0.9968902495166191), (13, 0.9988424173607853), (14, 0.9968327800299748), (15, 0.9993362268440288), (16, 0.9987881027483587), (17, 0.9992751371129018), (18, 0.9995057694877645), (19, 0.9992075457794158), (20, 0.9996259182456234), (21, 0.9985173982226337), (22, 0.9108224316908787), (23, 0.9867363369137917), (24, 0.9955823604487531), (25, 0.9996676980692965), (26, 0.9882051843729802), (27, 0.9996445575988513), (28, 0.999021752613382), (29, 0.9994230400766723), (30, 0.9974425163619012), (31, 0.9978809853663244), (32, 0.9993028924272394), (33, 0.9995705231964467), (34, 0.996274555957745), (35, 0.9990366276621698), (36, 0.9786900107118671), (37, 0.983828252187944), (38, 0.9875277078771282), (39, 0.9968378825634496), (40, 0.9976299519291189), (41, 0.9989055431399058), (42, 0.9954519000457427), (43, 0.9959144708885094), (44, 0.9695489261443674), (45, 0.9969842526505572), (46, 0.9956041754643574), (47, 0.9979893729134374), (48, 0.9990617398994893), (49, 0.996278369379847), (50, 0.9959598597543694), (51, 0.9982513016937798), (52, 0.992400914012407), (53, 0.9980110585791663), (54, 0.9968007085758783), (55, 0.9993721225864083), (56, 0.9988538432973537), (57, 0.9988244562100891), (58, 0.9972163308318371), (59, 0.9968544295667143), (60, 0.9982723261589034), (61, 0.9973494927785687), (62, 0.9977194669871495), (63, 0.9973577336863368), (64, 0.994894284121697), (65, 0.997074383992375), (66, 0.9982422225235195), (67, 0.9891461939971912), (68, 0.9976210940301415), (69, 0.987551410325687), (70, 0.943429607234589), (71, 0.9924268730376142), (72, 0.9002223327017199), (73, 0.9872142616897279), (74, 0.9952709589596188), (75, 0.996176367205919), (76, 0.9498443959316321), (77, 0.9900377952480478), (78, 0.9418748990828264), (79, 0.9790971085442829), (80, 0.9786113705526619), (81, 0.9713663940574588), (82, 0.9869606000049873), (83, 0.9703298109046102), (84, 0.971449443428159), (85, 0.9939429858261029), (86, 0.9769100506104371), (87, 0.9686862479712369), (88, 0.9322688919047855)]
+  Individual scores: min=0.900, max=1.000, mean=0.990
+Per-image Pixel AUROC (mean): 99.0
+PRO: 91.3
+PRO: 91.3
+SNR: 7.9201
+  [parsed] Pixel AUROC=99.0  SNR=7.9201
+  ---- Done seed 42 ----
+
+########################################
+# Category : grid
+# Checkpoint: /data/akherandish3/MVTec/grid/2000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: wide_resnet101_2   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: grid   load_chp: 2000
+Checkpoint: /data/akherandish3/MVTec/grid/2000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/grid/2000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/grid/test/*/*.png
+DEBUG: Found 78 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=413
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=366
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=298
+AUROC: (100.0,99.2)
+  Per-image pixel AUROC: n=57 defective, skipped=21 good/invalid images
+[(0, 0.9996210932421081), (1, 0.9993019517680115), (2, 0.9985287221944801), (3, 0.999574477797254), (4, 0.9997485295740037), (5, 0.999322562184479), (6, 0.9998127376476291), (7, 0.9996936648923649), (8, 0.9970062714307104), (9, 0.9995432446709243), (10, 0.999669204794736), (11, 0.9973441478268263), (12, 0.990720798244981), (13, 0.9972126771834333), (14, 0.9937546737654089), (15, 0.9990260724401676), (16, 0.986334564281913), (17, 0.9976283559980316), (18, 0.9904619121494898), (19, 0.9953251037597657), (20, 0.9964897545699064), (21, 0.9950850808956311), (22, 0.9929375593049832), (23, 0.9970469742204122), (24, 0.9998194199649884), (25, 0.9953681749775636), (26, 0.9993508208851016), (27, 0.9962331106558697), (28, 0.9982642597902338), (29, 0.996877985231842), (30, 0.9980253112644815), (31, 0.9992051400738473), (32, 0.998688272404541), (33, 0.9976741526654538), (34, 0.9920385962494898), (35, 0.9961940367910771), (36, 0.9762929744954324), (37, 0.9812213354167334), (38, 0.985785531679101), (39, 0.978072618961256), (40, 0.9736654973143981), (41, 0.9982710893015891), (42, 0.9952822907779267), (43, 0.9816414472483171), (44, 0.9878343649935478), (45, 0.9885804828553879), (46, 0.9953472725879977), (47, 0.9984132291164275), (48, 0.9920060340343129), (49, 0.9917595222539983), (50, 0.986456492284862), (51, 0.9920631016279873), (52, 0.9968476275307459), (53, 0.9963452633905561), (54, 0.9958012880222048), (55, 0.9952329903380881), (56, 0.9953719895893166)]
+  Individual scores: min=0.974, max=1.000, mean=0.994
+Per-image Pixel AUROC (mean): 99.4
+PRO: 96.5
+PRO: 96.5
+SNR: 7.8847
+  [parsed] Pixel AUROC=99.4  SNR=7.8847
+  ---- Done seed 42 ----
+
+########################################
+# Category : hazelnut
+# Checkpoint: /data/akherandish3/MVTec/hazelnut/2000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: wide_resnet101_2   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: hazelnut   load_chp: 2000
+Checkpoint: /data/akherandish3/MVTec/hazelnut/2000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/hazelnut/2000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/hazelnut/test/*/*.png
+DEBUG: Found 110 test images
+Traceback (most recent call last):
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 562, in <module>
+    detection(config)
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 409, in detection
+    ddad()
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/ddad.py", line 39, in __call__
+    feature_extractor = domain_adaptation(self.unet, self.config, fine_tune=False)
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/feature_extractor.py", line 112, in domain_adaptation
+    checkpoint = torch.load(
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 1530, in load
+    with _open_file_like(f, "rb") as opened_file:
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 795, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 776, in __init__
+    super().__init__(open(name, mode))  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: '/data/akherandish3/MVTec/hazelnut/feat0'
+  [WARN] Could not parse metrics for seed 42
+  ---- Done seed 42 ----
+
+########################################
+# Category : leather
+# Checkpoint: /data/akherandish3/MVTec/leather/2000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: wide_resnet101_2   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: leather   load_chp: 2000
+Checkpoint: /data/akherandish3/MVTec/leather/2000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/leather/2000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/leather/test/*/*.png
+DEBUG: Found 124 test images
+Traceback (most recent call last):
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 562, in <module>
+    detection(config)
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 409, in detection
+    ddad()
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/ddad.py", line 39, in __call__
+    feature_extractor = domain_adaptation(self.unet, self.config, fine_tune=False)
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/feature_extractor.py", line 112, in domain_adaptation
+    checkpoint = torch.load(
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 1530, in load
+    with _open_file_like(f, "rb") as opened_file:
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 795, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 776, in __init__
+    super().__init__(open(name, mode))  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: '/data/akherandish3/MVTec/leather/feat0'
+  [WARN] Could not parse metrics for seed 42
+  ---- Done seed 42 ----
+
+########################################
+# Category : metal_nut
+# Checkpoint: /data/akherandish3/MVTec/metal_nut/3000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: wide_resnet101_2   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: metal_nut   load_chp: 3000
+Checkpoint: /data/akherandish3/MVTec/metal_nut/3000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/metal_nut/3000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/metal_nut/test/*/*.png
+DEBUG: Found 115 test images
+Traceback (most recent call last):
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 562, in <module>
+    detection(config)
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 409, in detection
+    ddad()
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/ddad.py", line 39, in __call__
+    feature_extractor = domain_adaptation(self.unet, self.config, fine_tune=False)
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/feature_extractor.py", line 112, in domain_adaptation
+    checkpoint = torch.load(
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 1530, in load
+    with _open_file_like(f, "rb") as opened_file:
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 795, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 776, in __init__
+    super().__init__(open(name, mode))  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: '/data/akherandish3/MVTec/metal_nut/feat0'
+  [WARN] Could not parse metrics for seed 42
+  ---- Done seed 42 ----
+
+########################################
+# Category : pill
+# Checkpoint: /data/akherandish3/MVTec/pill/1000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: wide_resnet101_2   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: pill   load_chp: 1000
+Checkpoint: /data/akherandish3/MVTec/pill/1000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/pill/1000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/pill/test/*/*.png
+DEBUG: Found 167 test images
+Traceback (most recent call last):
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 562, in <module>
+    detection(config)
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 409, in detection
+    ddad()
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/ddad.py", line 39, in __call__
+    feature_extractor = domain_adaptation(self.unet, self.config, fine_tune=False)
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/feature_extractor.py", line 112, in domain_adaptation
+    checkpoint = torch.load(
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 1530, in load
+    with _open_file_like(f, "rb") as opened_file:
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 795, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 776, in __init__
+    super().__init__(open(name, mode))  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: '/data/akherandish3/MVTec/pill/feat0'
+  [WARN] Could not parse metrics for seed 42
+  ---- Done seed 42 ----
+
+########################################
+# Category : screw
+# Checkpoint: /data/akherandish3/MVTec/screw/2000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: wide_resnet101_2   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: screw   load_chp: 2000
+Checkpoint: /data/akherandish3/MVTec/screw/2000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/screw/2000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/screw/test/*/*.png
+DEBUG: Found 160 test images
+Traceback (most recent call last):
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 562, in <module>
+    detection(config)
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 409, in detection
+    ddad()
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/ddad.py", line 39, in __call__
+    feature_extractor = domain_adaptation(self.unet, self.config, fine_tune=False)
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/feature_extractor.py", line 112, in domain_adaptation
+    checkpoint = torch.load(
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 1530, in load
+    with _open_file_like(f, "rb") as opened_file:
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 795, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 776, in __init__
+    super().__init__(open(name, mode))  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: '/data/akherandish3/MVTec/screw/feat0'
+  [WARN] Could not parse metrics for seed 42
+  ---- Done seed 42 ----
+
+########################################
+# Category : tile
+# Checkpoint: /data/akherandish3/MVTec/tile/1000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: wide_resnet101_2   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: tile   load_chp: 1000
+Checkpoint: /data/akherandish3/MVTec/tile/1000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/tile/1000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/tile/test/*/*.png
+DEBUG: Found 117 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=2767
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=4548
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=2055
+AUROC: (99.8,97.9)
+  Per-image pixel AUROC: n=84 defective, skipped=33 good/invalid images
+[(0, 0.9963295640903078), (1, 0.9970169816990108), (2, 0.9954725077998126), (3, 0.9983741092081901), (4, 0.991838047552749), (5, 0.9934021463455425), (6, 0.9961482439140271), (7, 0.9969606143573713), (8, 0.989812567567348), (9, 0.9987389410757566), (10, 0.9962180598426007), (11, 0.998201055557898), (12, 0.9867769395294734), (13, 0.9939060849090976), (14, 0.9963313490408949), (15, 0.9974572601830016), (16, 0.9966025881880743), (17, 0.9980025433580343), (18, 0.9962396933994576), (19, 0.9946802928215309), (20, 0.9148516838298805), (21, 0.9959871948589141), (22, 0.9910525804365085), (23, 0.9969649781701846), (24, 0.997427959403082), (25, 0.9873060387923427), (26, 0.9772684884877868), (27, 0.9961372337624215), (28, 0.9811670734770832), (29, 0.991812280285091), (30, 0.9906859118229313), (31, 0.9977683609080177), (32, 0.9948286750344373), (33, 0.978663257296006), (34, 0.9724219197050069), (35, 0.9961401959721866), (36, 0.9703642121942186), (37, 0.9925491827759698), (38, 0.9471313188140693), (39, 0.9815585157863549), (40, 0.9853660324761256), (41, 0.9963268487191653), (42, 0.9915274219740846), (43, 0.9903062302107728), (44, 0.9850792232108166), (45, 0.9852122825771302), (46, 0.9993788258956603), (47, 0.9991741434789406), (48, 0.9802204339199309), (49, 0.9474766267471311), (50, 0.947701544069839), (51, 0.9537203134653232), (52, 0.965889834734308), (53, 0.9696831125066352), (54, 0.9585682623890848), (55, 0.9629097081408615), (56, 0.9544879319387295), (57, 0.9587663369145835), (58, 0.9549890339290998), (59, 0.9815613816858207), (60, 0.933469793540427), (61, 0.9576952500641607), (62, 0.9558487998724248), (63, 0.9940088490710784), (64, 0.9659290433247693), (65, 0.9719555144055575), (66, 0.9935221459343253), (67, 0.9915244019392145), (68, 0.9957971105444123), (69, 0.9806867871004541), (70, 0.9881692062654956), (71, 0.9835199869454219), (72, 0.9684478589430804), (73, 0.9800709062577763), (74, 0.9724900336345511), (75, 0.9908340424797165), (76, 0.9947141402198217), (77, 0.9877109225251877), (78, 0.9861312269533747), (79, 0.9927555372524122), (80, 0.9956114256725445), (81, 0.9956926698971147), (82, 0.9949489325111704), (83, 0.9899643335189572)]
+  Individual scores: min=0.915, max=0.999, mean=0.983
+Per-image Pixel AUROC (mean): 98.3
+PRO: 90.8
+PRO: 90.8
+SNR: 6.2776
+  [parsed] Pixel AUROC=98.3  SNR=6.2776
+  ---- Done seed 42 ----
+
+########################################
+# Category : toothbrush
+# Checkpoint: /data/akherandish3/MVTec/toothbrush/2000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: wide_resnet101_2   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: toothbrush   load_chp: 2000
+Checkpoint: /data/akherandish3/MVTec/toothbrush/2000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/toothbrush/2000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/toothbrush/test/*/*.png
+DEBUG: Found 42 test images
+Traceback (most recent call last):
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 562, in <module>
+    detection(config)
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 409, in detection
+    ddad()
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/ddad.py", line 39, in __call__
+    feature_extractor = domain_adaptation(self.unet, self.config, fine_tune=False)
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/feature_extractor.py", line 112, in domain_adaptation
+    checkpoint = torch.load(
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 1530, in load
+    with _open_file_like(f, "rb") as opened_file:
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 795, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 776, in __init__
+    super().__init__(open(name, mode))  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: '/data/akherandish3/MVTec/toothbrush/feat0'
+  [WARN] Could not parse metrics for seed 42
+  ---- Done seed 42 ----
+
+########################################
+# Category : transistor
+# Checkpoint: /data/akherandish3/MVTec/transistor/2000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: wide_resnet101_2   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: transistor   load_chp: 2000
+Checkpoint: /data/akherandish3/MVTec/transistor/2000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/transistor/2000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/transistor/test/*/*.png
+DEBUG: Found 100 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=3337
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=970
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=976
+AUROC: (98.0,94.0)
+  Per-image pixel AUROC: n=40 defective, skipped=60 good/invalid images
+[(0, 0.9944365929065353), (1, 0.9513074130810285), (2, 0.9965904921333821), (3, 0.9982569241354786), (4, 0.9898866749729938), (5, 0.9926508553559961), (6, 0.9877018032170305), (7, 0.9870007336136657), (8, 0.990508492194726), (9, 0.9954086459160822), (10, 0.9974960479741006), (11, 0.9994650031811593), (12, 0.9971411741746458), (13, 0.9748295759527644), (14, 0.9811995347379588), (15, 0.9889109038825157), (16, 0.999113419080473), (17, 0.9834837705698278), (18, 0.9991325395161457), (19, 0.9808675648673859), (20, 0.9343197811841356), (21, 0.8727368325427095), (22, 0.5946804846202298), (23, 0.6501894273669704), (24, 0.8768378074806511), (25, 0.9048321377388087), (26, 0.893319753461233), (27, 0.6530374040230342), (28, 0.8969848362125182), (29, 0.7995739778847195), (30, 0.980922106122754), (31, 0.9503780813603686), (32, 0.9792190173572765), (33, 0.9839040688416982), (34, 0.9812251637676791), (35, 0.9842636188584334), (36, 0.9949948673338146), (37, 0.9901789293108474), (38, 0.9671335467246255), (39, 0.9717832696102614)]
+  Individual scores: min=0.595, max=0.999, mean=0.941
+Per-image Pixel AUROC (mean): 94.1
+PRO: 92.0
+PRO: 92.0
+SNR: 6.3677
+  [parsed] Pixel AUROC=94.1  SNR=6.3677
+  ---- Done seed 42 ----
+
+########################################
+# Category : wood
+# Checkpoint: /data/akherandish3/MVTec/wood/2000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: wide_resnet101_2   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: wood   load_chp: 2000
+Checkpoint: /data/akherandish3/MVTec/wood/2000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/wood/2000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/wood/test/*/*.png
+DEBUG: Found 79 test images
+Traceback (most recent call last):
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 562, in <module>
+    detection(config)
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 409, in detection
+    ddad()
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/ddad.py", line 39, in __call__
+    feature_extractor = domain_adaptation(self.unet, self.config, fine_tune=False)
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/feature_extractor.py", line 112, in domain_adaptation
+    checkpoint = torch.load(
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 1530, in load
+    with _open_file_like(f, "rb") as opened_file:
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 795, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 776, in __init__
+    super().__init__(open(name, mode))  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: '/data/akherandish3/MVTec/wood/feat0'
+  [WARN] Could not parse metrics for seed 42
+  ---- Done seed 42 ----
+
+########################################
+# Category : zipper
+# Checkpoint: /data/akherandish3/MVTec/zipper/1000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: wide_resnet101_2   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: zipper   load_chp: 1000
+Checkpoint: /data/akherandish3/MVTec/zipper/1000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/zipper/1000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/zipper/test/*/*.png
+DEBUG: Found 151 test images
+Traceback (most recent call last):
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 562, in <module>
+    detection(config)
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 409, in detection
+    ddad()
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/ddad.py", line 39, in __call__
+    feature_extractor = domain_adaptation(self.unet, self.config, fine_tune=False)
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/feature_extractor.py", line 112, in domain_adaptation
+    checkpoint = torch.load(
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 1530, in load
+    with _open_file_like(f, "rb") as opened_file:
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 795, in _open_file_like
+    return _open_file(name_or_buffer, mode)
+  File "/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/torch/serialization.py", line 776, in __init__
+    super().__init__(open(name, mode))  # noqa: SIM115
+FileNotFoundError: [Errno 2] No such file or directory: '/data/akherandish3/MVTec/zipper/feat0'
+  [WARN] Could not parse metrics for seed 42
+  ---- Done seed 42 ----
+
+========================================
+All done.
+  Full output : results_full_20260506_143451.txt
+  Averages    : results_averaged_20260506_143451.txt
+========================================

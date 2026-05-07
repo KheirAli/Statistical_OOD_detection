@@ -1,0 +1,28 @@
+==========================================
+  DDAD Detection — xray
+  Checkpoint : /data2/rohan/ckpts/DDAD/DvXray/MVTec/xray/500
+  Data       : /data/akheirandish3/mvtec_ad/xray/test/xray
+  Seeds      : 421 1231 4561 7891 13371 20241 991 71 3141 27181
+==========================================
+
+-------- Seed 421 --------
+[Seed] 421
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Traceback (most recent call last):
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 517, in <module>
+    if args.checkpoint_name:
+AttributeError: 'Namespace' object has no attribute 'checkpoint_name'. Did you mean: 'checkpoint_dir'?
+  [WARN] Could not parse metrics for seed 421
+
+-------- Seed 1231 --------
+[Seed] 1231
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Traceback (most recent call last):
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 517, in <module>
+    if args.checkpoint_name:
+AttributeError: 'Namespace' object has no attribute 'checkpoint_name'. Did you mean: 'checkpoint_dir'?
+  [WARN] Could not parse metrics for seed 1231
+
+-------- Seed 4561 --------

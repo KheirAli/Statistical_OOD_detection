@@ -1,0 +1,80 @@
+DDAD Detection — Averaged Results
+Timestamp: 20260506_111229
+Seeds used: 42
+
+Category: CT | Checkpoint: 2000 | N_seeds: 1
+  Pixel AUROC  mean=96.3000  std=0.0000  (n=1)
+  Raw values : 96.3
+  SNR          mean=4.4205  std=0.0000  (n=1)
+  Raw values : 4.4205
+  ---
+
+Category: faces | Checkpoint: 2000 | N_seeds: 1
+  Pixel AUROC  mean=68.0000  std=0.0000  (n=1)
+  Raw values : 68.0
+  SNR          mean=3.4055  std=0.0000  (n=1)
+  Raw values : 3.4055
+  ---
+
+Category: bottle | Checkpoint: 1000 | N_seeds: 1
+  Pixel AUROC  mean=99.2000  std=0.0000  (n=1)
+  Raw values : 99.2
+  SNR          mean=5.8185  std=0.0000  (n=1)
+  Raw values : 5.8185
+  ---
+
+Category: cable | Checkpoint: 3000 | N_seeds: 1
+  Pixel AUROC  mean=97.6000  std=0.0000  (n=1)
+  Raw values : 97.6
+  SNR          mean=6.1534  std=0.0000  (n=1)
+  Raw values : 6.1534
+  ---
+
+Category: capsule | Checkpoint: 1500 | N_seeds: 1
+  Pixel AUROC  mean=80.2000  std=0.0000  (n=1)
+  Raw values : 80.2
+  SNR          mean=4.4152  std=0.0000  (n=1)
+  Raw values : 4.4152
+  ---
+
+Category: carpet | Checkpoint: 2500 | N_seeds: 1
+  Pixel AUROC  mean=99.2000  std=0.0000  (n=1)
+  Raw values : 99.2
+  SNR          mean=7.7827  std=0.0000  (n=1)
+  Raw values : 7.7827
+  ---
+
+Category: grid | Checkpoint: 2000 | N_seeds: 1
+  Pixel AUROC  mean=99.2000  std=0.0000  (n=1)
+  Raw values : 99.2
+  SNR          mean=6.4776  std=0.0000  (n=1)
+  Raw values : 6.4776
+  ---
+
+Category: hazelnut | Checkpoint: 2000 | N_seeds: 1
+  Pixel AUROC  mean=98.8000  std=0.0000  (n=1)
+  Raw values : 98.8
+  SNR          mean=6.3065  std=0.0000  (n=1)
+  Raw values : 6.3065
+  ---
+
+Category: leather | Checkpoint: 2000 | N_seeds: 1
+  Pixel AUROC  mean=99.5000  std=0.0000  (n=1)
+  Raw values : 99.5
+  SNR          mean=8.9081  std=0.0000  (n=1)
+  Raw values : 8.9081
+  ---
+
+Category: metal_nut | Checkpoint: 3000 | N_seeds: 1
+  Pixel AUROC  mean=98.0000  std=0.0000  (n=1)
+  Raw values : 98.0
+  SNR          mean=6.0502  std=0.0000  (n=1)
+  Raw values : 6.0502
+  ---
+
+Category: pill | Checkpoint: 1000 | N_seeds: 1
+  Pixel AUROC  mean=90.3000  std=0.0000  (n=1)
+  Raw values : 90.3
+  SNR          mean=4.9919  std=0.0000  (n=1)
+  Raw values : 4.9919
+  ---

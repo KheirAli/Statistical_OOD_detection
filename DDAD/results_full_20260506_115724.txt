@@ -1,0 +1,313 @@
+DDAD Detection — Full Log
+Timestamp: 20260506_115724
+Seeds: 42
+
+########################################
+# Category : CT
+# Checkpoint: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/combined/CT/2000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: CT   load_chp: 2000
+Checkpoint: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/combined/CT/2000
+Detecting Anomalies...
+Loading checkpoint: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/combined/CT/2000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/CT/test/*/*.png
+DEBUG: Found 100 test images
+/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/sklearn/metrics/_ranking.py:424: UndefinedMetricWarning: Only one class is present in y_true. ROC AUC score is not defined in that case.
+  warnings.warn(
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=335
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=705
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=489
+[WARN] Skipping optimal_threshold — no image-level labels collected.
+AUROC: (nan,97.1)
+  Per-image pixel AUROC: n=100 defective, skipped=0 good/invalid images
+[(0, 0.996637538981066), (1, 0.977957069176367), (2, 0.9664941030684027), (3, 0.9637938456995354), (4, 0.9921331760714899), (5, 0.9929473020607643), (6, 0.9849865103965233), (7, 0.9734998499703129), (8, 0.9916665930384343), (9, 0.8708717388577109), (10, 0.9826174070212372), (11, 0.9876350611254983), (12, 0.9960866560535867), (13, 0.9751064049213131), (14, 0.9860185877594614), (15, 0.8704545063478897), (16, 0.9677253694798986), (17, 0.963863195040823), (18, 0.9928963117374261), (19, 0.9881387795915637), (20, 0.8800689072782817), (21, 0.9701876268597833), (22, 0.9415116764716722), (23, 0.9494943435606943), (24, 0.9756716249936397), (25, 0.9878128909346932), (26, 0.9903912939266053), (27, 0.9930389996824694), (28, 0.9899640080218793), (29, 0.9840368376367296), (30, 0.9867733138610079), (31, 0.9924480976865153), (32, 0.9783015950531648), (33, 0.9861590882983338), (34, 0.9949029103539246), (35, 0.9017991448750509), (36, 0.9972980376904148), (37, 0.992784175622197), (38, 0.9711919505946714), (39, 0.99854533207015), (40, 0.9821541894054154), (41, 0.9934233679940443), (42, 0.9862652598813718), (43, 0.9683467994352261), (44, 0.9928400074940154), (45, 0.9896416419293759), (46, 0.9710291420986015), (47, 0.9889683040810825), (48, 0.9933436182110604), (49, 0.9660513527290524), (50, 0.8955552482754564), (51, 0.9867493093923594), (52, 0.9827714899797946), (53, 0.9733365270782813), (54, 0.973873532713285), (55, 0.9959783919869408), (56, 0.9944344583613056), (57, 0.9350165707952325), (58, 0.996385648448452), (59, 0.9918926390017895), (60, 0.9720577095604528), (61, 0.9768015350643457), (62, 0.9887174506671891), (63, 0.9986964693273003), (64, 0.9792596525167583), (65, 0.9458551389791632), (66, 0.9800654977159861), (67, 0.993888586116031), (68, 0.9730957545282148), (69, 0.9790402394825336), (70, 0.9892398632616329), (71, 0.993882071756841), (72, 0.9700390354650854), (73, 0.9774952144774268), (74, 0.9862439298036634), (75, 0.9611966492096501), (76, 0.978914268299755), (77, 0.9900684980412671), (78, 0.987401453196273), (79, 0.992449720839921), (80, 0.9940121303009919), (81, 0.9689933216024039), (82, 0.9924133632843128), (83, 0.9806581611314125), (84, 0.9742475233350231), (85, 0.9812199216833379), (86, 0.8421714813334379), (87, 0.9626976516628328), (88, 0.981882307610584), (89, 0.9992400520548796), (90, 0.9720034444273399), (91, 0.9713827898804634), (92, 0.9673182238903538), (93, 0.989782785277821), (94, 0.97354158006287), (95, 0.9992992411755144), (96, 0.9667411594948925), (97, 0.9977993916599873), (98, 0.9708701931641546), (99, 0.9618041024244317)]
+  Individual scores: min=0.842, max=0.999, mean=0.975
+Per-image Pixel AUROC (mean): 97.5
+PRO: 88.8
+PRO: 88.8
+SNR: 4.7987
+  [overlay] results/CTsample0_overlay.png
+  [overlay] results/CTsample0_composite.png
+  [overlay] results/CTsample1_overlay.png
+  [overlay] results/CTsample1_composite.png
+  [overlay] results/CTsample2_overlay.png
+  [overlay] results/CTsample2_composite.png
+  [overlay] results/CTsample3_overlay.png
+  [overlay] results/CTsample3_composite.png
+  [overlay] results/CTsample4_overlay.png
+  [overlay] results/CTsample4_composite.png
+  [overlay] results/CTsample5_overlay.png
+  [overlay] results/CTsample5_composite.png
+  [overlay] results/CTsample6_overlay.png
+  [overlay] results/CTsample6_composite.png
+  [overlay] results/CTsample7_overlay.png
+  [overlay] results/CTsample7_composite.png
+  [overlay] results/CTsample8_overlay.png
+  [overlay] results/CTsample8_composite.png
+  [overlay] results/CTsample9_overlay.png
+  [overlay] results/CTsample9_composite.png
+  [overlay] results/CTsample10_overlay.png
+  [overlay] results/CTsample10_composite.png
+  [overlay] results/CTsample11_overlay.png
+  [overlay] results/CTsample11_composite.png
+  [overlay] results/CTsample12_overlay.png
+  [overlay] results/CTsample12_composite.png
+  [overlay] results/CTsample13_overlay.png
+  [overlay] results/CTsample13_composite.png
+  [overlay] results/CTsample14_overlay.png
+  [overlay] results/CTsample14_composite.png
+  [overlay] results/CTsample15_overlay.png
+  [overlay] results/CTsample15_composite.png
+  [overlay] results/CTsample16_overlay.png
+  [overlay] results/CTsample16_composite.png
+  [overlay] results/CTsample17_overlay.png
+  [overlay] results/CTsample17_composite.png
+  [overlay] results/CTsample18_overlay.png
+  [overlay] results/CTsample18_composite.png
+  [overlay] results/CTsample19_overlay.png
+  [overlay] results/CTsample19_composite.png
+  [overlay] results/CTsample20_overlay.png
+  [overlay] results/CTsample20_composite.png
+  [overlay] results/CTsample21_overlay.png
+  [overlay] results/CTsample21_composite.png
+  [overlay] results/CTsample22_overlay.png
+  [overlay] results/CTsample22_composite.png
+  [overlay] results/CTsample23_overlay.png
+  [overlay] results/CTsample23_composite.png
+  [overlay] results/CTsample24_overlay.png
+  [overlay] results/CTsample24_composite.png
+  [overlay] results/CTsample25_overlay.png
+  [overlay] results/CTsample25_composite.png
+  [overlay] results/CTsample26_overlay.png
+  [overlay] results/CTsample26_composite.png
+  [overlay] results/CTsample27_overlay.png
+  [overlay] results/CTsample27_composite.png
+  [overlay] results/CTsample28_overlay.png
+  [overlay] results/CTsample28_composite.png
+  [overlay] results/CTsample29_overlay.png
+  [overlay] results/CTsample29_composite.png
+  [overlay] results/CTsample30_overlay.png
+  [overlay] results/CTsample30_composite.png
+  [overlay] results/CTsample31_overlay.png
+  [overlay] results/CTsample31_composite.png
+  [overlay] results/CTsample32_overlay.png
+  [overlay] results/CTsample32_composite.png
+  [overlay] results/CTsample33_overlay.png
+  [overlay] results/CTsample33_composite.png
+  [overlay] results/CTsample34_overlay.png
+  [overlay] results/CTsample34_composite.png
+  [overlay] results/CTsample35_overlay.png
+  [overlay] results/CTsample35_composite.png
+  [overlay] results/CTsample36_overlay.png
+  [overlay] results/CTsample36_composite.png
+  [overlay] results/CTsample37_overlay.png
+  [overlay] results/CTsample37_composite.png
+  [overlay] results/CTsample38_overlay.png
+  [overlay] results/CTsample38_composite.png
+  [overlay] results/CTsample39_overlay.png
+  [overlay] results/CTsample39_composite.png
+  [overlay] results/CTsample40_overlay.png
+  [overlay] results/CTsample40_composite.png
+  [overlay] results/CTsample41_overlay.png
+  [overlay] results/CTsample41_composite.png
+  [overlay] results/CTsample42_overlay.png
+  [overlay] results/CTsample42_composite.png
+  [overlay] results/CTsample43_overlay.png
+  [overlay] results/CTsample43_composite.png
+  [overlay] results/CTsample44_overlay.png
+  [overlay] results/CTsample44_composite.png
+  [overlay] results/CTsample45_overlay.png
+  [overlay] results/CTsample45_composite.png
+  [overlay] results/CTsample46_overlay.png
+  [overlay] results/CTsample46_composite.png
+  [overlay] results/CTsample47_overlay.png
+  [overlay] results/CTsample47_composite.png
+  [overlay] results/CTsample48_overlay.png
+  [overlay] results/CTsample48_composite.png
+  [overlay] results/CTsample49_overlay.png
+  [overlay] results/CTsample49_composite.png
+  [overlay] results/CTsample50_overlay.png
+  [overlay] results/CTsample50_composite.png
+  [overlay] results/CTsample51_overlay.png
+  [overlay] results/CTsample51_composite.png
+  [overlay] results/CTsample52_overlay.png
+  [overlay] results/CTsample52_composite.png
+  [overlay] results/CTsample53_overlay.png
+  [overlay] results/CTsample53_composite.png
+  [overlay] results/CTsample54_overlay.png
+  [overlay] results/CTsample54_composite.png
+  [overlay] results/CTsample55_overlay.png
+  [overlay] results/CTsample55_composite.png
+  [overlay] results/CTsample56_overlay.png
+  [overlay] results/CTsample56_composite.png
+  [overlay] results/CTsample57_overlay.png
+  [overlay] results/CTsample57_composite.png
+  [overlay] results/CTsample58_overlay.png
+  [overlay] results/CTsample58_composite.png
+  [overlay] results/CTsample59_overlay.png
+  [overlay] results/CTsample59_composite.png
+  [overlay] results/CTsample60_overlay.png
+  [overlay] results/CTsample60_composite.png
+  [overlay] results/CTsample61_overlay.png
+  [overlay] results/CTsample61_composite.png
+  [overlay] results/CTsample62_overlay.png
+  [overlay] results/CTsample62_composite.png
+  [overlay] results/CTsample63_overlay.png
+  [overlay] results/CTsample63_composite.png
+  [overlay] results/CTsample64_overlay.png
+  [overlay] results/CTsample64_composite.png
+  [overlay] results/CTsample65_overlay.png
+  [overlay] results/CTsample65_composite.png
+  [overlay] results/CTsample66_overlay.png
+  [overlay] results/CTsample66_composite.png
+  [overlay] results/CTsample67_overlay.png
+  [overlay] results/CTsample67_composite.png
+  [overlay] results/CTsample68_overlay.png
+  [overlay] results/CTsample68_composite.png
+  [overlay] results/CTsample69_overlay.png
+  [overlay] results/CTsample69_composite.png
+  [overlay] results/CTsample70_overlay.png
+  [overlay] results/CTsample70_composite.png
+  [overlay] results/CTsample71_overlay.png
+  [overlay] results/CTsample71_composite.png
+  [overlay] results/CTsample72_overlay.png
+  [overlay] results/CTsample72_composite.png
+  [overlay] results/CTsample73_overlay.png
+  [overlay] results/CTsample73_composite.png
+  [overlay] results/CTsample74_overlay.png
+  [overlay] results/CTsample74_composite.png
+  [overlay] results/CTsample75_overlay.png
+  [overlay] results/CTsample75_composite.png
+  [overlay] results/CTsample76_overlay.png
+  [overlay] results/CTsample76_composite.png
+  [overlay] results/CTsample77_overlay.png
+  [overlay] results/CTsample77_composite.png
+  [overlay] results/CTsample78_overlay.png
+  [overlay] results/CTsample78_composite.png
+  [overlay] results/CTsample79_overlay.png
+  [overlay] results/CTsample79_composite.png
+  [overlay] results/CTsample80_overlay.png
+  [overlay] results/CTsample80_composite.png
+  [overlay] results/CTsample81_overlay.png
+  [overlay] results/CTsample81_composite.png
+  [overlay] results/CTsample82_overlay.png
+  [overlay] results/CTsample82_composite.png
+  [overlay] results/CTsample83_overlay.png
+  [overlay] results/CTsample83_composite.png
+  [overlay] results/CTsample84_overlay.png
+  [overlay] results/CTsample84_composite.png
+  [overlay] results/CTsample85_overlay.png
+  [overlay] results/CTsample85_composite.png
+  [overlay] results/CTsample86_overlay.png
+  [overlay] results/CTsample86_composite.png
+  [overlay] results/CTsample87_overlay.png
+  [overlay] results/CTsample87_composite.png
+  [overlay] results/CTsample88_overlay.png
+  [overlay] results/CTsample88_composite.png
+  [overlay] results/CTsample89_overlay.png
+  [overlay] results/CTsample89_composite.png
+  [overlay] results/CTsample90_overlay.png
+  [overlay] results/CTsample90_composite.png
+  [overlay] results/CTsample91_overlay.png
+  [overlay] results/CTsample91_composite.png
+  [overlay] results/CTsample92_overlay.png
+  [overlay] results/CTsample92_composite.png
+  [overlay] results/CTsample93_overlay.png
+  [overlay] results/CTsample93_composite.png
+  [overlay] results/CTsample94_overlay.png
+  [overlay] results/CTsample94_composite.png
+  [overlay] results/CTsample95_overlay.png
+  [overlay] results/CTsample95_composite.png
+  [overlay] results/CTsample96_overlay.png
+  [overlay] results/CTsample96_composite.png
+  [overlay] results/CTsample97_overlay.png
+  [overlay] results/CTsample97_composite.png
+  [overlay] results/CTsample98_overlay.png
+  [overlay] results/CTsample98_composite.png
+  [overlay] results/CTsample99_overlay.png
+  [overlay] results/CTsample99_composite.png
+  [parsed] Pixel AUROC=97.5  SNR=4.7987
+  ---- Done seed 42 ----
+
+########################################
+# Category : cable
+# Checkpoint: /data/akherandish3/MVTec/cable/3000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: cable   load_chp: 3000
+Checkpoint: /data/akherandish3/MVTec/cable/3000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/cable/3000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/cable/test/*/*.png
+DEBUG: Found 11 test images
+/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/sklearn/metrics/_ranking.py:424: UndefinedMetricWarning: Only one class is present in y_true. ROC AUC score is not defined in that case.
+  warnings.warn(
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=5793
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=2632
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=2055
+[WARN] Skipping optimal_threshold — no image-level labels collected.
+AUROC: (nan,97.1)
+  Per-image pixel AUROC: n=11 defective, skipped=0 good/invalid images
+[(0, 0.9692600403282721), (1, 0.9818396408412376), (2, 0.9812863062921562), (3, 0.9886347279544251), (4, 0.9760440078303033), (5, 0.9949987995366675), (6, 0.9636229244987469), (7, 0.9784955575750024), (8, 0.9795939019510925), (9, 0.934823528099613), (10, 0.9827946216732879)]
+  Individual scores: min=0.935, max=0.995, mean=0.976
+Per-image Pixel AUROC (mean): 97.6
+PRO: 83.5
+PRO: 83.5
+SNR: 6.1534
+  [overlay] results/cablesample0_overlay.png
+  [overlay] results/cablesample0_composite.png
+  [overlay] results/cablesample1_overlay.png
+  [overlay] results/cablesample1_composite.png
+  [overlay] results/cablesample2_overlay.png
+  [overlay] results/cablesample2_composite.png
+  [overlay] results/cablesample3_overlay.png
+  [overlay] results/cablesample3_composite.png
+  [overlay] results/cablesample4_overlay.png
+  [overlay] results/cablesample4_composite.png
+  [overlay] results/cablesample5_overlay.png
+  [overlay] results/cablesample5_composite.png
+  [overlay] results/cablesample6_overlay.png
+  [overlay] results/cablesample6_composite.png
+  [overlay] results/cablesample7_overlay.png
+  [overlay] results/cablesample7_composite.png
+  [overlay] results/cablesample8_overlay.png
+  [overlay] results/cablesample8_composite.png
+  [overlay] results/cablesample9_overlay.png
+  [overlay] results/cablesample9_composite.png
+  [overlay] results/cablesample10_overlay.png
+  [overlay] results/cablesample10_composite.png
+  [parsed] Pixel AUROC=97.6  SNR=6.1534
+  ---- Done seed 42 ----
+
+========================================
+All done.
+  Full output : results_full_20260506_115724.txt
+  Averages    : results_averaged_20260506_115724.txt
+========================================

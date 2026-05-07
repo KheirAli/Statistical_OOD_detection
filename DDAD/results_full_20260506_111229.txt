@@ -1,0 +1,2280 @@
+DDAD Detection — Full Log
+Timestamp: 20260506_111229
+Seeds: 42
+
+########################################
+# Category : CT
+# Checkpoint: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/combined/CT/2000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: CT   load_chp: 2000
+Checkpoint: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/combined/CT/2000
+Detecting Anomalies...
+Loading checkpoint: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/combined/CT/2000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/CT/test/*/*.png
+DEBUG: Found 100 test images
+/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/sklearn/metrics/_ranking.py:424: UndefinedMetricWarning: Only one class is present in y_true. ROC AUC score is not defined in that case.
+  warnings.warn(
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=2357
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=2543
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=1958
+[WARN] Skipping optimal_threshold — no image-level labels collected.
+AUROC: (nan,95.5)
+  Per-image pixel AUROC: n=100 defective, skipped=0 good/invalid images
+[(0, 0.9882827144938541), (1, 0.9571099564589687), (2, 0.9783964906690827), (3, 0.9896671200766012), (4, 0.946442704083933), (5, 0.9798014051866042), (6, 0.9776537876438188), (7, 0.9732262591031047), (8, 0.972621867697438), (9, 0.9715271999779042), (10, 0.961259398774406), (11, 0.9872423190634145), (12, 0.9830716196536491), (13, 0.9229229786388721), (14, 0.9722957626517141), (15, 0.8621700610144777), (16, 0.9744625278845116), (17, 0.9902356552593663), (18, 0.9924983604908016), (19, 0.9648529886281849), (20, 0.9610371834996286), (21, 0.9675174220944139), (22, 0.7837242716644777), (23, 0.9270455807085815), (24, 0.9727064870207695), (25, 0.9776242170699402), (26, 0.9716460902581466), (27, 0.9891139272873941), (28, 0.9720640982953387), (29, 0.9880068580162872), (30, 0.9730560605614414), (31, 0.9851879065969129), (32, 0.9822528998596086), (33, 0.9721802168999638), (34, 0.9500220847711013), (35, 0.9773018595227064), (36, 0.9911699602858505), (37, 0.9834427922757405), (38, 0.9691227778365311), (39, 0.992307158923106), (40, 0.9774592373502257), (41, 0.9839490459408805), (42, 0.9457721167653337), (43, 0.9875080788656595), (44, 0.9506483439780974), (45, 0.9843902354714982), (46, 0.9685204879920393), (47, 0.9416725369608006), (48, 0.9741056213490344), (49, 0.9869213207842179), (50, 0.9774701972352092), (51, 0.9874088530089506), (52, 0.964818705067319), (53, 0.9510244678136505), (54, 0.9808945110010282), (55, 0.9909716168165875), (56, 0.9815721626456979), (57, 0.7487595685189936), (58, 0.9933146174798387), (59, 0.9916808084160248), (60, 0.9762834694595152), (61, 0.9864579750295666), (62, 0.9432143009772115), (63, 0.9891683781030016), (64, 0.8248492554192135), (65, 0.9059164441627128), (66, 0.9539298506067034), (67, 0.9866569883421864), (68, 0.9496751394451612), (69, 0.9472176372402398), (70, 0.9914618147113635), (71, 0.956364324964352), (72, 0.8874960822838418), (73, 0.9664524780802677), (74, 0.9843402062838403), (75, 0.9646165059435062), (76, 0.9788604774599644), (77, 0.9667090736775256), (78, 0.9796071788039376), (79, 0.9813995045031825), (80, 0.9869838279911611), (81, 0.9493961038898746), (82, 0.9693837072123231), (83, 0.9671776968524216), (84, 0.9638196953228345), (85, 0.9714731780465852), (86, 0.9600013386924002), (87, 0.9772563378124518), (88, 0.9544786534221382), (89, 0.9938484425710186), (90, 0.9821902414373678), (91, 0.9655777341547404), (92, 0.9426570615241333), (93, 0.9342056119913943), (94, 0.9855518854665176), (95, 0.9582509563991674), (96, 0.9024332283594312), (97, 0.9834201751651002), (98, 0.9674482528000531), (99, 0.9569578620625322)]
+  Individual scores: min=0.749, max=0.994, mean=0.963
+Per-image Pixel AUROC (mean): 96.3
+PRO: 80.4
+PRO: 80.4
+SNR: 4.4205
+  [overlay] results/CTsample0_overlay.png
+  [overlay] results/CTsample0_composite.png
+  [overlay] results/CTsample1_overlay.png
+  [overlay] results/CTsample1_composite.png
+  [overlay] results/CTsample2_overlay.png
+  [overlay] results/CTsample2_composite.png
+  [overlay] results/CTsample3_overlay.png
+  [overlay] results/CTsample3_composite.png
+  [overlay] results/CTsample4_overlay.png
+  [overlay] results/CTsample4_composite.png
+  [overlay] results/CTsample5_overlay.png
+  [overlay] results/CTsample5_composite.png
+  [overlay] results/CTsample6_overlay.png
+  [overlay] results/CTsample6_composite.png
+  [overlay] results/CTsample7_overlay.png
+  [overlay] results/CTsample7_composite.png
+  [overlay] results/CTsample8_overlay.png
+  [overlay] results/CTsample8_composite.png
+  [overlay] results/CTsample9_overlay.png
+  [overlay] results/CTsample9_composite.png
+  [overlay] results/CTsample10_overlay.png
+  [overlay] results/CTsample10_composite.png
+  [overlay] results/CTsample11_overlay.png
+  [overlay] results/CTsample11_composite.png
+  [overlay] results/CTsample12_overlay.png
+  [overlay] results/CTsample12_composite.png
+  [overlay] results/CTsample13_overlay.png
+  [overlay] results/CTsample13_composite.png
+  [overlay] results/CTsample14_overlay.png
+  [overlay] results/CTsample14_composite.png
+  [overlay] results/CTsample15_overlay.png
+  [overlay] results/CTsample15_composite.png
+  [overlay] results/CTsample16_overlay.png
+  [overlay] results/CTsample16_composite.png
+  [overlay] results/CTsample17_overlay.png
+  [overlay] results/CTsample17_composite.png
+  [overlay] results/CTsample18_overlay.png
+  [overlay] results/CTsample18_composite.png
+  [overlay] results/CTsample19_overlay.png
+  [overlay] results/CTsample19_composite.png
+  [overlay] results/CTsample20_overlay.png
+  [overlay] results/CTsample20_composite.png
+  [overlay] results/CTsample21_overlay.png
+  [overlay] results/CTsample21_composite.png
+  [overlay] results/CTsample22_overlay.png
+  [overlay] results/CTsample22_composite.png
+  [overlay] results/CTsample23_overlay.png
+  [overlay] results/CTsample23_composite.png
+  [overlay] results/CTsample24_overlay.png
+  [overlay] results/CTsample24_composite.png
+  [overlay] results/CTsample25_overlay.png
+  [overlay] results/CTsample25_composite.png
+  [overlay] results/CTsample26_overlay.png
+  [overlay] results/CTsample26_composite.png
+  [overlay] results/CTsample27_overlay.png
+  [overlay] results/CTsample27_composite.png
+  [overlay] results/CTsample28_overlay.png
+  [overlay] results/CTsample28_composite.png
+  [overlay] results/CTsample29_overlay.png
+  [overlay] results/CTsample29_composite.png
+  [overlay] results/CTsample30_overlay.png
+  [overlay] results/CTsample30_composite.png
+  [overlay] results/CTsample31_overlay.png
+  [overlay] results/CTsample31_composite.png
+  [overlay] results/CTsample32_overlay.png
+  [overlay] results/CTsample32_composite.png
+  [overlay] results/CTsample33_overlay.png
+  [overlay] results/CTsample33_composite.png
+  [overlay] results/CTsample34_overlay.png
+  [overlay] results/CTsample34_composite.png
+  [overlay] results/CTsample35_overlay.png
+  [overlay] results/CTsample35_composite.png
+  [overlay] results/CTsample36_overlay.png
+  [overlay] results/CTsample36_composite.png
+  [overlay] results/CTsample37_overlay.png
+  [overlay] results/CTsample37_composite.png
+  [overlay] results/CTsample38_overlay.png
+  [overlay] results/CTsample38_composite.png
+  [overlay] results/CTsample39_overlay.png
+  [overlay] results/CTsample39_composite.png
+  [overlay] results/CTsample40_overlay.png
+  [overlay] results/CTsample40_composite.png
+  [overlay] results/CTsample41_overlay.png
+  [overlay] results/CTsample41_composite.png
+  [overlay] results/CTsample42_overlay.png
+  [overlay] results/CTsample42_composite.png
+  [overlay] results/CTsample43_overlay.png
+  [overlay] results/CTsample43_composite.png
+  [overlay] results/CTsample44_overlay.png
+  [overlay] results/CTsample44_composite.png
+  [overlay] results/CTsample45_overlay.png
+  [overlay] results/CTsample45_composite.png
+  [overlay] results/CTsample46_overlay.png
+  [overlay] results/CTsample46_composite.png
+  [overlay] results/CTsample47_overlay.png
+  [overlay] results/CTsample47_composite.png
+  [overlay] results/CTsample48_overlay.png
+  [overlay] results/CTsample48_composite.png
+  [overlay] results/CTsample49_overlay.png
+  [overlay] results/CTsample49_composite.png
+  [overlay] results/CTsample50_overlay.png
+  [overlay] results/CTsample50_composite.png
+  [overlay] results/CTsample51_overlay.png
+  [overlay] results/CTsample51_composite.png
+  [overlay] results/CTsample52_overlay.png
+  [overlay] results/CTsample52_composite.png
+  [overlay] results/CTsample53_overlay.png
+  [overlay] results/CTsample53_composite.png
+  [overlay] results/CTsample54_overlay.png
+  [overlay] results/CTsample54_composite.png
+  [overlay] results/CTsample55_overlay.png
+  [overlay] results/CTsample55_composite.png
+  [overlay] results/CTsample56_overlay.png
+  [overlay] results/CTsample56_composite.png
+  [overlay] results/CTsample57_overlay.png
+  [overlay] results/CTsample57_composite.png
+  [overlay] results/CTsample58_overlay.png
+  [overlay] results/CTsample58_composite.png
+  [overlay] results/CTsample59_overlay.png
+  [overlay] results/CTsample59_composite.png
+  [overlay] results/CTsample60_overlay.png
+  [overlay] results/CTsample60_composite.png
+  [overlay] results/CTsample61_overlay.png
+  [overlay] results/CTsample61_composite.png
+  [overlay] results/CTsample62_overlay.png
+  [overlay] results/CTsample62_composite.png
+  [overlay] results/CTsample63_overlay.png
+  [overlay] results/CTsample63_composite.png
+  [overlay] results/CTsample64_overlay.png
+  [overlay] results/CTsample64_composite.png
+  [overlay] results/CTsample65_overlay.png
+  [overlay] results/CTsample65_composite.png
+  [overlay] results/CTsample66_overlay.png
+  [overlay] results/CTsample66_composite.png
+  [overlay] results/CTsample67_overlay.png
+  [overlay] results/CTsample67_composite.png
+  [overlay] results/CTsample68_overlay.png
+  [overlay] results/CTsample68_composite.png
+  [overlay] results/CTsample69_overlay.png
+  [overlay] results/CTsample69_composite.png
+  [overlay] results/CTsample70_overlay.png
+  [overlay] results/CTsample70_composite.png
+  [overlay] results/CTsample71_overlay.png
+  [overlay] results/CTsample71_composite.png
+  [overlay] results/CTsample72_overlay.png
+  [overlay] results/CTsample72_composite.png
+  [overlay] results/CTsample73_overlay.png
+  [overlay] results/CTsample73_composite.png
+  [overlay] results/CTsample74_overlay.png
+  [overlay] results/CTsample74_composite.png
+  [overlay] results/CTsample75_overlay.png
+  [overlay] results/CTsample75_composite.png
+  [overlay] results/CTsample76_overlay.png
+  [overlay] results/CTsample76_composite.png
+  [overlay] results/CTsample77_overlay.png
+  [overlay] results/CTsample77_composite.png
+  [overlay] results/CTsample78_overlay.png
+  [overlay] results/CTsample78_composite.png
+  [overlay] results/CTsample79_overlay.png
+  [overlay] results/CTsample79_composite.png
+  [overlay] results/CTsample80_overlay.png
+  [overlay] results/CTsample80_composite.png
+  [overlay] results/CTsample81_overlay.png
+  [overlay] results/CTsample81_composite.png
+  [overlay] results/CTsample82_overlay.png
+  [overlay] results/CTsample82_composite.png
+  [overlay] results/CTsample83_overlay.png
+  [overlay] results/CTsample83_composite.png
+  [overlay] results/CTsample84_overlay.png
+  [overlay] results/CTsample84_composite.png
+  [overlay] results/CTsample85_overlay.png
+  [overlay] results/CTsample85_composite.png
+  [overlay] results/CTsample86_overlay.png
+  [overlay] results/CTsample86_composite.png
+  [overlay] results/CTsample87_overlay.png
+  [overlay] results/CTsample87_composite.png
+  [overlay] results/CTsample88_overlay.png
+  [overlay] results/CTsample88_composite.png
+  [overlay] results/CTsample89_overlay.png
+  [overlay] results/CTsample89_composite.png
+  [overlay] results/CTsample90_overlay.png
+  [overlay] results/CTsample90_composite.png
+  [overlay] results/CTsample91_overlay.png
+  [overlay] results/CTsample91_composite.png
+  [overlay] results/CTsample92_overlay.png
+  [overlay] results/CTsample92_composite.png
+  [overlay] results/CTsample93_overlay.png
+  [overlay] results/CTsample93_composite.png
+  [overlay] results/CTsample94_overlay.png
+  [overlay] results/CTsample94_composite.png
+  [overlay] results/CTsample95_overlay.png
+  [overlay] results/CTsample95_composite.png
+  [overlay] results/CTsample96_overlay.png
+  [overlay] results/CTsample96_composite.png
+  [overlay] results/CTsample97_overlay.png
+  [overlay] results/CTsample97_composite.png
+  [overlay] results/CTsample98_overlay.png
+  [overlay] results/CTsample98_composite.png
+  [overlay] results/CTsample99_overlay.png
+  [overlay] results/CTsample99_composite.png
+  [parsed] Pixel AUROC=96.3  SNR=4.4205
+  ---- Done seed 42 ----
+
+########################################
+# Category : faces
+# Checkpoint: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/faces/faces/2000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: faces   load_chp: 2000
+Checkpoint: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/faces/faces/2000
+Detecting Anomalies...
+Loading checkpoint: /data/akheirandish3/DDAD_checkpoints/checkpoints/MVTec/faces/faces/2000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/faces/test/*/*.png
+DEBUG: Skipped 7 images — GT mask not found:
+        - /data/akheirandish3/mvtec_ad/faces/test/random/11.png
+        - /data/akheirandish3/mvtec_ad/faces/test/random/12.png
+        - /data/akheirandish3/mvtec_ad/faces/test/random/17.png
+        - /data/akheirandish3/mvtec_ad/faces/test/random/16.png
+        - /data/akheirandish3/mvtec_ad/faces/test/random/15.png
+        ... and 2 more
+DEBUG: Found 22 test images
+/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/sklearn/metrics/_ranking.py:424: UndefinedMetricWarning: Only one class is present in y_true. ROC AUC score is not defined in that case.
+  warnings.warn(
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=321
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=1170
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=1526
+[WARN] Skipping optimal_threshold — no image-level labels collected.
+AUROC: (nan,68.3)
+  Per-image pixel AUROC: n=22 defective, skipped=0 good/invalid images
+[(0, 0.4680898470943412), (1, 0.7218439655308156), (2, 0.7434276607657295), (3, 0.3523582200859715), (4, 0.8552170880760395), (5, 0.14783547534468985), (6, 0.836334639782958), (7, 0.9978601491440671), (8, 0.6222596916482914), (9, 0.940282232269542), (10, 0.4395798975893802), (11, 0.959356156839057), (12, 0.5574756390357374), (13, 0.6836246099454146), (14, 0.570322555769271), (15, 0.5566150680823345), (16, 0.8436359263537729), (17, 0.7487225545488728), (18, 0.8215535747109333), (19, 0.2439067494174777), (20, 0.8886100586115458), (21, 0.9551031446701617)]
+  Individual scores: min=0.148, max=0.998, mean=0.680
+Per-image Pixel AUROC (mean): 68.0
+PRO: 26.5
+PRO: 26.5
+SNR: 3.4055
+  [overlay] results/facessample0_overlay.png
+  [overlay] results/facessample0_composite.png
+  [overlay] results/facessample1_overlay.png
+  [overlay] results/facessample1_composite.png
+  [overlay] results/facessample2_overlay.png
+  [overlay] results/facessample2_composite.png
+  [overlay] results/facessample3_overlay.png
+  [overlay] results/facessample3_composite.png
+  [overlay] results/facessample4_overlay.png
+  [overlay] results/facessample4_composite.png
+  [overlay] results/facessample5_overlay.png
+  [overlay] results/facessample5_composite.png
+  [overlay] results/facessample6_overlay.png
+  [overlay] results/facessample6_composite.png
+  [overlay] results/facessample7_overlay.png
+  [overlay] results/facessample7_composite.png
+  [overlay] results/facessample8_overlay.png
+  [overlay] results/facessample8_composite.png
+  [overlay] results/facessample9_overlay.png
+  [overlay] results/facessample9_composite.png
+  [overlay] results/facessample10_overlay.png
+  [overlay] results/facessample10_composite.png
+  [overlay] results/facessample11_overlay.png
+  [overlay] results/facessample11_composite.png
+  [overlay] results/facessample12_overlay.png
+  [overlay] results/facessample12_composite.png
+  [overlay] results/facessample13_overlay.png
+  [overlay] results/facessample13_composite.png
+  [overlay] results/facessample14_overlay.png
+  [overlay] results/facessample14_composite.png
+  [overlay] results/facessample15_overlay.png
+  [overlay] results/facessample15_composite.png
+  [overlay] results/facessample16_overlay.png
+  [overlay] results/facessample16_composite.png
+  [overlay] results/facessample17_overlay.png
+  [overlay] results/facessample17_composite.png
+  [overlay] results/facessample18_overlay.png
+  [overlay] results/facessample18_composite.png
+  [overlay] results/facessample19_overlay.png
+  [overlay] results/facessample19_composite.png
+  [overlay] results/facessample20_overlay.png
+  [overlay] results/facessample20_composite.png
+  [overlay] results/facessample21_overlay.png
+  [overlay] results/facessample21_composite.png
+  [parsed] Pixel AUROC=68.0  SNR=3.4055
+  ---- Done seed 42 ----
+
+########################################
+# Category : bottle
+# Checkpoint: /data/akherandish3/MVTec/bottle/1000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: bottle   load_chp: 1000
+Checkpoint: /data/akherandish3/MVTec/bottle/1000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/bottle/1000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/bottle/test/*/*.png
+DEBUG: Found 83 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=1535
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=1262
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=2119
+AUROC: (99.8,98.8)
+  Per-image pixel AUROC: n=63 defective, skipped=20 good/invalid images
+[(0, 0.9974195028609845), (1, 0.9941934532757859), (2, 0.9947089395470357), (3, 0.9988335339996729), (4, 0.9935022621115464), (5, 0.9982858513318473), (6, 0.9964265927744413), (7, 0.994788553284781), (8, 0.9972274396955481), (9, 0.9983177070649935), (10, 0.9992790661514259), (11, 0.9935120024192995), (12, 0.9964714002080035), (13, 0.9993105280008594), (14, 0.9943980648265293), (15, 0.9896323997569406), (16, 0.9928153781580868), (17, 0.9993806197390311), (18, 0.9981376781481822), (19, 0.9951588707066098), (20, 0.9928268086876764), (21, 0.9969066433754966), (22, 0.9929523236768613), (23, 0.9975044737644959), (24, 0.9975149595134715), (25, 0.9930060893274403), (26, 0.9964585519376674), (27, 0.9994088499215085), (28, 0.9952597412562729), (29, 0.9791087908115211), (30, 0.9760019992510166), (31, 0.9913500179408681), (32, 0.9968155841991023), (33, 0.9968264061003835), (34, 0.9872964732935354), (35, 0.9862569123723228), (36, 0.9929064298638852), (37, 0.9943419594780807), (38, 0.9928689962703099), (39, 0.9974311277648752), (40, 0.991624640693974), (41, 0.9967599635010254), (42, 0.9957087782357135), (43, 0.9930308304144976), (44, 0.9948199326823283), (45, 0.9901225606006713), (46, 0.9960426334082182), (47, 0.9266084279702054), (48, 0.9785112816359929), (49, 0.989711803173965), (50, 0.9904356547446145), (51, 0.9913251808959318), (52, 0.9881168035476985), (53, 0.9828458547474542), (54, 0.9758708587252903), (55, 0.9963325707691774), (56, 0.9932097206465086), (57, 0.9855313756471455), (58, 0.9813258818595803), (59, 0.9925185002737846), (60, 0.9937956537698188), (61, 0.9915903036755724), (62, 0.9905653427406992)]
+  Individual scores: min=0.927, max=0.999, mean=0.992
+Per-image Pixel AUROC (mean): 99.2
+PRO: 91.5
+PRO: 91.5
+SNR: 5.8185
+  [overlay] results/bottlesample0_overlay.png
+  [overlay] results/bottlesample0_composite.png
+  [overlay] results/bottlesample1_overlay.png
+  [overlay] results/bottlesample1_composite.png
+  [overlay] results/bottlesample2_overlay.png
+  [overlay] results/bottlesample2_composite.png
+  [overlay] results/bottlesample3_overlay.png
+  [overlay] results/bottlesample3_composite.png
+  [overlay] results/bottlesample4_overlay.png
+  [overlay] results/bottlesample4_composite.png
+  [overlay] results/bottlesample5_overlay.png
+  [overlay] results/bottlesample5_composite.png
+  [overlay] results/bottlesample6_overlay.png
+  [overlay] results/bottlesample6_composite.png
+  [overlay] results/bottlesample7_overlay.png
+  [overlay] results/bottlesample7_composite.png
+  [overlay] results/bottlesample8_overlay.png
+  [overlay] results/bottlesample8_composite.png
+  [overlay] results/bottlesample9_overlay.png
+  [overlay] results/bottlesample9_composite.png
+  [overlay] results/bottlesample10_overlay.png
+  [overlay] results/bottlesample10_composite.png
+  [overlay] results/bottlesample11_overlay.png
+  [overlay] results/bottlesample11_composite.png
+  [overlay] results/bottlesample12_overlay.png
+  [overlay] results/bottlesample12_composite.png
+  [overlay] results/bottlesample13_overlay.png
+  [overlay] results/bottlesample13_composite.png
+  [overlay] results/bottlesample14_overlay.png
+  [overlay] results/bottlesample14_composite.png
+  [overlay] results/bottlesample15_overlay.png
+  [overlay] results/bottlesample15_composite.png
+  [overlay] results/bottlesample16_overlay.png
+  [overlay] results/bottlesample16_composite.png
+  [overlay] results/bottlesample17_overlay.png
+  [overlay] results/bottlesample17_composite.png
+  [overlay] results/bottlesample18_overlay.png
+  [overlay] results/bottlesample18_composite.png
+  [overlay] results/bottlesample19_overlay.png
+  [overlay] results/bottlesample19_composite.png
+  [overlay] results/bottlesample20_overlay.png
+  [overlay] results/bottlesample20_composite.png
+  [overlay] results/bottlesample21_overlay.png
+  [overlay] results/bottlesample21_composite.png
+  [overlay] results/bottlesample22_overlay.png
+  [overlay] results/bottlesample22_composite.png
+  [overlay] results/bottlesample23_overlay.png
+  [overlay] results/bottlesample23_composite.png
+  [overlay] results/bottlesample24_overlay.png
+  [overlay] results/bottlesample24_composite.png
+  [overlay] results/bottlesample25_overlay.png
+  [overlay] results/bottlesample25_composite.png
+  [overlay] results/bottlesample26_overlay.png
+  [overlay] results/bottlesample26_composite.png
+  [overlay] results/bottlesample27_overlay.png
+  [overlay] results/bottlesample27_composite.png
+  [overlay] results/bottlesample28_overlay.png
+  [overlay] results/bottlesample28_composite.png
+  [overlay] results/bottlesample29_overlay.png
+  [overlay] results/bottlesample29_composite.png
+  [overlay] results/bottlesample30_overlay.png
+  [overlay] results/bottlesample30_composite.png
+  [overlay] results/bottlesample31_overlay.png
+  [overlay] results/bottlesample31_composite.png
+  [overlay] results/bottlesample32_overlay.png
+  [overlay] results/bottlesample32_composite.png
+  [overlay] results/bottlesample33_overlay.png
+  [overlay] results/bottlesample33_composite.png
+  [overlay] results/bottlesample34_overlay.png
+  [overlay] results/bottlesample34_composite.png
+  [overlay] results/bottlesample35_overlay.png
+  [overlay] results/bottlesample35_composite.png
+  [overlay] results/bottlesample36_overlay.png
+  [overlay] results/bottlesample36_composite.png
+  [overlay] results/bottlesample37_overlay.png
+  [overlay] results/bottlesample37_composite.png
+  [overlay] results/bottlesample38_overlay.png
+  [overlay] results/bottlesample38_composite.png
+  [overlay] results/bottlesample39_overlay.png
+  [overlay] results/bottlesample39_composite.png
+  [overlay] results/bottlesample40_overlay.png
+  [overlay] results/bottlesample40_composite.png
+  [overlay] results/bottlesample41_overlay.png
+  [overlay] results/bottlesample41_composite.png
+  [overlay] results/bottlesample42_overlay.png
+  [overlay] results/bottlesample42_composite.png
+  [overlay] results/bottlesample43_overlay.png
+  [overlay] results/bottlesample43_composite.png
+  [overlay] results/bottlesample44_overlay.png
+  [overlay] results/bottlesample44_composite.png
+  [overlay] results/bottlesample45_overlay.png
+  [overlay] results/bottlesample45_composite.png
+  [overlay] results/bottlesample46_overlay.png
+  [overlay] results/bottlesample46_composite.png
+  [overlay] results/bottlesample47_overlay.png
+  [overlay] results/bottlesample47_composite.png
+  [overlay] results/bottlesample48_overlay.png
+  [overlay] results/bottlesample48_composite.png
+  [overlay] results/bottlesample49_overlay.png
+  [overlay] results/bottlesample49_composite.png
+  [overlay] results/bottlesample50_overlay.png
+  [overlay] results/bottlesample50_composite.png
+  [overlay] results/bottlesample51_overlay.png
+  [overlay] results/bottlesample51_composite.png
+  [overlay] results/bottlesample52_overlay.png
+  [overlay] results/bottlesample52_composite.png
+  [overlay] results/bottlesample53_overlay.png
+  [overlay] results/bottlesample53_composite.png
+  [overlay] results/bottlesample54_overlay.png
+  [overlay] results/bottlesample54_composite.png
+  [overlay] results/bottlesample55_overlay.png
+  [overlay] results/bottlesample55_composite.png
+  [overlay] results/bottlesample56_overlay.png
+  [overlay] results/bottlesample56_composite.png
+  [overlay] results/bottlesample57_overlay.png
+  [overlay] results/bottlesample57_composite.png
+  [overlay] results/bottlesample58_overlay.png
+  [overlay] results/bottlesample58_composite.png
+  [overlay] results/bottlesample59_overlay.png
+  [overlay] results/bottlesample59_composite.png
+  [overlay] results/bottlesample60_overlay.png
+  [overlay] results/bottlesample60_composite.png
+  [overlay] results/bottlesample61_overlay.png
+  [overlay] results/bottlesample61_composite.png
+  [overlay] results/bottlesample62_overlay.png
+  [overlay] results/bottlesample62_composite.png
+  [overlay] results/bottlesample63_overlay.png
+  [overlay] results/bottlesample63_composite.png
+  [overlay] results/bottlesample64_overlay.png
+  [overlay] results/bottlesample64_composite.png
+  [overlay] results/bottlesample65_overlay.png
+  [overlay] results/bottlesample65_composite.png
+  [overlay] results/bottlesample66_overlay.png
+  [overlay] results/bottlesample66_composite.png
+  [overlay] results/bottlesample67_overlay.png
+  [overlay] results/bottlesample67_composite.png
+  [overlay] results/bottlesample68_overlay.png
+  [overlay] results/bottlesample68_composite.png
+  [overlay] results/bottlesample69_overlay.png
+  [overlay] results/bottlesample69_composite.png
+  [overlay] results/bottlesample70_overlay.png
+  [overlay] results/bottlesample70_composite.png
+  [overlay] results/bottlesample71_overlay.png
+  [overlay] results/bottlesample71_composite.png
+  [overlay] results/bottlesample72_overlay.png
+  [overlay] results/bottlesample72_composite.png
+  [overlay] results/bottlesample73_overlay.png
+  [overlay] results/bottlesample73_composite.png
+  [overlay] results/bottlesample74_overlay.png
+  [overlay] results/bottlesample74_composite.png
+  [overlay] results/bottlesample75_overlay.png
+  [overlay] results/bottlesample75_composite.png
+  [overlay] results/bottlesample76_overlay.png
+  [overlay] results/bottlesample76_composite.png
+  [overlay] results/bottlesample77_overlay.png
+  [overlay] results/bottlesample77_composite.png
+  [overlay] results/bottlesample78_overlay.png
+  [overlay] results/bottlesample78_composite.png
+  [overlay] results/bottlesample79_overlay.png
+  [overlay] results/bottlesample79_composite.png
+  [overlay] results/bottlesample80_overlay.png
+  [overlay] results/bottlesample80_composite.png
+  [overlay] results/bottlesample81_overlay.png
+  [overlay] results/bottlesample81_composite.png
+  [overlay] results/bottlesample82_overlay.png
+  [overlay] results/bottlesample82_composite.png
+  [parsed] Pixel AUROC=99.2  SNR=5.8185
+  ---- Done seed 42 ----
+
+########################################
+# Category : cable
+# Checkpoint: /data/akherandish3/MVTec/cable/3000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: cable   load_chp: 3000
+Checkpoint: /data/akherandish3/MVTec/cable/3000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/cable/3000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/cable/test/*/*.png
+DEBUG: Found 11 test images
+/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/sklearn/metrics/_ranking.py:424: UndefinedMetricWarning: Only one class is present in y_true. ROC AUC score is not defined in that case.
+  warnings.warn(
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=5793
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=2632
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=2055
+[WARN] Skipping optimal_threshold — no image-level labels collected.
+AUROC: (nan,97.1)
+  Per-image pixel AUROC: n=11 defective, skipped=0 good/invalid images
+[(0, 0.9692600403282721), (1, 0.9818396408412376), (2, 0.9812863062921562), (3, 0.9886347279544251), (4, 0.9760440078303033), (5, 0.9949987995366675), (6, 0.9636229244987469), (7, 0.9784955575750024), (8, 0.9795939019510925), (9, 0.934823528099613), (10, 0.9827946216732879)]
+  Individual scores: min=0.935, max=0.995, mean=0.976
+Per-image Pixel AUROC (mean): 97.6
+PRO: 83.5
+PRO: 83.5
+SNR: 6.1534
+  [overlay] results/cablesample0_overlay.png
+  [overlay] results/cablesample0_composite.png
+  [overlay] results/cablesample1_overlay.png
+  [overlay] results/cablesample1_composite.png
+  [overlay] results/cablesample2_overlay.png
+  [overlay] results/cablesample2_composite.png
+  [overlay] results/cablesample3_overlay.png
+  [overlay] results/cablesample3_composite.png
+  [overlay] results/cablesample4_overlay.png
+  [overlay] results/cablesample4_composite.png
+  [overlay] results/cablesample5_overlay.png
+  [overlay] results/cablesample5_composite.png
+  [overlay] results/cablesample6_overlay.png
+  [overlay] results/cablesample6_composite.png
+  [overlay] results/cablesample7_overlay.png
+  [overlay] results/cablesample7_composite.png
+  [overlay] results/cablesample8_overlay.png
+  [overlay] results/cablesample8_composite.png
+  [overlay] results/cablesample9_overlay.png
+  [overlay] results/cablesample9_composite.png
+  [overlay] results/cablesample10_overlay.png
+  [overlay] results/cablesample10_composite.png
+  [parsed] Pixel AUROC=97.6  SNR=6.1534
+  ---- Done seed 42 ----
+
+########################################
+# Category : capsule
+# Checkpoint: /data/akherandish3/MVTec/capsule/1500
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: capsule   load_chp: 1500
+Checkpoint: /data/akherandish3/MVTec/capsule/1500
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/capsule/1500
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/capsule/test/*/*.png
+DEBUG: Found 132 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=146
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=175
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=159
+AUROC: (59.0,79.9)
+  Per-image pixel AUROC: n=109 defective, skipped=23 good/invalid images
+[(0, 0.9981281960502527), (1, 0.9783596596485016), (2, 0.9922092886897023), (3, 0.9973196735025339), (4, 0.9177144516977266), (5, 0.969572933027359), (6, 0.9599329898760627), (7, 0.9731905153950835), (8, 0.7925263607012856), (9, 0.9882814887245616), (10, 0.9173364377244433), (11, 0.9898313117607829), (12, 0.9267026808998977), (13, 0.9917040674105015), (14, 0.7048118501658724), (15, 0.9995666297119035), (16, 0.9708552959894656), (17, 0.6429706640669389), (18, 0.9073000066708142), (19, 0.8280671778013644), (20, 0.9655966304437921), (21, 0.8227528342671401), (22, 0.6468092072951115), (23, 0.6636476110549481), (24, 0.9190743380562272), (25, 0.5275946648215148), (26, 0.4561356616061211), (27, 0.625956683956563), (28, 0.6847613458528952), (29, 0.9584668395723719), (30, 0.6086960226095655), (31, 0.7911528935799444), (32, 0.9842929493849072), (33, 0.7296074013114098), (34, 0.9114604251649571), (35, 0.9367117356684089), (36, 0.8280435909272151), (37, 0.7779612599700999), (38, 0.05976502075213728), (39, 0.47826713843687185), (40, 0.2995597259980958), (41, 0.9330470112471109), (42, 0.8003461384145637), (43, 0.9726240918079531), (44, 0.999116111247494), (45, 0.9954637250738289), (46, 0.6211118394837499), (47, 0.9884681385585604), (48, 0.9873605404863687), (49, 0.998911432088187), (50, 0.6581312288765372), (51, 0.9928795219008011), (52, 0.65678510367327), (53, 0.9993516221455233), (54, 0.42412758788313104), (55, 0.9935113920523271), (56, 0.9869696444912958), (57, 0.9990436164925633), (58, 0.6890884184810481), (59, 0.9902770665236637), (60, 0.9928479198375485), (61, 0.9986579118690517), (62, 0.9858736327671065), (63, 0.996277200268213), (64, 0.9695052969689566), (65, 0.9595067405846418), (66, 0.896153198804232), (67, 0.7895252366932054), (68, 0.4171651499904625), (69, 0.3043506077143894), (70, 0.20311588107570908), (71, 0.6774007495983307), (72, 0.9293467360333125), (73, 0.43337221904175527), (74, 0.24123052224741778), (75, 0.48014272551311304), (76, 0.7163048661346614), (77, 0.6080215027610979), (78, 0.7991400073331005), (79, 0.5261241193835948), (80, 0.9920106069156409), (81, 0.8621190938815906), (82, 0.518970552305816), (83, 0.6977479650154094), (84, 0.25389988691796866), (85, 0.9329719454511468), (86, 0.3655151698065409), (87, 0.9117055597226134), (88, 0.9603639250641631), (89, 0.8382440492074474), (90, 0.9517108151591149), (91, 0.9391375398530101), (92, 0.8581566401944314), (93, 0.9987412753945895), (94, 0.8457432045097442), (95, 0.9298315402232645), (96, 0.955043840638781), (97, 0.8849263878746026), (98, 0.9522324624015543), (99, 0.9812858795729603), (100, 0.9706388189983912), (101, 0.5951451183983025), (102, 0.6637951520462533), (103, 0.4442226697507665), (104, 0.7637606009962248), (105, 0.8997521793557592), (106, 0.9370762019432082), (107, 0.8729291407064638), (108, 0.9391672693376091)]
+  Individual scores: min=0.060, max=1.000, mean=0.802
+Per-image Pixel AUROC (mean): 80.2
+PRO: 52.0
+PRO: 52.0
+SNR: 4.4152
+  [overlay] results/capsulesample0_overlay.png
+  [overlay] results/capsulesample0_composite.png
+  [overlay] results/capsulesample1_overlay.png
+  [overlay] results/capsulesample1_composite.png
+  [overlay] results/capsulesample2_overlay.png
+  [overlay] results/capsulesample2_composite.png
+  [overlay] results/capsulesample3_overlay.png
+  [overlay] results/capsulesample3_composite.png
+  [overlay] results/capsulesample4_overlay.png
+  [overlay] results/capsulesample4_composite.png
+  [overlay] results/capsulesample5_overlay.png
+  [overlay] results/capsulesample5_composite.png
+  [overlay] results/capsulesample6_overlay.png
+  [overlay] results/capsulesample6_composite.png
+  [overlay] results/capsulesample7_overlay.png
+  [overlay] results/capsulesample7_composite.png
+  [overlay] results/capsulesample8_overlay.png
+  [overlay] results/capsulesample8_composite.png
+  [overlay] results/capsulesample9_overlay.png
+  [overlay] results/capsulesample9_composite.png
+  [overlay] results/capsulesample10_overlay.png
+  [overlay] results/capsulesample10_composite.png
+  [overlay] results/capsulesample11_overlay.png
+  [overlay] results/capsulesample11_composite.png
+  [overlay] results/capsulesample12_overlay.png
+  [overlay] results/capsulesample12_composite.png
+  [overlay] results/capsulesample13_overlay.png
+  [overlay] results/capsulesample13_composite.png
+  [overlay] results/capsulesample14_overlay.png
+  [overlay] results/capsulesample14_composite.png
+  [overlay] results/capsulesample15_overlay.png
+  [overlay] results/capsulesample15_composite.png
+  [overlay] results/capsulesample16_overlay.png
+  [overlay] results/capsulesample16_composite.png
+  [overlay] results/capsulesample17_overlay.png
+  [overlay] results/capsulesample17_composite.png
+  [overlay] results/capsulesample18_overlay.png
+  [overlay] results/capsulesample18_composite.png
+  [overlay] results/capsulesample19_overlay.png
+  [overlay] results/capsulesample19_composite.png
+  [overlay] results/capsulesample20_overlay.png
+  [overlay] results/capsulesample20_composite.png
+  [overlay] results/capsulesample21_overlay.png
+  [overlay] results/capsulesample21_composite.png
+  [overlay] results/capsulesample22_overlay.png
+  [overlay] results/capsulesample22_composite.png
+  [overlay] results/capsulesample23_overlay.png
+  [overlay] results/capsulesample23_composite.png
+  [overlay] results/capsulesample24_overlay.png
+  [overlay] results/capsulesample24_composite.png
+  [overlay] results/capsulesample25_overlay.png
+  [overlay] results/capsulesample25_composite.png
+  [overlay] results/capsulesample26_overlay.png
+  [overlay] results/capsulesample26_composite.png
+  [overlay] results/capsulesample27_overlay.png
+  [overlay] results/capsulesample27_composite.png
+  [overlay] results/capsulesample28_overlay.png
+  [overlay] results/capsulesample28_composite.png
+  [overlay] results/capsulesample29_overlay.png
+  [overlay] results/capsulesample29_composite.png
+  [overlay] results/capsulesample30_overlay.png
+  [overlay] results/capsulesample30_composite.png
+  [overlay] results/capsulesample31_overlay.png
+  [overlay] results/capsulesample31_composite.png
+  [overlay] results/capsulesample32_overlay.png
+  [overlay] results/capsulesample32_composite.png
+  [overlay] results/capsulesample33_overlay.png
+  [overlay] results/capsulesample33_composite.png
+  [overlay] results/capsulesample34_overlay.png
+  [overlay] results/capsulesample34_composite.png
+  [overlay] results/capsulesample35_overlay.png
+  [overlay] results/capsulesample35_composite.png
+  [overlay] results/capsulesample36_overlay.png
+  [overlay] results/capsulesample36_composite.png
+  [overlay] results/capsulesample37_overlay.png
+  [overlay] results/capsulesample37_composite.png
+  [overlay] results/capsulesample38_overlay.png
+  [overlay] results/capsulesample38_composite.png
+  [overlay] results/capsulesample39_overlay.png
+  [overlay] results/capsulesample39_composite.png
+  [overlay] results/capsulesample40_overlay.png
+  [overlay] results/capsulesample40_composite.png
+  [overlay] results/capsulesample41_overlay.png
+  [overlay] results/capsulesample41_composite.png
+  [overlay] results/capsulesample42_overlay.png
+  [overlay] results/capsulesample42_composite.png
+  [overlay] results/capsulesample43_overlay.png
+  [overlay] results/capsulesample43_composite.png
+  [overlay] results/capsulesample44_overlay.png
+  [overlay] results/capsulesample44_composite.png
+  [overlay] results/capsulesample45_overlay.png
+  [overlay] results/capsulesample45_composite.png
+  [overlay] results/capsulesample46_overlay.png
+  [overlay] results/capsulesample46_composite.png
+  [overlay] results/capsulesample47_overlay.png
+  [overlay] results/capsulesample47_composite.png
+  [overlay] results/capsulesample48_overlay.png
+  [overlay] results/capsulesample48_composite.png
+  [overlay] results/capsulesample49_overlay.png
+  [overlay] results/capsulesample49_composite.png
+  [overlay] results/capsulesample50_overlay.png
+  [overlay] results/capsulesample50_composite.png
+  [overlay] results/capsulesample51_overlay.png
+  [overlay] results/capsulesample51_composite.png
+  [overlay] results/capsulesample52_overlay.png
+  [overlay] results/capsulesample52_composite.png
+  [overlay] results/capsulesample53_overlay.png
+  [overlay] results/capsulesample53_composite.png
+  [overlay] results/capsulesample54_overlay.png
+  [overlay] results/capsulesample54_composite.png
+  [overlay] results/capsulesample55_overlay.png
+  [overlay] results/capsulesample55_composite.png
+  [overlay] results/capsulesample56_overlay.png
+  [overlay] results/capsulesample56_composite.png
+  [overlay] results/capsulesample57_overlay.png
+  [overlay] results/capsulesample57_composite.png
+  [overlay] results/capsulesample58_overlay.png
+  [overlay] results/capsulesample58_composite.png
+  [overlay] results/capsulesample59_overlay.png
+  [overlay] results/capsulesample59_composite.png
+  [overlay] results/capsulesample60_overlay.png
+  [overlay] results/capsulesample60_composite.png
+  [overlay] results/capsulesample61_overlay.png
+  [overlay] results/capsulesample61_composite.png
+  [overlay] results/capsulesample62_overlay.png
+  [overlay] results/capsulesample62_composite.png
+  [overlay] results/capsulesample63_overlay.png
+  [overlay] results/capsulesample63_composite.png
+  [overlay] results/capsulesample64_overlay.png
+  [overlay] results/capsulesample64_composite.png
+  [overlay] results/capsulesample65_overlay.png
+  [overlay] results/capsulesample65_composite.png
+  [overlay] results/capsulesample66_overlay.png
+  [overlay] results/capsulesample66_composite.png
+  [overlay] results/capsulesample67_overlay.png
+  [overlay] results/capsulesample67_composite.png
+  [overlay] results/capsulesample68_overlay.png
+  [overlay] results/capsulesample68_composite.png
+  [overlay] results/capsulesample69_overlay.png
+  [overlay] results/capsulesample69_composite.png
+  [overlay] results/capsulesample70_overlay.png
+  [overlay] results/capsulesample70_composite.png
+  [overlay] results/capsulesample71_overlay.png
+  [overlay] results/capsulesample71_composite.png
+  [overlay] results/capsulesample72_overlay.png
+  [overlay] results/capsulesample72_composite.png
+  [overlay] results/capsulesample73_overlay.png
+  [overlay] results/capsulesample73_composite.png
+  [overlay] results/capsulesample74_overlay.png
+  [overlay] results/capsulesample74_composite.png
+  [overlay] results/capsulesample75_overlay.png
+  [overlay] results/capsulesample75_composite.png
+  [overlay] results/capsulesample76_overlay.png
+  [overlay] results/capsulesample76_composite.png
+  [overlay] results/capsulesample77_overlay.png
+  [overlay] results/capsulesample77_composite.png
+  [overlay] results/capsulesample78_overlay.png
+  [overlay] results/capsulesample78_composite.png
+  [overlay] results/capsulesample79_overlay.png
+  [overlay] results/capsulesample79_composite.png
+  [overlay] results/capsulesample80_overlay.png
+  [overlay] results/capsulesample80_composite.png
+  [overlay] results/capsulesample81_overlay.png
+  [overlay] results/capsulesample81_composite.png
+  [overlay] results/capsulesample82_overlay.png
+  [overlay] results/capsulesample82_composite.png
+  [overlay] results/capsulesample83_overlay.png
+  [overlay] results/capsulesample83_composite.png
+  [overlay] results/capsulesample84_overlay.png
+  [overlay] results/capsulesample84_composite.png
+  [overlay] results/capsulesample85_overlay.png
+  [overlay] results/capsulesample85_composite.png
+  [overlay] results/capsulesample86_overlay.png
+  [overlay] results/capsulesample86_composite.png
+  [overlay] results/capsulesample87_overlay.png
+  [overlay] results/capsulesample87_composite.png
+  [overlay] results/capsulesample88_overlay.png
+  [overlay] results/capsulesample88_composite.png
+  [overlay] results/capsulesample89_overlay.png
+  [overlay] results/capsulesample89_composite.png
+  [overlay] results/capsulesample90_overlay.png
+  [overlay] results/capsulesample90_composite.png
+  [overlay] results/capsulesample91_overlay.png
+  [overlay] results/capsulesample91_composite.png
+  [overlay] results/capsulesample92_overlay.png
+  [overlay] results/capsulesample92_composite.png
+  [overlay] results/capsulesample93_overlay.png
+  [overlay] results/capsulesample93_composite.png
+  [overlay] results/capsulesample94_overlay.png
+  [overlay] results/capsulesample94_composite.png
+  [overlay] results/capsulesample95_overlay.png
+  [overlay] results/capsulesample95_composite.png
+  [overlay] results/capsulesample96_overlay.png
+  [overlay] results/capsulesample96_composite.png
+  [overlay] results/capsulesample97_overlay.png
+  [overlay] results/capsulesample97_composite.png
+  [overlay] results/capsulesample98_overlay.png
+  [overlay] results/capsulesample98_composite.png
+  [overlay] results/capsulesample99_overlay.png
+  [overlay] results/capsulesample99_composite.png
+  [overlay] results/capsulesample100_overlay.png
+  [overlay] results/capsulesample100_composite.png
+  [overlay] results/capsulesample101_overlay.png
+  [overlay] results/capsulesample101_composite.png
+  [overlay] results/capsulesample102_overlay.png
+  [overlay] results/capsulesample102_composite.png
+  [overlay] results/capsulesample103_overlay.png
+  [overlay] results/capsulesample103_composite.png
+  [overlay] results/capsulesample104_overlay.png
+  [overlay] results/capsulesample104_composite.png
+  [overlay] results/capsulesample105_overlay.png
+  [overlay] results/capsulesample105_composite.png
+  [overlay] results/capsulesample106_overlay.png
+  [overlay] results/capsulesample106_composite.png
+  [overlay] results/capsulesample107_overlay.png
+  [overlay] results/capsulesample107_composite.png
+  [overlay] results/capsulesample108_overlay.png
+  [overlay] results/capsulesample108_composite.png
+  [overlay] results/capsulesample109_overlay.png
+  [overlay] results/capsulesample109_composite.png
+  [overlay] results/capsulesample110_overlay.png
+  [overlay] results/capsulesample110_composite.png
+  [overlay] results/capsulesample111_overlay.png
+  [overlay] results/capsulesample111_composite.png
+  [overlay] results/capsulesample112_overlay.png
+  [overlay] results/capsulesample112_composite.png
+  [overlay] results/capsulesample113_overlay.png
+  [overlay] results/capsulesample113_composite.png
+  [overlay] results/capsulesample114_overlay.png
+  [overlay] results/capsulesample114_composite.png
+  [overlay] results/capsulesample115_overlay.png
+  [overlay] results/capsulesample115_composite.png
+  [overlay] results/capsulesample116_overlay.png
+  [overlay] results/capsulesample116_composite.png
+  [overlay] results/capsulesample117_overlay.png
+  [overlay] results/capsulesample117_composite.png
+  [overlay] results/capsulesample118_overlay.png
+  [overlay] results/capsulesample118_composite.png
+  [overlay] results/capsulesample119_overlay.png
+  [overlay] results/capsulesample119_composite.png
+  [overlay] results/capsulesample120_overlay.png
+  [overlay] results/capsulesample120_composite.png
+  [overlay] results/capsulesample121_overlay.png
+  [overlay] results/capsulesample121_composite.png
+  [overlay] results/capsulesample122_overlay.png
+  [overlay] results/capsulesample122_composite.png
+  [overlay] results/capsulesample123_overlay.png
+  [overlay] results/capsulesample123_composite.png
+  [overlay] results/capsulesample124_overlay.png
+  [overlay] results/capsulesample124_composite.png
+  [overlay] results/capsulesample125_overlay.png
+  [overlay] results/capsulesample125_composite.png
+  [overlay] results/capsulesample126_overlay.png
+  [overlay] results/capsulesample126_composite.png
+  [overlay] results/capsulesample127_overlay.png
+  [overlay] results/capsulesample127_composite.png
+  [overlay] results/capsulesample128_overlay.png
+  [overlay] results/capsulesample128_composite.png
+  [overlay] results/capsulesample129_overlay.png
+  [overlay] results/capsulesample129_composite.png
+  [overlay] results/capsulesample130_overlay.png
+  [overlay] results/capsulesample130_composite.png
+  [overlay] results/capsulesample131_overlay.png
+  [overlay] results/capsulesample131_composite.png
+  [parsed] Pixel AUROC=80.2  SNR=4.4152
+  ---- Done seed 42 ----
+
+########################################
+# Category : carpet
+# Checkpoint: /data/akherandish3/MVTec/carpet/2500
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: carpet   load_chp: 2500
+Checkpoint: /data/akherandish3/MVTec/carpet/2500
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/carpet/2500
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/carpet/test/*/*.png
+DEBUG: Found 117 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=2035
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=230
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=276
+AUROC: (97.3,98.8)
+  Per-image pixel AUROC: n=89 defective, skipped=28 good/invalid images
+[(0, 0.9982167163534386), (1, 0.9974536596277858), (2, 0.9967043198443682), (3, 0.9978671355049671), (4, 0.9994933031604903), (5, 0.9952780784538362), (6, 0.99987361255858), (7, 0.9930184600779967), (8, 0.9996961040952931), (9, 0.9973703190705363), (10, 0.9992856445889247), (11, 0.9977113937866523), (12, 0.9963041164726092), (13, 0.998285451199445), (14, 0.9969763995373527), (15, 0.9990473825590633), (16, 0.998747843897138), (17, 0.9996985326754368), (18, 0.9989334986256486), (19, 0.99922731732865), (20, 0.999799401722243), (21, 0.9979830090810068), (22, 0.997494157171619), (23, 0.988294568699107), (24, 0.9983936473382906), (25, 0.9997465413654054), (26, 0.9960596647019954), (27, 0.9983169330479413), (28, 0.9956386991335071), (29, 0.999346558419022), (30, 0.9979781462837342), (31, 0.9936817555833778), (32, 0.9980349711537875), (33, 0.9987402475810836), (34, 0.9973623511723155), (35, 0.9978645735073934), (36, 0.9848227320933068), (37, 0.9875659273950665), (38, 0.990648378547942), (39, 0.9950538228558333), (40, 0.9976556443940428), (41, 0.9992546953258555), (42, 0.988657031733), (43, 0.9990668108420935), (44, 0.9982746443546642), (45, 0.9967610467957164), (46, 0.9975402020981061), (47, 0.9979140532631317), (48, 0.9978708903923529), (49, 0.9963855759192078), (50, 0.9965251683693772), (51, 0.9987448079158979), (52, 0.9933051881217243), (53, 0.9981054811157803), (54, 0.9954215268561849), (55, 0.9993233197778653), (56, 0.9960091839715244), (57, 0.998830858650811), (58, 0.996900190809431), (59, 0.9954058011654081), (60, 0.9977479532589586), (61, 0.9972370698076869), (62, 0.9973442684699712), (63, 0.9970765295972087), (64, 0.9937404996973724), (65, 0.9980370145138551), (66, 0.9968927270262113), (67, 0.9911846293977927), (68, 0.9976611694966318), (69, 0.9848500056121464), (70, 0.993869490352862), (71, 0.9888143145601778), (72, 0.8991309694190965), (73, 0.9853444527083837), (74, 0.9954602242372519), (75, 0.995036811363552), (76, 0.99658634322962), (77, 0.9849627964869017), (78, 0.946948172693841), (79, 0.9801820039500955), (80, 0.9804289460581295), (81, 0.9774400655302335), (82, 0.9983512098035068), (83, 0.9643769114521463), (84, 0.976774766254345), (85, 0.9905955035825165), (86, 0.9678277761513884), (87, 0.970746172624456), (88, 0.9732784815408967)]
+  Individual scores: min=0.899, max=1.000, mean=0.992
+Per-image Pixel AUROC (mean): 99.2
+PRO: 92.6
+PRO: 92.6
+SNR: 7.7827
+  [overlay] results/carpetsample0_overlay.png
+  [overlay] results/carpetsample0_composite.png
+  [overlay] results/carpetsample1_overlay.png
+  [overlay] results/carpetsample1_composite.png
+  [overlay] results/carpetsample2_overlay.png
+  [overlay] results/carpetsample2_composite.png
+  [overlay] results/carpetsample3_overlay.png
+  [overlay] results/carpetsample3_composite.png
+  [overlay] results/carpetsample4_overlay.png
+  [overlay] results/carpetsample4_composite.png
+  [overlay] results/carpetsample5_overlay.png
+  [overlay] results/carpetsample5_composite.png
+  [overlay] results/carpetsample6_overlay.png
+  [overlay] results/carpetsample6_composite.png
+  [overlay] results/carpetsample7_overlay.png
+  [overlay] results/carpetsample7_composite.png
+  [overlay] results/carpetsample8_overlay.png
+  [overlay] results/carpetsample8_composite.png
+  [overlay] results/carpetsample9_overlay.png
+  [overlay] results/carpetsample9_composite.png
+  [overlay] results/carpetsample10_overlay.png
+  [overlay] results/carpetsample10_composite.png
+  [overlay] results/carpetsample11_overlay.png
+  [overlay] results/carpetsample11_composite.png
+  [overlay] results/carpetsample12_overlay.png
+  [overlay] results/carpetsample12_composite.png
+  [overlay] results/carpetsample13_overlay.png
+  [overlay] results/carpetsample13_composite.png
+  [overlay] results/carpetsample14_overlay.png
+  [overlay] results/carpetsample14_composite.png
+  [overlay] results/carpetsample15_overlay.png
+  [overlay] results/carpetsample15_composite.png
+  [overlay] results/carpetsample16_overlay.png
+  [overlay] results/carpetsample16_composite.png
+  [overlay] results/carpetsample17_overlay.png
+  [overlay] results/carpetsample17_composite.png
+  [overlay] results/carpetsample18_overlay.png
+  [overlay] results/carpetsample18_composite.png
+  [overlay] results/carpetsample19_overlay.png
+  [overlay] results/carpetsample19_composite.png
+  [overlay] results/carpetsample20_overlay.png
+  [overlay] results/carpetsample20_composite.png
+  [overlay] results/carpetsample21_overlay.png
+  [overlay] results/carpetsample21_composite.png
+  [overlay] results/carpetsample22_overlay.png
+  [overlay] results/carpetsample22_composite.png
+  [overlay] results/carpetsample23_overlay.png
+  [overlay] results/carpetsample23_composite.png
+  [overlay] results/carpetsample24_overlay.png
+  [overlay] results/carpetsample24_composite.png
+  [overlay] results/carpetsample25_overlay.png
+  [overlay] results/carpetsample25_composite.png
+  [overlay] results/carpetsample26_overlay.png
+  [overlay] results/carpetsample26_composite.png
+  [overlay] results/carpetsample27_overlay.png
+  [overlay] results/carpetsample27_composite.png
+  [overlay] results/carpetsample28_overlay.png
+  [overlay] results/carpetsample28_composite.png
+  [overlay] results/carpetsample29_overlay.png
+  [overlay] results/carpetsample29_composite.png
+  [overlay] results/carpetsample30_overlay.png
+  [overlay] results/carpetsample30_composite.png
+  [overlay] results/carpetsample31_overlay.png
+  [overlay] results/carpetsample31_composite.png
+  [overlay] results/carpetsample32_overlay.png
+  [overlay] results/carpetsample32_composite.png
+  [overlay] results/carpetsample33_overlay.png
+  [overlay] results/carpetsample33_composite.png
+  [overlay] results/carpetsample34_overlay.png
+  [overlay] results/carpetsample34_composite.png
+  [overlay] results/carpetsample35_overlay.png
+  [overlay] results/carpetsample35_composite.png
+  [overlay] results/carpetsample36_overlay.png
+  [overlay] results/carpetsample36_composite.png
+  [overlay] results/carpetsample37_overlay.png
+  [overlay] results/carpetsample37_composite.png
+  [overlay] results/carpetsample38_overlay.png
+  [overlay] results/carpetsample38_composite.png
+  [overlay] results/carpetsample39_overlay.png
+  [overlay] results/carpetsample39_composite.png
+  [overlay] results/carpetsample40_overlay.png
+  [overlay] results/carpetsample40_composite.png
+  [overlay] results/carpetsample41_overlay.png
+  [overlay] results/carpetsample41_composite.png
+  [overlay] results/carpetsample42_overlay.png
+  [overlay] results/carpetsample42_composite.png
+  [overlay] results/carpetsample43_overlay.png
+  [overlay] results/carpetsample43_composite.png
+  [overlay] results/carpetsample44_overlay.png
+  [overlay] results/carpetsample44_composite.png
+  [overlay] results/carpetsample45_overlay.png
+  [overlay] results/carpetsample45_composite.png
+  [overlay] results/carpetsample46_overlay.png
+  [overlay] results/carpetsample46_composite.png
+  [overlay] results/carpetsample47_overlay.png
+  [overlay] results/carpetsample47_composite.png
+  [overlay] results/carpetsample48_overlay.png
+  [overlay] results/carpetsample48_composite.png
+  [overlay] results/carpetsample49_overlay.png
+  [overlay] results/carpetsample49_composite.png
+  [overlay] results/carpetsample50_overlay.png
+  [overlay] results/carpetsample50_composite.png
+  [overlay] results/carpetsample51_overlay.png
+  [overlay] results/carpetsample51_composite.png
+  [overlay] results/carpetsample52_overlay.png
+  [overlay] results/carpetsample52_composite.png
+  [overlay] results/carpetsample53_overlay.png
+  [overlay] results/carpetsample53_composite.png
+  [overlay] results/carpetsample54_overlay.png
+  [overlay] results/carpetsample54_composite.png
+  [overlay] results/carpetsample55_overlay.png
+  [overlay] results/carpetsample55_composite.png
+  [overlay] results/carpetsample56_overlay.png
+  [overlay] results/carpetsample56_composite.png
+  [overlay] results/carpetsample57_overlay.png
+  [overlay] results/carpetsample57_composite.png
+  [overlay] results/carpetsample58_overlay.png
+  [overlay] results/carpetsample58_composite.png
+  [overlay] results/carpetsample59_overlay.png
+  [overlay] results/carpetsample59_composite.png
+  [overlay] results/carpetsample60_overlay.png
+  [overlay] results/carpetsample60_composite.png
+  [overlay] results/carpetsample61_overlay.png
+  [overlay] results/carpetsample61_composite.png
+  [overlay] results/carpetsample62_overlay.png
+  [overlay] results/carpetsample62_composite.png
+  [overlay] results/carpetsample63_overlay.png
+  [overlay] results/carpetsample63_composite.png
+  [overlay] results/carpetsample64_overlay.png
+  [overlay] results/carpetsample64_composite.png
+  [overlay] results/carpetsample65_overlay.png
+  [overlay] results/carpetsample65_composite.png
+  [overlay] results/carpetsample66_overlay.png
+  [overlay] results/carpetsample66_composite.png
+  [overlay] results/carpetsample67_overlay.png
+  [overlay] results/carpetsample67_composite.png
+  [overlay] results/carpetsample68_overlay.png
+  [overlay] results/carpetsample68_composite.png
+  [overlay] results/carpetsample69_overlay.png
+  [overlay] results/carpetsample69_composite.png
+  [overlay] results/carpetsample70_overlay.png
+  [overlay] results/carpetsample70_composite.png
+  [overlay] results/carpetsample71_overlay.png
+  [overlay] results/carpetsample71_composite.png
+  [overlay] results/carpetsample72_overlay.png
+  [overlay] results/carpetsample72_composite.png
+  [overlay] results/carpetsample73_overlay.png
+  [overlay] results/carpetsample73_composite.png
+  [overlay] results/carpetsample74_overlay.png
+  [overlay] results/carpetsample74_composite.png
+  [overlay] results/carpetsample75_overlay.png
+  [overlay] results/carpetsample75_composite.png
+  [overlay] results/carpetsample76_overlay.png
+  [overlay] results/carpetsample76_composite.png
+  [overlay] results/carpetsample77_overlay.png
+  [overlay] results/carpetsample77_composite.png
+  [overlay] results/carpetsample78_overlay.png
+  [overlay] results/carpetsample78_composite.png
+  [overlay] results/carpetsample79_overlay.png
+  [overlay] results/carpetsample79_composite.png
+  [overlay] results/carpetsample80_overlay.png
+  [overlay] results/carpetsample80_composite.png
+  [overlay] results/carpetsample81_overlay.png
+  [overlay] results/carpetsample81_composite.png
+  [overlay] results/carpetsample82_overlay.png
+  [overlay] results/carpetsample82_composite.png
+  [overlay] results/carpetsample83_overlay.png
+  [overlay] results/carpetsample83_composite.png
+  [overlay] results/carpetsample84_overlay.png
+  [overlay] results/carpetsample84_composite.png
+  [overlay] results/carpetsample85_overlay.png
+  [overlay] results/carpetsample85_composite.png
+  [overlay] results/carpetsample86_overlay.png
+  [overlay] results/carpetsample86_composite.png
+  [overlay] results/carpetsample87_overlay.png
+  [overlay] results/carpetsample87_composite.png
+  [overlay] results/carpetsample88_overlay.png
+  [overlay] results/carpetsample88_composite.png
+  [overlay] results/carpetsample89_overlay.png
+  [overlay] results/carpetsample89_composite.png
+  [overlay] results/carpetsample90_overlay.png
+  [overlay] results/carpetsample90_composite.png
+  [overlay] results/carpetsample91_overlay.png
+  [overlay] results/carpetsample91_composite.png
+  [overlay] results/carpetsample92_overlay.png
+  [overlay] results/carpetsample92_composite.png
+  [overlay] results/carpetsample93_overlay.png
+  [overlay] results/carpetsample93_composite.png
+  [overlay] results/carpetsample94_overlay.png
+  [overlay] results/carpetsample94_composite.png
+  [overlay] results/carpetsample95_overlay.png
+  [overlay] results/carpetsample95_composite.png
+  [overlay] results/carpetsample96_overlay.png
+  [overlay] results/carpetsample96_composite.png
+  [overlay] results/carpetsample97_overlay.png
+  [overlay] results/carpetsample97_composite.png
+  [overlay] results/carpetsample98_overlay.png
+  [overlay] results/carpetsample98_composite.png
+  [overlay] results/carpetsample99_overlay.png
+  [overlay] results/carpetsample99_composite.png
+  [overlay] results/carpetsample100_overlay.png
+  [overlay] results/carpetsample100_composite.png
+  [overlay] results/carpetsample101_overlay.png
+  [overlay] results/carpetsample101_composite.png
+  [overlay] results/carpetsample102_overlay.png
+  [overlay] results/carpetsample102_composite.png
+  [overlay] results/carpetsample103_overlay.png
+  [overlay] results/carpetsample103_composite.png
+  [overlay] results/carpetsample104_overlay.png
+  [overlay] results/carpetsample104_composite.png
+  [overlay] results/carpetsample105_overlay.png
+  [overlay] results/carpetsample105_composite.png
+  [overlay] results/carpetsample106_overlay.png
+  [overlay] results/carpetsample106_composite.png
+  [overlay] results/carpetsample107_overlay.png
+  [overlay] results/carpetsample107_composite.png
+  [overlay] results/carpetsample108_overlay.png
+  [overlay] results/carpetsample108_composite.png
+  [overlay] results/carpetsample109_overlay.png
+  [overlay] results/carpetsample109_composite.png
+  [overlay] results/carpetsample110_overlay.png
+  [overlay] results/carpetsample110_composite.png
+  [overlay] results/carpetsample111_overlay.png
+  [overlay] results/carpetsample111_composite.png
+  [overlay] results/carpetsample112_overlay.png
+  [overlay] results/carpetsample112_composite.png
+  [overlay] results/carpetsample113_overlay.png
+  [overlay] results/carpetsample113_composite.png
+  [overlay] results/carpetsample114_overlay.png
+  [overlay] results/carpetsample114_composite.png
+  [overlay] results/carpetsample115_overlay.png
+  [overlay] results/carpetsample115_composite.png
+  [overlay] results/carpetsample116_overlay.png
+  [overlay] results/carpetsample116_composite.png
+  [parsed] Pixel AUROC=99.2  SNR=7.7827
+  ---- Done seed 42 ----
+
+########################################
+# Category : grid
+# Checkpoint: /data/akherandish3/MVTec/grid/2000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: grid   load_chp: 2000
+Checkpoint: /data/akherandish3/MVTec/grid/2000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/grid/2000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/grid/test/*/*.png
+DEBUG: Found 78 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=413
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=366
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=298
+AUROC: (100.0,98.4)
+  Per-image pixel AUROC: n=57 defective, skipped=21 good/invalid images
+[(0, 0.998712475505933), (1, 0.9980296173689494), (2, 0.9983594915550311), (3, 0.9995862091002046), (4, 0.9997593815594122), (5, 0.9996315429108672), (6, 0.999821788661327), (7, 0.9995439481685336), (8, 0.9973357660680785), (9, 0.9992651743040333), (10, 0.9997339224412696), (11, 0.9904232610355476), (12, 0.9840002096396984), (13, 0.9957436716082939), (14, 0.9922193612390607), (15, 0.998205580608582), (16, 0.9780019701578835), (17, 0.9950605363712478), (18, 0.9842606586023104), (19, 0.9947040405273437), (20, 0.9969777275710087), (21, 0.9862065005914187), (22, 0.989882507246856), (23, 0.9975766012056179), (24, 0.9997850948343663), (25, 0.9948634706502653), (26, 0.9993362397655441), (27, 0.9974177972359117), (28, 0.9985541875152264), (29, 0.9970914204797294), (30, 0.9980243819210982), (31, 0.9992733668222109), (32, 0.9988668662360864), (33, 0.9982462888504992), (34, 0.966128526849427), (35, 0.9950031145871311), (36, 0.9729182435069385), (37, 0.9866770325823552), (38, 0.975379289164451), (39, 0.9718189082703351), (40, 0.9723916525571358), (41, 0.9986361149328122), (42, 0.9956851280166371), (43, 0.9680058884965719), (44, 0.97673253470615), (45, 0.9862138069271402), (46, 0.9928345396672246), (47, 0.9981261522315479), (48, 0.988310721392145), (49, 0.9900163121229302), (50, 0.9864102797385529), (51, 0.9918337616570684), (52, 0.9970352593539396), (53, 0.9902541436320984), (54, 0.9958740261712693), (55, 0.9931520112666139), (56, 0.9931664825328379)]
+  Individual scores: min=0.966, max=1.000, mean=0.992
+Per-image Pixel AUROC (mean): 99.2
+PRO: 93.6
+PRO: 93.6
+SNR: 6.4776
+  [overlay] results/gridsample0_overlay.png
+  [overlay] results/gridsample0_composite.png
+  [overlay] results/gridsample1_overlay.png
+  [overlay] results/gridsample1_composite.png
+  [overlay] results/gridsample2_overlay.png
+  [overlay] results/gridsample2_composite.png
+  [overlay] results/gridsample3_overlay.png
+  [overlay] results/gridsample3_composite.png
+  [overlay] results/gridsample4_overlay.png
+  [overlay] results/gridsample4_composite.png
+  [overlay] results/gridsample5_overlay.png
+  [overlay] results/gridsample5_composite.png
+  [overlay] results/gridsample6_overlay.png
+  [overlay] results/gridsample6_composite.png
+  [overlay] results/gridsample7_overlay.png
+  [overlay] results/gridsample7_composite.png
+  [overlay] results/gridsample8_overlay.png
+  [overlay] results/gridsample8_composite.png
+  [overlay] results/gridsample9_overlay.png
+  [overlay] results/gridsample9_composite.png
+  [overlay] results/gridsample10_overlay.png
+  [overlay] results/gridsample10_composite.png
+  [overlay] results/gridsample11_overlay.png
+  [overlay] results/gridsample11_composite.png
+  [overlay] results/gridsample12_overlay.png
+  [overlay] results/gridsample12_composite.png
+  [overlay] results/gridsample13_overlay.png
+  [overlay] results/gridsample13_composite.png
+  [overlay] results/gridsample14_overlay.png
+  [overlay] results/gridsample14_composite.png
+  [overlay] results/gridsample15_overlay.png
+  [overlay] results/gridsample15_composite.png
+  [overlay] results/gridsample16_overlay.png
+  [overlay] results/gridsample16_composite.png
+  [overlay] results/gridsample17_overlay.png
+  [overlay] results/gridsample17_composite.png
+  [overlay] results/gridsample18_overlay.png
+  [overlay] results/gridsample18_composite.png
+  [overlay] results/gridsample19_overlay.png
+  [overlay] results/gridsample19_composite.png
+  [overlay] results/gridsample20_overlay.png
+  [overlay] results/gridsample20_composite.png
+  [overlay] results/gridsample21_overlay.png
+  [overlay] results/gridsample21_composite.png
+  [overlay] results/gridsample22_overlay.png
+  [overlay] results/gridsample22_composite.png
+  [overlay] results/gridsample23_overlay.png
+  [overlay] results/gridsample23_composite.png
+  [overlay] results/gridsample24_overlay.png
+  [overlay] results/gridsample24_composite.png
+  [overlay] results/gridsample25_overlay.png
+  [overlay] results/gridsample25_composite.png
+  [overlay] results/gridsample26_overlay.png
+  [overlay] results/gridsample26_composite.png
+  [overlay] results/gridsample27_overlay.png
+  [overlay] results/gridsample27_composite.png
+  [overlay] results/gridsample28_overlay.png
+  [overlay] results/gridsample28_composite.png
+  [overlay] results/gridsample29_overlay.png
+  [overlay] results/gridsample29_composite.png
+  [overlay] results/gridsample30_overlay.png
+  [overlay] results/gridsample30_composite.png
+  [overlay] results/gridsample31_overlay.png
+  [overlay] results/gridsample31_composite.png
+  [overlay] results/gridsample32_overlay.png
+  [overlay] results/gridsample32_composite.png
+  [overlay] results/gridsample33_overlay.png
+  [overlay] results/gridsample33_composite.png
+  [overlay] results/gridsample34_overlay.png
+  [overlay] results/gridsample34_composite.png
+  [overlay] results/gridsample35_overlay.png
+  [overlay] results/gridsample35_composite.png
+  [overlay] results/gridsample36_overlay.png
+  [overlay] results/gridsample36_composite.png
+  [overlay] results/gridsample37_overlay.png
+  [overlay] results/gridsample37_composite.png
+  [overlay] results/gridsample38_overlay.png
+  [overlay] results/gridsample38_composite.png
+  [overlay] results/gridsample39_overlay.png
+  [overlay] results/gridsample39_composite.png
+  [overlay] results/gridsample40_overlay.png
+  [overlay] results/gridsample40_composite.png
+  [overlay] results/gridsample41_overlay.png
+  [overlay] results/gridsample41_composite.png
+  [overlay] results/gridsample42_overlay.png
+  [overlay] results/gridsample42_composite.png
+  [overlay] results/gridsample43_overlay.png
+  [overlay] results/gridsample43_composite.png
+  [overlay] results/gridsample44_overlay.png
+  [overlay] results/gridsample44_composite.png
+  [overlay] results/gridsample45_overlay.png
+  [overlay] results/gridsample45_composite.png
+  [overlay] results/gridsample46_overlay.png
+  [overlay] results/gridsample46_composite.png
+  [overlay] results/gridsample47_overlay.png
+  [overlay] results/gridsample47_composite.png
+  [overlay] results/gridsample48_overlay.png
+  [overlay] results/gridsample48_composite.png
+  [overlay] results/gridsample49_overlay.png
+  [overlay] results/gridsample49_composite.png
+  [overlay] results/gridsample50_overlay.png
+  [overlay] results/gridsample50_composite.png
+  [overlay] results/gridsample51_overlay.png
+  [overlay] results/gridsample51_composite.png
+  [overlay] results/gridsample52_overlay.png
+  [overlay] results/gridsample52_composite.png
+  [overlay] results/gridsample53_overlay.png
+  [overlay] results/gridsample53_composite.png
+  [overlay] results/gridsample54_overlay.png
+  [overlay] results/gridsample54_composite.png
+  [overlay] results/gridsample55_overlay.png
+  [overlay] results/gridsample55_composite.png
+  [overlay] results/gridsample56_overlay.png
+  [overlay] results/gridsample56_composite.png
+  [overlay] results/gridsample57_overlay.png
+  [overlay] results/gridsample57_composite.png
+  [overlay] results/gridsample58_overlay.png
+  [overlay] results/gridsample58_composite.png
+  [overlay] results/gridsample59_overlay.png
+  [overlay] results/gridsample59_composite.png
+  [overlay] results/gridsample60_overlay.png
+  [overlay] results/gridsample60_composite.png
+  [overlay] results/gridsample61_overlay.png
+  [overlay] results/gridsample61_composite.png
+  [overlay] results/gridsample62_overlay.png
+  [overlay] results/gridsample62_composite.png
+  [overlay] results/gridsample63_overlay.png
+  [overlay] results/gridsample63_composite.png
+  [overlay] results/gridsample64_overlay.png
+  [overlay] results/gridsample64_composite.png
+  [overlay] results/gridsample65_overlay.png
+  [overlay] results/gridsample65_composite.png
+  [overlay] results/gridsample66_overlay.png
+  [overlay] results/gridsample66_composite.png
+  [overlay] results/gridsample67_overlay.png
+  [overlay] results/gridsample67_composite.png
+  [overlay] results/gridsample68_overlay.png
+  [overlay] results/gridsample68_composite.png
+  [overlay] results/gridsample69_overlay.png
+  [overlay] results/gridsample69_composite.png
+  [overlay] results/gridsample70_overlay.png
+  [overlay] results/gridsample70_composite.png
+  [overlay] results/gridsample71_overlay.png
+  [overlay] results/gridsample71_composite.png
+  [overlay] results/gridsample72_overlay.png
+  [overlay] results/gridsample72_composite.png
+  [overlay] results/gridsample73_overlay.png
+  [overlay] results/gridsample73_composite.png
+  [overlay] results/gridsample74_overlay.png
+  [overlay] results/gridsample74_composite.png
+  [overlay] results/gridsample75_overlay.png
+  [overlay] results/gridsample75_composite.png
+  [overlay] results/gridsample76_overlay.png
+  [overlay] results/gridsample76_composite.png
+  [overlay] results/gridsample77_overlay.png
+  [overlay] results/gridsample77_composite.png
+  [parsed] Pixel AUROC=99.2  SNR=6.4776
+  ---- Done seed 42 ----
+
+########################################
+# Category : hazelnut
+# Checkpoint: /data/akherandish3/MVTec/hazelnut/2000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: hazelnut   load_chp: 2000
+Checkpoint: /data/akherandish3/MVTec/hazelnut/2000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/hazelnut/2000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/hazelnut/test/*/*.png
+DEBUG: Found 110 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=563
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=846
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=1519
+AUROC: (99.5,98.5)
+  Per-image pixel AUROC: n=70 defective, skipped=40 good/invalid images
+[(0, 0.9992693234864413), (1, 0.9802557167535147), (2, 0.9974013033466064), (3, 0.9992032906930179), (4, 0.9994488290193644), (5, 0.9992821456136403), (6, 0.996806066907909), (7, 0.9998815671276305), (8, 0.9852759265291776), (9, 0.9921373800991871), (10, 0.9844781691308176), (11, 0.9756059954658219), (12, 0.9992997610810952), (13, 0.9966594818414272), (14, 0.9995980108413464), (15, 0.999642558296767), (16, 0.9997110473953181), (17, 0.9999765555069001), (18, 0.99310199635586), (19, 0.96738098769798), (20, 0.9979315280853354), (21, 0.9907285327664449), (22, 0.99662655037656), (23, 0.9922205966464489), (24, 0.9378633952533794), (25, 0.9978967548779394), (26, 0.9909530146294375), (27, 0.9928867037942002), (28, 0.9815207124416989), (29, 0.9936852318345636), (30, 0.9528043077275058), (31, 0.9945270561182795), (32, 0.9297194979204122), (33, 0.9940574319450419), (34, 0.9882925507169743), (35, 0.9962732299224747), (36, 0.9976512693037272), (37, 0.9889433365746715), (38, 0.997574612842583), (39, 0.9934759430042087), (40, 0.9963390006648318), (41, 0.9974510591247907), (42, 0.9941124350251005), (43, 0.9986654114885406), (44, 0.9915693364090157), (45, 0.9959525146073032), (46, 0.9684473629458344), (47, 0.998659522319449), (48, 0.9911069697319806), (49, 0.9974405471378603), (50, 0.9895626035529745), (51, 0.9970968633836133), (52, 0.9734623276187085), (53, 0.9532126723407167), (54, 0.9756757479063533), (55, 0.989408372290064), (56, 0.9729630065728668), (57, 0.9711785892716414), (58, 0.9917848520515857), (59, 0.9787353944549331), (60, 0.9782720398500012), (61, 0.9843918797730619), (62, 0.9881133430781004), (63, 0.9993125646530581), (64, 0.9962809904275058), (65, 0.9824635308865718), (66, 0.9863757442971359), (67, 0.9715649455467471), (68, 0.9991727180067562), (69, 0.9746599746946163)]
+  Individual scores: min=0.930, max=1.000, mean=0.988
+Per-image Pixel AUROC (mean): 98.8
+PRO: 92.7
+PRO: 92.7
+SNR: 6.3065
+  [overlay] results/hazelnutsample0_overlay.png
+  [overlay] results/hazelnutsample0_composite.png
+  [overlay] results/hazelnutsample1_overlay.png
+  [overlay] results/hazelnutsample1_composite.png
+  [overlay] results/hazelnutsample2_overlay.png
+  [overlay] results/hazelnutsample2_composite.png
+  [overlay] results/hazelnutsample3_overlay.png
+  [overlay] results/hazelnutsample3_composite.png
+  [overlay] results/hazelnutsample4_overlay.png
+  [overlay] results/hazelnutsample4_composite.png
+  [overlay] results/hazelnutsample5_overlay.png
+  [overlay] results/hazelnutsample5_composite.png
+  [overlay] results/hazelnutsample6_overlay.png
+  [overlay] results/hazelnutsample6_composite.png
+  [overlay] results/hazelnutsample7_overlay.png
+  [overlay] results/hazelnutsample7_composite.png
+  [overlay] results/hazelnutsample8_overlay.png
+  [overlay] results/hazelnutsample8_composite.png
+  [overlay] results/hazelnutsample9_overlay.png
+  [overlay] results/hazelnutsample9_composite.png
+  [overlay] results/hazelnutsample10_overlay.png
+  [overlay] results/hazelnutsample10_composite.png
+  [overlay] results/hazelnutsample11_overlay.png
+  [overlay] results/hazelnutsample11_composite.png
+  [overlay] results/hazelnutsample12_overlay.png
+  [overlay] results/hazelnutsample12_composite.png
+  [overlay] results/hazelnutsample13_overlay.png
+  [overlay] results/hazelnutsample13_composite.png
+  [overlay] results/hazelnutsample14_overlay.png
+  [overlay] results/hazelnutsample14_composite.png
+  [overlay] results/hazelnutsample15_overlay.png
+  [overlay] results/hazelnutsample15_composite.png
+  [overlay] results/hazelnutsample16_overlay.png
+  [overlay] results/hazelnutsample16_composite.png
+  [overlay] results/hazelnutsample17_overlay.png
+  [overlay] results/hazelnutsample17_composite.png
+  [overlay] results/hazelnutsample18_overlay.png
+  [overlay] results/hazelnutsample18_composite.png
+  [overlay] results/hazelnutsample19_overlay.png
+  [overlay] results/hazelnutsample19_composite.png
+  [overlay] results/hazelnutsample20_overlay.png
+  [overlay] results/hazelnutsample20_composite.png
+  [overlay] results/hazelnutsample21_overlay.png
+  [overlay] results/hazelnutsample21_composite.png
+  [overlay] results/hazelnutsample22_overlay.png
+  [overlay] results/hazelnutsample22_composite.png
+  [overlay] results/hazelnutsample23_overlay.png
+  [overlay] results/hazelnutsample23_composite.png
+  [overlay] results/hazelnutsample24_overlay.png
+  [overlay] results/hazelnutsample24_composite.png
+  [overlay] results/hazelnutsample25_overlay.png
+  [overlay] results/hazelnutsample25_composite.png
+  [overlay] results/hazelnutsample26_overlay.png
+  [overlay] results/hazelnutsample26_composite.png
+  [overlay] results/hazelnutsample27_overlay.png
+  [overlay] results/hazelnutsample27_composite.png
+  [overlay] results/hazelnutsample28_overlay.png
+  [overlay] results/hazelnutsample28_composite.png
+  [overlay] results/hazelnutsample29_overlay.png
+  [overlay] results/hazelnutsample29_composite.png
+  [overlay] results/hazelnutsample30_overlay.png
+  [overlay] results/hazelnutsample30_composite.png
+  [overlay] results/hazelnutsample31_overlay.png
+  [overlay] results/hazelnutsample31_composite.png
+  [overlay] results/hazelnutsample32_overlay.png
+  [overlay] results/hazelnutsample32_composite.png
+  [overlay] results/hazelnutsample33_overlay.png
+  [overlay] results/hazelnutsample33_composite.png
+  [overlay] results/hazelnutsample34_overlay.png
+  [overlay] results/hazelnutsample34_composite.png
+  [overlay] results/hazelnutsample35_overlay.png
+  [overlay] results/hazelnutsample35_composite.png
+  [overlay] results/hazelnutsample36_overlay.png
+  [overlay] results/hazelnutsample36_composite.png
+  [overlay] results/hazelnutsample37_overlay.png
+  [overlay] results/hazelnutsample37_composite.png
+  [overlay] results/hazelnutsample38_overlay.png
+  [overlay] results/hazelnutsample38_composite.png
+  [overlay] results/hazelnutsample39_overlay.png
+  [overlay] results/hazelnutsample39_composite.png
+  [overlay] results/hazelnutsample40_overlay.png
+  [overlay] results/hazelnutsample40_composite.png
+  [overlay] results/hazelnutsample41_overlay.png
+  [overlay] results/hazelnutsample41_composite.png
+  [overlay] results/hazelnutsample42_overlay.png
+  [overlay] results/hazelnutsample42_composite.png
+  [overlay] results/hazelnutsample43_overlay.png
+  [overlay] results/hazelnutsample43_composite.png
+  [overlay] results/hazelnutsample44_overlay.png
+  [overlay] results/hazelnutsample44_composite.png
+  [overlay] results/hazelnutsample45_overlay.png
+  [overlay] results/hazelnutsample45_composite.png
+  [overlay] results/hazelnutsample46_overlay.png
+  [overlay] results/hazelnutsample46_composite.png
+  [overlay] results/hazelnutsample47_overlay.png
+  [overlay] results/hazelnutsample47_composite.png
+  [overlay] results/hazelnutsample48_overlay.png
+  [overlay] results/hazelnutsample48_composite.png
+  [overlay] results/hazelnutsample49_overlay.png
+  [overlay] results/hazelnutsample49_composite.png
+  [overlay] results/hazelnutsample50_overlay.png
+  [overlay] results/hazelnutsample50_composite.png
+  [overlay] results/hazelnutsample51_overlay.png
+  [overlay] results/hazelnutsample51_composite.png
+  [overlay] results/hazelnutsample52_overlay.png
+  [overlay] results/hazelnutsample52_composite.png
+  [overlay] results/hazelnutsample53_overlay.png
+  [overlay] results/hazelnutsample53_composite.png
+  [overlay] results/hazelnutsample54_overlay.png
+  [overlay] results/hazelnutsample54_composite.png
+  [overlay] results/hazelnutsample55_overlay.png
+  [overlay] results/hazelnutsample55_composite.png
+  [overlay] results/hazelnutsample56_overlay.png
+  [overlay] results/hazelnutsample56_composite.png
+  [overlay] results/hazelnutsample57_overlay.png
+  [overlay] results/hazelnutsample57_composite.png
+  [overlay] results/hazelnutsample58_overlay.png
+  [overlay] results/hazelnutsample58_composite.png
+  [overlay] results/hazelnutsample59_overlay.png
+  [overlay] results/hazelnutsample59_composite.png
+  [overlay] results/hazelnutsample60_overlay.png
+  [overlay] results/hazelnutsample60_composite.png
+  [overlay] results/hazelnutsample61_overlay.png
+  [overlay] results/hazelnutsample61_composite.png
+  [overlay] results/hazelnutsample62_overlay.png
+  [overlay] results/hazelnutsample62_composite.png
+  [overlay] results/hazelnutsample63_overlay.png
+  [overlay] results/hazelnutsample63_composite.png
+  [overlay] results/hazelnutsample64_overlay.png
+  [overlay] results/hazelnutsample64_composite.png
+  [overlay] results/hazelnutsample65_overlay.png
+  [overlay] results/hazelnutsample65_composite.png
+  [overlay] results/hazelnutsample66_overlay.png
+  [overlay] results/hazelnutsample66_composite.png
+  [overlay] results/hazelnutsample67_overlay.png
+  [overlay] results/hazelnutsample67_composite.png
+  [overlay] results/hazelnutsample68_overlay.png
+  [overlay] results/hazelnutsample68_composite.png
+  [overlay] results/hazelnutsample69_overlay.png
+  [overlay] results/hazelnutsample69_composite.png
+  [overlay] results/hazelnutsample70_overlay.png
+  [overlay] results/hazelnutsample70_composite.png
+  [overlay] results/hazelnutsample71_overlay.png
+  [overlay] results/hazelnutsample71_composite.png
+  [overlay] results/hazelnutsample72_overlay.png
+  [overlay] results/hazelnutsample72_composite.png
+  [overlay] results/hazelnutsample73_overlay.png
+  [overlay] results/hazelnutsample73_composite.png
+  [overlay] results/hazelnutsample74_overlay.png
+  [overlay] results/hazelnutsample74_composite.png
+  [overlay] results/hazelnutsample75_overlay.png
+  [overlay] results/hazelnutsample75_composite.png
+  [overlay] results/hazelnutsample76_overlay.png
+  [overlay] results/hazelnutsample76_composite.png
+  [overlay] results/hazelnutsample77_overlay.png
+  [overlay] results/hazelnutsample77_composite.png
+  [overlay] results/hazelnutsample78_overlay.png
+  [overlay] results/hazelnutsample78_composite.png
+  [overlay] results/hazelnutsample79_overlay.png
+  [overlay] results/hazelnutsample79_composite.png
+  [overlay] results/hazelnutsample80_overlay.png
+  [overlay] results/hazelnutsample80_composite.png
+  [overlay] results/hazelnutsample81_overlay.png
+  [overlay] results/hazelnutsample81_composite.png
+  [overlay] results/hazelnutsample82_overlay.png
+  [overlay] results/hazelnutsample82_composite.png
+  [overlay] results/hazelnutsample83_overlay.png
+  [overlay] results/hazelnutsample83_composite.png
+  [overlay] results/hazelnutsample84_overlay.png
+  [overlay] results/hazelnutsample84_composite.png
+  [overlay] results/hazelnutsample85_overlay.png
+  [overlay] results/hazelnutsample85_composite.png
+  [overlay] results/hazelnutsample86_overlay.png
+  [overlay] results/hazelnutsample86_composite.png
+  [overlay] results/hazelnutsample87_overlay.png
+  [overlay] results/hazelnutsample87_composite.png
+  [overlay] results/hazelnutsample88_overlay.png
+  [overlay] results/hazelnutsample88_composite.png
+  [overlay] results/hazelnutsample89_overlay.png
+  [overlay] results/hazelnutsample89_composite.png
+  [overlay] results/hazelnutsample90_overlay.png
+  [overlay] results/hazelnutsample90_composite.png
+  [overlay] results/hazelnutsample91_overlay.png
+  [overlay] results/hazelnutsample91_composite.png
+  [overlay] results/hazelnutsample92_overlay.png
+  [overlay] results/hazelnutsample92_composite.png
+  [overlay] results/hazelnutsample93_overlay.png
+  [overlay] results/hazelnutsample93_composite.png
+  [overlay] results/hazelnutsample94_overlay.png
+  [overlay] results/hazelnutsample94_composite.png
+  [overlay] results/hazelnutsample95_overlay.png
+  [overlay] results/hazelnutsample95_composite.png
+  [overlay] results/hazelnutsample96_overlay.png
+  [overlay] results/hazelnutsample96_composite.png
+  [overlay] results/hazelnutsample97_overlay.png
+  [overlay] results/hazelnutsample97_composite.png
+  [overlay] results/hazelnutsample98_overlay.png
+  [overlay] results/hazelnutsample98_composite.png
+  [overlay] results/hazelnutsample99_overlay.png
+  [overlay] results/hazelnutsample99_composite.png
+  [overlay] results/hazelnutsample100_overlay.png
+  [overlay] results/hazelnutsample100_composite.png
+  [overlay] results/hazelnutsample101_overlay.png
+  [overlay] results/hazelnutsample101_composite.png
+  [overlay] results/hazelnutsample102_overlay.png
+  [overlay] results/hazelnutsample102_composite.png
+  [overlay] results/hazelnutsample103_overlay.png
+  [overlay] results/hazelnutsample103_composite.png
+  [overlay] results/hazelnutsample104_overlay.png
+  [overlay] results/hazelnutsample104_composite.png
+  [overlay] results/hazelnutsample105_overlay.png
+  [overlay] results/hazelnutsample105_composite.png
+  [overlay] results/hazelnutsample106_overlay.png
+  [overlay] results/hazelnutsample106_composite.png
+  [overlay] results/hazelnutsample107_overlay.png
+  [overlay] results/hazelnutsample107_composite.png
+  [overlay] results/hazelnutsample108_overlay.png
+  [overlay] results/hazelnutsample108_composite.png
+  [overlay] results/hazelnutsample109_overlay.png
+  [overlay] results/hazelnutsample109_composite.png
+  [parsed] Pixel AUROC=98.8  SNR=6.3065
+  ---- Done seed 42 ----
+
+########################################
+# Category : leather
+# Checkpoint: /data/akherandish3/MVTec/leather/2000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: leather   load_chp: 2000
+Checkpoint: /data/akherandish3/MVTec/leather/2000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/leather/2000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/leather/test/*/*.png
+DEBUG: Found 124 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=295
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=161
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=247
+AUROC: (95.6,98.7)
+  Per-image pixel AUROC: n=92 defective, skipped=32 good/invalid images
+[(0, 0.992835897359958), (1, 0.9979166538009334), (2, 0.9951008853008142), (3, 0.999539516568343), (4, 0.9977894996073393), (5, 0.9991304645754908), (6, 0.998595655838166), (7, 0.9988873002818806), (8, 0.9961654594015451), (9, 0.9997770542027979), (10, 0.9994451443214263), (11, 0.9998894682386854), (12, 0.9998706050798574), (13, 0.9986065567480038), (14, 0.9971163224179649), (15, 0.9973740083750917), (16, 0.9973280465992252), (17, 0.9921421833078341), (18, 0.9968054981950563), (19, 0.9997361219845375), (20, 0.998745610172125), (21, 0.9988586282826369), (22, 0.9973130998227275), (23, 0.9972425915856489), (24, 0.9990106377694088), (25, 0.9991132463392047), (26, 0.9989960899614554), (27, 0.9994769595063742), (28, 0.9992750982111301), (29, 0.9991479296756094), (30, 0.9985207314509097), (31, 0.998741423307608), (32, 0.9994461934929825), (33, 0.9996730174770628), (34, 0.999786898438257), (35, 0.9993639163147295), (36, 0.99997538146528), (37, 0.9985070299472153), (38, 0.9993963402452435), (39, 0.9935905345236832), (40, 0.9993158680353726), (41, 0.9966797547540402), (42, 0.9991278378232806), (43, 0.9985008343269687), (44, 0.9930491731778379), (45, 0.9996725465606042), (46, 0.9970516124322812), (47, 0.999240914999756), (48, 0.9985466004249521), (49, 0.9999317721252632), (50, 0.9968653948748037), (51, 0.9990402286232354), (52, 0.9988865295039242), (53, 0.9978460149336381), (54, 0.9971598626214391), (55, 0.9991223019390706), (56, 0.9946527529170852), (57, 0.9986328207379385), (58, 0.9997464632172378), (59, 0.9974139258192813), (60, 0.9985681955832344), (61, 0.9956089740815165), (62, 0.9822145786831867), (63, 0.9843883513583969), (64, 0.9955496955304346), (65, 0.9962361906912701), (66, 0.9972934797347597), (67, 0.99613962841413), (68, 0.998819431420479), (69, 0.9952776371967247), (70, 0.992008415530932), (71, 0.9763140437465511), (72, 0.9925568995180216), (73, 0.998065649003962), (74, 0.99901916071537), (75, 0.8865011561726719), (76, 0.9948491879181545), (77, 0.9927456308701867), (78, 0.9984332520008553), (79, 0.9832420901558462), (80, 0.9969457084358977), (81, 0.9959937962834982), (82, 0.9929076289947856), (83, 0.9944970909539531), (84, 0.9968661202892259), (85, 0.9970845489431033), (86, 0.9965122635001094), (87, 0.9967431888122436), (88, 0.9924332214498941), (89, 0.9973044529115007), (90, 0.9818506916676919), (91, 0.99903287788953)]
+  Individual scores: min=0.887, max=1.000, mean=0.995
+Per-image Pixel AUROC (mean): 99.5
+PRO: 96.5
+PRO: 96.5
+SNR: 8.9081
+  [overlay] results/leathersample0_overlay.png
+  [overlay] results/leathersample0_composite.png
+  [overlay] results/leathersample1_overlay.png
+  [overlay] results/leathersample1_composite.png
+  [overlay] results/leathersample2_overlay.png
+  [overlay] results/leathersample2_composite.png
+  [overlay] results/leathersample3_overlay.png
+  [overlay] results/leathersample3_composite.png
+  [overlay] results/leathersample4_overlay.png
+  [overlay] results/leathersample4_composite.png
+  [overlay] results/leathersample5_overlay.png
+  [overlay] results/leathersample5_composite.png
+  [overlay] results/leathersample6_overlay.png
+  [overlay] results/leathersample6_composite.png
+  [overlay] results/leathersample7_overlay.png
+  [overlay] results/leathersample7_composite.png
+  [overlay] results/leathersample8_overlay.png
+  [overlay] results/leathersample8_composite.png
+  [overlay] results/leathersample9_overlay.png
+  [overlay] results/leathersample9_composite.png
+  [overlay] results/leathersample10_overlay.png
+  [overlay] results/leathersample10_composite.png
+  [overlay] results/leathersample11_overlay.png
+  [overlay] results/leathersample11_composite.png
+  [overlay] results/leathersample12_overlay.png
+  [overlay] results/leathersample12_composite.png
+  [overlay] results/leathersample13_overlay.png
+  [overlay] results/leathersample13_composite.png
+  [overlay] results/leathersample14_overlay.png
+  [overlay] results/leathersample14_composite.png
+  [overlay] results/leathersample15_overlay.png
+  [overlay] results/leathersample15_composite.png
+  [overlay] results/leathersample16_overlay.png
+  [overlay] results/leathersample16_composite.png
+  [overlay] results/leathersample17_overlay.png
+  [overlay] results/leathersample17_composite.png
+  [overlay] results/leathersample18_overlay.png
+  [overlay] results/leathersample18_composite.png
+  [overlay] results/leathersample19_overlay.png
+  [overlay] results/leathersample19_composite.png
+  [overlay] results/leathersample20_overlay.png
+  [overlay] results/leathersample20_composite.png
+  [overlay] results/leathersample21_overlay.png
+  [overlay] results/leathersample21_composite.png
+  [overlay] results/leathersample22_overlay.png
+  [overlay] results/leathersample22_composite.png
+  [overlay] results/leathersample23_overlay.png
+  [overlay] results/leathersample23_composite.png
+  [overlay] results/leathersample24_overlay.png
+  [overlay] results/leathersample24_composite.png
+  [overlay] results/leathersample25_overlay.png
+  [overlay] results/leathersample25_composite.png
+  [overlay] results/leathersample26_overlay.png
+  [overlay] results/leathersample26_composite.png
+  [overlay] results/leathersample27_overlay.png
+  [overlay] results/leathersample27_composite.png
+  [overlay] results/leathersample28_overlay.png
+  [overlay] results/leathersample28_composite.png
+  [overlay] results/leathersample29_overlay.png
+  [overlay] results/leathersample29_composite.png
+  [overlay] results/leathersample30_overlay.png
+  [overlay] results/leathersample30_composite.png
+  [overlay] results/leathersample31_overlay.png
+  [overlay] results/leathersample31_composite.png
+  [overlay] results/leathersample32_overlay.png
+  [overlay] results/leathersample32_composite.png
+  [overlay] results/leathersample33_overlay.png
+  [overlay] results/leathersample33_composite.png
+  [overlay] results/leathersample34_overlay.png
+  [overlay] results/leathersample34_composite.png
+  [overlay] results/leathersample35_overlay.png
+  [overlay] results/leathersample35_composite.png
+  [overlay] results/leathersample36_overlay.png
+  [overlay] results/leathersample36_composite.png
+  [overlay] results/leathersample37_overlay.png
+  [overlay] results/leathersample37_composite.png
+  [overlay] results/leathersample38_overlay.png
+  [overlay] results/leathersample38_composite.png
+  [overlay] results/leathersample39_overlay.png
+  [overlay] results/leathersample39_composite.png
+  [overlay] results/leathersample40_overlay.png
+  [overlay] results/leathersample40_composite.png
+  [overlay] results/leathersample41_overlay.png
+  [overlay] results/leathersample41_composite.png
+  [overlay] results/leathersample42_overlay.png
+  [overlay] results/leathersample42_composite.png
+  [overlay] results/leathersample43_overlay.png
+  [overlay] results/leathersample43_composite.png
+  [overlay] results/leathersample44_overlay.png
+  [overlay] results/leathersample44_composite.png
+  [overlay] results/leathersample45_overlay.png
+  [overlay] results/leathersample45_composite.png
+  [overlay] results/leathersample46_overlay.png
+  [overlay] results/leathersample46_composite.png
+  [overlay] results/leathersample47_overlay.png
+  [overlay] results/leathersample47_composite.png
+  [overlay] results/leathersample48_overlay.png
+  [overlay] results/leathersample48_composite.png
+  [overlay] results/leathersample49_overlay.png
+  [overlay] results/leathersample49_composite.png
+  [overlay] results/leathersample50_overlay.png
+  [overlay] results/leathersample50_composite.png
+  [overlay] results/leathersample51_overlay.png
+  [overlay] results/leathersample51_composite.png
+  [overlay] results/leathersample52_overlay.png
+  [overlay] results/leathersample52_composite.png
+  [overlay] results/leathersample53_overlay.png
+  [overlay] results/leathersample53_composite.png
+  [overlay] results/leathersample54_overlay.png
+  [overlay] results/leathersample54_composite.png
+  [overlay] results/leathersample55_overlay.png
+  [overlay] results/leathersample55_composite.png
+  [overlay] results/leathersample56_overlay.png
+  [overlay] results/leathersample56_composite.png
+  [overlay] results/leathersample57_overlay.png
+  [overlay] results/leathersample57_composite.png
+  [overlay] results/leathersample58_overlay.png
+  [overlay] results/leathersample58_composite.png
+  [overlay] results/leathersample59_overlay.png
+  [overlay] results/leathersample59_composite.png
+  [overlay] results/leathersample60_overlay.png
+  [overlay] results/leathersample60_composite.png
+  [overlay] results/leathersample61_overlay.png
+  [overlay] results/leathersample61_composite.png
+  [overlay] results/leathersample62_overlay.png
+  [overlay] results/leathersample62_composite.png
+  [overlay] results/leathersample63_overlay.png
+  [overlay] results/leathersample63_composite.png
+  [overlay] results/leathersample64_overlay.png
+  [overlay] results/leathersample64_composite.png
+  [overlay] results/leathersample65_overlay.png
+  [overlay] results/leathersample65_composite.png
+  [overlay] results/leathersample66_overlay.png
+  [overlay] results/leathersample66_composite.png
+  [overlay] results/leathersample67_overlay.png
+  [overlay] results/leathersample67_composite.png
+  [overlay] results/leathersample68_overlay.png
+  [overlay] results/leathersample68_composite.png
+  [overlay] results/leathersample69_overlay.png
+  [overlay] results/leathersample69_composite.png
+  [overlay] results/leathersample70_overlay.png
+  [overlay] results/leathersample70_composite.png
+  [overlay] results/leathersample71_overlay.png
+  [overlay] results/leathersample71_composite.png
+  [overlay] results/leathersample72_overlay.png
+  [overlay] results/leathersample72_composite.png
+  [overlay] results/leathersample73_overlay.png
+  [overlay] results/leathersample73_composite.png
+  [overlay] results/leathersample74_overlay.png
+  [overlay] results/leathersample74_composite.png
+  [overlay] results/leathersample75_overlay.png
+  [overlay] results/leathersample75_composite.png
+  [overlay] results/leathersample76_overlay.png
+  [overlay] results/leathersample76_composite.png
+  [overlay] results/leathersample77_overlay.png
+  [overlay] results/leathersample77_composite.png
+  [overlay] results/leathersample78_overlay.png
+  [overlay] results/leathersample78_composite.png
+  [overlay] results/leathersample79_overlay.png
+  [overlay] results/leathersample79_composite.png
+  [overlay] results/leathersample80_overlay.png
+  [overlay] results/leathersample80_composite.png
+  [overlay] results/leathersample81_overlay.png
+  [overlay] results/leathersample81_composite.png
+  [overlay] results/leathersample82_overlay.png
+  [overlay] results/leathersample82_composite.png
+  [overlay] results/leathersample83_overlay.png
+  [overlay] results/leathersample83_composite.png
+  [overlay] results/leathersample84_overlay.png
+  [overlay] results/leathersample84_composite.png
+  [overlay] results/leathersample85_overlay.png
+  [overlay] results/leathersample85_composite.png
+  [overlay] results/leathersample86_overlay.png
+  [overlay] results/leathersample86_composite.png
+  [overlay] results/leathersample87_overlay.png
+  [overlay] results/leathersample87_composite.png
+  [overlay] results/leathersample88_overlay.png
+  [overlay] results/leathersample88_composite.png
+  [overlay] results/leathersample89_overlay.png
+  [overlay] results/leathersample89_composite.png
+  [overlay] results/leathersample90_overlay.png
+  [overlay] results/leathersample90_composite.png
+  [overlay] results/leathersample91_overlay.png
+  [overlay] results/leathersample91_composite.png
+  [overlay] results/leathersample92_overlay.png
+  [overlay] results/leathersample92_composite.png
+  [overlay] results/leathersample93_overlay.png
+  [overlay] results/leathersample93_composite.png
+  [overlay] results/leathersample94_overlay.png
+  [overlay] results/leathersample94_composite.png
+  [overlay] results/leathersample95_overlay.png
+  [overlay] results/leathersample95_composite.png
+  [overlay] results/leathersample96_overlay.png
+  [overlay] results/leathersample96_composite.png
+  [overlay] results/leathersample97_overlay.png
+  [overlay] results/leathersample97_composite.png
+  [overlay] results/leathersample98_overlay.png
+  [overlay] results/leathersample98_composite.png
+  [overlay] results/leathersample99_overlay.png
+  [overlay] results/leathersample99_composite.png
+  [overlay] results/leathersample100_overlay.png
+  [overlay] results/leathersample100_composite.png
+  [overlay] results/leathersample101_overlay.png
+  [overlay] results/leathersample101_composite.png
+  [overlay] results/leathersample102_overlay.png
+  [overlay] results/leathersample102_composite.png
+  [overlay] results/leathersample103_overlay.png
+  [overlay] results/leathersample103_composite.png
+  [overlay] results/leathersample104_overlay.png
+  [overlay] results/leathersample104_composite.png
+  [overlay] results/leathersample105_overlay.png
+  [overlay] results/leathersample105_composite.png
+  [overlay] results/leathersample106_overlay.png
+  [overlay] results/leathersample106_composite.png
+  [overlay] results/leathersample107_overlay.png
+  [overlay] results/leathersample107_composite.png
+  [overlay] results/leathersample108_overlay.png
+  [overlay] results/leathersample108_composite.png
+  [overlay] results/leathersample109_overlay.png
+  [overlay] results/leathersample109_composite.png
+  [overlay] results/leathersample110_overlay.png
+  [overlay] results/leathersample110_composite.png
+  [overlay] results/leathersample111_overlay.png
+  [overlay] results/leathersample111_composite.png
+  [overlay] results/leathersample112_overlay.png
+  [overlay] results/leathersample112_composite.png
+  [overlay] results/leathersample113_overlay.png
+  [overlay] results/leathersample113_composite.png
+  [overlay] results/leathersample114_overlay.png
+  [overlay] results/leathersample114_composite.png
+  [overlay] results/leathersample115_overlay.png
+  [overlay] results/leathersample115_composite.png
+  [overlay] results/leathersample116_overlay.png
+  [overlay] results/leathersample116_composite.png
+  [overlay] results/leathersample117_overlay.png
+  [overlay] results/leathersample117_composite.png
+  [overlay] results/leathersample118_overlay.png
+  [overlay] results/leathersample118_composite.png
+  [overlay] results/leathersample119_overlay.png
+  [overlay] results/leathersample119_composite.png
+  [overlay] results/leathersample120_overlay.png
+  [overlay] results/leathersample120_composite.png
+  [overlay] results/leathersample121_overlay.png
+  [overlay] results/leathersample121_composite.png
+  [overlay] results/leathersample122_overlay.png
+  [overlay] results/leathersample122_composite.png
+  [overlay] results/leathersample123_overlay.png
+  [overlay] results/leathersample123_composite.png
+  [parsed] Pixel AUROC=99.5  SNR=8.9081
+  ---- Done seed 42 ----
+
+########################################
+# Category : metal_nut
+# Checkpoint: /data/akherandish3/MVTec/metal_nut/3000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: metal_nut   load_chp: 3000
+Checkpoint: /data/akherandish3/MVTec/metal_nut/3000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/metal_nut/3000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/metal_nut/test/*/*.png
+DEBUG: Found 115 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=1167
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=2931
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=1509
+AUROC: (99.0,98.6)
+  Per-image pixel AUROC: n=93 defective, skipped=22 good/invalid images
+[(0, 0.9975299201104898), (1, 0.9943135205321795), (2, 0.9962008241159609), (3, 0.9997812921173211), (4, 0.9931010660653711), (5, 0.9994911173115699), (6, 0.9990203083679906), (7, 0.9919685962706153), (8, 0.9859790743579508), (9, 0.980160741768851), (10, 0.9967779165910704), (11, 0.9934438838088195), (12, 0.9991727101799625), (13, 0.9961946030836726), (14, 0.9676899361797585), (15, 0.9982846336816052), (16, 0.9934577021258291), (17, 0.9869572973859606), (18, 0.9931203864315922), (19, 0.996377083247277), (20, 0.9975288639938237), (21, 0.9950977092819425), (22, 0.961245074900188), (23, 0.9249322912215465), (24, 0.9444018235847536), (25, 0.9552175458534331), (26, 0.9470139394955424), (27, 0.9322824541386272), (28, 0.9402836619804843), (29, 0.9560563328514616), (30, 0.9424313663268158), (31, 0.9559507624925481), (32, 0.9612049938261052), (33, 0.9488735809633762), (34, 0.9595089644729616), (35, 0.9356024810102319), (36, 0.9414370339709923), (37, 0.961752310729917), (38, 0.9468192667926024), (39, 0.9548359897543388), (40, 0.9470599151835759), (41, 0.9582991025426011), (42, 0.9510506593588468), (43, 0.9404560105858272), (44, 0.9622635938165889), (45, 0.9900500677392672), (46, 0.9724876375405573), (47, 0.9862027398903809), (48, 0.9987899788307943), (49, 0.9888748108351149), (50, 0.9928874800845607), (51, 0.9819350793335455), (52, 0.9811523338106989), (53, 0.9766819210550919), (54, 0.9906634874908633), (55, 0.988340737522798), (56, 0.9839455576830303), (57, 0.9646878036411772), (58, 0.9724958731225739), (59, 0.9843043390574641), (60, 0.9677217192396678), (61, 0.9653807524828754), (62, 0.9926805167247265), (63, 0.9956576379606518), (64, 0.9929507681651134), (65, 0.9766230859706695), (66, 0.9991107788091179), (67, 0.959018986919551), (68, 0.9940867501419848), (69, 0.9976760264391313), (70, 0.997330751928298), (71, 0.9836583218172041), (72, 0.9967284501969917), (73, 0.988321369418444), (74, 0.9975827156737889), (75, 0.9961738522241428), (76, 0.9975275161202399), (77, 0.99500130148009), (78, 0.9973077670781048), (79, 0.9921070326477192), (80, 0.996810938946278), (81, 0.9889844147778353), (82, 0.9911065272183857), (83, 0.9897046614314798), (84, 0.998063777251261), (85, 0.99310293316433), (86, 0.9755153227409469), (87, 0.984724874486966), (88, 0.998513832953267), (89, 0.9932018717582276), (90, 0.9938889227059403), (91, 0.9949056125252509), (92, 0.9863045729489085)]
+  Individual scores: min=0.925, max=1.000, mean=0.980
+Per-image Pixel AUROC (mean): 98.0
+PRO: 92.5
+PRO: 92.5
+SNR: 6.0502
+  [overlay] results/metal_nutsample0_overlay.png
+  [overlay] results/metal_nutsample0_composite.png
+  [overlay] results/metal_nutsample1_overlay.png
+  [overlay] results/metal_nutsample1_composite.png
+  [overlay] results/metal_nutsample2_overlay.png
+  [overlay] results/metal_nutsample2_composite.png
+  [overlay] results/metal_nutsample3_overlay.png
+  [overlay] results/metal_nutsample3_composite.png
+  [overlay] results/metal_nutsample4_overlay.png
+  [overlay] results/metal_nutsample4_composite.png
+  [overlay] results/metal_nutsample5_overlay.png
+  [overlay] results/metal_nutsample5_composite.png
+  [overlay] results/metal_nutsample6_overlay.png
+  [overlay] results/metal_nutsample6_composite.png
+  [overlay] results/metal_nutsample7_overlay.png
+  [overlay] results/metal_nutsample7_composite.png
+  [overlay] results/metal_nutsample8_overlay.png
+  [overlay] results/metal_nutsample8_composite.png
+  [overlay] results/metal_nutsample9_overlay.png
+  [overlay] results/metal_nutsample9_composite.png
+  [overlay] results/metal_nutsample10_overlay.png
+  [overlay] results/metal_nutsample10_composite.png
+  [overlay] results/metal_nutsample11_overlay.png
+  [overlay] results/metal_nutsample11_composite.png
+  [overlay] results/metal_nutsample12_overlay.png
+  [overlay] results/metal_nutsample12_composite.png
+  [overlay] results/metal_nutsample13_overlay.png
+  [overlay] results/metal_nutsample13_composite.png
+  [overlay] results/metal_nutsample14_overlay.png
+  [overlay] results/metal_nutsample14_composite.png
+  [overlay] results/metal_nutsample15_overlay.png
+  [overlay] results/metal_nutsample15_composite.png
+  [overlay] results/metal_nutsample16_overlay.png
+  [overlay] results/metal_nutsample16_composite.png
+  [overlay] results/metal_nutsample17_overlay.png
+  [overlay] results/metal_nutsample17_composite.png
+  [overlay] results/metal_nutsample18_overlay.png
+  [overlay] results/metal_nutsample18_composite.png
+  [overlay] results/metal_nutsample19_overlay.png
+  [overlay] results/metal_nutsample19_composite.png
+  [overlay] results/metal_nutsample20_overlay.png
+  [overlay] results/metal_nutsample20_composite.png
+  [overlay] results/metal_nutsample21_overlay.png
+  [overlay] results/metal_nutsample21_composite.png
+  [overlay] results/metal_nutsample22_overlay.png
+  [overlay] results/metal_nutsample22_composite.png
+  [overlay] results/metal_nutsample23_overlay.png
+  [overlay] results/metal_nutsample23_composite.png
+  [overlay] results/metal_nutsample24_overlay.png
+  [overlay] results/metal_nutsample24_composite.png
+  [overlay] results/metal_nutsample25_overlay.png
+  [overlay] results/metal_nutsample25_composite.png
+  [overlay] results/metal_nutsample26_overlay.png
+  [overlay] results/metal_nutsample26_composite.png
+  [overlay] results/metal_nutsample27_overlay.png
+  [overlay] results/metal_nutsample27_composite.png
+  [overlay] results/metal_nutsample28_overlay.png
+  [overlay] results/metal_nutsample28_composite.png
+  [overlay] results/metal_nutsample29_overlay.png
+  [overlay] results/metal_nutsample29_composite.png
+  [overlay] results/metal_nutsample30_overlay.png
+  [overlay] results/metal_nutsample30_composite.png
+  [overlay] results/metal_nutsample31_overlay.png
+  [overlay] results/metal_nutsample31_composite.png
+  [overlay] results/metal_nutsample32_overlay.png
+  [overlay] results/metal_nutsample32_composite.png
+  [overlay] results/metal_nutsample33_overlay.png
+  [overlay] results/metal_nutsample33_composite.png
+  [overlay] results/metal_nutsample34_overlay.png
+  [overlay] results/metal_nutsample34_composite.png
+  [overlay] results/metal_nutsample35_overlay.png
+  [overlay] results/metal_nutsample35_composite.png
+  [overlay] results/metal_nutsample36_overlay.png
+  [overlay] results/metal_nutsample36_composite.png
+  [overlay] results/metal_nutsample37_overlay.png
+  [overlay] results/metal_nutsample37_composite.png
+  [overlay] results/metal_nutsample38_overlay.png
+  [overlay] results/metal_nutsample38_composite.png
+  [overlay] results/metal_nutsample39_overlay.png
+  [overlay] results/metal_nutsample39_composite.png
+  [overlay] results/metal_nutsample40_overlay.png
+  [overlay] results/metal_nutsample40_composite.png
+  [overlay] results/metal_nutsample41_overlay.png
+  [overlay] results/metal_nutsample41_composite.png
+  [overlay] results/metal_nutsample42_overlay.png
+  [overlay] results/metal_nutsample42_composite.png
+  [overlay] results/metal_nutsample43_overlay.png
+  [overlay] results/metal_nutsample43_composite.png
+  [overlay] results/metal_nutsample44_overlay.png
+  [overlay] results/metal_nutsample44_composite.png
+  [overlay] results/metal_nutsample45_overlay.png
+  [overlay] results/metal_nutsample45_composite.png
+  [overlay] results/metal_nutsample46_overlay.png
+  [overlay] results/metal_nutsample46_composite.png
+  [overlay] results/metal_nutsample47_overlay.png
+  [overlay] results/metal_nutsample47_composite.png
+  [overlay] results/metal_nutsample48_overlay.png
+  [overlay] results/metal_nutsample48_composite.png
+  [overlay] results/metal_nutsample49_overlay.png
+  [overlay] results/metal_nutsample49_composite.png
+  [overlay] results/metal_nutsample50_overlay.png
+  [overlay] results/metal_nutsample50_composite.png
+  [overlay] results/metal_nutsample51_overlay.png
+  [overlay] results/metal_nutsample51_composite.png
+  [overlay] results/metal_nutsample52_overlay.png
+  [overlay] results/metal_nutsample52_composite.png
+  [overlay] results/metal_nutsample53_overlay.png
+  [overlay] results/metal_nutsample53_composite.png
+  [overlay] results/metal_nutsample54_overlay.png
+  [overlay] results/metal_nutsample54_composite.png
+  [overlay] results/metal_nutsample55_overlay.png
+  [overlay] results/metal_nutsample55_composite.png
+  [overlay] results/metal_nutsample56_overlay.png
+  [overlay] results/metal_nutsample56_composite.png
+  [overlay] results/metal_nutsample57_overlay.png
+  [overlay] results/metal_nutsample57_composite.png
+  [overlay] results/metal_nutsample58_overlay.png
+  [overlay] results/metal_nutsample58_composite.png
+  [overlay] results/metal_nutsample59_overlay.png
+  [overlay] results/metal_nutsample59_composite.png
+  [overlay] results/metal_nutsample60_overlay.png
+  [overlay] results/metal_nutsample60_composite.png
+  [overlay] results/metal_nutsample61_overlay.png
+  [overlay] results/metal_nutsample61_composite.png
+  [overlay] results/metal_nutsample62_overlay.png
+  [overlay] results/metal_nutsample62_composite.png
+  [overlay] results/metal_nutsample63_overlay.png
+  [overlay] results/metal_nutsample63_composite.png
+  [overlay] results/metal_nutsample64_overlay.png
+  [overlay] results/metal_nutsample64_composite.png
+  [overlay] results/metal_nutsample65_overlay.png
+  [overlay] results/metal_nutsample65_composite.png
+  [overlay] results/metal_nutsample66_overlay.png
+  [overlay] results/metal_nutsample66_composite.png
+  [overlay] results/metal_nutsample67_overlay.png
+  [overlay] results/metal_nutsample67_composite.png
+  [overlay] results/metal_nutsample68_overlay.png
+  [overlay] results/metal_nutsample68_composite.png
+  [overlay] results/metal_nutsample69_overlay.png
+  [overlay] results/metal_nutsample69_composite.png
+  [overlay] results/metal_nutsample70_overlay.png
+  [overlay] results/metal_nutsample70_composite.png
+  [overlay] results/metal_nutsample71_overlay.png
+  [overlay] results/metal_nutsample71_composite.png
+  [overlay] results/metal_nutsample72_overlay.png
+  [overlay] results/metal_nutsample72_composite.png
+  [overlay] results/metal_nutsample73_overlay.png
+  [overlay] results/metal_nutsample73_composite.png
+  [overlay] results/metal_nutsample74_overlay.png
+  [overlay] results/metal_nutsample74_composite.png
+  [overlay] results/metal_nutsample75_overlay.png
+  [overlay] results/metal_nutsample75_composite.png
+  [overlay] results/metal_nutsample76_overlay.png
+  [overlay] results/metal_nutsample76_composite.png
+  [overlay] results/metal_nutsample77_overlay.png
+  [overlay] results/metal_nutsample77_composite.png
+  [overlay] results/metal_nutsample78_overlay.png
+  [overlay] results/metal_nutsample78_composite.png
+  [overlay] results/metal_nutsample79_overlay.png
+  [overlay] results/metal_nutsample79_composite.png
+  [overlay] results/metal_nutsample80_overlay.png
+  [overlay] results/metal_nutsample80_composite.png
+  [overlay] results/metal_nutsample81_overlay.png
+  [overlay] results/metal_nutsample81_composite.png
+  [overlay] results/metal_nutsample82_overlay.png
+  [overlay] results/metal_nutsample82_composite.png
+  [overlay] results/metal_nutsample83_overlay.png
+  [overlay] results/metal_nutsample83_composite.png
+  [overlay] results/metal_nutsample84_overlay.png
+  [overlay] results/metal_nutsample84_composite.png
+  [overlay] results/metal_nutsample85_overlay.png
+  [overlay] results/metal_nutsample85_composite.png
+  [overlay] results/metal_nutsample86_overlay.png
+  [overlay] results/metal_nutsample86_composite.png
+  [overlay] results/metal_nutsample87_overlay.png
+  [overlay] results/metal_nutsample87_composite.png
+  [overlay] results/metal_nutsample88_overlay.png
+  [overlay] results/metal_nutsample88_composite.png
+  [overlay] results/metal_nutsample89_overlay.png
+  [overlay] results/metal_nutsample89_composite.png
+  [overlay] results/metal_nutsample90_overlay.png
+  [overlay] results/metal_nutsample90_composite.png
+  [overlay] results/metal_nutsample91_overlay.png
+  [overlay] results/metal_nutsample91_composite.png
+  [overlay] results/metal_nutsample92_overlay.png
+  [overlay] results/metal_nutsample92_composite.png
+  [overlay] results/metal_nutsample93_overlay.png
+  [overlay] results/metal_nutsample93_composite.png
+  [overlay] results/metal_nutsample94_overlay.png
+  [overlay] results/metal_nutsample94_composite.png
+  [overlay] results/metal_nutsample95_overlay.png
+  [overlay] results/metal_nutsample95_composite.png
+  [overlay] results/metal_nutsample96_overlay.png
+  [overlay] results/metal_nutsample96_composite.png
+  [overlay] results/metal_nutsample97_overlay.png
+  [overlay] results/metal_nutsample97_composite.png
+  [overlay] results/metal_nutsample98_overlay.png
+  [overlay] results/metal_nutsample98_composite.png
+  [overlay] results/metal_nutsample99_overlay.png
+  [overlay] results/metal_nutsample99_composite.png
+  [overlay] results/metal_nutsample100_overlay.png
+  [overlay] results/metal_nutsample100_composite.png
+  [overlay] results/metal_nutsample101_overlay.png
+  [overlay] results/metal_nutsample101_composite.png
+  [overlay] results/metal_nutsample102_overlay.png
+  [overlay] results/metal_nutsample102_composite.png
+  [overlay] results/metal_nutsample103_overlay.png
+  [overlay] results/metal_nutsample103_composite.png
+  [overlay] results/metal_nutsample104_overlay.png
+  [overlay] results/metal_nutsample104_composite.png
+  [overlay] results/metal_nutsample105_overlay.png
+  [overlay] results/metal_nutsample105_composite.png
+  [overlay] results/metal_nutsample106_overlay.png
+  [overlay] results/metal_nutsample106_composite.png
+  [overlay] results/metal_nutsample107_overlay.png
+  [overlay] results/metal_nutsample107_composite.png
+  [overlay] results/metal_nutsample108_overlay.png
+  [overlay] results/metal_nutsample108_composite.png
+  [overlay] results/metal_nutsample109_overlay.png
+  [overlay] results/metal_nutsample109_composite.png
+  [overlay] results/metal_nutsample110_overlay.png
+  [overlay] results/metal_nutsample110_composite.png
+  [overlay] results/metal_nutsample111_overlay.png
+  [overlay] results/metal_nutsample111_composite.png
+  [overlay] results/metal_nutsample112_overlay.png
+  [overlay] results/metal_nutsample112_composite.png
+  [overlay] results/metal_nutsample113_overlay.png
+  [overlay] results/metal_nutsample113_composite.png
+  [overlay] results/metal_nutsample114_overlay.png
+  [overlay] results/metal_nutsample114_composite.png
+  [parsed] Pixel AUROC=98.0  SNR=6.0502
+  ---- Done seed 42 ----
+
+########################################
+# Category : pill
+# Checkpoint: /data/akherandish3/MVTec/pill/1000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: pill   load_chp: 1000
+Checkpoint: /data/akherandish3/MVTec/pill/1000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/pill/1000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/pill/test/*/*.png
+DEBUG: Found 17 test images
+/home/akheirandish3/miniconda3/envs/ood/lib/python3.10/site-packages/sklearn/metrics/_ranking.py:424: UndefinedMetricWarning: Only one class is present in y_true. ROC AUC score is not defined in that case.
+  warnings.warn(
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=1838
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=776
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=1062
+[WARN] Skipping optimal_threshold — no image-level labels collected.
+AUROC: (nan,89.2)
+  Per-image pixel AUROC: n=17 defective, skipped=0 good/invalid images
+[(0, 0.9819493976456026), (1, 0.9871465140120859), (2, 0.8711387229363601), (3, 0.9252043754335433), (4, 0.9192514302625335), (5, 0.8678290730559414), (6, 0.9313112663524804), (7, 0.9385155667086906), (8, 0.9605792030275196), (9, 0.7044015952987075), (10, 0.8969311213478395), (11, 0.8739646458930792), (12, 0.8300988664608799), (13, 0.9356720063955721), (14, 0.8684540864739979), (15, 0.8901365236375537), (16, 0.9649023247574479)]
+  Individual scores: min=0.704, max=0.987, mean=0.903
+Per-image Pixel AUROC (mean): 90.3
+PRO: 49.3
+PRO: 49.3
+SNR: 4.9919
+  [overlay] results/pillsample0_overlay.png
+  [overlay] results/pillsample0_composite.png
+  [overlay] results/pillsample1_overlay.png
+  [overlay] results/pillsample1_composite.png
+  [overlay] results/pillsample2_overlay.png
+  [overlay] results/pillsample2_composite.png
+  [overlay] results/pillsample3_overlay.png
+  [overlay] results/pillsample3_composite.png
+  [overlay] results/pillsample4_overlay.png
+  [overlay] results/pillsample4_composite.png
+  [overlay] results/pillsample5_overlay.png
+  [overlay] results/pillsample5_composite.png
+  [overlay] results/pillsample6_overlay.png
+  [overlay] results/pillsample6_composite.png
+  [overlay] results/pillsample7_overlay.png
+  [overlay] results/pillsample7_composite.png
+  [overlay] results/pillsample8_overlay.png
+  [overlay] results/pillsample8_composite.png
+  [overlay] results/pillsample9_overlay.png
+  [overlay] results/pillsample9_composite.png
+  [overlay] results/pillsample10_overlay.png
+  [overlay] results/pillsample10_composite.png
+  [overlay] results/pillsample11_overlay.png
+  [overlay] results/pillsample11_composite.png
+  [overlay] results/pillsample12_overlay.png
+  [overlay] results/pillsample12_composite.png
+  [overlay] results/pillsample13_overlay.png
+  [overlay] results/pillsample13_composite.png
+  [overlay] results/pillsample14_overlay.png
+  [overlay] results/pillsample14_composite.png
+  [overlay] results/pillsample15_overlay.png
+  [overlay] results/pillsample15_composite.png
+  [overlay] results/pillsample16_overlay.png
+  [overlay] results/pillsample16_composite.png
+  [parsed] Pixel AUROC=90.3  SNR=4.9919
+  ---- Done seed 42 ----
+
+########################################
+# Category : screw
+# Checkpoint: /data/akherandish3/MVTec/screw/2000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: screw   load_chp: 2000
+Checkpoint: /data/akherandish3/MVTec/screw/2000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/screw/2000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/screw/test/*/*.png
+DEBUG: Found 160 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)

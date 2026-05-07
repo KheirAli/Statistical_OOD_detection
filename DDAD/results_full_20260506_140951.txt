@@ -1,0 +1,213 @@
+DDAD Detection — Full Log
+Timestamp: 20260506_140951
+Seeds: 42
+
+########################################
+# Category : bottle
+# Checkpoint: /data/akherandish3/MVTec/bottle/1000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: wide_resnet101_2   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: bottle   load_chp: 1000
+Checkpoint: /data/akherandish3/MVTec/bottle/1000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/bottle/1000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/bottle/test/*/*.png
+DEBUG: Found 83 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=1535
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=1262
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=2119
+AUROC: (97.9,95.0)
+  Per-image pixel AUROC: n=63 defective, skipped=20 good/invalid images
+[(0, 0.9987211468143286), (1, 0.9947379476347474), (2, 0.9832700210059304), (3, 0.9964385971617923), (4, 0.9905839974378616), (5, 0.9720968223073924), (6, 0.9936013490845221), (7, 0.9710792424764186), (8, 0.9924413312527436), (9, 0.9864991817152649), (10, 0.9974405369859344), (11, 0.978145136437558), (12, 0.9952778901684999), (13, 0.9897875114908157), (14, 0.9916796450400043), (15, 0.9921723880530563), (16, 0.9842544863921008), (17, 0.9990375301159932), (18, 0.9976249132131485), (19, 0.9837943232759214), (20, 0.9886264495625523), (21, 0.9958099555191131), (22, 0.8709217520327158), (23, 0.9533309357159316), (24, 0.9804150275944922), (25, 0.9736051210758648), (26, 0.9857758764591887), (27, 0.9135061408050481), (28, 0.9807826972166377), (29, 0.900067856497402), (30, 0.8460339532761834), (31, 0.9945683382689614), (32, 0.8611227845411172), (33, 0.9995744533889869), (34, 0.8822950159656262), (35, 0.8577057232305113), (36, 0.9983500753536947), (37, 0.9394077852139622), (38, 0.9912052689889083), (39, 0.9421303238919732), (40, 0.9842928270784754), (41, 0.9994576800708634), (42, 0.9810981004404269), (43, 0.9681215461203478), (44, 0.9853314367946305), (45, 0.9886896531817465), (46, 0.9898750643643999), (47, 0.8985139512435347), (48, 0.9816037115726507), (49, 0.9696176623034521), (50, 0.9825413599922922), (51, 0.9902629261717815), (52, 0.9902372127502543), (53, 0.9711035760611804), (54, 0.916941203206719), (55, 0.9935438859077644), (56, 0.9831262609135303), (57, 0.907759741051523), (58, 0.9606366724617227), (59, 0.9876391644487317), (60, 0.9697349714359821), (61, 0.9838441374943976), (62, 0.9864221183204303)]
+  Individual scores: min=0.846, max=1.000, mean=0.968
+Per-image Pixel AUROC (mean): 96.8
+PRO: 73.8
+PRO: 73.8
+SNR: 5.7474
+  [overlay] results/bottlesample0_overlay.png
+  [overlay] results/bottlesample0_composite.png
+  [overlay] results/bottlesample1_overlay.png
+  [overlay] results/bottlesample1_composite.png
+  [overlay] results/bottlesample2_overlay.png
+  [overlay] results/bottlesample2_composite.png
+  [overlay] results/bottlesample3_overlay.png
+  [overlay] results/bottlesample3_composite.png
+  [overlay] results/bottlesample4_overlay.png
+  [overlay] results/bottlesample4_composite.png
+  [overlay] results/bottlesample5_overlay.png
+  [overlay] results/bottlesample5_composite.png
+  [overlay] results/bottlesample6_overlay.png
+  [overlay] results/bottlesample6_composite.png
+  [overlay] results/bottlesample7_overlay.png
+  [overlay] results/bottlesample7_composite.png
+  [overlay] results/bottlesample8_overlay.png
+  [overlay] results/bottlesample8_composite.png
+  [overlay] results/bottlesample9_overlay.png
+  [overlay] results/bottlesample9_composite.png
+  [overlay] results/bottlesample10_overlay.png
+  [overlay] results/bottlesample10_composite.png
+  [overlay] results/bottlesample11_overlay.png
+  [overlay] results/bottlesample11_composite.png
+  [overlay] results/bottlesample12_overlay.png
+  [overlay] results/bottlesample12_composite.png
+  [overlay] results/bottlesample13_overlay.png
+  [overlay] results/bottlesample13_composite.png
+  [overlay] results/bottlesample14_overlay.png
+  [overlay] results/bottlesample14_composite.png
+  [overlay] results/bottlesample15_overlay.png
+  [overlay] results/bottlesample15_composite.png
+  [overlay] results/bottlesample16_overlay.png
+  [overlay] results/bottlesample16_composite.png
+  [overlay] results/bottlesample17_overlay.png
+  [overlay] results/bottlesample17_composite.png
+  [overlay] results/bottlesample18_overlay.png
+  [overlay] results/bottlesample18_composite.png
+  [overlay] results/bottlesample19_overlay.png
+  [overlay] results/bottlesample19_composite.png
+  [overlay] results/bottlesample20_overlay.png
+  [overlay] results/bottlesample20_composite.png
+  [overlay] results/bottlesample21_overlay.png
+  [overlay] results/bottlesample21_composite.png
+  [overlay] results/bottlesample22_overlay.png
+  [overlay] results/bottlesample22_composite.png
+  [overlay] results/bottlesample23_overlay.png
+  [overlay] results/bottlesample23_composite.png
+  [overlay] results/bottlesample24_overlay.png
+  [overlay] results/bottlesample24_composite.png
+  [overlay] results/bottlesample25_overlay.png
+  [overlay] results/bottlesample25_composite.png
+  [overlay] results/bottlesample26_overlay.png
+  [overlay] results/bottlesample26_composite.png
+  [overlay] results/bottlesample27_overlay.png
+  [overlay] results/bottlesample27_composite.png
+  [overlay] results/bottlesample28_overlay.png
+  [overlay] results/bottlesample28_composite.png
+  [overlay] results/bottlesample29_overlay.png
+  [overlay] results/bottlesample29_composite.png
+  [overlay] results/bottlesample30_overlay.png
+  [overlay] results/bottlesample30_composite.png
+  [overlay] results/bottlesample31_overlay.png
+  [overlay] results/bottlesample31_composite.png
+  [overlay] results/bottlesample32_overlay.png
+  [overlay] results/bottlesample32_composite.png
+  [overlay] results/bottlesample33_overlay.png
+  [overlay] results/bottlesample33_composite.png
+  [overlay] results/bottlesample34_overlay.png
+  [overlay] results/bottlesample34_composite.png
+  [overlay] results/bottlesample35_overlay.png
+  [overlay] results/bottlesample35_composite.png
+  [overlay] results/bottlesample36_overlay.png
+  [overlay] results/bottlesample36_composite.png
+  [overlay] results/bottlesample37_overlay.png
+  [overlay] results/bottlesample37_composite.png
+  [overlay] results/bottlesample38_overlay.png
+  [overlay] results/bottlesample38_composite.png
+  [overlay] results/bottlesample39_overlay.png
+  [overlay] results/bottlesample39_composite.png
+  [overlay] results/bottlesample40_overlay.png
+  [overlay] results/bottlesample40_composite.png
+  [overlay] results/bottlesample41_overlay.png
+  [overlay] results/bottlesample41_composite.png
+  [overlay] results/bottlesample42_overlay.png
+  [overlay] results/bottlesample42_composite.png
+  [overlay] results/bottlesample43_overlay.png
+  [overlay] results/bottlesample43_composite.png
+  [overlay] results/bottlesample44_overlay.png
+  [overlay] results/bottlesample44_composite.png
+  [overlay] results/bottlesample45_overlay.png
+  [overlay] results/bottlesample45_composite.png
+  [overlay] results/bottlesample46_overlay.png
+  [overlay] results/bottlesample46_composite.png
+  [overlay] results/bottlesample47_overlay.png
+  [overlay] results/bottlesample47_composite.png
+  [overlay] results/bottlesample48_overlay.png
+  [overlay] results/bottlesample48_composite.png
+  [overlay] results/bottlesample49_overlay.png
+  [overlay] results/bottlesample49_composite.png
+  [overlay] results/bottlesample50_overlay.png
+  [overlay] results/bottlesample50_composite.png
+  [overlay] results/bottlesample51_overlay.png
+  [overlay] results/bottlesample51_composite.png
+  [overlay] results/bottlesample52_overlay.png
+  [overlay] results/bottlesample52_composite.png
+  [overlay] results/bottlesample53_overlay.png
+  [overlay] results/bottlesample53_composite.png
+  [overlay] results/bottlesample54_overlay.png
+  [overlay] results/bottlesample54_composite.png
+  [overlay] results/bottlesample55_overlay.png
+  [overlay] results/bottlesample55_composite.png
+  [overlay] results/bottlesample56_overlay.png
+  [overlay] results/bottlesample56_composite.png
+  [overlay] results/bottlesample57_overlay.png
+  [overlay] results/bottlesample57_composite.png
+  [overlay] results/bottlesample58_overlay.png
+  [overlay] results/bottlesample58_composite.png
+  [overlay] results/bottlesample59_overlay.png
+  [overlay] results/bottlesample59_composite.png
+  [overlay] results/bottlesample60_overlay.png
+  [overlay] results/bottlesample60_composite.png
+  [overlay] results/bottlesample61_overlay.png
+  [overlay] results/bottlesample61_composite.png
+  [overlay] results/bottlesample62_overlay.png
+  [overlay] results/bottlesample62_composite.png
+  [overlay] results/bottlesample63_overlay.png
+  [overlay] results/bottlesample63_composite.png
+  [overlay] results/bottlesample64_overlay.png
+  [overlay] results/bottlesample64_composite.png
+  [overlay] results/bottlesample65_overlay.png
+  [overlay] results/bottlesample65_composite.png
+  [overlay] results/bottlesample66_overlay.png
+  [overlay] results/bottlesample66_composite.png
+  [overlay] results/bottlesample67_overlay.png
+  [overlay] results/bottlesample67_composite.png
+  [overlay] results/bottlesample68_overlay.png
+  [overlay] results/bottlesample68_composite.png
+  [overlay] results/bottlesample69_overlay.png
+  [overlay] results/bottlesample69_composite.png
+  [overlay] results/bottlesample70_overlay.png
+  [overlay] results/bottlesample70_composite.png
+  [overlay] results/bottlesample71_overlay.png
+  [overlay] results/bottlesample71_composite.png
+  [overlay] results/bottlesample72_overlay.png
+  [overlay] results/bottlesample72_composite.png
+  [overlay] results/bottlesample73_overlay.png
+  [overlay] results/bottlesample73_composite.png
+  [overlay] results/bottlesample74_overlay.png
+  [overlay] results/bottlesample74_composite.png
+  [overlay] results/bottlesample75_overlay.png
+  [overlay] results/bottlesample75_composite.png
+  [overlay] results/bottlesample76_overlay.png
+  [overlay] results/bottlesample76_composite.png
+  [overlay] results/bottlesample77_overlay.png
+  [overlay] results/bottlesample77_composite.png
+  [overlay] results/bottlesample78_overlay.png
+  [overlay] results/bottlesample78_composite.png
+  [overlay] results/bottlesample79_overlay.png
+  [overlay] results/bottlesample79_composite.png
+  [overlay] results/bottlesample80_overlay.png
+  [overlay] results/bottlesample80_composite.png
+  [overlay] results/bottlesample81_overlay.png
+  [overlay] results/bottlesample81_composite.png
+  [overlay] results/bottlesample82_overlay.png
+  [overlay] results/bottlesample82_composite.png
+  [parsed] Pixel AUROC=96.8  SNR=5.7474
+  ---- Done seed 42 ----
+
+========================================
+All done.
+  Full output : results_full_20260506_140951.txt
+  Averages    : results_averaged_20260506_140951.txt
+========================================

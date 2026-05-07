@@ -1,0 +1,10 @@
+DDAD Detection — Averaged Results
+Timestamp: 20260506_140951
+Seeds used: 42
+
+Category: bottle | Checkpoint: 1000 | N_seeds: 1
+  Pixel AUROC  mean=96.8000  std=0.0000  (n=1)
+  Raw values : 96.8
+  SNR          mean=5.7474  std=0.0000  (n=1)
+  Raw values : 5.7474
+  ---

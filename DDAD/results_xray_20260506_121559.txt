@@ -1,0 +1,113 @@
+==========================================
+  DDAD Detection — xray
+  Checkpoint : /data2/rohan/ckpts/DDAD/DvXray/MVTec/xray/500
+  Data       : /data/akheirandish3/mvtec_ad/xray
+  Seeds      : 421 1231 4561 7891 13371 20241 991 71 3141 27181
+==========================================
+
+-------- Seed 421 --------
+[Seed] 421
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Traceback (most recent call last):
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 517, in <module>
+    if args.checkpoint_name:
+AttributeError: 'Namespace' object has no attribute 'checkpoint_name'. Did you mean: 'checkpoint_dir'?
+  [WARN] Could not parse metrics for seed 421
+
+-------- Seed 1231 --------
+[Seed] 1231
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Traceback (most recent call last):
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 517, in <module>
+    if args.checkpoint_name:
+AttributeError: 'Namespace' object has no attribute 'checkpoint_name'. Did you mean: 'checkpoint_dir'?
+  [WARN] Could not parse metrics for seed 1231
+
+-------- Seed 4561 --------
+[Seed] 4561
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Traceback (most recent call last):
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 517, in <module>
+    if args.checkpoint_name:
+AttributeError: 'Namespace' object has no attribute 'checkpoint_name'. Did you mean: 'checkpoint_dir'?
+  [WARN] Could not parse metrics for seed 4561
+
+-------- Seed 7891 --------
+[Seed] 7891
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Traceback (most recent call last):
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 517, in <module>
+    if args.checkpoint_name:
+AttributeError: 'Namespace' object has no attribute 'checkpoint_name'. Did you mean: 'checkpoint_dir'?
+  [WARN] Could not parse metrics for seed 7891
+
+-------- Seed 13371 --------
+[Seed] 13371
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Traceback (most recent call last):
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 517, in <module>
+    if args.checkpoint_name:
+AttributeError: 'Namespace' object has no attribute 'checkpoint_name'. Did you mean: 'checkpoint_dir'?
+  [WARN] Could not parse metrics for seed 13371
+
+-------- Seed 20241 --------
+[Seed] 20241
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Traceback (most recent call last):
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 517, in <module>
+    if args.checkpoint_name:
+AttributeError: 'Namespace' object has no attribute 'checkpoint_name'. Did you mean: 'checkpoint_dir'?
+  [WARN] Could not parse metrics for seed 20241
+
+-------- Seed 991 --------
+[Seed] 991
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Traceback (most recent call last):
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 517, in <module>
+    if args.checkpoint_name:
+AttributeError: 'Namespace' object has no attribute 'checkpoint_name'. Did you mean: 'checkpoint_dir'?
+  [WARN] Could not parse metrics for seed 991
+
+-------- Seed 71 --------
+[Seed] 71
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Traceback (most recent call last):
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 517, in <module>
+    if args.checkpoint_name:
+AttributeError: 'Namespace' object has no attribute 'checkpoint_name'. Did you mean: 'checkpoint_dir'?
+  [WARN] Could not parse metrics for seed 71
+
+-------- Seed 3141 --------
+[Seed] 3141
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Traceback (most recent call last):
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 517, in <module>
+    if args.checkpoint_name:
+AttributeError: 'Namespace' object has no attribute 'checkpoint_name'. Did you mean: 'checkpoint_dir'?
+  [WARN] Could not parse metrics for seed 3141
+
+-------- Seed 27181 --------
+[Seed] 27181
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Traceback (most recent call last):
+  File "/data/akherandish3/Statistical_OOD_detection/DDAD/main.py", line 517, in <module>
+    if args.checkpoint_name:
+AttributeError: 'Namespace' object has no attribute 'checkpoint_name'. Did you mean: 'checkpoint_dir'?
+  [WARN] Could not parse metrics for seed 27181
+Traceback (most recent call last):
+  File "<string>", line 13, in <module>
+  File "<string>", line 9, in stats
+ZeroDivisionError: division by zero
+
+Full log : results_xray_20260506_121559.txt
+Averages : results_xray_avg_20260506_121559.txt

@@ -1,0 +1,347 @@
+DDAD Detection — Full Log
+Timestamp: 20260506_125314
+Seeds: 42
+
+########################################
+# Category : cable
+# Checkpoint: /data/akherandish3/MVTec/cable/3000
+########################################
+
+  === N=1 seeds: 42 ===
+
+  ---- Seed 42 ----
+[Seed] 42
+Class: bottle   w: 2   v: 1   load_chp: 1000   feature_extractor: resnet101   w_DA: 3   DLlambda: 0.1
+config.model.test_trajectoy_steps=250 , config.data.test_batch_size=1
+Class: cable   load_chp: 3000
+Checkpoint: /data/akherandish3/MVTec/cable/3000
+Detecting Anomalies...
+Loading checkpoint: /data/akherandish3/MVTec/cable/3000
+DEBUG: Searching for test images at: /data/akheirandish3/mvtec_ad/cable/test/*/*.png
+DEBUG: Found 150 test images
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+/data/akherandish3/Statistical_OOD_detection/DDAD/metrics.py:191: FutureWarning: The behavior of DataFrame concatenation with empty or all-NA entries is deprecated. In a future version, this will no longer exclude empty or all-NA columns when determining the result dtypes. To retain the old behavior, exclude the relevant entries before the concat operation.
+  df = pd.concat([df, pd.DataFrame({"pro": mean(pros), "fpr": fpr, "threshold": th}, index=[0])], ignore_index=True)
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=2312
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=541
+  anomaly_map shape (post-crop): torch.Size([1, 1, 256, 256])
+  gt shape (post-crop):          torch.Size([1, 1, 256, 256])  positive pixels=840
+AUROC: (89.2,97.4)
+  Per-image pixel AUROC: n=92 defective, skipped=58 good/invalid images
+[(0, 0.9789342334521471), (1, 0.9601919328644505), (2, 0.9646918628957705), (3, 0.9980792528580749), (4, 0.9919009118404543), (5, 0.9751103202297761), (6, 0.9970409747189499), (7, 0.991054938515876), (8, 0.9775561480957493), (9, 0.9766662853523151), (10, 0.9868246031762037), (11, 0.9812127591154939), (12, 0.988281272424001), (13, 0.9942792969782525), (14, 0.9960967901519349), (15, 0.9817887207351557), (16, 0.9955806133113838), (17, 0.9978029715139934), (18, 0.9791700807110625), (19, 0.9978216583887392), (20, 0.9784770836499999), (21, 0.9725797372537848), (22, 0.9852266322916311), (23, 0.9699207953566019), (24, 0.9826971676964599), (25, 0.9769849138913186), (26, 0.986862955188335), (27, 0.9778469905266287), (28, 0.9937887755603262), (29, 0.9650418310982428), (30, 0.9773201930336392), (31, 0.9791842535535167), (32, 0.9276979082869088), (33, 0.9829977265805632), (34, 0.9169767931650201), (35, 0.8976094864150536), (36, 0.9892795964838226), (37, 0.9482912564005443), (38, 0.9836489962243475), (39, 0.9583281668976198), (40, 0.9944464246123903), (41, 0.9950041530647754), (42, 0.5174428182231918), (43, 0.8029521603875485), (44, 0.955909327530817), (45, 0.9615082207000014), (46, 0.9261309670814966), (47, 0.936534882035429), (48, 0.987639640639057), (49, 0.9772161998618017), (50, 0.9397851247728041), (51, 0.9738387850125545), (52, 0.9781082011638383), (53, 0.979593519093437), (54, 0.9451160123695717), (55, 0.9486457212404448), (56, 0.9558656032059031), (57, 0.97498637351828), (58, 0.9881059434091255), (59, 0.971212746178471), (60, 0.9526771078455301), (61, 0.97246654405896), (62, 0.9832269911281565), (63, 0.992605266071761), (64, 0.9626601345822263), (65, 0.95181491586025), (66, 0.9748855548148772), (67, 0.9842118336159451), (68, 0.9900320868617385), (69, 0.983271996241162), (70, 0.9891200668263753), (71, 0.9964148843176451), (72, 0.9985131762604218), (73, 0.9976561757672234), (74, 0.9925015344422858), (75, 0.9973664980887075), (76, 0.983402087140013), (77, 0.9859779059020537), (78, 0.9993536555059958), (79, 0.9907198241911231), (80, 0.9977876090708389), (81, 0.9945287539108829), (82, 0.9979556492850271), (83, 0.9949915098325465), (84, 0.9803339510970772), (85, 0.9932349440946553), (86, 0.9971551457224732), (87, 0.9950388086878303), (88, 0.9865790009278381), (89, 0.9924231368216067), (90, 0.9935586651790579), (91, 0.9868642444995577)]
+  Individual scores: min=0.517, max=0.999, mean=0.971
+Per-image Pixel AUROC (mean): 97.1
+PRO: 87.2
+PRO: 87.2
+SNR: 6.9968
+  [overlay] results/cablesample0_overlay.png
+  [overlay] results/cablesample0_composite.png
+  [overlay] results/cablesample1_overlay.png
+  [overlay] results/cablesample1_composite.png
+  [overlay] results/cablesample2_overlay.png
+  [overlay] results/cablesample2_composite.png
+  [overlay] results/cablesample3_overlay.png
+  [overlay] results/cablesample3_composite.png
+  [overlay] results/cablesample4_overlay.png
+  [overlay] results/cablesample4_composite.png
+  [overlay] results/cablesample5_overlay.png
+  [overlay] results/cablesample5_composite.png
+  [overlay] results/cablesample6_overlay.png
+  [overlay] results/cablesample6_composite.png
+  [overlay] results/cablesample7_overlay.png
+  [overlay] results/cablesample7_composite.png
+  [overlay] results/cablesample8_overlay.png
+  [overlay] results/cablesample8_composite.png
+  [overlay] results/cablesample9_overlay.png
+  [overlay] results/cablesample9_composite.png
+  [overlay] results/cablesample10_overlay.png
+  [overlay] results/cablesample10_composite.png
+  [overlay] results/cablesample11_overlay.png
+  [overlay] results/cablesample11_composite.png
+  [overlay] results/cablesample12_overlay.png
+  [overlay] results/cablesample12_composite.png
+  [overlay] results/cablesample13_overlay.png
+  [overlay] results/cablesample13_composite.png
+  [overlay] results/cablesample14_overlay.png
+  [overlay] results/cablesample14_composite.png
+  [overlay] results/cablesample15_overlay.png
+  [overlay] results/cablesample15_composite.png
+  [overlay] results/cablesample16_overlay.png
+  [overlay] results/cablesample16_composite.png
+  [overlay] results/cablesample17_overlay.png
+  [overlay] results/cablesample17_composite.png
+  [overlay] results/cablesample18_overlay.png
+  [overlay] results/cablesample18_composite.png
+  [overlay] results/cablesample19_overlay.png
+  [overlay] results/cablesample19_composite.png
+  [overlay] results/cablesample20_overlay.png
+  [overlay] results/cablesample20_composite.png
+  [overlay] results/cablesample21_overlay.png
+  [overlay] results/cablesample21_composite.png
+  [overlay] results/cablesample22_overlay.png
+  [overlay] results/cablesample22_composite.png
+  [overlay] results/cablesample23_overlay.png
+  [overlay] results/cablesample23_composite.png
+  [overlay] results/cablesample24_overlay.png
+  [overlay] results/cablesample24_composite.png
+  [overlay] results/cablesample25_overlay.png
+  [overlay] results/cablesample25_composite.png
+  [overlay] results/cablesample26_overlay.png
+  [overlay] results/cablesample26_composite.png
+  [overlay] results/cablesample27_overlay.png
+  [overlay] results/cablesample27_composite.png
+  [overlay] results/cablesample28_overlay.png
+  [overlay] results/cablesample28_composite.png
+  [overlay] results/cablesample29_overlay.png
+  [overlay] results/cablesample29_composite.png
+  [overlay] results/cablesample30_overlay.png
+  [overlay] results/cablesample30_composite.png
+  [overlay] results/cablesample31_overlay.png
+  [overlay] results/cablesample31_composite.png
+  [overlay] results/cablesample32_overlay.png
+  [overlay] results/cablesample32_composite.png
+  [overlay] results/cablesample33_overlay.png
+  [overlay] results/cablesample33_composite.png
+  [overlay] results/cablesample34_overlay.png
+  [overlay] results/cablesample34_composite.png
+  [overlay] results/cablesample35_overlay.png
+  [overlay] results/cablesample35_composite.png
+  [overlay] results/cablesample36_overlay.png
+  [overlay] results/cablesample36_composite.png
+  [overlay] results/cablesample37_overlay.png
+  [overlay] results/cablesample37_composite.png
+  [overlay] results/cablesample38_overlay.png
+  [overlay] results/cablesample38_composite.png
+  [overlay] results/cablesample39_overlay.png
+  [overlay] results/cablesample39_composite.png
+  [overlay] results/cablesample40_overlay.png
+  [overlay] results/cablesample40_composite.png
+  [overlay] results/cablesample41_overlay.png
+  [overlay] results/cablesample41_composite.png
+  [overlay] results/cablesample42_overlay.png
+  [overlay] results/cablesample42_composite.png
+  [overlay] results/cablesample43_overlay.png
+  [overlay] results/cablesample43_composite.png
+  [overlay] results/cablesample44_overlay.png
+  [overlay] results/cablesample44_composite.png
+  [overlay] results/cablesample45_overlay.png
+  [overlay] results/cablesample45_composite.png
+  [overlay] results/cablesample46_overlay.png
+  [overlay] results/cablesample46_composite.png
+  [overlay] results/cablesample47_overlay.png
+  [overlay] results/cablesample47_composite.png
+  [overlay] results/cablesample48_overlay.png
+  [overlay] results/cablesample48_composite.png
+  [overlay] results/cablesample49_overlay.png
+  [overlay] results/cablesample49_composite.png
+  [overlay] results/cablesample50_overlay.png
+  [overlay] results/cablesample50_composite.png
+  [overlay] results/cablesample51_overlay.png
+  [overlay] results/cablesample51_composite.png
+  [overlay] results/cablesample52_overlay.png
+  [overlay] results/cablesample52_composite.png
+  [overlay] results/cablesample53_overlay.png
+  [overlay] results/cablesample53_composite.png
+  [overlay] results/cablesample54_overlay.png
+  [overlay] results/cablesample54_composite.png
+  [overlay] results/cablesample55_overlay.png
+  [overlay] results/cablesample55_composite.png
+  [overlay] results/cablesample56_overlay.png
+  [overlay] results/cablesample56_composite.png
+  [overlay] results/cablesample57_overlay.png
+  [overlay] results/cablesample57_composite.png
+  [overlay] results/cablesample58_overlay.png
+  [overlay] results/cablesample58_composite.png
+  [overlay] results/cablesample59_overlay.png
+  [overlay] results/cablesample59_composite.png
+  [overlay] results/cablesample60_overlay.png
+  [overlay] results/cablesample60_composite.png
+  [overlay] results/cablesample61_overlay.png
+  [overlay] results/cablesample61_composite.png
+  [overlay] results/cablesample62_overlay.png
+  [overlay] results/cablesample62_composite.png
+  [overlay] results/cablesample63_overlay.png
+  [overlay] results/cablesample63_composite.png
+  [overlay] results/cablesample64_overlay.png
+  [overlay] results/cablesample64_composite.png
+  [overlay] results/cablesample65_overlay.png
+  [overlay] results/cablesample65_composite.png
+  [overlay] results/cablesample66_overlay.png
+  [overlay] results/cablesample66_composite.png
+  [overlay] results/cablesample67_overlay.png
+  [overlay] results/cablesample67_composite.png
+  [overlay] results/cablesample68_overlay.png
+  [overlay] results/cablesample68_composite.png
+  [overlay] results/cablesample69_overlay.png
+  [overlay] results/cablesample69_composite.png
+  [overlay] results/cablesample70_overlay.png
+  [overlay] results/cablesample70_composite.png
+  [overlay] results/cablesample71_overlay.png
+  [overlay] results/cablesample71_composite.png
+  [overlay] results/cablesample72_overlay.png
+  [overlay] results/cablesample72_composite.png
+  [overlay] results/cablesample73_overlay.png
+  [overlay] results/cablesample73_composite.png
+  [overlay] results/cablesample74_overlay.png
+  [overlay] results/cablesample74_composite.png
+  [overlay] results/cablesample75_overlay.png
+  [overlay] results/cablesample75_composite.png
+  [overlay] results/cablesample76_overlay.png
+  [overlay] results/cablesample76_composite.png
+  [overlay] results/cablesample77_overlay.png
+  [overlay] results/cablesample77_composite.png
+  [overlay] results/cablesample78_overlay.png
+  [overlay] results/cablesample78_composite.png
+  [overlay] results/cablesample79_overlay.png
+  [overlay] results/cablesample79_composite.png
+  [overlay] results/cablesample80_overlay.png
+  [overlay] results/cablesample80_composite.png
+  [overlay] results/cablesample81_overlay.png
+  [overlay] results/cablesample81_composite.png
+  [overlay] results/cablesample82_overlay.png
+  [overlay] results/cablesample82_composite.png
+  [overlay] results/cablesample83_overlay.png
+  [overlay] results/cablesample83_composite.png
+  [overlay] results/cablesample84_overlay.png
+  [overlay] results/cablesample84_composite.png
+  [overlay] results/cablesample85_overlay.png
+  [overlay] results/cablesample85_composite.png
+  [overlay] results/cablesample86_overlay.png
+  [overlay] results/cablesample86_composite.png
+  [overlay] results/cablesample87_overlay.png
+  [overlay] results/cablesample87_composite.png
+  [overlay] results/cablesample88_overlay.png
+  [overlay] results/cablesample88_composite.png
+  [overlay] results/cablesample89_overlay.png
+  [overlay] results/cablesample89_composite.png
+  [overlay] results/cablesample90_overlay.png
+  [overlay] results/cablesample90_composite.png
+  [overlay] results/cablesample91_overlay.png
+  [overlay] results/cablesample91_composite.png
+  [overlay] results/cablesample92_overlay.png
+  [overlay] results/cablesample92_composite.png
+  [overlay] results/cablesample93_overlay.png
+  [overlay] results/cablesample93_composite.png
+  [overlay] results/cablesample94_overlay.png
+  [overlay] results/cablesample94_composite.png
+  [overlay] results/cablesample95_overlay.png
+  [overlay] results/cablesample95_composite.png
+  [overlay] results/cablesample96_overlay.png
+  [overlay] results/cablesample96_composite.png
+  [overlay] results/cablesample97_overlay.png
+  [overlay] results/cablesample97_composite.png
+  [overlay] results/cablesample98_overlay.png
+  [overlay] results/cablesample98_composite.png
+  [overlay] results/cablesample99_overlay.png
+  [overlay] results/cablesample99_composite.png
+  [overlay] results/cablesample100_overlay.png
+  [overlay] results/cablesample100_composite.png
+  [overlay] results/cablesample101_overlay.png
+  [overlay] results/cablesample101_composite.png
+  [overlay] results/cablesample102_overlay.png
+  [overlay] results/cablesample102_composite.png
+  [overlay] results/cablesample103_overlay.png
+  [overlay] results/cablesample103_composite.png
+  [overlay] results/cablesample104_overlay.png
+  [overlay] results/cablesample104_composite.png
+  [overlay] results/cablesample105_overlay.png
+  [overlay] results/cablesample105_composite.png
+  [overlay] results/cablesample106_overlay.png
+  [overlay] results/cablesample106_composite.png
+  [overlay] results/cablesample107_overlay.png
+  [overlay] results/cablesample107_composite.png
+  [overlay] results/cablesample108_overlay.png
+  [overlay] results/cablesample108_composite.png
+  [overlay] results/cablesample109_overlay.png
+  [overlay] results/cablesample109_composite.png
+  [overlay] results/cablesample110_overlay.png
+  [overlay] results/cablesample110_composite.png
+  [overlay] results/cablesample111_overlay.png
+  [overlay] results/cablesample111_composite.png
+  [overlay] results/cablesample112_overlay.png
+  [overlay] results/cablesample112_composite.png
+  [overlay] results/cablesample113_overlay.png
+  [overlay] results/cablesample113_composite.png
+  [overlay] results/cablesample114_overlay.png
+  [overlay] results/cablesample114_composite.png
+  [overlay] results/cablesample115_overlay.png
+  [overlay] results/cablesample115_composite.png
+  [overlay] results/cablesample116_overlay.png
+  [overlay] results/cablesample116_composite.png
+  [overlay] results/cablesample117_overlay.png
+  [overlay] results/cablesample117_composite.png
+  [overlay] results/cablesample118_overlay.png
+  [overlay] results/cablesample118_composite.png
+  [overlay] results/cablesample119_overlay.png
+  [overlay] results/cablesample119_composite.png
+  [overlay] results/cablesample120_overlay.png
+  [overlay] results/cablesample120_composite.png
+  [overlay] results/cablesample121_overlay.png
+  [overlay] results/cablesample121_composite.png
+  [overlay] results/cablesample122_overlay.png
+  [overlay] results/cablesample122_composite.png
+  [overlay] results/cablesample123_overlay.png
+  [overlay] results/cablesample123_composite.png
+  [overlay] results/cablesample124_overlay.png
+  [overlay] results/cablesample124_composite.png
+  [overlay] results/cablesample125_overlay.png
+  [overlay] results/cablesample125_composite.png
+  [overlay] results/cablesample126_overlay.png
+  [overlay] results/cablesample126_composite.png
+  [overlay] results/cablesample127_overlay.png
+  [overlay] results/cablesample127_composite.png
+  [overlay] results/cablesample128_overlay.png
+  [overlay] results/cablesample128_composite.png
+  [overlay] results/cablesample129_overlay.png
+  [overlay] results/cablesample129_composite.png
+  [overlay] results/cablesample130_overlay.png
+  [overlay] results/cablesample130_composite.png
+  [overlay] results/cablesample131_overlay.png
+  [overlay] results/cablesample131_composite.png
+  [overlay] results/cablesample132_overlay.png
+  [overlay] results/cablesample132_composite.png
+  [overlay] results/cablesample133_overlay.png
+  [overlay] results/cablesample133_composite.png
+  [overlay] results/cablesample134_overlay.png
+  [overlay] results/cablesample134_composite.png
+  [overlay] results/cablesample135_overlay.png
+  [overlay] results/cablesample135_composite.png
+  [overlay] results/cablesample136_overlay.png
+  [overlay] results/cablesample136_composite.png
+  [overlay] results/cablesample137_overlay.png
+  [overlay] results/cablesample137_composite.png
+  [overlay] results/cablesample138_overlay.png
+  [overlay] results/cablesample138_composite.png
+  [overlay] results/cablesample139_overlay.png
+  [overlay] results/cablesample139_composite.png
+  [overlay] results/cablesample140_overlay.png
+  [overlay] results/cablesample140_composite.png
+  [overlay] results/cablesample141_overlay.png
+  [overlay] results/cablesample141_composite.png
+  [overlay] results/cablesample142_overlay.png
+  [overlay] results/cablesample142_composite.png
+  [overlay] results/cablesample143_overlay.png
+  [overlay] results/cablesample143_composite.png
+  [overlay] results/cablesample144_overlay.png
+  [overlay] results/cablesample144_composite.png
+  [overlay] results/cablesample145_overlay.png
+  [overlay] results/cablesample145_composite.png
+  [overlay] results/cablesample146_overlay.png
+  [overlay] results/cablesample146_composite.png
+  [overlay] results/cablesample147_overlay.png
+  [overlay] results/cablesample147_composite.png
+  [overlay] results/cablesample148_overlay.png
+  [overlay] results/cablesample148_composite.png
+  [overlay] results/cablesample149_overlay.png
+  [overlay] results/cablesample149_composite.png
+  [parsed] Pixel AUROC=97.1  SNR=6.9968
+  ---- Done seed 42 ----
+
+========================================
+All done.
+  Full output : results_full_20260506_125314.txt
+  Averages    : results_averaged_20260506_125314.txt
+========================================

@@ -169,14 +169,14 @@ class Dataset_maker(torch.utils.data.Dataset):
                 self.image_files = glob(os.path.join(root, category, "test", test_subfolder, "*.png"))
                 search_path = os.path.join(root, category, "test", test_subfolder, "*.png")
             else:
-                self.image_files = []
-                for sf in ["combined", "random"]:
-                    self.image_files = glob(os.path.join(root, category, "test", sf, "*.png"))
-                    if self.image_files:
-                        break
-                if not self.image_files:
-                    self.image_files = glob(os.path.join(root, category, "test", "*", "*.png"))
-                search_path = os.path.join(root, category, "test", "*", "*.png")
+                test_subfolder = getattr(config.data, "test_subfolder", None)
+                if test_subfolder:
+                    self.image_files = glob(os.path.join(root, category, "test", test_subfolder, "*.png"))
+                    search_path = os.path.join(root, category, "test", test_subfolder, "*.png")
+                else:
+                    # Always glob all subfolders — no special-case priority
+                    search_path = os.path.join(root, category, "test", "*", "*.png")
+                    self.image_files = glob(search_path)
 
             print(f"DEBUG: Searching for test images at: {search_path}")
 
