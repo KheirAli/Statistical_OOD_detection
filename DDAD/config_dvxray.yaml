@@ -1,0 +1,51 @@
+# DDAD training config for the DvXray shadow dataset.
+# Mirrors config_faces.yaml — same hyperparameters as Ali's MVTec/faces recipe,
+# only paths, category, and output dir change.
+
+data:
+  name: MVTec
+  data_dir: /data2/rohan/datasets/mvtec_ad_dvxray   # MVTec-style shadow we built
+  category: xray                                    # subdir name
+  test_subfolder: anomaly                           # used at detection time only
+  image_size: 256
+  batch_size: 32                                    # 32 for DDAD (DDADS=False)
+  DA_batch_size: 16
+  test_batch_size: 1
+  mask: True
+  input_channel: 3                                  # DvXray PNGs are RGB
+
+model:
+  DDADS: False                                      # bigger UNet (ch=64, 4 heads, ~50M params)
+  checkpoint_dir: /data2/rohan/ckpts/DDAD/DvXray/MVTec   # writable; mirrors guided-diffusion ckpt convention
+  checkpoint_name: weights
+  exp_name: default
+  feature_extractor: wide_resnet101_2               # only for detection step, not training
+  learning_rate: 3e-4
+  weight_decay: 0.05
+  epochs: 2000                                      # upstream default — saves every 250 → 8 ckpts
+  load_chp: 2000                                    # which epoch to load when --detection later
+  DA_epochs: 4
+  DA_chp: 0
+  v: 1                                              # 1 for MVTec; only used at detection
+  w: 2                                              # conditioning strength toward y0=x at detection
+  w_DA: 3
+  DLlambda: 0.1                                     # 0.1 for MVTec, 0.01 for VisA
+  trajectory_steps: 1000
+  test_trajectoy_steps: 250
+  test_trajectoy_steps_DA: 250
+  skip: 25
+  skip_DA: 25
+  eta: 1
+  beta_start: 0.0001
+  beta_end: 0.02
+  device: cuda
+  save_model: True
+  num_workers: 2
+  seed: 42
+  use_frozen_fe: True
+
+metrics:
+  auroc: True
+  pro: False
+  misclassifications: False
+  visualisation: False
