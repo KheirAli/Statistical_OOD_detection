@@ -50,6 +50,9 @@ def main():
     ap.add_argument("--device", default="cuda")
     ap.add_argument("--lora_rank", type=int, default=0, help="0 = full fine-tune")
     ap.add_argument("--lora_alpha", type=float, default=1.0)
+    ap.add_argument("--train_scope", default="full", choices=["full", "last_layer"],
+                    help="full = all weights; last_layer = freeze backbone, train only layer3 "
+                         "(the deepest stage the detector uses). Ignored when --lora_rank>0.")
     args = ap.parse_args()
 
     os.makedirs(args.out_dir, exist_ok=True)
@@ -87,6 +90,22 @@ def main():
         log["pct_trainable"] = round(100.0 * n_tr / n_tot, 4)
         print(f"[LoRA r={args.lora_rank}] trainable {n_tr:,}/{n_tot:,} "
               f"({100.0*n_tr/n_tot:.3f}%)")
+    elif args.train_scope == "last_layer":
+        # freeze the whole backbone, train only the LAST block of layer3 (the
+        # final layer producing the deepest features the detector uses) -> a true
+        # lightweight "last layer" adaptation, not the whole stage.
+        base = fe.module if hasattr(fe, "module") else fe
+        for p in base.parameters():
+            p.requires_grad = False
+        for p in base.layer3[-1].parameters():
+            p.requires_grad = True
+        trainable = [p for p in fe.parameters() if p.requires_grad]
+        n_tr = sum(p.numel() for p in trainable)
+        n_tot = sum(p.numel() for p in fe.parameters())
+        log["n_trainable"] = int(n_tr); log["n_total"] = int(n_tot)
+        log["pct_trainable"] = round(100.0 * n_tr / n_tot, 4)
+        log["train_scope"] = "last_layer(layer3[-1])"
+        print(f"[last_layer] trainable {n_tr:,}/{n_tot:,} ({100.0*n_tr/n_tot:.3f}%) = layer3 last block")
     else:
         trainable = list(fe.parameters())
         n_tot = sum(p.numel() for p in fe.parameters())
