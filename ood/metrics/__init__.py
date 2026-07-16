@@ -11,7 +11,8 @@ from .curves import (
     manual_precision_recall_curve,
     manual_roc_curve,
 )
-from .snr import compute_snr
+from .snr import compute_snr, compute_snr_zscore
+from .mask_l2 import compute_mask_l2
 
 __all__ = [
     "evaluate_delta_map",
@@ -20,4 +21,6 @@ __all__ = [
     "manual_precision_recall_curve",
     "manual_roc_curve",
     "compute_snr",
+    "compute_snr_zscore",
+    "compute_mask_l2",
 ]

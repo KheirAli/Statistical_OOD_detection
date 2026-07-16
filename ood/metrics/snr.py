@@ -50,3 +50,49 @@ def compute_snr(anomaly_map: np.ndarray, gt_mask: np.ndarray) -> float:
         return float("nan")
     num = sq[pos].sum() / n_pos
     return float(num / den)
+
+
+def compute_snr_zscore(
+    anomaly_map: np.ndarray,
+    gt_mask: np.ndarray,
+    valid_mask: np.ndarray | None = None,
+) -> float:
+    """Z-score-style SNR: (mean_OOD - mean_ID) / std_ID.
+
+    Matches the inline SNR computed by `evaluate_delta_map` in
+    Statistical_OOD_detection (alireza-clean-refactor branch). Used so
+    baseline numbers can be quoted alongside the diffusion-scorer numbers
+    on the same axis.
+
+    Differences vs `compute_snr` (Eq. 9): uses raw scores instead of
+    squared scores; subtracts ID mean (so it's invariant to constant
+    offsets); can be negative; returns 0.0 when either class is empty.
+
+    Args:
+        anomaly_map: (H, W) real-valued anomaly score map.
+        gt_mask: (H, W) binary mask. Nonzero = OOD pixel.
+        valid_mask: optional (H, W) binary mask. Only pixels where
+            valid_mask != 0 are included. Used for CT body-mask filtering.
+
+    Returns:
+        Float SNR. 0.0 if either OOD or ID side is empty.
+    """
+    if anomaly_map.shape != gt_mask.shape:
+        raise ValueError(
+            f"shape mismatch: anomaly_map {anomaly_map.shape} vs gt_mask {gt_mask.shape}"
+        )
+    if valid_mask is None:
+        valid = np.ones_like(gt_mask, dtype=bool)
+    else:
+        if valid_mask.shape != gt_mask.shape:
+            raise ValueError(
+                f"shape mismatch: valid_mask {valid_mask.shape} vs gt_mask {gt_mask.shape}"
+            )
+        valid = valid_mask.astype(bool)
+    pos = gt_mask.astype(bool) & valid
+    neg = (~gt_mask.astype(bool)) & valid
+    if pos.sum() == 0 or neg.sum() == 0:
+        return 0.0
+    ood_v = anomaly_map[pos]
+    id_v = anomaly_map[neg]
+    return float((ood_v.mean() - id_v.mean()) / (id_v.std() + 1e-8))
