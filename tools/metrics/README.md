@@ -12,6 +12,7 @@ operating point) unless stated otherwise.
 | px ROC-AUC (per-image) | `ood/metrics.py` (`manual_roc_curve`/`manual_auc`, used by `evaluate_delta_map`) | reference metric; per-image, then subcat/category mean |
 | px AP (per-image) | `ood/metrics.py::manual_average_precision` | validated bit-exact vs recorded baseline values |
 | px SNR | `ood/metrics.py` (`evaluate_delta_map`, ~line 309) | **z-score**: `(mean_OOD - mean_ID) / std_ID` on the smoothed map. NOT a ratio of means — paper text at l.285-286 should be fixed accordingly |
+| px SNR (paper) | `ood/metrics.py` (`snr_paper` key), `extra_map_metrics.py::px_snr_paper` | the paper's ratio definition `mean_OOD / mean_ID`, computed on the min-max normalized map (keeps both means non-negative); all recorded table SNR values are the z-score, not this |
 | mask-MSE | `ood/metrics.py` (`evaluate_delta_map`) | min-max normalize map to [0,1] over the valid region, MSE vs binary GT. **Stored under the JSON key `psnr`** (historical misnomer) |
 | PSNR (dB) | derived | `mean_i 10*log10(1 / mask-MSE_i)` |
 | AUPRO | `tools/metrics/anomalib_mvtec_ct_metrics.py::aupro`, `anomalib_xray50_metrics.py::aupro` | per-region overlap AUC, 8-connected GT components, global FPR <= 0.3, normalized |

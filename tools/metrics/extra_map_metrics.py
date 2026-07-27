@@ -91,6 +91,16 @@ def px_snr(m, gt, valid):
     return float((pos.mean() - neg.mean()) / (neg.std() + 1e-12))
 
 
+def px_snr_paper(m, gt, valid):
+    """Paper definition: ratio of mean heatmap value on OOD vs ID pixels,
+    on the min-max normalized map (keeps both means non-negative)."""
+    mv = m[valid]
+    mm = np.empty_like(m)
+    mm[valid] = (mv - mv.min()) / (mv.max() - mv.min() + 1e-12)
+    pos, neg = mm[(gt > 0) & valid], mm[(gt == 0) & valid]
+    return float(pos.mean() / (neg.mean() + 1e-12))
+
+
 def mask_mse(m, gt, valid):
     mv, gv = m[valid], (gt > 0)[valid]
     mm = (mv - mv.min()) / (mv.max() - mv.min() + 1e-12)
@@ -100,15 +110,17 @@ def mask_mse(m, gt, valid):
 def image_row(m, gt, valid=None):
     if valid is None:
         valid = np.ones(m.shape, bool)
-    return px_ap(m, gt, valid), px_snr(m, gt, valid), mask_mse(m, gt, valid)
+    return (px_ap(m, gt, valid), px_snr(m, gt, valid), mask_mse(m, gt, valid),
+            px_snr_paper(m, gt, valid))
 
 
 def report(name, rows):
-    """rows: list of (ap, snr, mse) per image."""
+    """rows: list of (ap, snr, mse, snr_paper) per image."""
     a = np.array(rows)
     psnr = np.mean(10 * np.log10(1 / np.maximum(a[:, 2], 1e-12)))
     print(f"{name:24s} n={len(a):4d}  AP={a[:,0].mean():.4f}  "
-          f"SNR={a[:,1].mean():.2f}  MSE={a[:,2].mean():.4f}  PSNR={psnr:.2f}")
+          f"SNR={a[:,1].mean():.2f}  SNRpaper={a[:,3].mean():.2f}  "
+          f"MSE={a[:,2].mean():.4f}  PSNR={psnr:.2f}")
     return a
 
 
@@ -149,15 +161,16 @@ def ours_npz_rows(pattern):
 
 
 def catmean(per_cat_rows, name):
-    """per_cat_rows: {cat: [(ap,snr,mse), ...]} -> per-cat mean -> 15-cat mean."""
+    """per_cat_rows: {cat: [(ap,snr,mse,snr_paper), ...]} -> per-cat mean -> 15-cat mean."""
     stats = []
     for cat, rows in per_cat_rows.items():
         a = np.array(rows)
         stats.append([a[:, 0].mean(), a[:, 1].mean(), a[:, 2].mean(),
-                      np.mean(10 * np.log10(1 / np.maximum(a[:, 2], 1e-12)))])
+                      np.mean(10 * np.log10(1 / np.maximum(a[:, 2], 1e-12))),
+                      a[:, 3].mean()])
     s = np.mean(stats, axis=0)
     print(f"{name:24s} 15-cat mean  AP={s[0]:.4f}  SNR={s[1]:.2f}  "
-          f"MSE={s[2]:.4f}  PSNR={s[3]:.2f}")
+          f"SNRpaper={s[4]:.2f}  MSE={s[2]:.4f}  PSNR={s[3]:.2f}")
 
 
 def main():

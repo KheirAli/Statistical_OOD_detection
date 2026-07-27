@@ -1293,12 +1293,13 @@ def _run_subcategory(base_cfg, category, subcategory, sample_names, output_dir):
                 "sp_ap":      float(np.mean([v["sp_ap"]       for v in vals])),
                 "px_ap":      float(np.mean([v["px_ap"]       for v in vals])),
                 "snr":        float(np.nanmean([v.get("snr", np.nan) for v in vals])),
+                "snr_paper":  float(np.nanmean([v.get("snr_paper", np.nan) for v in vals])),
                 "psnr":       float(np.nanmean([v.get("psnr", np.nan) for v in vals])),
             }
             a = averaged[key]
             print(f"    [{key}] SP={a['sp_roc_auc']:.4f} Px={a['px_roc_auc']:.4f} "
                   f"SP_AP={a['sp_ap']:.4f} Px_AP={a['px_ap']:.4f} "
-                  f"SNR={a['snr']:.2f} PSNR={_fmt_psnr(a['psnr'])}")
+                  f"SNR={a['snr']:.2f} SNRp={a['snr_paper']:.2f} PSNR={_fmt_psnr(a['psnr'])}")
 
     os.makedirs(output_dir, exist_ok=True)
     ae_path = base_cfg["scoring"].get("autoencoder_path","")

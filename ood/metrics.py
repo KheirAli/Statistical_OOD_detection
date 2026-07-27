@@ -316,6 +316,17 @@ def evaluate_delta_map(
     diff = score_norm[valid] - gt_float[valid]
     mse  = float(np.mean(diff ** 2))
 
+    # Paper-definition SNR: ratio of mean heatmap value on OOD pixels to that
+    # on ID pixels. Computed on the min-max normalized map so both means are
+    # non-negative (raw delta maps can be negative / zero-mean on ID pixels,
+    # which would make a raw ratio unstable).
+    ood_n = score_norm[gt_mask_binary.astype(bool) & valid]
+    id_n  = score_norm[~gt_mask_binary.astype(bool) & valid]
+    if len(ood_n) > 0 and len(id_n) > 0:
+        snr_paper = float(np.mean(ood_n) / (np.mean(id_n) + 1e-8))
+    else:
+        snr_paper = float("nan")
+
     # ood_pixels = score_norm[gt_mask_binary.astype(bool) & valid]   # anomalous pixels
     # id_pixels  = score_norm[~gt_mask_binary.astype(bool) & valid]  # normal pixels
 
@@ -345,6 +356,7 @@ def evaluate_delta_map(
         "px_roc_auc": px_roc_auc,
         "px_ap": px_ap,
         "snr": snr,
+        "snr_paper": snr_paper,
         "psnr": mse,
         "num_superpixels": len(sp_scores),
         "num_anomalous_sp": int(sp_labels.sum()),
