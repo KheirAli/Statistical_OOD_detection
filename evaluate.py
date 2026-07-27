@@ -842,12 +842,13 @@ from glob import glob
 import numpy as np
 import torch
 import yaml
+from skimage.transform import resize as _resize
 
 from ood.data import (load_gt_mask, load_label_image, load_reconstructions,
                       load_superpixel_mask, parse_sample_id)
 from ood.superpixels import recursive_subdivide
 from ood.embeddings import ResNetPixelEmbedder, embed_and_project
-from ood.scoring import compute_delta_map_gpu
+from ood.scoring import compute_delta_map_gpu, compute_delta_map_feature_cos
 from ood.scoring_local_gaussian import compute_delta_map_local_gaussian
 from ood.metrics import evaluate_delta_map
 import matplotlib
@@ -1089,7 +1090,11 @@ def _run_single_sample(cfg):
         patchify_size=embed_cfg.get("patchify_size",3),
         proj_dim_per_layer=embed_cfg.get("proj_dim_per_layer")).to(device).eval()
 
-    if ae_path:
+    algorithm  = score_cfg.get("algorithm","typical_set")
+    rgb_only   = bool(score_cfg.get("rgb_only", False))
+    if algorithm == "feature_cos_delta" or rgb_only:
+        embed_result = None   # no AE/PCA projection needed (raw-cos or RGB-only)
+    elif ae_path:
         ae_model     = load_autoencoder(ae_path, embedder, latent_dim, device)
         embed_result = embed_with_ae(ae_model, embedder, label_image, recon_all,
                                      embed_cfg.get("batch_size",16), device)
@@ -1097,11 +1102,14 @@ def _run_single_sample(cfg):
     else:
         embed_result = embed_and_project(embedder=embedder, label_image=label_image,
             images_recon_all=recon_all, n_pca=latent_dim, device=str(device))
-    del embedder; torch.cuda.empty_cache()
 
     # Score
-    algorithm  = score_cfg.get("algorithm","typical_set")
-    if algorithm == "local_gaussian":
+    if algorithm == "feature_cos_delta":
+        delta_map   = compute_delta_map_feature_cos(
+            embedder, label_image, recon_all, device=device,
+            batch_size=embed_cfg.get("batch_size", 4))
+        labels_used = [int(s) for s in np.unique(labels_fine)]
+    elif algorithm == "local_gaussian":
         sigma_r = score_cfg.get("sigma_rohan")
         if sigma_r is None:
             sp = os.path.join(data_cfg["results_dir"],"sigma.txt")
@@ -1116,11 +1124,13 @@ def _run_single_sample(cfg):
     else:
         delta_map,_,labels_used = compute_delta_map_gpu(
             labels_fine=labels_fine, images_recon_all=recon_all,
-            pca_feats_recon=embed_result["pca_feats_recon"],
-            label_image=label_image, label_pca_map=embed_result["label_pca_map"],
+            pca_feats_recon=None if rgb_only else embed_result["pca_feats_recon"],
+            label_image=label_image,
+            label_pca_map=None if rgb_only else embed_result["label_pca_map"],
             bins_rgb=score_cfg["bins_rgb"], bins_pca=score_cfg["bins_pca"],
             smooth_sigma=score_cfg["smooth_sigma"], min_pixels=score_cfg["min_pixels"],
-            device=device, gray_scale=gray_scale)
+            device=device, gray_scale=gray_scale, rgb_only=rgb_only)
+    del embedder; torch.cuda.empty_cache()
 
     print(f"  Scored {len(labels_used)} SPs [{algorithm}]")
 
@@ -1160,6 +1170,48 @@ def _run_single_sample(cfg):
     #     sample_name=sample_name,
     #     valid_mask=valid_mask,
     # )
+    TARGET = (256, 256)
+    if delta_map.shape != TARGET:
+        delta_map = _resize(delta_map.astype(np.float32), TARGET,
+                            order=1, mode="edge", preserve_range=True,
+                            anti_aliasing=True).astype(np.float32)
+    if gt_mask.shape != TARGET:
+        gt_mask = _resize(gt_mask.astype(np.float32), TARGET,
+                          order=0, mode="edge", preserve_range=True,
+                          anti_aliasing=False).astype(np.uint8)
+    if labels_fine.shape != TARGET:
+        labels_fine = _resize(labels_fine.astype(np.float32), TARGET,
+                              order=0, mode="edge", preserve_range=True,
+                              anti_aliasing=False).astype(np.int32)
+    if valid_mask is not None and valid_mask.shape != TARGET:
+        valid_mask = _resize(valid_mask.astype(np.float32), TARGET,
+                             order=0, mode="edge", preserve_range=True,
+                             anti_aliasing=False).astype(np.uint8)
+    if label_image.shape[:2] != TARGET:
+        label_image = _resize(
+            label_image,
+            TARGET + (() if label_image.ndim == 2 else (label_image.shape[2],)),
+            order=1, preserve_range=True, anti_aliasing=True,
+        ).astype(np.uint8)
+    hm_dir = eval_cfg.get("heatmap_dir")
+    if hm_dir:
+        from scipy.ndimage import gaussian_filter as _gf
+        _save_heatmap(label_image=label_image,
+                      delta_map=_gf(np.nan_to_num(delta_map.astype(np.float32), nan=0.0), 5.0),
+                      gt_mask=gt_mask, figures_dir=hm_dir,
+                      sample_name=sample_name, valid_mask=valid_mask)
+
+    _dump_dir = os.environ.get("DUMP_DELTA_DIR")
+    if _dump_dir:
+        os.makedirs(_dump_dir, exist_ok=True)
+        _sub = cfg.get("data", {}).get("subcategory") or ""
+        _stem = f"{_sub}__{sample_name}" if _sub else sample_name
+        np.savez_compressed(
+            os.path.join(_dump_dir, f"{_stem}.npz"),
+            delta_map=np.asarray(delta_map, dtype=np.float32),
+            gt_mask=np.asarray(gt_mask, dtype=np.uint8),
+            valid_mask=(np.asarray(valid_mask, dtype=np.uint8)
+                        if valid_mask is not None else np.ones_like(gt_mask, dtype=np.uint8)))
 
     # Evaluate
     all_metrics = {}
@@ -1422,6 +1474,7 @@ def _plot_superpixels(
             vis = np.repeat(vis[..., None], 3, axis=2)
         vis[b, :] = {"yellow":[1.0,1.0,0.0],"red":[1.0,0.2,0.2],"cyan":[0.0,1.0,1.0]}.get(color,[1.0,1.0,0.0])
         ax.imshow(vis)
+        plt.imsave(os.path.splitext(save_path)[0] + f"_{title.replace(' ','_')}.png", vis)
         ax.set_title(f"{title}\n({len(np.unique(labels))} regions)")
         ax.axis("off")
 
@@ -1469,7 +1522,12 @@ def main():
     p.add_argument("--superpixel_target_size", type=int, default=None)
     p.add_argument("--smooth_sigma",      type=float, default=None)
     p.add_argument("--scorer",            default="typical_set",
-                   choices=["typical_set","local_gaussian"])
+                   choices=["typical_set","local_gaussian","feature_cos_delta"])
+    p.add_argument("--rgb_only",          action="store_true",
+                   help="typical_set on RGB PMFs only — no ResNet features, no "
+                        "AE/PCA channel (no_AE ablation arm)")
+    p.add_argument("--save_heatmaps",     default=None, metavar="DIR",
+                   help="save sigma-5 heatmap overlays per sample into DIR")
     p.add_argument("--sigma_rohan",       type=float, default=None)
     p.add_argument("--autoencoder_path",  default=None)
     p.add_argument("--max_reconstructions", type=int, default=None,
@@ -1483,6 +1541,8 @@ def main():
     cfg = load_config(args.config)
     cfg.setdefault("sampling",{})["enabled"] = False
     cfg.setdefault("scoring",{})["algorithm"] = args.scorer
+    if args.rgb_only:                      cfg["scoring"]["rgb_only"] = True
+    if args.save_heatmaps:                 cfg["eval"]["heatmap_dir"] = args.save_heatmaps
 
     if args.device:                        cfg["embeddings"]["device"]        = args.device
     if args.output_dir:                    cfg["eval"]["output_dir"]          = args.output_dir

@@ -312,37 +312,40 @@ def evaluate_delta_map(
     score_min = score_map_px[valid].min()
     score_max = score_map_px[valid].max()
     score_norm = (score_map_px - score_min) / (score_max - score_min + 1e-8)
+    gt_float = gt_mask_binary.astype(np.float32)
+    diff = score_norm[valid] - gt_float[valid]
+    mse  = float(np.mean(diff ** 2))
 
-    ood_pixels = score_norm[gt_mask_binary.astype(bool) & valid]   # anomalous pixels
-    id_pixels  = score_norm[~gt_mask_binary.astype(bool) & valid]  # normal pixels
+    # ood_pixels = score_norm[gt_mask_binary.astype(bool) & valid]   # anomalous pixels
+    # id_pixels  = score_norm[~gt_mask_binary.astype(bool) & valid]  # normal pixels
 
-    if len(ood_pixels) > 0 and len(id_pixels) > 0:
-        # 2. MSE = squared difference between mean OOD score and mean ID score
-        #    (signal = mean anomaly score, noise = mean normal score)
-        mu_ood = float(np.mean(ood_pixels))
-        mu_id  = float(np.mean(id_pixels))
-        mse    = (mu_ood - mu_id) ** 2
+    # if len(ood_pixels) > 0 and len(id_pixels) > 0:
+    #     # 2. MSE = squared difference between mean OOD score and mean ID score
+    #     #    (signal = mean anomaly score, noise = mean normal score)
+    #     mu_ood = float(np.mean(ood_pixels))
+    #     mu_id  = float(np.mean(id_pixels))
+    #     mse    = (mu_ood - mu_id) ** 2
 
-        # 3. MAX_I = 1 (after global normalization)
-        # PSNR = 10 * log10(MAX_I^2 / MSE) = 10 * log10(1 / MSE)
-        if mse > 0:
-            psnr = float(10 * np.log10(1.0 / mse))
-        else:
-            psnr = float("inf")
-    else:
-        psnr = float("nan")
-    if mse > 0:
-        psnr = float(10 * np.log10(1.0 / mse))
-        psnr = min(psnr, 100.0)   # cap at 100 dB — avoids inf formatting issues
-    else:
-        psnr = 100.0
+    #     # 3. MAX_I = 1 (after global normalization)
+    #     # PSNR = 10 * log10(MAX_I^2 / MSE) = 10 * log10(1 / MSE)
+    #     if mse > 0:
+    #         psnr = float(10 * np.log10(1.0 / mse))
+    #     else:
+    #         psnr = float("inf")
+    # else:
+    #     psnr = float("nan")
+    # if mse > 0:
+    #     psnr = float(10 * np.log10(1.0 / mse))
+    #     psnr = min(psnr, 100.0)   # cap at 100 dB — avoids inf formatting issues
+    # else:
+    #     psnr = 100.0
     return {
         "sp_roc_auc": sp_roc_auc,
         "sp_ap": sp_ap,
         "px_roc_auc": px_roc_auc,
         "px_ap": px_ap,
         "snr": snr,
-        "psnr": psnr,
+        "psnr": mse,
         "num_superpixels": len(sp_scores),
         "num_anomalous_sp": int(sp_labels.sum()),
         "curves": {

@@ -309,6 +309,47 @@ def compute_delta_map(
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# Raw feature-space cosine scorer (no AE/PCA bottleneck, no PMF statistic)
+# ─────────────────────────────────────────────────────────────────────────────
+def compute_delta_map_feature_cos(
+    embedder,
+    label_image:      np.ndarray,
+    images_recon_all: np.ndarray,
+    device:           torch.device = None,
+    batch_size:       int = 4,
+) -> np.ndarray:
+    """Per-pixel cosine distance between input and reconstruction embeddings,
+    averaged over reconstructions:
+
+        delta(p) = mean_r [ 1 - cos( f(input)_p , f(recon_r)_p ) ]
+
+    f is the raw ResNetPixelEmbedder output. Its per-layer L2 normalization
+    makes the cosine over the concatenated vector equal the mean of per-layer
+    cosines. This scorer deliberately bypasses both the AE/PCA projection and
+    the superpixel/PMF typical-set statistic: the 3-dim bottleneck discards
+    the low-amplitude direction changes that carry lesion signal on grayscale
+    data (CT stage-wise diagnosis, 2026-07-08: raw features 0.977 px-AUC vs
+    0.79-0.89 after the bottleneck on identical samples).
+    """
+    if device is None:
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    from ood.embeddings import to_tensor01
+
+    with torch.no_grad():
+        f_label = embedder(to_tensor01(label_image, device=str(device)))  # 1,C,H,W
+        x = torch.from_numpy(images_recon_all).float().permute(0, 3, 1, 2)
+        if x.max() > 1.0:
+            x = x / 255.0
+        n = x.shape[0]
+        acc = torch.zeros(f_label.shape[-2:], device=device)
+        for i in range(0, n, batch_size):
+            fb = embedder(x[i:i + batch_size].to(device))
+            acc += (1.0 - F.cosine_similarity(fb, f_label, dim=1)).sum(0)
+        delta = (acc / n).float().cpu().numpy()
+    return delta
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # GPU-accelerated implementation
 # ─────────────────────────────────────────────────────────────────────────────
 from skimage.color import rgb2hsv
@@ -343,6 +384,7 @@ def compute_delta_map_gpu(
     device:           torch.device = None,
     eps:              float = 1e-12,
     gray_scale:       bool  = False,
+    rgb_only:         bool  = False,
     **unused_kwargs,
 ) -> Tuple[np.ndarray, Dict, List[int]]:
     """
@@ -360,7 +402,7 @@ def compute_delta_map_gpu(
 
     H, W    = labels_fine.shape
     N_recon = images_recon_all.shape[0]
-    n_pca   = pca_feats_recon.shape[-1]
+    n_pca   = 0 if rgb_only else pca_feats_recon.shape[-1]
 
     # ── Remap SP labels (int32 saves vs int64) ────────────────────────────
     sp_ids_orig = np.unique(labels_fine)
@@ -394,17 +436,16 @@ def compute_delta_map_gpu(
         l_rgb    = label_image[..., :3].reshape(-1, 3).astype(np.uint8) #Changed
         rgb_dims = (bins_rgb, bins_rgb, bins_rgb)
 
-    recon_pca_flat = pca_feats_recon.reshape(-1, n_pca)
-    label_pca_flat = label_pca_map.reshape(-1, n_pca)
-
-    # Data-driven PCA range (robust percentiles from recon)
-    pca_min = np.percentile(recon_pca_flat, 1,  axis=0)
-    pca_max = np.percentile(recon_pca_flat, 99, axis=0)
-
     rq_rgb = quantize_u8_to_bins(r_rgb, bins_rgb)
-    rq_pca = quantize_pca_adaptive(recon_pca_flat, bins_pca, pca_min, pca_max)
     lq_rgb = quantize_u8_to_bins(l_rgb, bins_rgb)
-    lq_pca = quantize_pca_adaptive(label_pca_flat, bins_pca, pca_min, pca_max)
+    if not rgb_only:
+        recon_pca_flat = pca_feats_recon.reshape(-1, n_pca)
+        label_pca_flat = label_pca_map.reshape(-1, n_pca)
+        # Data-driven PCA range (robust percentiles from recon)
+        pca_min = np.percentile(recon_pca_flat, 1,  axis=0)
+        pca_max = np.percentile(recon_pca_flat, 99, axis=0)
+        rq_pca = quantize_pca_adaptive(recon_pca_flat, bins_pca, pca_min, pca_max)
+        lq_pca = quantize_pca_adaptive(label_pca_flat, bins_pca, pca_min, pca_max)
 
     pca_dims   = (bins_pca,) * n_pca
     n_rgb_bins = int(np.prod(rgb_dims))
@@ -421,10 +462,11 @@ def compute_delta_map_gpu(
                                    lq_rgb[:,1].astype(np.int64),
                                    lq_rgb[:,2].astype(np.int64)), dims=rgb_dims).astype(np.int32)
 
-    rp = np.ravel_multi_index(
-        tuple(rq_pca[:,i].astype(np.int64) for i in range(n_pca)), dims=pca_dims)
-    lp = np.ravel_multi_index(
-        tuple(lq_pca[:,i].astype(np.int64) for i in range(n_pca)), dims=pca_dims)
+    if not rgb_only:
+        rp = np.ravel_multi_index(
+            tuple(rq_pca[:,i].astype(np.int64) for i in range(n_pca)), dims=pca_dims)
+        lp = np.ravel_multi_index(
+            tuple(lq_pca[:,i].astype(np.int64) for i in range(n_pca)), dims=pca_dims)
 
     # ── RGB ───────────────────────────────────────────────────────────────
     pmf_rgb = _try_dense_hist(sp_r, rb, n_sp, n_rgb_bins, rgb_dims,
@@ -441,10 +483,15 @@ def compute_delta_map_gpu(
             n_sp, n_rgb_bins, sp_counts, device, eps)
 
     # ── PCA: dense if fits, sparse otherwise (CRASH FIX) ─────────────────
-    pmf_pca = _try_dense_hist(sp_r, rp.astype(np.int32) if rp.max() < 2**31-1 else rp,
+    if rgb_only:
+        # RGB-only ablation: typical-set statistic from the RGB PMFs alone;
+        # zero PCA terms fall through the shared delta/info bookkeeping below.
+        entropy_pca = torch.zeros_like(entropy_rgb)
+        avg_nll_pca = torch.zeros_like(avg_nll_rgb)
+        pmf_pca = None
+    elif (pmf_pca := _try_dense_hist(sp_r, rp.astype(np.int32) if rp.max() < 2**31-1 else rp,
                               n_sp, n_pca_bins, pca_dims,
-                              device, smooth_sigma, eps)
-    if pmf_pca is not None:
+                              device, smooth_sigma, eps)) is not None:
         entropy_pca = _dense_entropy(pmf_pca, n_sp, eps)
         avg_nll_pca = _dense_avg_nll(lp, pmf_pca, n_pca_bins,
                                      n_sp, sp_l, sp_counts, device, eps)
